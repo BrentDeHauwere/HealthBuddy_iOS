@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30B28CABA53CD6B3C7271B4B /* Pods_HealthBuddy_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302270A89DF9A481436CBA50 /* Pods_HealthBuddy_iOS.framework */; };
 		AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A519A1C8C382300804C65 /* AppDelegate.swift */; };
 		AC5A519D1C8C382300804C65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A519C1C8C382300804C65 /* ViewController.swift */; };
 		AC5A51A01C8C382300804C65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5A519E1C8C382300804C65 /* Main.storyboard */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		302270A89DF9A481436CBA50 /* Pods_HealthBuddy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthBuddy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62B7CBE15E1C877EACB9D8C6 /* Pods-HealthBuddy_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthBuddy_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		AC5A51971C8C382300804C65 /* HealthBuddy_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthBuddy_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5A519A1C8C382300804C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC5A519C1C8C382300804C65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		AC5A51B61C8C382300804C65 /* HealthBuddy_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthBuddy_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5A51BA1C8C382300804C65 /* HealthBuddy_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBuddy_iOSUITests.swift; sourceTree = "<group>"; };
 		AC5A51BC1C8C382300804C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E438C33C75837497E5B76C34 /* Pods-HealthBuddy_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthBuddy_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B28CABA53CD6B3C7271B4B /* Pods_HealthBuddy_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		102EC60AB115A64265E0D85A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				302270A89DF9A481436CBA50 /* Pods_HealthBuddy_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7FA540DBF4E723C6A88BA3B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E438C33C75837497E5B76C34 /* Pods-HealthBuddy_iOS.debug.xcconfig */,
+				62B7CBE15E1C877EACB9D8C6 /* Pods-HealthBuddy_iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AC5A518E1C8C382300804C65 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +103,8 @@
 				AC5A51AE1C8C382300804C65 /* HealthBuddy_iOSTests */,
 				AC5A51B91C8C382300804C65 /* HealthBuddy_iOSUITests */,
 				AC5A51981C8C382300804C65 /* Products */,
+				A7FA540DBF4E723C6A88BA3B /* Pods */,
+				102EC60AB115A64265E0D85A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC5A51BF1C8C382300804C65 /* Build configuration list for PBXNativeTarget "HealthBuddy_iOS" */;
 			buildPhases = (
+				C89A8C87AD358A2806085079 /* Check Pods Manifest.lock */,
 				AC5A51931C8C382300804C65 /* Sources */,
 				AC5A51941C8C382300804C65 /* Frameworks */,
 				AC5A51951C8C382300804C65 /* Resources */,
+				1D2CD00467554C7BA33E14CD /* Embed Pods Frameworks */,
+				06F9327327F999D1F22FE21F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +277,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06F9327327F999D1F22FE21F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1D2CD00467554C7BA33E14CD /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C89A8C87AD358A2806085079 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AC5A51931C8C382300804C65 /* Sources */ = {
@@ -395,6 +470,7 @@
 		};
 		AC5A51C01C8C382300804C65 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E438C33C75837497E5B76C34 /* Pods-HealthBuddy_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HealthBuddy_iOS/Info.plist;
@@ -406,6 +482,7 @@
 		};
 		AC5A51C11C8C382300804C65 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62B7CBE15E1C877EACB9D8C6 /* Pods-HealthBuddy_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HealthBuddy_iOS/Info.plist;

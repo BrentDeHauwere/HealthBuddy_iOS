@@ -6,43 +6,233 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		165912AC80207CB60A0E6816E56B4F3B /* Pods-HealthBuddy_iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B5DDBBBF92D012074DFA3683FD3F12 /* Pods-HealthBuddy_iOS-dummy.m */; };
+		28AC74CA3775E042526E8CF4CDEACA1F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D65E27D7444DA52DA91F990AB66778 /* Request.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		33DBF379F3F71D12902BD24210A21B2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		4135B4BA06A7F219091EED1FE71986FC /* Pods-HealthBuddy_iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 379F48C1CBC5BFBEAF032B50F5AAB3E4 /* Pods-HealthBuddy_iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		41BFCC20E9EDC67C52C376F6ADC4C111 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088287CC71E08E73DB5EA48072E25C0F /* Upload.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4BFDDC8BA6F4CF5BEE8EDFB246931ADF /* HTTPSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B12E1F1F705E16A4FDCBEB80158B486 /* HTTPSecurity.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		585348CC5F76EB3ACED104B7B4BB2939 /* SwiftHTTP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E26A5ADADB2BE1A2E7303FF568085D5 /* SwiftHTTP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		921547F4262B6F58AB06DE9A37CF8141 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251CABA47D51B279A7314BA1154E913 /* StatusCode.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D63DE60CB6FEB2FAA35ED31D8FB4F3AF /* SwiftHTTP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C72704C5184338526DF383D9C0BDF3B5 /* SwiftHTTP-dummy.m */; };
+		E5A2A7AAD18235C387CC572E30F22FB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		FBD0B5AB4F8C59724BA664FAEF731E53 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E24DF3135EDD1FAE957CE29B786F2 /* Operation.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA93CA3D585B258EFB34D476CF407B79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E9DF4B7F218EB51E5ACFB55DB935F31;
+			remoteInfo = SwiftHTTP;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		088287CC71E08E73DB5EA48072E25C0F /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
+		12546D81949D5FA45B692FDA9F813D73 /* SwiftHTTP.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftHTTP.xcconfig; sourceTree = "<group>"; };
+		1D035FE42580EE264138659B408467B7 /* SwiftHTTP-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHTTP-prefix.pch"; sourceTree = "<group>"; };
+		2626E4233F927233D112DFE6BD6507F7 /* SwiftHTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		347C87BD426E83D67B5E7305D20224A2 /* Pods-HealthBuddy_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HealthBuddy_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		35F8D35D2CD40430C49165298119C95B /* SwiftHTTP.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftHTTP.modulemap; sourceTree = "<group>"; };
+		379F48C1CBC5BFBEAF032B50F5AAB3E4 /* Pods-HealthBuddy_iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HealthBuddy_iOS-umbrella.h"; sourceTree = "<group>"; };
+		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4251CABA47D51B279A7314BA1154E913 /* StatusCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StatusCode.swift; path = Source/StatusCode.swift; sourceTree = "<group>"; };
+		67D65E27D7444DA52DA91F990AB66778 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		6A67F42EEED8F888623939FAD61CF324 /* Pods-HealthBuddy_iOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HealthBuddy_iOS-resources.sh"; sourceTree = "<group>"; };
+		7E26A5ADADB2BE1A2E7303FF568085D5 /* SwiftHTTP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHTTP-umbrella.h"; sourceTree = "<group>"; };
+		815FDD834F72523A1A4DF91A079DAF2C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		834F3CDD6AF3B0EF5F183E6B93B49C0C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9490EA1CACCB41F90DF8D8DA3A6FD6E4 /* Pods-HealthBuddy_iOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HealthBuddy_iOS-frameworks.sh"; sourceTree = "<group>"; };
+		9B12E1F1F705E16A4FDCBEB80158B486 /* HTTPSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPSecurity.swift; path = Source/HTTPSecurity.swift; sourceTree = "<group>"; };
+		9E9D0700F718B3B6BA07A36B08B1AA29 /* Pods-HealthBuddy_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HealthBuddy_iOS.release.xcconfig"; sourceTree = "<group>"; };
+		A6C4D45E9839921226FB7C3CCA742DB8 /* Pods-HealthBuddy_iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HealthBuddy_iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C72704C5184338526DF383D9C0BDF3B5 /* SwiftHTTP-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftHTTP-dummy.m"; sourceTree = "<group>"; };
+		C7B5DDBBBF92D012074DFA3683FD3F12 /* Pods-HealthBuddy_iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HealthBuddy_iOS-dummy.m"; sourceTree = "<group>"; };
+		D11E24DF3135EDD1FAE957CE29B786F2 /* Operation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operation.swift; path = Source/Operation.swift; sourceTree = "<group>"; };
+		D5EAF7F264D8AB3EDC8CEEBD9B76E038 /* Pods-HealthBuddy_iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HealthBuddy_iOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		D641A557662548046EFA8DB78098535E /* Pods-HealthBuddy_iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-HealthBuddy_iOS.modulemap"; sourceTree = "<group>"; };
+		ECFE7C877FDF717AC26FC36B1014A4C8 /* Pods_HealthBuddy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthBuddy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		9FDA2776FC5CA99C8A0216227C53F03D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5A2A7AAD18235C387CC572E30F22FB9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA8B9EE45DC1ACE034720E84E3A1A5C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33DBF379F3F71D12902BD24210A21B2F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
-		09C5E90726D2521A760312DBF50D9358 /* Products */ = {
+		1F6EF9BDBFE3792E8F0E1CC3060B17E0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				815FDD834F72523A1A4DF91A079DAF2C /* Info.plist */,
+				35F8D35D2CD40430C49165298119C95B /* SwiftHTTP.modulemap */,
+				12546D81949D5FA45B692FDA9F813D73 /* SwiftHTTP.xcconfig */,
+				C72704C5184338526DF383D9C0BDF3B5 /* SwiftHTTP-dummy.m */,
+				1D035FE42580EE264138659B408467B7 /* SwiftHTTP-prefix.pch */,
+				7E26A5ADADB2BE1A2E7303FF568085D5 /* SwiftHTTP-umbrella.h */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftHTTP";
 			sourceTree = "<group>";
 		};
-		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
+		3510D63EC130FBF054FB92BDC00B1AB3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				E482EC000F6F81999104742E649FF6EB /* SwiftHTTP */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
-				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
-				09C5E90726D2521A760312DBF50D9358 /* Products */,
-				F6CCA5D896907CE7506C37FD31FC265A /* Targets Support Files */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				3510D63EC130FBF054FB92BDC00B1AB3 /* Pods */,
+				B9697AA8BC625C02C081FB0D52D3DBAF /* Products */,
+				B03EAF31CEC4270BB1A6AEE72A55FBE2 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		F6CCA5D896907CE7506C37FD31FC265A /* Targets Support Files */ = {
+		B03EAF31CEC4270BB1A6AEE72A55FBE2 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				C14EE4C9805D535817E770558D8A4336 /* Pods-HealthBuddy_iOS */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		B9697AA8BC625C02C081FB0D52D3DBAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECFE7C877FDF717AC26FC36B1014A4C8 /* Pods_HealthBuddy_iOS.framework */,
+				2626E4233F927233D112DFE6BD6507F7 /* SwiftHTTP.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C14EE4C9805D535817E770558D8A4336 /* Pods-HealthBuddy_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				834F3CDD6AF3B0EF5F183E6B93B49C0C /* Info.plist */,
+				D641A557662548046EFA8DB78098535E /* Pods-HealthBuddy_iOS.modulemap */,
+				A6C4D45E9839921226FB7C3CCA742DB8 /* Pods-HealthBuddy_iOS-acknowledgements.markdown */,
+				D5EAF7F264D8AB3EDC8CEEBD9B76E038 /* Pods-HealthBuddy_iOS-acknowledgements.plist */,
+				C7B5DDBBBF92D012074DFA3683FD3F12 /* Pods-HealthBuddy_iOS-dummy.m */,
+				9490EA1CACCB41F90DF8D8DA3A6FD6E4 /* Pods-HealthBuddy_iOS-frameworks.sh */,
+				6A67F42EEED8F888623939FAD61CF324 /* Pods-HealthBuddy_iOS-resources.sh */,
+				379F48C1CBC5BFBEAF032B50F5AAB3E4 /* Pods-HealthBuddy_iOS-umbrella.h */,
+				347C87BD426E83D67B5E7305D20224A2 /* Pods-HealthBuddy_iOS.debug.xcconfig */,
+				9E9D0700F718B3B6BA07A36B08B1AA29 /* Pods-HealthBuddy_iOS.release.xcconfig */,
+			);
+			name = "Pods-HealthBuddy_iOS";
+			path = "Target Support Files/Pods-HealthBuddy_iOS";
+			sourceTree = "<group>";
+		};
+		E482EC000F6F81999104742E649FF6EB /* SwiftHTTP */ = {
+			isa = PBXGroup;
+			children = (
+				9B12E1F1F705E16A4FDCBEB80158B486 /* HTTPSecurity.swift */,
+				D11E24DF3135EDD1FAE957CE29B786F2 /* Operation.swift */,
+				67D65E27D7444DA52DA91F990AB66778 /* Request.swift */,
+				4251CABA47D51B279A7314BA1154E913 /* StatusCode.swift */,
+				088287CC71E08E73DB5EA48072E25C0F /* Upload.swift */,
+				1F6EF9BDBFE3792E8F0E1CC3060B17E0 /* Support Files */,
+			);
+			path = SwiftHTTP;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BAADFCC604DD36E19D20855B59D0112A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				585348CC5F76EB3ACED104B7B4BB2939 /* SwiftHTTP-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4C922D94D380A84D78A65883B32D54E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4135B4BA06A7F219091EED1FE71986FC /* Pods-HealthBuddy_iOS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8E9DF4B7F218EB51E5ACFB55DB935F31 /* SwiftHTTP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 703E903B1A360661FB942C3B617299A6 /* Build configuration list for PBXNativeTarget "SwiftHTTP" */;
+			buildPhases = (
+				5927FE84FD9E7A3F4C68CC6BECFD3711 /* Sources */,
+				9FDA2776FC5CA99C8A0216227C53F03D /* Frameworks */,
+				BAADFCC604DD36E19D20855B59D0112A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftHTTP;
+			productName = SwiftHTTP;
+			productReference = 2626E4233F927233D112DFE6BD6507F7 /* SwiftHTTP.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D90AFEA20BCFB1A91DBBC94DC19C987E /* Pods-HealthBuddy_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90B8DE056D1BDA18378F8F85E754B14E /* Build configuration list for PBXNativeTarget "Pods-HealthBuddy_iOS" */;
+			buildPhases = (
+				C03D5B74F93FCC838B6C013897407989 /* Sources */,
+				EA8B9EE45DC1ACE034720E84E3A1A5C5 /* Frameworks */,
+				E4C922D94D380A84D78A65883B32D54E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E257BCBDE1F5A4B87FDDE7982822EDA4 /* PBXTargetDependency */,
+			);
+			name = "Pods-HealthBuddy_iOS";
+			productName = "Pods-HealthBuddy_iOS";
+			productReference = ECFE7C877FDF717AC26FC36B1014A4C8 /* Pods_HealthBuddy_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
@@ -59,16 +249,112 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 09C5E90726D2521A760312DBF50D9358 /* Products */;
+			productRefGroup = B9697AA8BC625C02C081FB0D52D3DBAF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				D90AFEA20BCFB1A91DBBC94DC19C987E /* Pods-HealthBuddy_iOS */,
+				8E9DF4B7F218EB51E5ACFB55DB935F31 /* SwiftHTTP */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXSourcesBuildPhase section */
+		5927FE84FD9E7A3F4C68CC6BECFD3711 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BFDDC8BA6F4CF5BEE8EDFB246931ADF /* HTTPSecurity.swift in Sources */,
+				FBD0B5AB4F8C59724BA664FAEF731E53 /* Operation.swift in Sources */,
+				28AC74CA3775E042526E8CF4CDEACA1F /* Request.swift in Sources */,
+				921547F4262B6F58AB06DE9A37CF8141 /* StatusCode.swift in Sources */,
+				D63DE60CB6FEB2FAA35ED31D8FB4F3AF /* SwiftHTTP-dummy.m in Sources */,
+				41BFCC20E9EDC67C52C376F6ADC4C111 /* Upload.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C03D5B74F93FCC838B6C013897407989 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				165912AC80207CB60A0E6816E56B4F3B /* Pods-HealthBuddy_iOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E257BCBDE1F5A4B87FDDE7982822EDA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftHTTP;
+			target = 8E9DF4B7F218EB51E5ACFB55DB935F31 /* SwiftHTTP */;
+			targetProxy = AA93CA3D585B258EFB34D476CF407B79 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		8D1534490D941DCA47C62AC4314182AF /* Debug */ = {
+		033DE46FDFBCB564BFB607B9BD927AE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E9D0700F718B3B6BA07A36B08B1AA29 /* Pods-HealthBuddy_iOS.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-HealthBuddy_iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_HealthBuddy_iOS;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		11EB3372A3CE211E46D7A5E0ED8A05BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 347C87BD426E83D67B5E7305D20224A2 /* Pods-HealthBuddy_iOS.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-HealthBuddy_iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_HealthBuddy_iOS;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -100,14 +386,69 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		C5A18280E9321A9268D1C80B7DA43967 /* Release */ = {
+		CFB0A25F13731E947F37B1F7572E46D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12546D81949D5FA45B692FDA9F813D73 /* SwiftHTTP.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftHTTP/SwiftHTTP-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftHTTP/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftHTTP/SwiftHTTP.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftHTTP;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EBE44BE18945CB4731A3BF9C458D4F5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12546D81949D5FA45B692FDA9F813D73 /* SwiftHTTP.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftHTTP/SwiftHTTP-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftHTTP/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftHTTP/SwiftHTTP.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftHTTP;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -134,7 +475,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
@@ -147,8 +488,26 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D1534490D941DCA47C62AC4314182AF /* Debug */,
-				C5A18280E9321A9268D1C80B7DA43967 /* Release */,
+				A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */,
+				FB45FFD90572718D82AB9092B750F0CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		703E903B1A360661FB942C3B617299A6 /* Build configuration list for PBXNativeTarget "SwiftHTTP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBE44BE18945CB4731A3BF9C458D4F5D /* Debug */,
+				CFB0A25F13731E947F37B1F7572E46D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90B8DE056D1BDA18378F8F85E754B14E /* Build configuration list for PBXNativeTarget "Pods-HealthBuddy_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11EB3372A3CE211E46D7A5E0ED8A05BE /* Debug */,
+				033DE46FDFBCB564BFB607B9BD927AE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
