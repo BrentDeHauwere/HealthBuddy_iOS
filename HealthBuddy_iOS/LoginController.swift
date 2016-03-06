@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-
+import SwiftHTTP
+import BTNavigationDropdownMenu
 
 class ViewController: UIViewController {
     @IBOutlet weak var btnLogin: UIButton!
@@ -21,8 +21,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         btnLogin.layer.cornerRadius = 10;
         btnLogin.clipsToBounds = true;
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +41,7 @@ class ViewController: UIViewController {
         }else{
             //TODO: Connect to back-end and verify account
             
+            /*
             //set up the base64-encoded credentials
             let post = "username=\(txtEmail.text) &password=\(txtPassword.text)";
             print("POST Request: \(post)");
@@ -58,7 +57,7 @@ class ViewController: UIViewController {
             //fire off the request
             //let urlConnection = NSURLConnection(request: request, delegate: self);
             //TODO: check response
-            
+            */
             
             let success = true;
             if success

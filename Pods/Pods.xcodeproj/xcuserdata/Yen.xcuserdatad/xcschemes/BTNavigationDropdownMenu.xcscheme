@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3D5B83599C9CB20733DCF593'
-               BlueprintName = 'Pods-HealthBuddy_iOS'
+               BlueprintIdentifier = '84823FC7995E2B6EACD99E55'
+               BlueprintName = 'BTNavigationDropdownMenu'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_HealthBuddy_iOS.framework'>
+               BuildableName = 'BTNavigationDropdownMenu.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

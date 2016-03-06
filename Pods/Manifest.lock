@@ -1,10 +1,13 @@
 PODS:
+  - BTNavigationDropdownMenu (0.2.1)
   - SwiftHTTP (1.0.4)
 
 DEPENDENCIES:
+  - BTNavigationDropdownMenu
   - SwiftHTTP (~> 1.0.4)
 
 SPEC CHECKSUMS:
+  BTNavigationDropdownMenu: 9cf4060162c96510ee27c388412e28678320cdc0
   SwiftHTTP: 7e084af3bf628b17589c7b61a9df8750947a9813
 
 COCOAPODS: 0.39.0
