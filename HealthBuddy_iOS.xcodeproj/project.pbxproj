@@ -482,6 +482,7 @@
 				AC5A51C11C8C382300804C65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC5A51C21C8C382300804C65 /* Build configuration list for PBXNativeTarget "HealthBuddy_iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +491,7 @@
 				AC5A51C41C8C382300804C65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC5A51C51C8C382300804C65 /* Build configuration list for PBXNativeTarget "HealthBuddy_iOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +500,7 @@
 				AC5A51C71C8C382300804C65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
