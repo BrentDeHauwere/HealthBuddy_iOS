@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -160,16 +161,16 @@
                                 <exclude reference="Ozk-6b-xLb"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="q4E-G5-H6O"/>
-                                <exclude reference="zNN-HP-hd2"/>
-                                <exclude reference="IxL-DH-PrB"/>
-                                <exclude reference="NBo-yf-PY2"/>
-                                <exclude reference="FLH-it-DIP"/>
-                                <exclude reference="pLm-6U-Ng2"/>
                                 <exclude reference="fXx-ej-f6a"/>
                                 <exclude reference="oQ8-2q-9JH"/>
+                                <exclude reference="FLH-it-DIP"/>
+                                <exclude reference="pLm-6U-Ng2"/>
                                 <exclude reference="N8W-Fm-pHg"/>
                                 <exclude reference="n3e-qU-VOd"/>
+                                <exclude reference="IxL-DH-PrB"/>
+                                <exclude reference="NBo-yf-PY2"/>
+                                <exclude reference="q4E-G5-H6O"/>
+                                <exclude reference="zNN-HP-hd2"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -181,16 +182,16 @@
                                 <include reference="Ozk-6b-xLb"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="q4E-G5-H6O"/>
-                                <include reference="zNN-HP-hd2"/>
-                                <include reference="IxL-DH-PrB"/>
-                                <include reference="NBo-yf-PY2"/>
-                                <include reference="FLH-it-DIP"/>
-                                <include reference="pLm-6U-Ng2"/>
                                 <include reference="fXx-ej-f6a"/>
                                 <include reference="oQ8-2q-9JH"/>
+                                <include reference="FLH-it-DIP"/>
+                                <include reference="pLm-6U-Ng2"/>
                                 <include reference="N8W-Fm-pHg"/>
                                 <include reference="n3e-qU-VOd"/>
+                                <include reference="IxL-DH-PrB"/>
+                                <include reference="NBo-yf-PY2"/>
+                                <include reference="q4E-G5-H6O"/>
+                                <include reference="zNN-HP-hd2"/>
                             </mask>
                         </variation>
                         <connections>
@@ -222,6 +223,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cHh-Vx-SbV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qJ5-b8-MG9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

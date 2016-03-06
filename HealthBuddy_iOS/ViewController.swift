@@ -37,12 +37,26 @@ class ViewController: UIViewController {
         {
             alertStatus("Vul uw email en wachtwoord in alstublieft", title: "Aanmelden mislukt");
         }else{
-            var success = false;
             //TODO: Connect to back-end and verify account
             
+            //set up the base64-encoded credentials
+            let post = "username=\(txtEmail.text) &password=\(txtPassword.text)";
+            print("POST Request: \(post)");
+            let loginData: NSData = post.dataUsingEncoding(NSUTF8StringEncoding)!;
+            let base64LoginString = loginData.base64EncodedStringWithOptions([]);
+            
+            //Create the request
+            let url = NSURL(string: "http://route");
+            let request = NSMutableURLRequest(URL: url!);
+            request.HTTPMethod = "POST";
+            request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization");
+            
+            //fire off the request
+            //let urlConnection = NSURLConnection(request: request, delegate: self);
+            //TODO: check response
             
             
-            success = true;
+            let success = true;
             if success
             {
                 //if role == zorgmantel{
