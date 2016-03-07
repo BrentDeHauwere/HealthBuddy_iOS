@@ -219,7 +219,7 @@
                         <outlet property="btnLogin" destination="pgh-Bz-8gB" id="ayk-dQ-RTW"/>
                         <outlet property="txtEmail" destination="ffG-ff-hWU" id="XGf-WH-rXK"/>
                         <outlet property="txtPassword" destination="2xv-D0-74b" id="Hv2-Sz-TDM"/>
-                        <segue destination="SOd-kg-HnI" kind="presentation" identifier="login_success" id="0vY-Qv-dJ6"/>
+                        <segue destination="SOd-kg-HnI" kind="presentation" identifier="login_success" modalTransitionStyle="coverVertical" id="0vY-Qv-dJ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -231,7 +231,7 @@
             </objects>
             <point key="canvasLocation" x="304.5" y="433"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Zorgbehoevenden-->
         <scene sceneID="c7y-8T-6Tm">
             <objects>
                 <tableViewController id="oZT-0o-nep" customClass="PatientListController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -273,9 +273,10 @@
                             <outlet property="delegate" destination="oZT-0o-nep" id="cUq-4r-YMD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="bFV-YI-Xkh"/>
+                    <navigationItem key="navigationItem" title="Zorgbehoevenden" id="4tV-xR-8Tx"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="AAt-SJ-9Zi" id="GHa-9Z-UIG"/>
+                        <segue destination="ZKw-34-VLa" kind="showDetail" identifier="PatientSelectedSegue" id="hb0-ig-NFC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="naU-v3-EAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,23 +290,104 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2335.5" y="-145"/>
+            <point key="canvasLocation" x="1812" y="-577"/>
+        </scene>
+        <!--Patient MedicaliD Controller-->
+        <scene sceneID="EEa-jx-3qi">
+            <objects>
+                <viewController id="ZKw-34-VLa" customClass="PatientMedicaliDController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DEr-nb-3Ca"/>
+                        <viewControllerLayoutGuide type="bottom" id="HYX-Ym-3N4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fg6-Wt-SDm">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5e-3A-FSc">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="MJT-0s-XcR">
+                                        <variation key="widthClass=compact" constant="103"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="33" id="mkd-Ed-r4I">
+                                        <variation key="widthClass=compact" constant="227"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="MJT-0s-XcR"/>
+                                        <exclude reference="mkd-Ed-r4I"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="MJT-0s-XcR"/>
+                                        <include reference="mkd-Ed-r4I"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k5e-3A-FSc" firstAttribute="centerX" secondItem="Fg6-Wt-SDm" secondAttribute="centerX" id="ECn-bn-G7K"/>
+                            <constraint firstItem="k5e-3A-FSc" firstAttribute="centerY" secondItem="Fg6-Wt-SDm" secondAttribute="centerY" id="dTB-zL-sLG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="k5e-3A-FSc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="ECn-bn-G7K"/>
+                                <exclude reference="dTB-zL-sLG"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="k5e-3A-FSc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="ECn-bn-G7K"/>
+                                <include reference="dTB-zL-sLG"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="lblTest" destination="k5e-3A-FSc" id="D3c-mO-wPo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gh8-ae-Oqi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2563.5" y="-577"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ivM-af-3Ai">
             <objects>
                 <navigationController wantsFullScreenLayout="YES" id="SOd-kg-HnI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="URQ-aB-7gX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="URQ-aB-7gX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="oZT-0o-nep" kind="relationship" relationship="rootViewController" id="Z45-FX-VIe"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2tV-jQ-pUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationBar contentMode="scaleToFill" id="G27-lH-kp4">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <items>
+                        <navigationItem title="Title" id="fZL-Cj-q9D"/>
+                    </items>
+                </navigationBar>
             </objects>
-            <point key="canvasLocation" x="1405.5" y="-145"/>
+            <point key="canvasLocation" x="1072.5" y="-569"/>
         </scene>
     </scenes>
     <resources>

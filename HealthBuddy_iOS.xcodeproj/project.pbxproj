@@ -18,6 +18,7 @@
 		AC5A51BB1C8C382300804C65 /* HealthBuddy_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A51BA1C8C382300804C65 /* HealthBuddy_iOSUITests.swift */; };
 		ACFC566A1C8D8D6A00269458 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC56691C8D8D6A00269458 /* User.swift */; };
 		ACFC566D1C8D8F8400269458 /* PatientListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC566C1C8D8F8400269458 /* PatientListController.swift */; };
+		ACFC566F1C8DA00C00269458 /* PatientMedicaliDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC566E1C8DA00C00269458 /* PatientMedicaliDController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		AC5A51BC1C8C382300804C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACFC56691C8D8D6A00269458 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ACFC566C1C8D8F8400269458 /* PatientListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientListController.swift; sourceTree = "<group>"; };
+		ACFC566E1C8DA00C00269458 /* PatientMedicaliDController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientMedicaliDController.swift; sourceTree = "<group>"; };
 		E438C33C75837497E5B76C34 /* Pods-HealthBuddy_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthBuddy_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +175,7 @@
 			children = (
 				AC5A519C1C8C382300804C65 /* LoginController.swift */,
 				ACFC566C1C8D8F8400269458 /* PatientListController.swift */,
+				ACFC566E1C8DA00C00269458 /* PatientMedicaliDController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACFC566F1C8DA00C00269458 /* PatientMedicaliDController.swift in Sources */,
 				AC5A519D1C8C382300804C65 /* LoginController.swift in Sources */,
 				AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */,
 				ACFC566A1C8D8D6A00269458 /* User.swift in Sources */,

@@ -16,12 +16,64 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="XcA-AB-n11">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="230" id="5aO-zc-0av"/>
+                                    <constraint firstAttribute="width" constant="163" id="dCv-Dm-Pdr"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5aO-zc-0av"/>
+                                        <exclude reference="dCv-Dm-Pdr"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="5aO-zc-0av"/>
+                                        <include reference="dCv-Dm-Pdr"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XcA-AB-n11" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0vn-BS-ozN"/>
+                            <constraint firstItem="XcA-AB-n11" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="7FB-5Q-ZmK"/>
+                            <constraint firstItem="XcA-AB-n11" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="AaP-71-NQX"/>
+                            <constraint firstItem="XcA-AB-n11" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="beG-QQ-PXt"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="XcA-AB-n11"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="0vn-BS-ozN"/>
+                                <exclude reference="7FB-5Q-ZmK"/>
+                                <exclude reference="AaP-71-NQX"/>
+                                <exclude reference="beG-QQ-PXt"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="XcA-AB-n11"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="0vn-BS-ozN"/>
+                                <include reference="7FB-5Q-ZmK"/>
+                                <include reference="AaP-71-NQX"/>
+                                <include reference="beG-QQ-PXt"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.5" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="487" height="607"/>
+    </resources>
 </document>
