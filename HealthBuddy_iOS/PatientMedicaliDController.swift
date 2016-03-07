@@ -16,8 +16,14 @@ class PatientMedicaliDController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        //setupDropDownMenu();
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Menu"), style:.Plain , target: self, action: "collapseDropDown:");
+       
         
         navigationItem.title = "\(patient.firstName) \(patient.lastName)";
     }
     
+    func collapseDropDown(sender: UIBarButtonItem) {
+        print("Push menu button");
+    }
 }

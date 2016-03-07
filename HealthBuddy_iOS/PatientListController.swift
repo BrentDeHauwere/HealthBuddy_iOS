@@ -56,17 +56,16 @@ class PatientListController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PatientSelectedSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                setCustomBackButton();
+                setCustomBackBtn();
                 let patientMedicaliDController = segue.destinationViewController as! PatientMedicaliDController ;
                 patientMedicaliDController.patient = patients[indexPath.row];
             }
         }
     }
     
-    func setCustomBackButton(){
+    func setCustomBackBtn(){
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil);
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ContactLogo");
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ContactLogo");
-
     }
 }
