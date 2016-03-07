@@ -56,10 +56,9 @@ class PatientListController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PatientSelectedSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let patientMedicaliDController = (segue.destinationViewController as! UINavigationController).topViewController as! PatientMedicaliDController;
+                let patientMedicaliDController = segue.destinationViewController as! PatientMedicaliDController ;
                 patientMedicaliDController.patient = patients[indexPath.row];
-                patientMedicaliDController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-                patientMedicaliDController.navigationItem.leftItemsSupplementBackButton = true
+
             }
         }
     }
