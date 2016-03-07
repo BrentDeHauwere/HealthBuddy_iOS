@@ -7,23 +7,37 @@
 //
 
 import UIKit
+import BTNavigationDropdownMenu
+
 
 class PatientMedicaliDController: UIViewController{
     var patient:User!;
     
-    @IBOutlet weak var navigationTitle: UINavigationItem!
+    @IBOutlet weak var lblCurrentPatient: UILabel!
+   
    
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        //setupDropDownMenu();
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Menu"), style:.Plain , target: self, action: "collapseDropDown:");
+        setupDropdownMenu();
+ 
        
         
-        navigationItem.title = "\(patient.firstName) \(patient.lastName)";
+        lblCurrentPatient.text = "\(patient.firstName) \(patient.lastName)";
     }
     
-    func collapseDropDown(sender: UIBarButtonItem) {
-        print("Push menu button");
+    func setupDropdownMenu(){
+        let items = ["Medisch ID", "Medicatie", "Gewicht"];
+        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
+        self.navigationItem.titleView = menuView
+        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
+            print("Did select item at index: \(indexPath)")
+            // self.selectedCellLabel.text = items[indexPath]
+        }
+
     }
+    
+    
+    
+
 }

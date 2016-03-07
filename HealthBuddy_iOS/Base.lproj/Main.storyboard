@@ -291,8 +291,72 @@
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3ZN-Pu-ETX">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medisch ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAf-ju-UzY">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="157" y="289" width="86" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam zorgbehoevende" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSd-sZ-aDa">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.60784313725490191" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="Egw-55-KO5"/>
+                                    <constraint firstAttribute="height" constant="21" id="nXN-lk-Hj6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Egw-55-KO5"/>
+                                        <exclude reference="nXN-lk-Hj6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Egw-55-KO5"/>
+                                        <include reference="nXN-lk-Hj6"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TSd-sZ-aDa" firstAttribute="top" secondItem="tTv-XN-6gl" secondAttribute="bottom" id="DFO-Ic-0Di"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TSd-sZ-aDa" secondAttribute="trailing" constant="-20" id="r1x-QH-vIz"/>
+                            <constraint firstItem="TSd-sZ-aDa" firstAttribute="leading" secondItem="3ZN-Pu-ETX" secondAttribute="leadingMargin" constant="-20" id="si5-TE-dLh"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="MAf-ju-UzY"/>
+                                <exclude reference="TSd-sZ-aDa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="DFO-Ic-0Di"/>
+                                <exclude reference="r1x-QH-vIz"/>
+                                <exclude reference="si5-TE-dLh"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="MAf-ju-UzY"/>
+                                <include reference="TSd-sZ-aDa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="DFO-Ic-0Di"/>
+                                <include reference="r1x-QH-vIz"/>
+                                <include reference="si5-TE-dLh"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="lblCurrentPatient" destination="TSd-sZ-aDa" id="rcE-iE-0iM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1z-Vb-GSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
