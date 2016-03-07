@@ -52,45 +52,15 @@ class PatientListController: UITableViewController {
         }
         
     }
-    
-    /*
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("You clicked one!");
-        if segue.identifier == "showPatient" {
+        if segue.identifier == "PatientSelectedSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let patientMedicaliDController = (segue.destinationViewController as! UINavigationController).topViewController as! PatientMedicaliDController;
                 patientMedicaliDController.patient = patients[indexPath.row];
-                patientMedicaliDController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem();
-                patientMedicaliDController.navigationItem.leftItemsSupplementBackButton = true;
+                patientMedicaliDController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+                patientMedicaliDController.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }
-*/
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("I clicked here!");
-        if segue.identifier == "PatientSelectedSegue" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let patientMedicaliDController = segue.destinationViewController as! PatientMedicaliDController;               patientMedicaliDController.patient = patients[indexPath.row];
-                patientMedicaliDController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem();
-                patientMedicaliDController.navigationItem.leftItemsSupplementBackButton = true;
-            }
-        }
-    }
-    
-
-    
-    /*
-    // MARK: - Segues
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let candy = candies[indexPath.row]
-                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-                controller.detailCandy = candy
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
-            }
-        }
-    }
-    */
 }

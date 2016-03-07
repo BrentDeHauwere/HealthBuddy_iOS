@@ -11,11 +11,12 @@ import UIKit
 class PatientMedicaliDController: UIViewController{
     var patient:User!;
     
-    @IBOutlet weak var lblTest: UILabel!
+    @IBOutlet weak var navigationTitle: UINavigationItem!
+   
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        lblTest.text = "\(patient.firstName) \(patient.lastName)";
+        navigationItem.title = "\(patient.firstName) \(patient.lastName)";
     }
     
 }

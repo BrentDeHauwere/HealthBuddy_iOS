@@ -32,9 +32,6 @@
                                         <exclude reference="c5x-Wy-hfe"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="77" y="226" width="247" height="30"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Jbn-O5-1cm"/>
@@ -60,9 +57,6 @@
                                         <exclude reference="muO-tt-GB1"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="77" y="135" width="247" height="51"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="G8t-pD-xGx"/>
@@ -83,9 +77,6 @@
                                         <exclude reference="Is2-xG-tji"/>
                                         <exclude reference="T8A-Bs-zbd"/>
                                     </mask>
-                                </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="77" y="188" width="247" height="30"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
@@ -137,9 +128,6 @@
                                         <exclude reference="K77-F4-SpD"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="77" y="264" width="247" height="35"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="F8v-oZ-DQ1"/>
@@ -178,16 +166,16 @@
                                 <exclude reference="pgh-Bz-8gB"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="AIM-Vd-Mve"/>
-                                <exclude reference="rKy-9W-4AD"/>
-                                <exclude reference="BZm-FA-OBs"/>
-                                <exclude reference="Z4H-5X-FYR"/>
-                                <exclude reference="4Xl-DH-Ncz"/>
-                                <exclude reference="f1Y-JY-UG1"/>
                                 <exclude reference="LW6-jZ-S8t"/>
                                 <exclude reference="zPV-fx-SM0"/>
+                                <exclude reference="4Xl-DH-Ncz"/>
+                                <exclude reference="f1Y-JY-UG1"/>
                                 <exclude reference="QCX-aT-xMT"/>
                                 <exclude reference="tHY-dN-Bbb"/>
+                                <exclude reference="BZm-FA-OBs"/>
+                                <exclude reference="Z4H-5X-FYR"/>
+                                <exclude reference="AIM-Vd-Mve"/>
+                                <exclude reference="rKy-9W-4AD"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -199,16 +187,16 @@
                                 <include reference="pgh-Bz-8gB"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="AIM-Vd-Mve"/>
-                                <include reference="rKy-9W-4AD"/>
-                                <include reference="BZm-FA-OBs"/>
-                                <include reference="Z4H-5X-FYR"/>
-                                <include reference="4Xl-DH-Ncz"/>
-                                <include reference="f1Y-JY-UG1"/>
                                 <include reference="LW6-jZ-S8t"/>
                                 <include reference="zPV-fx-SM0"/>
+                                <include reference="4Xl-DH-Ncz"/>
+                                <include reference="f1Y-JY-UG1"/>
                                 <include reference="QCX-aT-xMT"/>
                                 <include reference="tHY-dN-Bbb"/>
+                                <include reference="BZm-FA-OBs"/>
+                                <include reference="Z4H-5X-FYR"/>
+                                <include reference="AIM-Vd-Mve"/>
+                                <include reference="rKy-9W-4AD"/>
                             </mask>
                         </variation>
                         <connections>
@@ -236,10 +224,11 @@
             <objects>
                 <tableViewController id="oZT-0o-nep" customClass="PatientListController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Yu-H1-dQ6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Zoek" id="oLT-rv-YUG">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -247,12 +236,15 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="patient" textLabel="zkG-Be-Otu" imageView="1jZ-ix-zn8" style="IBUITableViewCellStyleDefault" id="HSI-iL-tZL">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="patient" textLabel="zkG-Be-Otu" style="IBUITableViewCellStyleDefault" id="HSI-iL-tZL">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HSI-iL-tZL" id="RZ0-Yp-Hs3">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zkG-Be-Otu">
+                                            <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -261,9 +253,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             </variation>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Logo" id="1jZ-ix-zn8">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -276,7 +265,7 @@
                     <navigationItem key="navigationItem" title="Zorgbehoevenden" id="4tV-xR-8Tx"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="AAt-SJ-9Zi" id="GHa-9Z-UIG"/>
-                        <segue destination="ZKw-34-VLa" kind="showDetail" identifier="PatientSelectedSegue" id="hb0-ig-NFC"/>
+                        <segue destination="5NA-Nt-sz2" kind="showDetail" identifier="PatientSelectedSegue" id="hb0-ig-NFC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="naU-v3-EAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,7 +281,7 @@
             </objects>
             <point key="canvasLocation" x="1812" y="-577"/>
         </scene>
-        <!--Patient MedicaliD Controller-->
+        <!--Naam zorgbehoevende-->
         <scene sceneID="EEa-jx-3qi">
             <objects>
                 <viewController id="ZKw-34-VLa" customClass="PatientMedicaliDController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -301,66 +290,18 @@
                         <viewControllerLayoutGuide type="bottom" id="HYX-Ym-3N4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Fg6-Wt-SDm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5e-3A-FSc">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="MJT-0s-XcR">
-                                        <variation key="widthClass=compact" constant="103"/>
-                                    </constraint>
-                                    <constraint firstAttribute="width" constant="33" id="mkd-Ed-r4I">
-                                        <variation key="widthClass=compact" constant="227"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="MJT-0s-XcR"/>
-                                        <exclude reference="mkd-Ed-r4I"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="MJT-0s-XcR"/>
-                                        <include reference="mkd-Ed-r4I"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="k5e-3A-FSc" firstAttribute="centerX" secondItem="Fg6-Wt-SDm" secondAttribute="centerX" id="ECn-bn-G7K"/>
-                            <constraint firstItem="k5e-3A-FSc" firstAttribute="centerY" secondItem="Fg6-Wt-SDm" secondAttribute="centerY" id="dTB-zL-sLG"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="k5e-3A-FSc"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="ECn-bn-G7K"/>
-                                <exclude reference="dTB-zL-sLG"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="k5e-3A-FSc"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="ECn-bn-G7K"/>
-                                <include reference="dTB-zL-sLG"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Naam zorgbehoevende" id="pcn-vt-gNH"/>
                     <connections>
-                        <outlet property="lblTest" destination="k5e-3A-FSc" id="D3c-mO-wPo"/>
+                        <outlet property="navigationTitle" destination="pcn-vt-gNH" id="BMH-YS-zkd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gh8-ae-Oqi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2563.5" y="-577"/>
+            <point key="canvasLocation" x="3481.5" y="-577"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ivM-af-3Ai">
@@ -388,6 +329,25 @@
                 </navigationBar>
             </objects>
             <point key="canvasLocation" x="1072.5" y="-569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dnc-bU-SrD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5NA-Nt-sz2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DPi-zr-cgT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZKw-34-VLa" kind="relationship" relationship="rootViewController" id="xnJ-A5-l8f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q1D-xA-b4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2563.5" y="-577"/>
         </scene>
     </scenes>
     <resources>
