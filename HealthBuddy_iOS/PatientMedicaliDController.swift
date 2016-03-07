@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BTNavigationDropdownMenu
+
 
 
 class PatientMedicaliDController: UIViewController{
@@ -19,23 +19,10 @@ class PatientMedicaliDController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        setupDropdownMenu();
- 
-       
-        
         lblCurrentPatient.text = "\(patient.firstName) \(patient.lastName)";
     }
     
-    func setupDropdownMenu(){
-        let items = ["Medisch ID", "Medicatie", "Gewicht"];
-        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
-        self.navigationItem.titleView = menuView
-        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-            print("Did select item at index: \(indexPath)")
-            // self.selectedCellLabel.text = items[indexPath]
-        }
 
-    }
     
     
     

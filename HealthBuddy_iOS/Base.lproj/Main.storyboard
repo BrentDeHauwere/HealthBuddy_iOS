@@ -297,9 +297,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="157" y="289" width="86" height="21"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam zorgbehoevende" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSd-sZ-aDa">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -327,7 +324,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="MAf-ju-UzY" firstAttribute="centerY" secondItem="3ZN-Pu-ETX" secondAttribute="centerY" id="5ch-ZF-IvC"/>
                             <constraint firstItem="TSd-sZ-aDa" firstAttribute="top" secondItem="tTv-XN-6gl" secondAttribute="bottom" id="DFO-Ic-0Di"/>
+                            <constraint firstItem="MAf-ju-UzY" firstAttribute="centerX" secondItem="3ZN-Pu-ETX" secondAttribute="centerX" id="J6V-VL-USo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TSd-sZ-aDa" secondAttribute="trailing" constant="-20" id="r1x-QH-vIz"/>
                             <constraint firstItem="TSd-sZ-aDa" firstAttribute="leading" secondItem="3ZN-Pu-ETX" secondAttribute="leadingMargin" constant="-20" id="si5-TE-dLh"/>
                         </constraints>
@@ -340,6 +339,8 @@
                                 <exclude reference="DFO-Ic-0Di"/>
                                 <exclude reference="r1x-QH-vIz"/>
                                 <exclude reference="si5-TE-dLh"/>
+                                <exclude reference="5ch-ZF-IvC"/>
+                                <exclude reference="J6V-VL-USo"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -351,6 +352,8 @@
                                 <include reference="DFO-Ic-0Di"/>
                                 <include reference="r1x-QH-vIz"/>
                                 <include reference="si5-TE-dLh"/>
+                                <include reference="5ch-ZF-IvC"/>
+                                <include reference="J6V-VL-USo"/>
                             </mask>
                         </variation>
                     </view>

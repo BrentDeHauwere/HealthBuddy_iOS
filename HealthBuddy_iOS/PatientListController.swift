@@ -9,23 +9,21 @@
 
 import UIKit
 
+
 class PatientListController: UITableViewController {
     var patients = [User]();
 
-    
     override func viewDidLoad() {
         super.viewDidLoad();
         loadPatientsList()
     }
-
+    
     
     func loadPatientsList(){
         //TODO: haal alle patienten af met als buddy_id = user_id ingelogde user
         
         //mock:
         self.patients = [User(firstName:"Yen", lastName: "Jacobs"),User(firstName:"Elvin", lastName: "Jacobs"),User(firstName:"Gunther", lastName: "Jacobs"),User(firstName:"Sabine", lastName: "Baeyens"),User(firstName:"Dieter", lastName: "Roels")];
-
-        
     }
     
     
@@ -45,6 +43,7 @@ class PatientListController: UITableViewController {
         return cell;
     }
     
+    //Perform the segue bij klikken op een cell
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         _ = tableView.indexPathForSelectedRow!
         if let _ = tableView.cellForRowAtIndexPath(indexPath) {
@@ -53,19 +52,26 @@ class PatientListController: UITableViewController {
         
     }
 
+    //Event dat uitgevoerd wordt bij klikken op een cel
+    //Initialiseert het nieuwe scherm + geeft data mee van geklikte patiënt
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PatientSelectedSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 setCustomBackBtn();
                 let patientMedicaliDController = segue.destinationViewController as! PatientMedicaliDController ;
                 patientMedicaliDController.patient = patients[indexPath.row];
+                DropdownMenuController(navigationController: self.navigationController!, viewController: patientMedicaliDController as UIViewController).setupDropdownMenu();
             }
         }
     }
     
+    //Setup custom back button (contact logo)
     func setCustomBackBtn(){
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil);
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ContactLogo");
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ContactLogo");
     }
+    
+
+    
 }

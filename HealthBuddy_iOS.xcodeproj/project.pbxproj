@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC27CE551C8C5BD700EBFE89 /* BTNavigationDropdownMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC27CE531C8C5BD700EBFE89 /* BTNavigationDropdownMenu.framework */; };
 		AC27CE561C8C5BD700EBFE89 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC27CE541C8C5BD700EBFE89 /* SwiftHTTP.framework */; };
+		AC2AB3601C8DCD920017D43F /* DropdownMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2AB35F1C8DCD920017D43F /* DropdownMenuController.swift */; };
 		AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A519A1C8C382300804C65 /* AppDelegate.swift */; };
 		AC5A519D1C8C382300804C65 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A519C1C8C382300804C65 /* LoginController.swift */; };
 		AC5A51A01C8C382300804C65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5A519E1C8C382300804C65 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		62B7CBE15E1C877EACB9D8C6 /* Pods-HealthBuddy_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthBuddy_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		AC27CE531C8C5BD700EBFE89 /* BTNavigationDropdownMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BTNavigationDropdownMenu.framework; path = "Pods/../build/Debug-iphoneos/BTNavigationDropdownMenu.framework"; sourceTree = "<group>"; };
 		AC27CE541C8C5BD700EBFE89 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = "Pods/../build/Debug-iphoneos/SwiftHTTP.framework"; sourceTree = "<group>"; };
+		AC2AB35F1C8DCD920017D43F /* DropdownMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownMenuController.swift; sourceTree = "<group>"; };
 		AC5A51971C8C382300804C65 /* HealthBuddy_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthBuddy_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5A519A1C8C382300804C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC5A519C1C8C382300804C65 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				AC5A519C1C8C382300804C65 /* LoginController.swift */,
 				ACFC566C1C8D8F8400269458 /* PatientListController.swift */,
 				ACFC566E1C8DA00C00269458 /* PatientMedicaliDController.swift */,
+				AC2AB35F1C8DCD920017D43F /* DropdownMenuController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				ACFC566F1C8DA00C00269458 /* PatientMedicaliDController.swift in Sources */,
 				AC5A519D1C8C382300804C65 /* LoginController.swift in Sources */,
 				AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */,
+				AC2AB3601C8DCD920017D43F /* DropdownMenuController.swift in Sources */,
 				ACFC566A1C8D8D6A00269458 /* User.swift in Sources */,
 				ACFC566D1C8D8F8400269458 /* PatientListController.swift in Sources */,
 			);
