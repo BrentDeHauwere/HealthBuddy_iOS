@@ -16,6 +16,7 @@ class PatientMedicaliDController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        
         navigationItem.title = "\(patient.firstName) \(patient.lastName)";
     }
     
