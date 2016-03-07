@@ -16,6 +16,8 @@
 		AC5A51A51C8C382300804C65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5A51A31C8C382300804C65 /* LaunchScreen.storyboard */; };
 		AC5A51B01C8C382300804C65 /* HealthBuddy_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A51AF1C8C382300804C65 /* HealthBuddy_iOSTests.swift */; };
 		AC5A51BB1C8C382300804C65 /* HealthBuddy_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A51BA1C8C382300804C65 /* HealthBuddy_iOSUITests.swift */; };
+		ACFC566A1C8D8D6A00269458 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC56691C8D8D6A00269458 /* User.swift */; };
+		ACFC566D1C8D8F8400269458 /* PatientListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC566C1C8D8F8400269458 /* PatientListController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		AC5A51B61C8C382300804C65 /* HealthBuddy_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthBuddy_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5A51BA1C8C382300804C65 /* HealthBuddy_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBuddy_iOSUITests.swift; sourceTree = "<group>"; };
 		AC5A51BC1C8C382300804C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACFC56691C8D8D6A00269458 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		ACFC566C1C8D8F8400269458 /* PatientListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientListController.swift; sourceTree = "<group>"; };
 		E438C33C75837497E5B76C34 /* Pods-HealthBuddy_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthBuddy_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,8 +131,9 @@
 		AC5A51991C8C382300804C65 /* HealthBuddy_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				ACFC566B1C8D8F3800269458 /* Controllers */,
+				ACFC56681C8D8CEB00269458 /* Entity */,
 				AC5A519A1C8C382300804C65 /* AppDelegate.swift */,
-				AC5A519C1C8C382300804C65 /* LoginController.swift */,
 				AC5A519E1C8C382300804C65 /* Main.storyboard */,
 				AC5A51A11C8C382300804C65 /* Assets.xcassets */,
 				AC5A51A31C8C382300804C65 /* LaunchScreen.storyboard */,
@@ -153,6 +158,23 @@
 				AC5A51BC1C8C382300804C65 /* Info.plist */,
 			);
 			path = HealthBuddy_iOSUITests;
+			sourceTree = "<group>";
+		};
+		ACFC56681C8D8CEB00269458 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				ACFC56691C8D8D6A00269458 /* User.swift */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		ACFC566B1C8D8F3800269458 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AC5A519C1C8C382300804C65 /* LoginController.swift */,
+				ACFC566C1C8D8F8400269458 /* PatientListController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +361,8 @@
 			files = (
 				AC5A519D1C8C382300804C65 /* LoginController.swift in Sources */,
 				AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */,
+				ACFC566A1C8D8D6A00269458 /* User.swift in Sources */,
+				ACFC566D1C8D8F8400269458 /* PatientListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

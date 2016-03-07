@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -219,7 +219,7 @@
                         <outlet property="btnLogin" destination="pgh-Bz-8gB" id="ayk-dQ-RTW"/>
                         <outlet property="txtEmail" destination="ffG-ff-hWU" id="XGf-WH-rXK"/>
                         <outlet property="txtPassword" destination="2xv-D0-74b" id="Hv2-Sz-TDM"/>
-                        <segue destination="5zJ-zI-gXb" kind="presentation" identifier="login_success" id="6oV-Bc-oRG"/>
+                        <segue destination="SOd-kg-HnI" kind="presentation" identifier="login_success" id="0vY-Qv-dJ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -231,23 +231,81 @@
             </objects>
             <point key="canvasLocation" x="304.5" y="433"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="xxp-wB-rcP">
+        <!--Root View Controller-->
+        <scene sceneID="c7y-8T-6Tm">
             <objects>
-                <viewController id="5zJ-zI-gXb" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8Hl-8o-OYc"/>
-                        <viewControllerLayoutGuide type="bottom" id="cHh-Vx-SbV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qJ5-b8-MG9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <tableViewController id="oZT-0o-nep" customClass="PatientListController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Yu-H1-dQ6">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ekm-hO-IE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Zoek" id="oLT-rv-YUG">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="oZT-0o-nep" id="pFO-Xw-8pN"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="patient" textLabel="zkG-Be-Otu" imageView="1jZ-ix-zn8" style="IBUITableViewCellStyleDefault" id="HSI-iL-tZL">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HSI-iL-tZL" id="RZ0-Yp-Hs3">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zkG-Be-Otu">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Logo" id="1jZ-ix-zn8">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oZT-0o-nep" id="2vJ-xt-Vab"/>
+                            <outlet property="delegate" destination="oZT-0o-nep" id="cUq-4r-YMD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="bFV-YI-Xkh"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="AAt-SJ-9Zi" id="GHa-9Z-UIG"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naU-v3-EAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="AAt-SJ-9Zi">
+                    <connections>
+                        <outlet property="delegate" destination="oZT-0o-nep" id="f8L-5D-Bc0"/>
+                        <outlet property="searchBar" destination="oLT-rv-YUG" id="3aI-mG-iKb"/>
+                        <outlet property="searchContentsController" destination="oZT-0o-nep" id="oFG-4S-HeP"/>
+                        <outlet property="searchResultsDataSource" destination="oZT-0o-nep" id="kdX-QO-DhA"/>
+                        <outlet property="searchResultsDelegate" destination="oZT-0o-nep" id="wHI-nL-QIy"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1672.5" y="-172.5"/>
+            <point key="canvasLocation" x="2335.5" y="-145"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ivM-af-3Ai">
+            <objects>
+                <navigationController wantsFullScreenLayout="YES" id="SOd-kg-HnI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="URQ-aB-7gX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="oZT-0o-nep" kind="relationship" relationship="rootViewController" id="Z45-FX-VIe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2tV-jQ-pUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1405.5" y="-145"/>
         </scene>
     </scenes>
     <resources>

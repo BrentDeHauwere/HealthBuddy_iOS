@@ -10,17 +10,19 @@ import UIKit
 import SwiftHTTP
 import BTNavigationDropdownMenu
 
-class ViewController: UIViewController {
+class LoginController: UIViewController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
-   
+    
+      
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         btnLogin.layer.cornerRadius = 10;
         btnLogin.clipsToBounds = true;
+        
     }
 
     override func didReceiveMemoryWarning() {
