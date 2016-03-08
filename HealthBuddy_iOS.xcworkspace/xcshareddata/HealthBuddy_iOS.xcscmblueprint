@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8736269326CB1AD115AF882CFD260B5B008FBB4A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0DC4FD0FB433DB951FC3C2B7901DF4DDFF53DE5A" : 0,
+    "8736269326CB1AD115AF882CFD260B5B008FBB4A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "55A51A42-5E11-4572-B25C-7DF2B2FF22FC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0DC4FD0FB433DB951FC3C2B7901DF4DDFF53DE5A" : "",
+    "8736269326CB1AD115AF882CFD260B5B008FBB4A" : "HealthBuddy_iOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "HealthBuddy_iOS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "HealthBuddy_iOS.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/BrentDeHauwere\/HealthBuddy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0DC4FD0FB433DB951FC3C2B7901DF4DDFF53DE5A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/BrentDeHauwere\/HealthBuddy_iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8736269326CB1AD115AF882CFD260B5B008FBB4A"
+    }
+  ]
+}
