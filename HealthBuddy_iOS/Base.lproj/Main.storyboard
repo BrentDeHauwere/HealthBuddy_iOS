@@ -297,7 +297,7 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" red="0.59999999999999998" green="0.60784313729999995" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="menuItem" textLabel="xqb-Bh-R5d" detailTextLabel="kCW-02-WBz" imageView="Kli-x5-mKO" rowHeight="102" style="IBUITableViewCellStyleSubtitle" id="uN5-id-f3P">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="menuItem" textLabel="xqb-Bh-R5d" detailTextLabel="kCW-02-WBz" imageView="Kli-x5-mKO" rowHeight="102" style="IBUITableViewCellStyleSubtitle" id="uN5-id-f3P">
                                 <rect key="frame" x="0.0" y="92" width="600" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uN5-id-f3P" id="awf-Wx-M5v">
@@ -339,10 +339,208 @@
                             <outlet property="delegate" destination="v6r-yy-OID" id="Yq6-1U-b0V"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="E8h-V7-2ej" kind="show" identifier="gotoMedicaliD" id="UPH-fY-aIM"/>
+                        <segue destination="i0Z-kM-W6X" kind="show" identifier="showMedicine" id="lom-eP-r7e"/>
+                        <segue destination="AZE-h9-kJg" kind="show" identifier="gotoWeight" id="e3c-ny-S0h"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCe-fV-HJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2716.5" y="-569"/>
+        </scene>
+        <!--Buddy Medicine Controller-->
+        <scene sceneID="gmM-Td-wYn">
+            <objects>
+                <viewController id="i0Z-kM-W6X" customClass="BuddyMedicineController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CP3-FK-PUD"/>
+                        <viewControllerLayoutGuide type="bottom" id="WFj-oA-klR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XTJ-AC-GyU">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicatie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifc-st-GDd">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="8y0-6K-yxB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8y0-6K-yxB"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="8y0-6K-yxB"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ifc-st-GDd" firstAttribute="centerX" secondItem="XTJ-AC-GyU" secondAttribute="centerX" id="dg4-lg-kJ1"/>
+                            <constraint firstItem="Ifc-st-GDd" firstAttribute="top" secondItem="CP3-FK-PUD" secondAttribute="bottom" id="eUu-0P-9e6"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Ifc-st-GDd"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="dg4-lg-kJ1"/>
+                                <exclude reference="eUu-0P-9e6"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Ifc-st-GDd"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="dg4-lg-kJ1"/>
+                                <include reference="eUu-0P-9e6"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="lblMedicine" destination="Ifc-st-GDd" id="ttF-xo-oJa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pLl-2n-tyi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3730.5" y="-659"/>
+        </scene>
+        <!--Buddy Weight Controller-->
+        <scene sceneID="qeL-jS-bLG">
+            <objects>
+                <viewController id="AZE-h9-kJg" customClass="BuddyWeightController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bRN-BF-PRZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="eFe-e2-3KZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zb0-hr-99A">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gewicht" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suL-Km-DjA">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="tK9-44-le5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="tK9-44-le5"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="tK9-44-le5"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="suL-Km-DjA" firstAttribute="top" secondItem="bRN-BF-PRZ" secondAttribute="bottom" id="Q7W-RJ-n91"/>
+                            <constraint firstItem="suL-Km-DjA" firstAttribute="centerX" secondItem="Zb0-hr-99A" secondAttribute="centerX" id="k3r-XI-wNR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="suL-Km-DjA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Q7W-RJ-n91"/>
+                                <exclude reference="k3r-XI-wNR"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="suL-Km-DjA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Q7W-RJ-n91"/>
+                                <include reference="k3r-XI-wNR"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="lblWeight" destination="suL-Km-DjA" id="EgR-YV-yrF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H95-n6-Mkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3730.5" y="-20"/>
+        </scene>
+        <!--Budy MedicaliD Controller-->
+        <scene sceneID="TUK-Ve-oko">
+            <objects>
+                <viewController id="E8h-V7-2ej" customClass="BudyMedicaliDController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q56-E3-uFy"/>
+                        <viewControllerLayoutGuide type="bottom" id="S6E-T4-JGb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CkE-7S-XfE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medisch ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4I-CD-BcK">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="R8w-26-8uM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="R8w-26-8uM"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="R8w-26-8uM"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I4I-CD-BcK" firstAttribute="centerX" secondItem="CkE-7S-XfE" secondAttribute="centerX" id="FgZ-ix-eeC"/>
+                            <constraint firstItem="I4I-CD-BcK" firstAttribute="top" secondItem="q56-E3-uFy" secondAttribute="bottom" id="Xb4-tq-hvi"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="I4I-CD-BcK"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="FgZ-ix-eeC"/>
+                                <exclude reference="Xb4-tq-hvi"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="I4I-CD-BcK"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="FgZ-ix-eeC"/>
+                                <include reference="Xb4-tq-hvi"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="lblMedicalID" destination="I4I-CD-BcK" id="H3R-cj-oTO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8L2-S6-PwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3730.5" y="-1302"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ivM-af-3Ai">

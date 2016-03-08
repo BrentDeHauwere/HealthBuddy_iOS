@@ -44,11 +44,8 @@ class BudyListControler: UITableViewController {
     
     //Perform the segue bij klikken op een cell
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        _ = tableView.indexPathForSelectedRow!
-        if let _ = tableView.cellForRowAtIndexPath(indexPath) {
-            self.performSegueWithIdentifier("gotoBuddyMenu", sender: self)
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil);
-        }
+        self.performSegueWithIdentifier("gotoBuddyMenu", sender: self)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil);
     }
 
     

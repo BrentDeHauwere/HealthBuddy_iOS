@@ -13,16 +13,18 @@ import BTNavigationDropdownMenu
 
 class BudyMedicaliDController: UIViewController{
     var patient:User!;
-    @IBOutlet weak var lblCurrentPatient: UILabel!
+    
+    @IBOutlet weak var lblMedicalID: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        lblCurrentPatient.text = "\(patient.firstName) \(patient.lastName)";
+       // setupBackButtonToMainMenu();
+        lblMedicalID.text = "Medisch ID";
+        self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
     }
     
-
-   
-    
-    
-
+    func setupBackButtonToMainMenu(){
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "Menu");
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "Menu");
+    }
 }
