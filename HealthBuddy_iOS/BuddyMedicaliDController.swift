@@ -18,13 +18,8 @@ class BudyMedicaliDController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad();
-       // setupBackButtonToMainMenu();
         lblMedicalID.text = "Medisch ID";
         self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
     }
-    
-    func setupBackButtonToMainMenu(){
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "Menu");
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "Menu");
-    }
+
 }

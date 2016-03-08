@@ -17,17 +17,8 @@ class BuddyMainMenuController: UITableViewController {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView(frame: CGRectZero);
         self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil);
-
-        //setupBackButtonToPatientsList();
     }
 
-    
-    func setupBackButtonToPatientsList(){
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ContactenLogo");
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ContactenLogo");
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

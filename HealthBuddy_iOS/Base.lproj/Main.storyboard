@@ -222,7 +222,7 @@
         <!--Zorgbehoevenden-->
         <scene sceneID="c7y-8T-6Tm">
             <objects>
-                <tableViewController id="oZT-0o-nep" customClass="BudyListControler" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="patientList" id="oZT-0o-nep" customClass="BudyListControler" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Yu-H1-dQ6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

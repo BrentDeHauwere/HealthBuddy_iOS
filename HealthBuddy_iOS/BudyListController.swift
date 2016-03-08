@@ -14,7 +14,9 @@ class BudyListControler: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad();
+        self.navigationItem.hidesBackButton = true;
         loadPatientsList()
+         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil);
     }
     
     
@@ -45,7 +47,6 @@ class BudyListControler: UITableViewController {
     //Perform the segue bij klikken op een cell
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("gotoBuddyMenu", sender: self)
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil);
     }
 
     
