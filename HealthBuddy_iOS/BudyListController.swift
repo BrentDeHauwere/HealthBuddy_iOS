@@ -5,21 +5,26 @@
 //  Created by Yen Jacobs on 7/03/16.
 //  Copyright © 2016 Yen Jacobs. All rights reserved.
 //  Gebruik gemaakt van tutorial: https://www.raywenderlich.com/113772/uisearchcontroller-tutorial
+// en https://github.com/codepath/ios_guides/wiki/Search-Bar-Guide
 //
 
 import UIKit
 
-class BudyListControler: UITableViewController {
+class BudyListControler: UITableViewController, UISearchResultsUpdating {
     var patients = [User]();
+    var filteredData = [User]();
+    var searchController: UISearchController!
 
     override func viewDidLoad() {
         super.viewDidLoad();
         self.navigationItem.hidesBackButton = true;
-        loadPatientsList()
-      //  self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil);
+        loadPatientsList();
+        setupSearchBar();
     }
-  
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
     func loadPatientsList(){
         //TODO: haal alle patienten af met als buddy_id = user_id ingelogde user
@@ -28,19 +33,47 @@ class BudyListControler: UITableViewController {
         self.patients = [User(firstName:"Yen", lastName: "Jacobs"),User(firstName:"Elvin", lastName: "Jacobs"),User(firstName:"Gunther", lastName: "Jacobs"),User(firstName:"Sabine", lastName: "Baeyens"),User(firstName:"Dieter", lastName: "Roels")];
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func setupSearchBar(){
+        tableView.dataSource = self;
+        filteredData = patients;
+        searchController = UISearchController(searchResultsController: nil);
+        searchController.searchResultsUpdater = self;
+        searchController.dimsBackgroundDuringPresentation = false;
+        searchController.searchBar.sizeToFit();
+        tableView.tableHeaderView = searchController.searchBar;
+        definesPresentationContext = true;
+
     }
     
+    //update the list when searching
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        filteredData.removeAll();
+        if let searchText = searchController.searchBar.text {
+            if searchText.isEmpty{
+                filteredData = patients;
+            }else{
+                for var i = 0; i < patients.count; i++ {
+                    let fullName = "\(patients[i].firstName) \(patients[i].lastName)";
+                    if(fullName.lowercaseString.rangeOfString(searchText.lowercaseString) != nil){
+                        filteredData.append(patients[i]);
+                    }
+                }
+            }
+            tableView.reloadData();
+        }
+    }
+    
+    
+
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.patients.count;
+        return self.filteredData.count;
     }
     
     //Maakt de cell op in de table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("patient", forIndexPath: indexPath) as UITableViewCell;
-        let patient: User = patients[indexPath.row];
+        let patient: User = filteredData[indexPath.row];
         cell.textLabel?.text = patient.firstName + " " + patient.lastName;
         return cell;
     }
@@ -56,7 +89,7 @@ class BudyListControler: UITableViewController {
         if segue.identifier == "gotoBuddyMenu" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let budyMainMenu = segue.destinationViewController as! BuddyMainMenuController ;
-                budyMainMenu.patient = patients[indexPath.row];
+                budyMainMenu.patient = filteredData[indexPath.row];
             }
         }
     }
