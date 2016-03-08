@@ -9,7 +9,6 @@
 
 import UIKit
 
-
 class PatientListController: UITableViewController {
     var patients = [User]();
 
@@ -47,31 +46,19 @@ class PatientListController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         _ = tableView.indexPathForSelectedRow!
         if let _ = tableView.cellForRowAtIndexPath(indexPath) {
-            self.performSegueWithIdentifier("PatientSelectedSegue", sender: self)
+            self.performSegueWithIdentifier("gotoMedicaliD", sender: self)
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil);
         }
-        
     }
 
+    
     //Event dat uitgevoerd wordt bij klikken op een cel
-    //Initialiseert het nieuwe scherm + geeft data mee van geklikte patiënt
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "PatientSelectedSegue" {
+        if segue.identifier == "gotoMedicaliD" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                setCustomBackBtn();
                 let patientMedicaliDController = segue.destinationViewController as! PatientMedicaliDController ;
                 patientMedicaliDController.patient = patients[indexPath.row];
-                DropdownMenuController(navigationController: self.navigationController!, viewController: patientMedicaliDController as UIViewController).setupDropdownMenu();
             }
         }
     }
-    
-    //Setup custom back button (contact logo)
-    func setCustomBackBtn(){
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil);
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ContactLogo");
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ContactLogo");
-    }
-    
-
-    
 }

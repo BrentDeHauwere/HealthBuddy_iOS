@@ -7,23 +7,26 @@
 //
 
 import UIKit
+import BTNavigationDropdownMenu
 
 
 
 class PatientMedicaliDController: UIViewController{
     var patient:User!;
-    
     @IBOutlet weak var lblCurrentPatient: UILabel!
-   
-   
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        setupCustomBackBtn();
         lblCurrentPatient.text = "\(patient.firstName) \(patient.lastName)";
     }
     
 
     
+    func setupCustomBackBtn(){
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ContactenLogo");
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ContactenLogo");
+    }
     
     
 

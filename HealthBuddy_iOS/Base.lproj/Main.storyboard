@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -236,7 +237,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="patient" textLabel="zkG-Be-Otu" style="IBUITableViewCellStyleDefault" id="HSI-iL-tZL">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="patient" textLabel="zkG-Be-Otu" imageView="iZB-Ij-fSC" style="IBUITableViewCellStyleDefault" id="HSI-iL-tZL">
                                 <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HSI-iL-tZL" id="RZ0-Yp-Hs3">
@@ -253,6 +254,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             </variation>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="ContactLogo" id="iZB-Ij-fSC">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -265,7 +269,7 @@
                     <navigationItem key="navigationItem" title="Zorgbehoevenden" id="4tV-xR-8Tx"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="AAt-SJ-9Zi" id="GHa-9Z-UIG"/>
-                        <segue destination="PRF-AM-yqR" kind="show" identifier="PatientSelectedSegue" id="U6v-2z-dnx"/>
+                        <segue destination="PRF-AM-yqR" kind="show" identifier="gotoMedicaliD" id="U6v-2z-dnx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="naU-v3-EAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -284,12 +288,14 @@
         <!--Patient MedicaliD Controller-->
         <scene sceneID="Ru4-Tc-NVy">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m1z-Vb-GSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="PRF-AM-yqR" customClass="PatientMedicaliDController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tTv-XN-6gl"/>
                         <viewControllerLayoutGuide type="bottom" id="YXk-CW-EJp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3ZN-Pu-ETX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medisch ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAf-ju-UzY">
@@ -336,11 +342,11 @@
                                 <exclude reference="TSd-sZ-aDa"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="5ch-ZF-IvC"/>
+                                <exclude reference="J6V-VL-USo"/>
                                 <exclude reference="DFO-Ic-0Di"/>
                                 <exclude reference="r1x-QH-vIz"/>
                                 <exclude reference="si5-TE-dLh"/>
-                                <exclude reference="5ch-ZF-IvC"/>
-                                <exclude reference="J6V-VL-USo"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -349,11 +355,11 @@
                                 <include reference="TSd-sZ-aDa"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="5ch-ZF-IvC"/>
+                                <include reference="J6V-VL-USo"/>
                                 <include reference="DFO-Ic-0Di"/>
                                 <include reference="r1x-QH-vIz"/>
                                 <include reference="si5-TE-dLh"/>
-                                <include reference="5ch-ZF-IvC"/>
-                                <include reference="J6V-VL-USo"/>
                             </mask>
                         </variation>
                     </view>
@@ -361,7 +367,6 @@
                         <outlet property="lblCurrentPatient" destination="TSd-sZ-aDa" id="rcE-iE-0iM"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m1z-Vb-GSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2668.5" y="-559"/>
         </scene>
@@ -394,6 +399,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ContactLogo" width="25" height="25"/>
         <image name="Logo" width="487" height="607"/>
     </resources>
 </document>
