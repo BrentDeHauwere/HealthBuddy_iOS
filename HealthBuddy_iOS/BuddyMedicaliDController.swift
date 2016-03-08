@@ -20,6 +20,13 @@ class BudyMedicaliDController: UIViewController{
         super.viewDidLoad();
         lblMedicalID.text = "Medisch ID";
         self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:"backButtonPressed:");
     }
+    
+    func backButtonPressed(sender:UIButton) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+
 
 }

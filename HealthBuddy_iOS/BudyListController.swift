@@ -16,8 +16,9 @@ class BudyListControler: UITableViewController {
         super.viewDidLoad();
         self.navigationItem.hidesBackButton = true;
         loadPatientsList()
-         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil);
+      //  self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil);
     }
+  
     
     
     func loadPatientsList(){

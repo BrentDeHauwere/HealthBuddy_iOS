@@ -17,7 +17,13 @@ class BuddyWeightController: UIViewController {
         super.viewDidLoad()
         lblWeight.text = "Gewicht"
         self.navigationItem.title="\(patient.firstName) \(patient.lastName)";
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:"backButtonPressed:");
     }
+    
+    func backButtonPressed(sender:UIButton) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

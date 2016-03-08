@@ -17,6 +17,12 @@ class BuddyMainMenuController: UITableViewController {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView(frame: CGRectZero);
         self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"ContactenLogo"), style:.Plain, target:self, action:"backButtonPressed:");
+    }
+    
+    func backButtonPressed(sender:UIButton) {
+        navigationController?.popViewControllerAnimated(true)
     }
 
     override func didReceiveMemoryWarning() {
