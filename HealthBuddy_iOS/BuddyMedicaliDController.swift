@@ -11,7 +11,7 @@ import BTNavigationDropdownMenu
 
 
 
-class PatientMedicaliDController: UIViewController{
+class BudyMedicaliDController: UIViewController{
     var patient:User!;
     @IBOutlet weak var lblCurrentPatient: UILabel!
     

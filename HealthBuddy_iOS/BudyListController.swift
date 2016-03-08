@@ -9,7 +9,7 @@
 
 import UIKit
 
-class PatientListController: UITableViewController {
+class BudyListControler: UITableViewController {
     var patients = [User]();
 
     override func viewDidLoad() {
@@ -46,18 +46,18 @@ class PatientListController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         _ = tableView.indexPathForSelectedRow!
         if let _ = tableView.cellForRowAtIndexPath(indexPath) {
-            self.performSegueWithIdentifier("gotoMedicaliD", sender: self)
+            self.performSegueWithIdentifier("gotoBuddyMenu", sender: self)
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil);
         }
     }
 
     
-    //Event dat uitgevoerd wordt bij klikken op een cel
+    //Event dat uitgevoerd wordt bij klikken op een cel, voordat segue wordt afgevoerd
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "gotoMedicaliD" {
+        if segue.identifier == "gotoBuddyMenu" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let patientMedicaliDController = segue.destinationViewController as! PatientMedicaliDController ;
-                patientMedicaliDController.patient = patients[indexPath.row];
+                let budyMainMenu = segue.destinationViewController as! BuddyMainMenuController ;
+                budyMainMenu.patient = patients[indexPath.row];
             }
         }
     }
