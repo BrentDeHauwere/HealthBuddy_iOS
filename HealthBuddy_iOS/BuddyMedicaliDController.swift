@@ -17,16 +17,11 @@ class BudyMedicaliDController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        setupCustomBackBtn();
         lblCurrentPatient.text = "\(patient.firstName) \(patient.lastName)";
     }
     
 
-    
-    func setupCustomBackBtn(){
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ContactenLogo");
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ContactenLogo");
-    }
+   
     
     
 

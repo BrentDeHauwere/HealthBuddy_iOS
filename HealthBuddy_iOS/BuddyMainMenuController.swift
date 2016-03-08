@@ -15,17 +15,21 @@ class BuddyMainMenuController: UITableViewController {
     var logos = [UIImage(named: "MedischID"),UIImage(named: "Medicatie"),UIImage(named: "Gewicht")];
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.tableFooterView = UIView(frame: CGRectZero);
         self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
+        setupCustomBackBtn();
     }
 
+    
+    func setupCustomBackBtn(){
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ContactenLogo");
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ContactenLogo");
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
-
-
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.menuItems.count;
