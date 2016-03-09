@@ -222,37 +222,33 @@
         <!--Zorgbehoevenden-->
         <scene sceneID="c7y-8T-6Tm">
             <objects>
-                <tableViewController id="oZT-0o-nep" customClass="PatientListController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="patientList" id="oZT-0o-nep" customClass="BudyListControler" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Yu-H1-dQ6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Zoek" id="oLT-rv-YUG">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="oZT-0o-nep" id="pFO-Xw-8pN"/>
-                            </connections>
-                        </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="patient" textLabel="zkG-Be-Otu" style="IBUITableViewCellStyleDefault" id="HSI-iL-tZL">
-                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="patient" textLabel="zkG-Be-Otu" imageView="iZB-Ij-fSC" style="IBUITableViewCellStyleDefault" id="HSI-iL-tZL">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HSI-iL-tZL" id="RZ0-Yp-Hs3">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zkG-Be-Otu">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="43"/>
+                                            <rect key="frame" x="55" y="0.0" width="510" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact">
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             </variation>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="ContactLogo" id="iZB-Ij-fSC">
+                                            <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -265,14 +261,13 @@
                     <navigationItem key="navigationItem" title="Zorgbehoevenden" id="4tV-xR-8Tx"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="AAt-SJ-9Zi" id="GHa-9Z-UIG"/>
-                        <segue destination="PRF-AM-yqR" kind="show" identifier="PatientSelectedSegue" id="U6v-2z-dnx"/>
+                        <segue destination="v6r-yy-OID" kind="show" identifier="gotoBuddyMenu" id="KCZ-0h-fJ8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="naU-v3-EAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="AAt-SJ-9Zi">
                     <connections>
                         <outlet property="delegate" destination="oZT-0o-nep" id="f8L-5D-Bc0"/>
-                        <outlet property="searchBar" destination="oLT-rv-YUG" id="3aI-mG-iKb"/>
                         <outlet property="searchContentsController" destination="oZT-0o-nep" id="oFG-4S-HeP"/>
                         <outlet property="searchResultsDataSource" destination="oZT-0o-nep" id="kdX-QO-DhA"/>
                         <outlet property="searchResultsDelegate" destination="oZT-0o-nep" id="wHI-nL-QIy"/>
@@ -281,89 +276,238 @@
             </objects>
             <point key="canvasLocation" x="1944" y="-569"/>
         </scene>
-        <!--Patient MedicaliD Controller-->
-        <scene sceneID="Ru4-Tc-NVy">
+        <!--Buddy Main Menu Controller-->
+        <scene sceneID="vB1-2U-f4O">
             <objects>
-                <viewController id="PRF-AM-yqR" customClass="PatientMedicaliDController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="v6r-yy-OID" customClass="BuddyMainMenuController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" id="xAZ-Lh-4q2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                        <color key="sectionIndexBackgroundColor" red="0.59999999999999998" green="0.60784313729999995" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="menuItem" textLabel="xqb-Bh-R5d" detailTextLabel="kCW-02-WBz" imageView="Kli-x5-mKO" rowHeight="102" style="IBUITableViewCellStyleSubtitle" id="uN5-id-f3P">
+                                <rect key="frame" x="0.0" y="92" width="600" height="102"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uN5-id-f3P" id="awf-Wx-M5v">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="101"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xqb-Bh-R5d">
+                                            <rect key="frame" x="119" y="30" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kCW-02-WBz">
+                                            <rect key="frame" x="119" y="51" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            </variation>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="medicatie" id="Kli-x5-mKO">
+                                            <rect key="frame" x="15" y="25" width="89" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="v6r-yy-OID" id="JJg-v2-1Gw"/>
+                            <outlet property="delegate" destination="v6r-yy-OID" id="Yq6-1U-b0V"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="i0Z-kM-W6X" kind="show" identifier="showMedicine" id="lom-eP-r7e"/>
+                        <segue destination="AZE-h9-kJg" kind="show" identifier="showWeight" id="e3c-ny-S0h"/>
+                        <segue destination="Z0e-PC-5Nd" kind="show" identifier="showMedicaliD" id="vTv-jw-jk6"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mCe-fV-HJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2716.5" y="-569"/>
+        </scene>
+        <!--Buddy MedicaliD Controller-->
+        <scene sceneID="bAt-ts-R7S">
+            <objects>
+                <tableViewController id="Z0e-PC-5Nd" customClass="BuddyMedicaliDController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="m31-Kl-VSa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medisch dossier" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X7o-7Z-tzg">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KPO-DA-nb5">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KPO-DA-nb5" id="Lcw-QA-pbN">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Z0e-PC-5Nd" id="6im-nM-mWy"/>
+                            <outlet property="delegate" destination="Z0e-PC-5Nd" id="hdm-VQ-c7s"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="lblMedicalID" destination="X7o-7Z-tzg" id="Vga-FF-NrI"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FZz-Ik-WTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3730.5" y="-1386"/>
+        </scene>
+        <!--Buddy Medicine Controller-->
+        <scene sceneID="gmM-Td-wYn">
+            <objects>
+                <viewController id="i0Z-kM-W6X" customClass="BuddyMedicineController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tTv-XN-6gl"/>
-                        <viewControllerLayoutGuide type="bottom" id="YXk-CW-EJp"/>
+                        <viewControllerLayoutGuide type="top" id="CP3-FK-PUD"/>
+                        <viewControllerLayoutGuide type="bottom" id="WFj-oA-klR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3ZN-Pu-ETX">
+                    <view key="view" contentMode="scaleToFill" id="XTJ-AC-GyU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medisch ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAf-ju-UzY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicatie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifc-st-GDd">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam zorgbehoevende" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSd-sZ-aDa">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <color key="backgroundColor" red="0.59999999999999998" green="0.60784313725490191" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="Egw-55-KO5"/>
-                                    <constraint firstAttribute="height" constant="21" id="nXN-lk-Hj6"/>
+                                    <constraint firstAttribute="width" constant="400" id="8y0-6K-yxB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Egw-55-KO5"/>
-                                        <exclude reference="nXN-lk-Hj6"/>
+                                        <exclude reference="8y0-6K-yxB"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="Egw-55-KO5"/>
-                                        <include reference="nXN-lk-Hj6"/>
+                                        <include reference="8y0-6K-yxB"/>
                                     </mask>
                                 </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MAf-ju-UzY" firstAttribute="centerY" secondItem="3ZN-Pu-ETX" secondAttribute="centerY" id="5ch-ZF-IvC"/>
-                            <constraint firstItem="TSd-sZ-aDa" firstAttribute="top" secondItem="tTv-XN-6gl" secondAttribute="bottom" id="DFO-Ic-0Di"/>
-                            <constraint firstItem="MAf-ju-UzY" firstAttribute="centerX" secondItem="3ZN-Pu-ETX" secondAttribute="centerX" id="J6V-VL-USo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="TSd-sZ-aDa" secondAttribute="trailing" constant="-20" id="r1x-QH-vIz"/>
-                            <constraint firstItem="TSd-sZ-aDa" firstAttribute="leading" secondItem="3ZN-Pu-ETX" secondAttribute="leadingMargin" constant="-20" id="si5-TE-dLh"/>
+                            <constraint firstItem="Ifc-st-GDd" firstAttribute="centerX" secondItem="XTJ-AC-GyU" secondAttribute="centerX" id="dg4-lg-kJ1"/>
+                            <constraint firstItem="Ifc-st-GDd" firstAttribute="top" secondItem="CP3-FK-PUD" secondAttribute="bottom" id="eUu-0P-9e6"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="MAf-ju-UzY"/>
-                                <exclude reference="TSd-sZ-aDa"/>
+                                <exclude reference="Ifc-st-GDd"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="DFO-Ic-0Di"/>
-                                <exclude reference="r1x-QH-vIz"/>
-                                <exclude reference="si5-TE-dLh"/>
-                                <exclude reference="5ch-ZF-IvC"/>
-                                <exclude reference="J6V-VL-USo"/>
+                                <exclude reference="dg4-lg-kJ1"/>
+                                <exclude reference="eUu-0P-9e6"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="MAf-ju-UzY"/>
-                                <include reference="TSd-sZ-aDa"/>
+                                <include reference="Ifc-st-GDd"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="DFO-Ic-0Di"/>
-                                <include reference="r1x-QH-vIz"/>
-                                <include reference="si5-TE-dLh"/>
-                                <include reference="5ch-ZF-IvC"/>
-                                <include reference="J6V-VL-USo"/>
+                                <include reference="dg4-lg-kJ1"/>
+                                <include reference="eUu-0P-9e6"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="lblCurrentPatient" destination="TSd-sZ-aDa" id="rcE-iE-0iM"/>
+                        <outlet property="lblMedicine" destination="Ifc-st-GDd" id="ttF-xo-oJa"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m1z-Vb-GSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pLl-2n-tyi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2668.5" y="-559"/>
+            <point key="canvasLocation" x="3730.5" y="-659"/>
+        </scene>
+        <!--Buddy Weight Controller-->
+        <scene sceneID="qeL-jS-bLG">
+            <objects>
+                <viewController id="AZE-h9-kJg" customClass="BuddyWeightController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bRN-BF-PRZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="eFe-e2-3KZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zb0-hr-99A">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gewicht" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suL-Km-DjA">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="tK9-44-le5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="tK9-44-le5"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="tK9-44-le5"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="suL-Km-DjA" firstAttribute="top" secondItem="bRN-BF-PRZ" secondAttribute="bottom" id="Q7W-RJ-n91"/>
+                            <constraint firstItem="suL-Km-DjA" firstAttribute="centerX" secondItem="Zb0-hr-99A" secondAttribute="centerX" id="k3r-XI-wNR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="suL-Km-DjA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Q7W-RJ-n91"/>
+                                <exclude reference="k3r-XI-wNR"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="suL-Km-DjA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Q7W-RJ-n91"/>
+                                <include reference="k3r-XI-wNR"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="lblWeight" destination="suL-Km-DjA" id="EgR-YV-yrF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H95-n6-Mkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3730.5" y="-20"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ivM-af-3Ai">
@@ -394,6 +538,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ContactLogo" width="25" height="25"/>
         <image name="Logo" width="487" height="607"/>
+        <image name="medicatie" width="89" height="50"/>
     </resources>
 </document>

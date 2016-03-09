@@ -84,10 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-HealthBuddy_iOS/BTNavigationDropdownMenu.framework"
+  install_framework "Pods-HealthBuddy_iOS/SwiftForms.framework"
   install_framework "Pods-HealthBuddy_iOS/SwiftHTTP.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-HealthBuddy_iOS/BTNavigationDropdownMenu.framework"
+  install_framework "Pods-HealthBuddy_iOS/SwiftForms.framework"
   install_framework "Pods-HealthBuddy_iOS/SwiftHTTP.framework"
 fi

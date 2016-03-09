@@ -4,7 +4,7 @@ use_frameworks!
 
 target 'HealthBuddy_iOS' do
     pod 'SwiftHTTP', '~> 1.0.4'
-    pod 'BTNavigationDropdownMenu'
+    pod 'SwiftForms'
 end
 
 target 'HealthBuddy_iOSTests' do
