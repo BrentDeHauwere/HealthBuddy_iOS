@@ -54,7 +54,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/BuddyMedicaliDController.swift"
@@ -65,14 +65,14 @@
             endingLineNumber = "10">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "HealthBuddy_iOS.BuddyMedicaliDController.init (HealthBuddy_iOS.BuddyMedicaliDController.Type)(style : __C.UITableViewStyle) -&gt; HealthBuddy_iOS.BuddyMedicaliDController"
                   moduleName = "HealthBuddy_iOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Yen/Documents/Bachelor%202/Mobile%20Apps%20Project/HealthBuddy/HealthBuddy_iOS/HealthBuddy_iOS/BuddyMedicaliDController.swift"
-                  timestampString = "479217502.065057"
+                  timestampString = "479223016.087772"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -80,14 +80,14 @@
                   offsetFromSymbolStart = "33">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "HealthBuddy_iOS.BuddyMedicaliDController.init (HealthBuddy_iOS.BuddyMedicaliDController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; HealthBuddy_iOS.BuddyMedicaliDController"
                   moduleName = "HealthBuddy_iOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Yen/Documents/Bachelor%202/Mobile%20Apps%20Project/HealthBuddy/HealthBuddy_iOS/HealthBuddy_iOS/BuddyMedicaliDController.swift"
-                  timestampString = "479217502.065241"
+                  timestampString = "479223016.08791"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"

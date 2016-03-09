@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftHTTP
-import BTNavigationDropdownMenu
+
 
 class LoginController: UIViewController {
     @IBOutlet weak var txtEmail: UITextField!
@@ -19,6 +19,9 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
         btnLogin.layer.cornerRadius = 10;
         btnLogin.clipsToBounds = true;
