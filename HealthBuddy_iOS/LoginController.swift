@@ -68,10 +68,10 @@ class LoginController: UIViewController {
             if success
             {
                 //if role == zorgmantel{
-                self.performSegueWithIdentifier("showPatientsList", sender: self);
+               //self.performSegueWithIdentifier("showPatientsList", sender: self);
                 
                 //if role == zorgbehoevende
-              //  self.performSegueWithIdentifier("showBuddyView", sender: self);
+                self.performSegueWithIdentifier("showBuddyView", sender: self);
             }
         }
     }

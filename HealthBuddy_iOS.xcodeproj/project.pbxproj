@@ -18,6 +18,7 @@
 		AC5A51BB1C8C382300804C65 /* HealthBuddy_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A51BA1C8C382300804C65 /* HealthBuddy_iOSUITests.swift */; };
 		AC9EB0921C8F52310084DAC8 /* BuddyMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EB0911C8F52310084DAC8 /* BuddyMedicineController.swift */; };
 		AC9EB0941C8F52420084DAC8 /* BuddyWeightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */; };
+		ACCA96301C9078B200D394BE /* BuddyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */; };
 		ACF950641C8F311400218754 /* BuddyMainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF950631C8F311400218754 /* BuddyMainMenuController.swift */; };
 		ACFC566A1C8D8D6A00269458 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC56691C8D8D6A00269458 /* User.swift */; };
 		ACFC566D1C8D8F8400269458 /* BuddyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC566C1C8D8F8400269458 /* BuddyListController.swift */; };
@@ -61,6 +62,7 @@
 		AC5A51BC1C8C382300804C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC9EB0911C8F52310084DAC8 /* BuddyMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMedicineController.swift; sourceTree = "<group>"; };
 		AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyWeightController.swift; sourceTree = "<group>"; };
+		ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyTabBarController.swift; sourceTree = "<group>"; };
 		ACF950631C8F311400218754 /* BuddyMainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMainMenuController.swift; sourceTree = "<group>"; };
 		ACFC56691C8D8D6A00269458 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ACFC566C1C8D8F8400269458 /* BuddyListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyListController.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				ACF950631C8F311400218754 /* BuddyMainMenuController.swift */,
 				AC9EB0911C8F52310084DAC8 /* BuddyMedicineController.swift */,
 				AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */,
+				ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */,
 			);
 			name = BuddyControllers;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */,
 				ACFC566A1C8D8D6A00269458 /* User.swift in Sources */,
 				ACFC566D1C8D8F8400269458 /* BuddyListController.swift in Sources */,
+				ACCA96301C9078B200D394BE /* BuddyTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
