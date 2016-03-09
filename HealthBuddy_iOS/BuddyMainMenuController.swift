@@ -47,11 +47,11 @@ class BuddyMainMenuController: UITableViewController {
         print(indexPath.row);
         switch indexPath.row{
             case 0:
-                self.performSegueWithIdentifier("gotoMedicaliD", sender: self);
+                self.performSegueWithIdentifier("showMedicaliD", sender: self);
             case 1:
                 self.performSegueWithIdentifier("showMedicine", sender: self);
             case 2:
-                self.performSegueWithIdentifier("gotoWeight", sender: self);
+                self.performSegueWithIdentifier("showWeight", sender: self);
             default:
                 print("Ongeldig menu-item, error from BuddyMainMenuController @tableView didSelectRowAtIndexpath");
         }
@@ -59,15 +59,20 @@ class BuddyMainMenuController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "gotoMedicaliD"{
-            let medicalIdBoard = segue.destinationViewController as! BudyMedicaliDController;
-            medicalIdBoard.patient = patient;
+        if segue.identifier == "showMedicaliD" {
+            print("Medical ID");
+            let medicalIdBoard = segue.destinationViewController as! BuddyMedicaliDController;
+            medicalIdBoard.patient = self.patient;
         }else if segue.identifier == "showMedicine" {
+            print("Medicine")
             let medicineBoard = segue.destinationViewController as! BuddyMedicineController;
-            medicineBoard.patient = patient;
-        }else if segue.identifier == "gotoWeight" {
+            medicineBoard.patient = self.patient;
+        }else if segue.identifier == "showWeight" {
+            print("Weight");
             let weightBoard = segue.destinationViewController as! BuddyWeightController;
-            weightBoard.patient = patient;
+            weightBoard.patient = self.patient;
+        }else{
+            print("No segue preparation");
         }
     }
     

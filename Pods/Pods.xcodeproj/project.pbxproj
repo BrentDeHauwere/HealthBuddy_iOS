@@ -7,148 +7,196 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01C57309E2EF9E7025552938EFD9E244 /* BTNavigationDropdownMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39811DE92C3D22480184B82B5B46E78F /* BTNavigationDropdownMenu-dummy.m */; };
-		029D0B5E03F06AFE83C1EAA10871BF8A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		02FB512C984962CF03D5183C7108132C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		064537A4D2690D42BA12CB6F36EA8914 /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AE2C47E9DA9147BA705FA68723567C9 /* BTNavigationDropdownMenu.bundle */; };
-		17C32F6733A19E1701640AA16CC6C45E /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD06CA7A28812A8F9CCED3A3B4000A /* StatusCode.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2C53625B7A6A44D1E3FCEEC4ED4A7445 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		30DD2F123EAD8AF68E51C3A75ECD2F93 /* Pods-HealthBuddy_iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B5DDBBBF92D012074DFA3683FD3F12 /* Pods-HealthBuddy_iOS-dummy.m */; };
-		31236DD5C6404893109899977A482B58 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB61EAC2D732E8E70ECAE42ED0AD1C0 /* Operation.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		31375D677778F2B217957BFB3AAAB316 /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70B70D42ACA3C8B2BD37AE2BB3A9B86 /* BTNavigationDropdownMenu.swift */; };
-		3AF7FE9A1B1550CE6F0C8811DB031C27 /* SwiftHTTP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 618BCCF3E5148D5FAF82A1B397367777 /* SwiftHTTP-dummy.m */; };
-		6BCBB12F55D5F9F9178496DB538F9386 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41809185BFD139385C0D017A4576596A /* Upload.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		752E6B42E6206B1EA6B016B19AAF4652 /* BTNavigationDropdownMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B0E3A66A381DDC473AB13D6E2DD8EA15 /* BTNavigationDropdownMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		96889A6A365566BB4E047FFC0C381B01 /* SwiftHTTP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 81D3ED8B0038D25A51485F0FC2B6671B /* SwiftHTTP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7C4DD0426887263DFFAAE16ABB8117B /* Pods-HealthBuddy_iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 379F48C1CBC5BFBEAF032B50F5AAB3E4 /* Pods-HealthBuddy_iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B42D2BD371725D0388386596D35900BE /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900AFF66D9E62993A6C2FEA361544656 /* Request.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		CA6AB476DCD25FAEBE221CFC643B5413 /* HTTPSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6DB9044D483394F888B2491D288775 /* HTTPSecurity.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		03E1D0D8252FCF6E959B12EC7493CB5F /* HTTPSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9696B6C10B8E71170A85DAC244C676 /* HTTPSecurity.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0B6726727C520201297EAE5FF8E5F98A /* FormSegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0933BE6AE1E9BC686510A16297886B92 /* FormSegmentedControlCell.swift */; };
+		1066D84B3F3B4B55EDB68DE9E97E74A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		13077F09071EFECB0036CA3FCF41C433 /* FormStepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEC098F975ABC5D3A7A1065BA53F845 /* FormStepperCell.swift */; };
+		175E48158100ECE57DB059578D13B9AF /* FormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E232CBCE57EBC2DC97E388BA4FF01A /* FormBaseCell.swift */; };
+		1CDB22E1CAED3AE445FF50CAD21C4169 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E49A347EDF224E86FA3B3988EA395D /* Operation.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4086A713DC6A7EFB1E3966BF01E654D2 /* FormPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031A4561E480271889DD51A98BE9566 /* FormPickerCell.swift */; };
+		55DC09444D032C260A52413CB1E6731C /* FormSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3777179B34695108AA76FDF9EAB625B /* FormSwitchCell.swift */; };
+		6563CFA1F03C9B5AD2D3BE9FC0515103 /* SwiftForms-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 038DE7827CD4FD84C10F45BCCE7C0215 /* SwiftForms-dummy.m */; };
+		7D14B9CCC3D57F8119F1478F2D172460 /* Pods-HealthBuddy_iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B5DDBBBF92D012074DFA3683FD3F12 /* Pods-HealthBuddy_iOS-dummy.m */; };
+		7D8AA340B14093298CEDFFC0E7191231 /* FormValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04F9CA74E3F08D914A5CFA36F12900 /* FormValueCell.swift */; };
+		8491DA4EF33BE7FCC7C1F12729E41F26 /* SwiftForms-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 57FEA5F7E29E08BE2DA3021357F20884 /* SwiftForms-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		855601194AF99AAB82A8C580A90D7626 /* FormCheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6449734C82EE7C80EDB88F80F8CCAFF1 /* FormCheckCell.swift */; };
+		872313D42436C4B10A6A93E262178AFF /* FormDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DAD4A8F03B81BCCC841DD9A8D117BB /* FormDateCell.swift */; };
+		8C119E45B60BEA3FCC4C71C891C2E3F1 /* Pods-HealthBuddy_iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 379F48C1CBC5BFBEAF032B50F5AAB3E4 /* Pods-HealthBuddy_iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9199047DA583C00AD7FE8BF21525E1E1 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB2036F2158EE84A996CC71AE2FF5FA /* StatusCode.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92B2B971A9660E5786DF375B802BEA05 /* FormSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE3FAC466EB583B421FCC0FADF8A2E /* FormSelectorCell.swift */; };
+		955E0E1259DD7C90A3BE6B35B8E3DAA5 /* SwiftHTTP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A8749E41EC04CA7B8359F26AF0064B /* SwiftHTTP-dummy.m */; };
+		9969809333F1506FA3D1B5C0FE5EC458 /* FormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ABA809AB932D4A00A7451EB126F181 /* FormDescriptor.swift */; };
+		9A42BDA7E70CD074DB2A4E88B2882AD3 /* FormTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F2A444BEEC7E2D14CFE72B7AEDB35 /* FormTextViewCell.swift */; };
+		9F906581C19015D21B38EB6688046893 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2678B121710DB2AE7160D3D581E04AA /* Request.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A12F8815EFA250F64C155030FA8295FB /* FormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A87E4526F615C078CA43F7C548CC81 /* FormRowDescriptor.swift */; };
+		A19CE3F6A8C2F369DFA73C19D404E580 /* FormOptionsSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0CD8CEC02FCD496BA7ED776C230D4 /* FormOptionsSelectorController.swift */; };
+		A3B8C5033961878EF2AA605CBA9E4768 /* FormTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A24785DD6F3696E14883426C482920 /* FormTitleCell.swift */; };
+		A9081190E0EF2E8024471B612D6A72B2 /* FormTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58931CA4DDF2BA05BF1923F37F9CE7AC /* FormTextFieldCell.swift */; };
+		BC82E534D4E17FDEE7150063911DEBEA /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DF30596F09A46306241D9E87D7B14C /* FormSectionDescriptor.swift */; };
+		BDF020458ED4D1969E75D7115B5ED3E7 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FCA217570A57F359F32B4BF242E682 /* FormViewController.swift */; };
+		BE9D980A11AB90FBAE8DF9661BCC4491 /* FormSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5D30F4E99E22DC6F698F73582FDFD7 /* FormSliderCell.swift */; };
+		D6E5DF87758476099CB9A9D099850B57 /* FormButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F163580A85FF6BB75BC307AD15206184 /* FormButtonCell.swift */; };
+		DADF7503A877867A6482E5B486C65978 /* FormSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C08D0B083384B5C599996A5546EA063 /* FormSelector.swift */; };
+		DCAC6E75D1FBE76C4FC0495CDE2E1919 /* SwiftHTTP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B447709AF89E08B9B3D5FDBD849312DC /* SwiftHTTP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC998B7AC3EE2E6B1F40C3E70A451FF3 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145148F3E04AA651484016D4A4FF9BE8 /* Upload.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EF72B0F77A5926CE57C656E91226FD3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		FFFDC542A55CA5D3812B5675D325B223 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3C488D170231D455DD3809020C42285C /* PBXContainerItemProxy */ = {
+		7D7B2AA300A7621E52843DC7F70E315E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FD23F1DA220A44C7E84F356B64871271;
-			remoteInfo = BTNavigationDropdownMenu;
-		};
-		E6FEAD9733920AB61EAE2543B6B704BC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FD6F822BBBBAE2E09573AE73927BC54E;
+			remoteGlobalIDString = AEB25D8E52B8F6807E10D50107FECB4F;
 			remoteInfo = SwiftHTTP;
+		};
+		F9D2C68B3F36D9E3850DACB3F0354795 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A1CAFB68B49093D7F7C1F86FFB0F6A9;
+			remoteInfo = SwiftForms;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05FEF575EE9EA65815DBD659B78CCB18 /* SwiftHTTP-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHTTP-prefix.pch"; sourceTree = "<group>"; };
-		1F0B4087AE4A95F6F5D1A95E3BDD10BE /* BTNavigationDropdownMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BTNavigationDropdownMenu.xcconfig; sourceTree = "<group>"; };
-		2DF02BA7D8940AB808DFA55815183B12 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		011F2A444BEEC7E2D14CFE72B7AEDB35 /* FormTextViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTextViewCell.swift; path = SwiftForms/cells/FormTextViewCell.swift; sourceTree = "<group>"; };
+		038DE7827CD4FD84C10F45BCCE7C0215 /* SwiftForms-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftForms-dummy.m"; sourceTree = "<group>"; };
+		0933BE6AE1E9BC686510A16297886B92 /* FormSegmentedControlCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSegmentedControlCell.swift; path = SwiftForms/cells/FormSegmentedControlCell.swift; sourceTree = "<group>"; };
+		0C08D0B083384B5C599996A5546EA063 /* FormSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSelector.swift; path = SwiftForms/controllers/FormSelector.swift; sourceTree = "<group>"; };
+		145148F3E04AA651484016D4A4FF9BE8 /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
+		25A8749E41EC04CA7B8359F26AF0064B /* SwiftHTTP-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftHTTP-dummy.m"; sourceTree = "<group>"; };
+		2648CCA7DF6A86B06A20B9673CB28B8A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28DF30596F09A46306241D9E87D7B14C /* FormSectionDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSectionDescriptor.swift; path = SwiftForms/descriptors/FormSectionDescriptor.swift; sourceTree = "<group>"; };
+		30DAD4A8F03B81BCCC841DD9A8D117BB /* FormDateCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormDateCell.swift; path = SwiftForms/cells/FormDateCell.swift; sourceTree = "<group>"; };
 		347C87BD426E83D67B5E7305D20224A2 /* Pods-HealthBuddy_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HealthBuddy_iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		35A1E6004B5ABAB266CACE1901C1F407 /* BTNavigationDropdownMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTNavigationDropdownMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		379F48C1CBC5BFBEAF032B50F5AAB3E4 /* Pods-HealthBuddy_iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HealthBuddy_iOS-umbrella.h"; sourceTree = "<group>"; };
-		38F81542158D90EBDAE8E4BAF9C98E50 /* SwiftHTTP.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftHTTP.xcconfig; sourceTree = "<group>"; };
-		39811DE92C3D22480184B82B5B46E78F /* BTNavigationDropdownMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BTNavigationDropdownMenu-dummy.m"; sourceTree = "<group>"; };
-		3AE2C47E9DA9147BA705FA68723567C9 /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = BTNavigationDropdownMenu.bundle; path = Source/BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		41809185BFD139385C0D017A4576596A /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
-		418652976358865B8FFD16822BAE2221 /* SwiftHTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		618BCCF3E5148D5FAF82A1B397367777 /* SwiftHTTP-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftHTTP-dummy.m"; sourceTree = "<group>"; };
-		6769FEA38FCE2A11737297D746FBA073 /* SwiftHTTP.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftHTTP.modulemap; sourceTree = "<group>"; };
+		442F98DCDC3B573267083A6D5DD12E93 /* SwiftHTTP.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftHTTP.xcconfig; sourceTree = "<group>"; };
+		451E4F7E629AC6CA8EDC55C2F7869EC2 /* SwiftForms.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftForms.xcconfig; sourceTree = "<group>"; };
+		4AB2036F2158EE84A996CC71AE2FF5FA /* StatusCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StatusCode.swift; path = Source/StatusCode.swift; sourceTree = "<group>"; };
+		5031A4561E480271889DD51A98BE9566 /* FormPickerCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormPickerCell.swift; path = SwiftForms/cells/FormPickerCell.swift; sourceTree = "<group>"; };
+		57FEA5F7E29E08BE2DA3021357F20884 /* SwiftForms-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftForms-umbrella.h"; sourceTree = "<group>"; };
+		58931CA4DDF2BA05BF1923F37F9CE7AC /* FormTextFieldCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTextFieldCell.swift; path = SwiftForms/cells/FormTextFieldCell.swift; sourceTree = "<group>"; };
+		5A9696B6C10B8E71170A85DAC244C676 /* HTTPSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPSecurity.swift; path = Source/HTTPSecurity.swift; sourceTree = "<group>"; };
+		5BEC098F975ABC5D3A7A1065BA53F845 /* FormStepperCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormStepperCell.swift; path = SwiftForms/cells/FormStepperCell.swift; sourceTree = "<group>"; };
+		5CF0CD8CEC02FCD496BA7ED776C230D4 /* FormOptionsSelectorController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormOptionsSelectorController.swift; path = SwiftForms/controllers/FormOptionsSelectorController.swift; sourceTree = "<group>"; };
+		60E49A347EDF224E86FA3B3988EA395D /* Operation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operation.swift; path = Source/Operation.swift; sourceTree = "<group>"; };
+		6449734C82EE7C80EDB88F80F8CCAFF1 /* FormCheckCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormCheckCell.swift; path = SwiftForms/cells/FormCheckCell.swift; sourceTree = "<group>"; };
+		64ABA809AB932D4A00A7451EB126F181 /* FormDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormDescriptor.swift; path = SwiftForms/descriptors/FormDescriptor.swift; sourceTree = "<group>"; };
 		6A67F42EEED8F888623939FAD61CF324 /* Pods-HealthBuddy_iOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HealthBuddy_iOS-resources.sh"; sourceTree = "<group>"; };
-		81D3ED8B0038D25A51485F0FC2B6671B /* SwiftHTTP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHTTP-umbrella.h"; sourceTree = "<group>"; };
+		6E04F9CA74E3F08D914A5CFA36F12900 /* FormValueCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormValueCell.swift; path = SwiftForms/cells/base/FormValueCell.swift; sourceTree = "<group>"; };
+		6F5D30F4E99E22DC6F698F73582FDFD7 /* FormSliderCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSliderCell.swift; path = SwiftForms/cells/FormSliderCell.swift; sourceTree = "<group>"; };
+		7404A9F848808565D294F831DB49BED6 /* Pods_HealthBuddy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthBuddy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76807C2EC5C5B08436057AB00A9E0AD4 /* SwiftForms.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftForms.modulemap; sourceTree = "<group>"; };
 		834F3CDD6AF3B0EF5F183E6B93B49C0C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		89033C45EDB0EC15AC8E8DF81895F3A9 /* BTNavigationDropdownMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BTNavigationDropdownMenu.modulemap; sourceTree = "<group>"; };
-		900AFF66D9E62993A6C2FEA361544656 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		83FCA217570A57F359F32B4BF242E682 /* FormViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormViewController.swift; path = SwiftForms/controllers/FormViewController.swift; sourceTree = "<group>"; };
+		912F4DDF27413143301942DF11667D1B /* SwiftHTTP-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHTTP-prefix.pch"; sourceTree = "<group>"; };
 		9490EA1CACCB41F90DF8D8DA3A6FD6E4 /* Pods-HealthBuddy_iOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HealthBuddy_iOS-frameworks.sh"; sourceTree = "<group>"; };
-		954822DEABCF7E617FFB6FB64577931E /* Pods_HealthBuddy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthBuddy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ADB5F376A1A1BAA66346B539B399036 /* SwiftHTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E9D0700F718B3B6BA07A36B08B1AA29 /* Pods-HealthBuddy_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HealthBuddy_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		A6C4D45E9839921226FB7C3CCA742DB8 /* Pods-HealthBuddy_iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HealthBuddy_iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
-		ABB61EAC2D732E8E70ECAE42ED0AD1C0 /* Operation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operation.swift; path = Source/Operation.swift; sourceTree = "<group>"; };
-		B0E3A66A381DDC473AB13D6E2DD8EA15 /* BTNavigationDropdownMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BTNavigationDropdownMenu-umbrella.h"; sourceTree = "<group>"; };
+		B447709AF89E08B9B3D5FDBD849312DC /* SwiftHTTP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHTTP-umbrella.h"; sourceTree = "<group>"; };
+		B5A87E4526F615C078CA43F7C548CC81 /* FormRowDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormRowDescriptor.swift; path = SwiftForms/descriptors/FormRowDescriptor.swift; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BB6DB9044D483394F888B2491D288775 /* HTTPSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPSecurity.swift; path = Source/HTTPSecurity.swift; sourceTree = "<group>"; };
-		C03FAE85092B4FEB78E9D5DD3A812E2B /* BTNavigationDropdownMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BTNavigationDropdownMenu-prefix.pch"; sourceTree = "<group>"; };
-		C5EDD86B1B7133A075648088B0BB5F54 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2678B121710DB2AE7160D3D581E04AA /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		C2E232CBCE57EBC2DC97E388BA4FF01A /* FormBaseCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormBaseCell.swift; path = SwiftForms/cells/base/FormBaseCell.swift; sourceTree = "<group>"; };
+		C3777179B34695108AA76FDF9EAB625B /* FormSwitchCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSwitchCell.swift; path = SwiftForms/cells/FormSwitchCell.swift; sourceTree = "<group>"; };
+		C532C83166BABDDD550AB84CE890974C /* SwiftForms-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftForms-prefix.pch"; sourceTree = "<group>"; };
 		C7B5DDBBBF92D012074DFA3683FD3F12 /* Pods-HealthBuddy_iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HealthBuddy_iOS-dummy.m"; sourceTree = "<group>"; };
+		D1A24785DD6F3696E14883426C482920 /* FormTitleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTitleCell.swift; path = SwiftForms/cells/base/FormTitleCell.swift; sourceTree = "<group>"; };
 		D5EAF7F264D8AB3EDC8CEEBD9B76E038 /* Pods-HealthBuddy_iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HealthBuddy_iOS-acknowledgements.plist"; sourceTree = "<group>"; };
 		D641A557662548046EFA8DB78098535E /* Pods-HealthBuddy_iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-HealthBuddy_iOS.modulemap"; sourceTree = "<group>"; };
-		DECD06CA7A28812A8F9CCED3A3B4000A /* StatusCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StatusCode.swift; path = Source/StatusCode.swift; sourceTree = "<group>"; };
-		E70B70D42ACA3C8B2BD37AE2BB3A9B86 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BTNavigationDropdownMenu.swift; path = Source/BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
+		DF09E5E6E82DC235629BB957AB5A12BF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1E79153C3D06959BAE05F8B6491926D /* SwiftHTTP.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftHTTP.modulemap; sourceTree = "<group>"; };
+		EABE3FAC466EB583B421FCC0FADF8A2E /* FormSelectorCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSelectorCell.swift; path = SwiftForms/cells/FormSelectorCell.swift; sourceTree = "<group>"; };
+		F163580A85FF6BB75BC307AD15206184 /* FormButtonCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormButtonCell.swift; path = SwiftForms/cells/FormButtonCell.swift; sourceTree = "<group>"; };
+		F1650996488B4E821BA4B3E706B0D0F5 /* SwiftForms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftForms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9F778EDAA144FD4B181FD6E1CCD93D5A /* Frameworks */ = {
+		5FB14BBB0CBF26C870413F2CE88775C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				029D0B5E03F06AFE83C1EAA10871BF8A /* Foundation.framework in Frameworks */,
+				1066D84B3F3B4B55EDB68DE9E97E74A4 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C2415433C85D1703A791C1527B66D9BA /* Frameworks */ = {
+		A0FE971B275E8DB265E8F53B7A4179AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C53625B7A6A44D1E3FCEEC4ED4A7445 /* Foundation.framework in Frameworks */,
+				EF72B0F77A5926CE57C656E91226FD3B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C696D45785A75143C95EC12EAEBB833B /* Frameworks */ = {
+		D19974F5B4F7EB7F82E55FC26CEDEEA4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02FB512C984962CF03D5183C7108132C /* Foundation.framework in Frameworks */,
+				FFFDC542A55CA5D3812B5675D325B223 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		41BD93FFCBF73411BB4E11BEF4455D84 /* Pods */ = {
+		11100F8CF5D02FE55ECB5918025BB219 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				C6A3A309F17226E640B919DF36C55932 /* BTNavigationDropdownMenu */,
-				71EB25BE63CFC64A53C31B7D353A7A61 /* SwiftHTTP */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		455D67901B99324FD27C69D089CF8309 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				3AE2C47E9DA9147BA705FA68723567C9 /* BTNavigationDropdownMenu.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		71EB25BE63CFC64A53C31B7D353A7A61 /* SwiftHTTP */ = {
-			isa = PBXGroup;
-			children = (
-				BB6DB9044D483394F888B2491D288775 /* HTTPSecurity.swift */,
-				ABB61EAC2D732E8E70ECAE42ED0AD1C0 /* Operation.swift */,
-				900AFF66D9E62993A6C2FEA361544656 /* Request.swift */,
-				DECD06CA7A28812A8F9CCED3A3B4000A /* StatusCode.swift */,
-				41809185BFD139385C0D017A4576596A /* Upload.swift */,
-				7A2A9D57DBD8DA85DE6A787DF13BB115 /* Support Files */,
-			);
-			path = SwiftHTTP;
-			sourceTree = "<group>";
-		};
-		7A2A9D57DBD8DA85DE6A787DF13BB115 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2DF02BA7D8940AB808DFA55815183B12 /* Info.plist */,
-				6769FEA38FCE2A11737297D746FBA073 /* SwiftHTTP.modulemap */,
-				38F81542158D90EBDAE8E4BAF9C98E50 /* SwiftHTTP.xcconfig */,
-				618BCCF3E5148D5FAF82A1B397367777 /* SwiftHTTP-dummy.m */,
-				05FEF575EE9EA65815DBD659B78CCB18 /* SwiftHTTP-prefix.pch */,
-				81D3ED8B0038D25A51485F0FC2B6671B /* SwiftHTTP-umbrella.h */,
+				2648CCA7DF6A86B06A20B9673CB28B8A /* Info.plist */,
+				E1E79153C3D06959BAE05F8B6491926D /* SwiftHTTP.modulemap */,
+				442F98DCDC3B573267083A6D5DD12E93 /* SwiftHTTP.xcconfig */,
+				25A8749E41EC04CA7B8359F26AF0064B /* SwiftHTTP-dummy.m */,
+				912F4DDF27413143301942DF11667D1B /* SwiftHTTP-prefix.pch */,
+				B447709AF89E08B9B3D5FDBD849312DC /* SwiftHTTP-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftHTTP";
+			sourceTree = "<group>";
+		};
+		3C46E1B3472A447270F4D8448E94825A /* SwiftForms */ = {
+			isa = PBXGroup;
+			children = (
+				C2E232CBCE57EBC2DC97E388BA4FF01A /* FormBaseCell.swift */,
+				F163580A85FF6BB75BC307AD15206184 /* FormButtonCell.swift */,
+				6449734C82EE7C80EDB88F80F8CCAFF1 /* FormCheckCell.swift */,
+				30DAD4A8F03B81BCCC841DD9A8D117BB /* FormDateCell.swift */,
+				64ABA809AB932D4A00A7451EB126F181 /* FormDescriptor.swift */,
+				5CF0CD8CEC02FCD496BA7ED776C230D4 /* FormOptionsSelectorController.swift */,
+				5031A4561E480271889DD51A98BE9566 /* FormPickerCell.swift */,
+				B5A87E4526F615C078CA43F7C548CC81 /* FormRowDescriptor.swift */,
+				28DF30596F09A46306241D9E87D7B14C /* FormSectionDescriptor.swift */,
+				0933BE6AE1E9BC686510A16297886B92 /* FormSegmentedControlCell.swift */,
+				0C08D0B083384B5C599996A5546EA063 /* FormSelector.swift */,
+				EABE3FAC466EB583B421FCC0FADF8A2E /* FormSelectorCell.swift */,
+				6F5D30F4E99E22DC6F698F73582FDFD7 /* FormSliderCell.swift */,
+				5BEC098F975ABC5D3A7A1065BA53F845 /* FormStepperCell.swift */,
+				C3777179B34695108AA76FDF9EAB625B /* FormSwitchCell.swift */,
+				58931CA4DDF2BA05BF1923F37F9CE7AC /* FormTextFieldCell.swift */,
+				011F2A444BEEC7E2D14CFE72B7AEDB35 /* FormTextViewCell.swift */,
+				D1A24785DD6F3696E14883426C482920 /* FormTitleCell.swift */,
+				6E04F9CA74E3F08D914A5CFA36F12900 /* FormValueCell.swift */,
+				83FCA217570A57F359F32B4BF242E682 /* FormViewController.swift */,
+				5D2B5F1BFB2CE4DEB2B0F633FE6A0D2D /* Support Files */,
+			);
+			path = SwiftForms;
+			sourceTree = "<group>";
+		};
+		5D2B5F1BFB2CE4DEB2B0F633FE6A0D2D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF09E5E6E82DC235629BB957AB5A12BF /* Info.plist */,
+				76807C2EC5C5B08436057AB00A9E0AD4 /* SwiftForms.modulemap */,
+				451E4F7E629AC6CA8EDC55C2F7869EC2 /* SwiftForms.xcconfig */,
+				038DE7827CD4FD84C10F45BCCE7C0215 /* SwiftForms-dummy.m */,
+				C532C83166BABDDD550AB84CE890974C /* SwiftForms-prefix.pch */,
+				57FEA5F7E29E08BE2DA3021357F20884 /* SwiftForms-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftForms";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -156,24 +204,29 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				41BD93FFCBF73411BB4E11BEF4455D84 /* Pods */,
-				BE3930D810B4B210D233545BAD87C47A /* Products */,
+				9881EF02B55DDEBFE5F051465556100A /* Pods */,
+				81893EB202E5ED3325CD13DAE4BB0F93 /* Products */,
 				B03EAF31CEC4270BB1A6AEE72A55FBE2 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		884A129B161B2ECA66525DB9F8B23130 /* Support Files */ = {
+		81893EB202E5ED3325CD13DAE4BB0F93 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				89033C45EDB0EC15AC8E8DF81895F3A9 /* BTNavigationDropdownMenu.modulemap */,
-				1F0B4087AE4A95F6F5D1A95E3BDD10BE /* BTNavigationDropdownMenu.xcconfig */,
-				39811DE92C3D22480184B82B5B46E78F /* BTNavigationDropdownMenu-dummy.m */,
-				C03FAE85092B4FEB78E9D5DD3A812E2B /* BTNavigationDropdownMenu-prefix.pch */,
-				B0E3A66A381DDC473AB13D6E2DD8EA15 /* BTNavigationDropdownMenu-umbrella.h */,
-				C5EDD86B1B7133A075648088B0BB5F54 /* Info.plist */,
+				7404A9F848808565D294F831DB49BED6 /* Pods_HealthBuddy_iOS.framework */,
+				F1650996488B4E821BA4B3E706B0D0F5 /* SwiftForms.framework */,
+				9ADB5F376A1A1BAA66346B539B399036 /* SwiftHTTP.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/BTNavigationDropdownMenu";
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9881EF02B55DDEBFE5F051465556100A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C46E1B3472A447270F4D8448E94825A /* SwiftForms */,
+				FAC428B76A07E203A3B74513D56860CF /* SwiftHTTP */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		B03EAF31CEC4270BB1A6AEE72A55FBE2 /* Targets Support Files */ = {
@@ -190,16 +243,6 @@
 				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BE3930D810B4B210D233545BAD87C47A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				35A1E6004B5ABAB266CACE1901C1F407 /* BTNavigationDropdownMenu.framework */,
-				954822DEABCF7E617FFB6FB64577931E /* Pods_HealthBuddy_iOS.framework */,
-				418652976358865B8FFD16822BAE2221 /* SwiftHTTP.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
@@ -228,90 +271,92 @@
 			path = "Target Support Files/Pods-HealthBuddy_iOS";
 			sourceTree = "<group>";
 		};
-		C6A3A309F17226E640B919DF36C55932 /* BTNavigationDropdownMenu */ = {
+		FAC428B76A07E203A3B74513D56860CF /* SwiftHTTP */ = {
 			isa = PBXGroup;
 			children = (
-				E70B70D42ACA3C8B2BD37AE2BB3A9B86 /* BTNavigationDropdownMenu.swift */,
-				455D67901B99324FD27C69D089CF8309 /* Resources */,
-				884A129B161B2ECA66525DB9F8B23130 /* Support Files */,
+				5A9696B6C10B8E71170A85DAC244C676 /* HTTPSecurity.swift */,
+				60E49A347EDF224E86FA3B3988EA395D /* Operation.swift */,
+				C2678B121710DB2AE7160D3D581E04AA /* Request.swift */,
+				4AB2036F2158EE84A996CC71AE2FF5FA /* StatusCode.swift */,
+				145148F3E04AA651484016D4A4FF9BE8 /* Upload.swift */,
+				11100F8CF5D02FE55ECB5918025BB219 /* Support Files */,
 			);
-			path = BTNavigationDropdownMenu;
+			path = SwiftHTTP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4AA5A30752B70CD3132E9D745190F874 /* Headers */ = {
+		525216CB573C58AFA1902BDE0B35DCF4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96889A6A365566BB4E047FFC0C381B01 /* SwiftHTTP-umbrella.h in Headers */,
+				8C119E45B60BEA3FCC4C71C891C2E3F1 /* Pods-HealthBuddy_iOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB50A5A81DB9ADAF7E30FFBD2E89968D /* Headers */ = {
+		C96770F9D0E3D97ADF52D6780DA721F4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7C4DD0426887263DFFAAE16ABB8117B /* Pods-HealthBuddy_iOS-umbrella.h in Headers */,
+				8491DA4EF33BE7FCC7C1F12729E41F26 /* SwiftForms-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D56E6C57C581156BA5B9D5E2E3301A66 /* Headers */ = {
+		F2A8A8192A80C4FD6656F4FFF551FB49 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				752E6B42E6206B1EA6B016B19AAF4652 /* BTNavigationDropdownMenu-umbrella.h in Headers */,
+				DCAC6E75D1FBE76C4FC0495CDE2E1919 /* SwiftHTTP-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8EF4573ECCC2248D3725C9C0DB4FCAE6 /* Pods-HealthBuddy_iOS */ = {
+		06F1561FC022D9B695B8139DB214BEFC /* Pods-HealthBuddy_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 73C6B894E56E3355F1E19AB17BB9305D /* Build configuration list for PBXNativeTarget "Pods-HealthBuddy_iOS" */;
+			buildConfigurationList = B12DB0316152B685D61BD7154E7B4EB9 /* Build configuration list for PBXNativeTarget "Pods-HealthBuddy_iOS" */;
 			buildPhases = (
-				B290C4ACFEF0684A6B3AD88B4DF1F904 /* Sources */,
-				C2415433C85D1703A791C1527B66D9BA /* Frameworks */,
-				AB50A5A81DB9ADAF7E30FFBD2E89968D /* Headers */,
+				3181221293A0097A3D43D73C7C43E010 /* Sources */,
+				5FB14BBB0CBF26C870413F2CE88775C8 /* Frameworks */,
+				525216CB573C58AFA1902BDE0B35DCF4 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				46ED83149D143BD180C844B611C1E420 /* PBXTargetDependency */,
-				51ACB35867549B08C579D0CC83AA2696 /* PBXTargetDependency */,
+				F809EAFB4BE51185AF62257C20A9590D /* PBXTargetDependency */,
+				7871201BE1CF407D73DB20266EBC0C37 /* PBXTargetDependency */,
 			);
 			name = "Pods-HealthBuddy_iOS";
 			productName = "Pods-HealthBuddy_iOS";
-			productReference = 954822DEABCF7E617FFB6FB64577931E /* Pods_HealthBuddy_iOS.framework */;
+			productReference = 7404A9F848808565D294F831DB49BED6 /* Pods_HealthBuddy_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		FD23F1DA220A44C7E84F356B64871271 /* BTNavigationDropdownMenu */ = {
+		0A1CAFB68B49093D7F7C1F86FFB0F6A9 /* SwiftForms */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB28785AF4C163D5A2CE51D1AC9BA7E5 /* Build configuration list for PBXNativeTarget "BTNavigationDropdownMenu" */;
+			buildConfigurationList = 3BBCC43213935133E7960B26EBBD1A6F /* Build configuration list for PBXNativeTarget "SwiftForms" */;
 			buildPhases = (
-				255A4F3B097CD7D88E8A81A11E927FCD /* Sources */,
-				C696D45785A75143C95EC12EAEBB833B /* Frameworks */,
-				AB5F8557DF89A3F13F78919A61FB8EF1 /* Resources */,
-				D56E6C57C581156BA5B9D5E2E3301A66 /* Headers */,
+				923E42BBF837C90B6EBA1688FB49405E /* Sources */,
+				D19974F5B4F7EB7F82E55FC26CEDEEA4 /* Frameworks */,
+				C96770F9D0E3D97ADF52D6780DA721F4 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = BTNavigationDropdownMenu;
-			productName = BTNavigationDropdownMenu;
-			productReference = 35A1E6004B5ABAB266CACE1901C1F407 /* BTNavigationDropdownMenu.framework */;
+			name = SwiftForms;
+			productName = SwiftForms;
+			productReference = F1650996488B4E821BA4B3E706B0D0F5 /* SwiftForms.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		FD6F822BBBBAE2E09573AE73927BC54E /* SwiftHTTP */ = {
+		AEB25D8E52B8F6807E10D50107FECB4F /* SwiftHTTP */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 32CF8D8DAA3F0A19CC53F6373D48ABC2 /* Build configuration list for PBXNativeTarget "SwiftHTTP" */;
+			buildConfigurationList = A12CE2F0011CD186A5FE6003E1270E16 /* Build configuration list for PBXNativeTarget "SwiftHTTP" */;
 			buildPhases = (
-				716B0936147FDB8C69EA480269D647BE /* Sources */,
-				9F778EDAA144FD4B181FD6E1CCD93D5A /* Frameworks */,
-				4AA5A30752B70CD3132E9D745190F874 /* Headers */,
+				45128FE00ED675D9C6743DFBA876B66C /* Sources */,
+				A0FE971B275E8DB265E8F53B7A4179AF /* Frameworks */,
+				F2A8A8192A80C4FD6656F4FFF551FB49 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -319,7 +364,7 @@
 			);
 			name = SwiftHTTP;
 			productName = SwiftHTTP;
-			productReference = 418652976358865B8FFD16822BAE2221 /* SwiftHTTP.framework */;
+			productReference = 9ADB5F376A1A1BAA66346B539B399036 /* SwiftHTTP.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -339,80 +384,88 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = BE3930D810B4B210D233545BAD87C47A /* Products */;
+			productRefGroup = 81893EB202E5ED3325CD13DAE4BB0F93 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FD23F1DA220A44C7E84F356B64871271 /* BTNavigationDropdownMenu */,
-				8EF4573ECCC2248D3725C9C0DB4FCAE6 /* Pods-HealthBuddy_iOS */,
-				FD6F822BBBBAE2E09573AE73927BC54E /* SwiftHTTP */,
+				06F1561FC022D9B695B8139DB214BEFC /* Pods-HealthBuddy_iOS */,
+				0A1CAFB68B49093D7F7C1F86FFB0F6A9 /* SwiftForms */,
+				AEB25D8E52B8F6807E10D50107FECB4F /* SwiftHTTP */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		AB5F8557DF89A3F13F78919A61FB8EF1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				064537A4D2690D42BA12CB6F36EA8914 /* BTNavigationDropdownMenu.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		255A4F3B097CD7D88E8A81A11E927FCD /* Sources */ = {
+		3181221293A0097A3D43D73C7C43E010 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01C57309E2EF9E7025552938EFD9E244 /* BTNavigationDropdownMenu-dummy.m in Sources */,
-				31375D677778F2B217957BFB3AAAB316 /* BTNavigationDropdownMenu.swift in Sources */,
+				7D14B9CCC3D57F8119F1478F2D172460 /* Pods-HealthBuddy_iOS-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		716B0936147FDB8C69EA480269D647BE /* Sources */ = {
+		45128FE00ED675D9C6743DFBA876B66C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA6AB476DCD25FAEBE221CFC643B5413 /* HTTPSecurity.swift in Sources */,
-				31236DD5C6404893109899977A482B58 /* Operation.swift in Sources */,
-				B42D2BD371725D0388386596D35900BE /* Request.swift in Sources */,
-				17C32F6733A19E1701640AA16CC6C45E /* StatusCode.swift in Sources */,
-				3AF7FE9A1B1550CE6F0C8811DB031C27 /* SwiftHTTP-dummy.m in Sources */,
-				6BCBB12F55D5F9F9178496DB538F9386 /* Upload.swift in Sources */,
+				03E1D0D8252FCF6E959B12EC7493CB5F /* HTTPSecurity.swift in Sources */,
+				1CDB22E1CAED3AE445FF50CAD21C4169 /* Operation.swift in Sources */,
+				9F906581C19015D21B38EB6688046893 /* Request.swift in Sources */,
+				9199047DA583C00AD7FE8BF21525E1E1 /* StatusCode.swift in Sources */,
+				955E0E1259DD7C90A3BE6B35B8E3DAA5 /* SwiftHTTP-dummy.m in Sources */,
+				EC998B7AC3EE2E6B1F40C3E70A451FF3 /* Upload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B290C4ACFEF0684A6B3AD88B4DF1F904 /* Sources */ = {
+		923E42BBF837C90B6EBA1688FB49405E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30DD2F123EAD8AF68E51C3A75ECD2F93 /* Pods-HealthBuddy_iOS-dummy.m in Sources */,
+				175E48158100ECE57DB059578D13B9AF /* FormBaseCell.swift in Sources */,
+				D6E5DF87758476099CB9A9D099850B57 /* FormButtonCell.swift in Sources */,
+				855601194AF99AAB82A8C580A90D7626 /* FormCheckCell.swift in Sources */,
+				872313D42436C4B10A6A93E262178AFF /* FormDateCell.swift in Sources */,
+				9969809333F1506FA3D1B5C0FE5EC458 /* FormDescriptor.swift in Sources */,
+				A19CE3F6A8C2F369DFA73C19D404E580 /* FormOptionsSelectorController.swift in Sources */,
+				4086A713DC6A7EFB1E3966BF01E654D2 /* FormPickerCell.swift in Sources */,
+				A12F8815EFA250F64C155030FA8295FB /* FormRowDescriptor.swift in Sources */,
+				BC82E534D4E17FDEE7150063911DEBEA /* FormSectionDescriptor.swift in Sources */,
+				0B6726727C520201297EAE5FF8E5F98A /* FormSegmentedControlCell.swift in Sources */,
+				DADF7503A877867A6482E5B486C65978 /* FormSelector.swift in Sources */,
+				92B2B971A9660E5786DF375B802BEA05 /* FormSelectorCell.swift in Sources */,
+				BE9D980A11AB90FBAE8DF9661BCC4491 /* FormSliderCell.swift in Sources */,
+				13077F09071EFECB0036CA3FCF41C433 /* FormStepperCell.swift in Sources */,
+				55DC09444D032C260A52413CB1E6731C /* FormSwitchCell.swift in Sources */,
+				A9081190E0EF2E8024471B612D6A72B2 /* FormTextFieldCell.swift in Sources */,
+				9A42BDA7E70CD074DB2A4E88B2882AD3 /* FormTextViewCell.swift in Sources */,
+				A3B8C5033961878EF2AA605CBA9E4768 /* FormTitleCell.swift in Sources */,
+				7D8AA340B14093298CEDFFC0E7191231 /* FormValueCell.swift in Sources */,
+				BDF020458ED4D1969E75D7115B5ED3E7 /* FormViewController.swift in Sources */,
+				6563CFA1F03C9B5AD2D3BE9FC0515103 /* SwiftForms-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		46ED83149D143BD180C844B611C1E420 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BTNavigationDropdownMenu;
-			target = FD23F1DA220A44C7E84F356B64871271 /* BTNavigationDropdownMenu */;
-			targetProxy = 3C488D170231D455DD3809020C42285C /* PBXContainerItemProxy */;
-		};
-		51ACB35867549B08C579D0CC83AA2696 /* PBXTargetDependency */ = {
+		7871201BE1CF407D73DB20266EBC0C37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftHTTP;
-			target = FD6F822BBBBAE2E09573AE73927BC54E /* SwiftHTTP */;
-			targetProxy = E6FEAD9733920AB61EAE2543B6B704BC /* PBXContainerItemProxy */;
+			target = AEB25D8E52B8F6807E10D50107FECB4F /* SwiftHTTP */;
+			targetProxy = 7D7B2AA300A7621E52843DC7F70E315E /* PBXContainerItemProxy */;
+		};
+		F809EAFB4BE51185AF62257C20A9590D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftForms;
+			target = 0A1CAFB68B49093D7F7C1F86FFB0F6A9 /* SwiftForms */;
+			targetProxy = F9D2C68B3F36D9E3850DACB3F0354795 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0AFABF585826C3541C4F11019EEBF914 /* Debug */ = {
+		1329BEAB09BBD5A5507537E2125C2653 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 347C87BD426E83D67B5E7305D20224A2 /* Pods-HealthBuddy_iOS.debug.xcconfig */;
+			baseConfigurationReference = 9E9D0700F718B3B6BA07A36B08B1AA29 /* Pods-HealthBuddy_iOS.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -427,11 +480,38 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_NAME = Pods_HealthBuddy_iOS;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		47BD37C90CA7F627F9AFE6E6AC417D75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 451E4F7E629AC6CA8EDC55C2F7869EC2 /* SwiftForms.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftForms/SwiftForms-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftForms/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftForms/SwiftForms.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftForms;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -441,9 +521,37 @@
 			};
 			name = Debug;
 		};
-		118C12A8F0128043FFA1E4D228DEB5C7 /* Release */ = {
+		668EA0ABFC25A1C92CBFC1755D730E66 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38F81542158D90EBDAE8E4BAF9C98E50 /* SwiftHTTP.xcconfig */;
+			baseConfigurationReference = 442F98DCDC3B573267083A6D5DD12E93 /* SwiftHTTP.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftHTTP/SwiftHTTP-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftHTTP/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftHTTP/SwiftHTTP.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftHTTP;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A0108E08E3AEAB31C200762E707274BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 442F98DCDC3B573267083A6D5DD12E93 /* SwiftHTTP.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -468,9 +576,9 @@
 			};
 			name = Release;
 		};
-		4560D269819AEE6CDFA911AC1747ECE9 /* Debug */ = {
+		A2EB208F63982ECAEEB0B7BB72F38641 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38F81542158D90EBDAE8E4BAF9C98E50 /* SwiftHTTP.xcconfig */;
+			baseConfigurationReference = 347C87BD426E83D67B5E7305D20224A2 /* Pods-HealthBuddy_iOS.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -479,14 +587,17 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftHTTP/SwiftHTTP-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftHTTP/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-HealthBuddy_iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftHTTP/SwiftHTTP.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftHTTP;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_HealthBuddy_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -535,9 +646,9 @@
 			};
 			name = Debug;
 		};
-		C80B36F642B5F8224CD67EFFD75EF15F /* Debug */ = {
+		E4B3E4978CAA0E25373C3C693BF30F06 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F0B4087AE4A95F6F5D1A95E3BDD10BE /* BTNavigationDropdownMenu.xcconfig */;
+			baseConfigurationReference = 451E4F7E629AC6CA8EDC55C2F7869EC2 /* SwiftForms.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -546,72 +657,14 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/BTNavigationDropdownMenu/BTNavigationDropdownMenu-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BTNavigationDropdownMenu/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftForms/SwiftForms-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftForms/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BTNavigationDropdownMenu/BTNavigationDropdownMenu.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = BTNavigationDropdownMenu;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CD05875471B5F03922F313E5D60D6920 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F0B4087AE4A95F6F5D1A95E3BDD10BE /* BTNavigationDropdownMenu.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/BTNavigationDropdownMenu/BTNavigationDropdownMenu-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BTNavigationDropdownMenu/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BTNavigationDropdownMenu/BTNavigationDropdownMenu.modulemap";
+				MODULEMAP_FILE = "Target Support Files/SwiftForms/SwiftForms.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = BTNavigationDropdownMenu;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		F84ED4F0DC2FAF4DFDC4E8E570C2CC43 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E9D0700F718B3B6BA07A36B08B1AA29 /* Pods-HealthBuddy_iOS.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-HealthBuddy_iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_HealthBuddy_iOS;
+				PRODUCT_NAME = SwiftForms;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -666,29 +719,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		32CF8D8DAA3F0A19CC53F6373D48ABC2 /* Build configuration list for PBXNativeTarget "SwiftHTTP" */ = {
+		3BBCC43213935133E7960B26EBBD1A6F /* Build configuration list for PBXNativeTarget "SwiftForms" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4560D269819AEE6CDFA911AC1747ECE9 /* Debug */,
-				118C12A8F0128043FFA1E4D228DEB5C7 /* Release */,
+				47BD37C90CA7F627F9AFE6E6AC417D75 /* Debug */,
+				E4B3E4978CAA0E25373C3C693BF30F06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		73C6B894E56E3355F1E19AB17BB9305D /* Build configuration list for PBXNativeTarget "Pods-HealthBuddy_iOS" */ = {
+		A12CE2F0011CD186A5FE6003E1270E16 /* Build configuration list for PBXNativeTarget "SwiftHTTP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0AFABF585826C3541C4F11019EEBF914 /* Debug */,
-				F84ED4F0DC2FAF4DFDC4E8E570C2CC43 /* Release */,
+				668EA0ABFC25A1C92CBFC1755D730E66 /* Debug */,
+				A0108E08E3AEAB31C200762E707274BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EB28785AF4C163D5A2CE51D1AC9BA7E5 /* Build configuration list for PBXNativeTarget "BTNavigationDropdownMenu" */ = {
+		B12DB0316152B685D61BD7154E7B4EB9 /* Build configuration list for PBXNativeTarget "Pods-HealthBuddy_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C80B36F642B5F8224CD67EFFD75EF15F /* Debug */,
-				CD05875471B5F03922F313E5D60D6920 /* Release */,
+				A2EB208F63982ECAEEB0B7BB72F38641 /* Debug */,
+				1329BEAB09BBD5A5507537E2125C2653 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

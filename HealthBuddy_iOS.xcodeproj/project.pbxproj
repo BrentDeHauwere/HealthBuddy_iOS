@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC27CE551C8C5BD700EBFE89 /* BTNavigationDropdownMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC27CE531C8C5BD700EBFE89 /* BTNavigationDropdownMenu.framework */; };
+		6D8A5E22C35F4DC93A50FE2B /* Pods_HealthBuddy_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302270A89DF9A481436CBA50 /* Pods_HealthBuddy_iOS.framework */; };
 		AC27CE561C8C5BD700EBFE89 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC27CE541C8C5BD700EBFE89 /* SwiftHTTP.framework */; };
 		AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A519A1C8C382300804C65 /* AppDelegate.swift */; };
 		AC5A519D1C8C382300804C65 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A519C1C8C382300804C65 /* LoginController.swift */; };
@@ -73,8 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC27CE551C8C5BD700EBFE89 /* BTNavigationDropdownMenu.framework in Frameworks */,
 				AC27CE561C8C5BD700EBFE89 /* SwiftHTTP.framework in Frameworks */,
+				6D8A5E22C35F4DC93A50FE2B /* Pods_HealthBuddy_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
