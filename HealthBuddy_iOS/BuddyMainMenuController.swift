@@ -44,7 +44,7 @@ class BuddyMainMenuController: UITableViewController {
     }
     //Select menuItem, fire of segue
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row);
+        
         switch indexPath.row{
             case 0:
                 self.performSegueWithIdentifier("showMedicaliD", sender: self);
@@ -59,16 +59,15 @@ class BuddyMainMenuController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("Prepare for segue");
         if segue.identifier == "showMedicaliD" {
-            print("Medical ID");
+            print("Show medical");
             let medicalIdBoard = segue.destinationViewController as! BuddyMedicaliDController;
             medicalIdBoard.patient = self.patient;
         }else if segue.identifier == "showMedicine" {
-            print("Medicine")
             let medicineBoard = segue.destinationViewController as! BuddyMedicineController;
             medicineBoard.patient = self.patient;
         }else if segue.identifier == "showWeight" {
-            print("Weight");
             let weightBoard = segue.destinationViewController as! BuddyWeightController;
             weightBoard.patient = self.patient;
         }else{
