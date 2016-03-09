@@ -13,7 +13,7 @@ import SwiftForms
 
 class BuddyMedicaliDController: FormViewController {
     var patient:User!;
-
+    
     @IBOutlet weak var lblMedicalID: UILabel!
     
     
@@ -28,8 +28,7 @@ class BuddyMedicaliDController: FormViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:"backButtonPressed:");
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Opslaan", style: .Plain, target: self, action: "submit:")
-        
-       // form.title = "\(patient.firstName) \(patient.lastName)";
+        self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
     }
     
     func backButtonPressed(sender:UIButton) {
@@ -44,6 +43,7 @@ class BuddyMedicaliDController: FormViewController {
     func loadForm(){
         // Create form instace
         let form = FormDescriptor()
+      //  form.title = "test";
         
         // Define first section
         let section1 = FormSectionDescriptor()

@@ -59,9 +59,7 @@ class BuddyMainMenuController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("Prepare for segue");
         if segue.identifier == "showMedicaliD" {
-            print("Show medical");
             let medicalIdBoard = segue.destinationViewController as! BuddyMedicaliDController;
             medicalIdBoard.patient = self.patient;
         }else if segue.identifier == "showMedicine" {
