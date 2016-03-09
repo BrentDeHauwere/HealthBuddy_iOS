@@ -36,7 +36,6 @@ class BuddyMainMenuController: UITableViewController {
 
     //Make up menu items
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print("FUNCTION CALL");
         let cell = tableView.dequeueReusableCellWithIdentifier("menuItem", forIndexPath: indexPath)
         cell.textLabel?.text = menuItems[indexPath.row];
         cell.detailTextLabel?.text = descriptions[indexPath.row];
