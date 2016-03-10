@@ -63,9 +63,6 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         }
     }
     
-    
-
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filteredData.count;
     }

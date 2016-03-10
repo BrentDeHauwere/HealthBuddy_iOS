@@ -112,7 +112,7 @@ class BuddyMedicaliDController: FormViewController {
         sectionMedicalInfo.addRow(row);
         
         row = FormRowDescriptor(tag: "Bloedgroep", rowType: .Picker, title: "Bloedgroep")
-        row.configuration[FormRowDescriptor.Configuration.Options] = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
+        row.configuration[FormRowDescriptor.Configuration.Options] = ["","A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
         sectionMedicalInfo.addRow(row);
 
         

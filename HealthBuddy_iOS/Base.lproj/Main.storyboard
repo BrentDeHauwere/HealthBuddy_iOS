@@ -220,19 +220,20 @@
             </objects>
             <point key="canvasLocation" x="337.5" y="651"/>
         </scene>
-        <!--Gewicht-->
+        <!--Medicatie-->
         <scene sceneID="6ro-TH-aMc">
             <objects>
-                <viewController title="Gewicht" id="r9p-XL-Xdv" sceneMemberID="viewController">
+                <viewController title="Medicatie" id="r9p-XL-Xdv" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2uG-6a-mci"/>
                         <viewControllerLayoutGuide type="bottom" id="m0q-5E-rb6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="APx-bO-GDX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Gewicht" image="safari" selectedImage="Gewicht" id="EC0-GE-iLA"/>
+                    <tabBarItem key="tabBarItem" title="Medicatie" image="safari" id="EC0-GE-iLA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q6Y-w2-Rgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -247,10 +248,11 @@
                         <viewControllerLayoutGuide type="bottom" id="3t9-c0-KOR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Otv-fN-Qwd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Overzicht" image="safari" selectedImage="MedischID" id="LUK-Oe-wVj"/>
+                    <tabBarItem key="tabBarItem" title="Overzicht" image="Player" id="LUK-Oe-wVj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Um-oK-Ihd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -276,19 +278,20 @@
             </objects>
             <point key="canvasLocation" x="1206" y="1489"/>
         </scene>
-        <!--Medicatie-->
+        <!--Gewicht-->
         <scene sceneID="EtV-kT-Nu2">
             <objects>
-                <viewController title="Medicatie" id="JaT-Mk-mRr" sceneMemberID="viewController">
+                <viewController title="Gewicht" id="JaT-Mk-mRr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pJv-cd-9C8"/>
                         <viewControllerLayoutGuide type="bottom" id="FhB-Gl-dG4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1FG-nQ-Gql">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Medicatie" image="safari" selectedImage="Medicatie" id="hUd-yv-0vs"/>
+                    <tabBarItem key="tabBarItem" title="Gewicht" image="safari" id="hUd-yv-0vs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQf-Ur-6UA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -406,9 +409,9 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="i0Z-kM-W6X" kind="show" identifier="showMedicine" id="lom-eP-r7e"/>
                         <segue destination="AZE-h9-kJg" kind="show" identifier="showWeight" id="e3c-ny-S0h"/>
                         <segue destination="Z0e-PC-5Nd" kind="show" identifier="showMedicaliD" id="vTv-jw-jk6"/>
+                        <segue destination="XDV-rk-OeF" kind="show" identifier="showMedicine" id="JXH-Uo-7qs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCe-fV-HJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -457,69 +460,54 @@
             <point key="canvasLocation" x="3730.5" y="-1386"/>
         </scene>
         <!--Buddy Medicine Controller-->
-        <scene sceneID="gmM-Td-wYn">
+        <scene sceneID="VlU-21-kc8">
             <objects>
-                <viewController id="i0Z-kM-W6X" customClass="BuddyMedicineController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CP3-FK-PUD"/>
-                        <viewControllerLayoutGuide type="bottom" id="WFj-oA-klR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XTJ-AC-GyU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <tableViewController id="XDV-rk-OeF" customClass="BuddyMedicineController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ur6-PP-KHi">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicatie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifc-st-GDd">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <color key="backgroundColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="8y0-6K-yxB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="8y0-6K-yxB"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="8y0-6K-yxB"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Ifc-st-GDd" firstAttribute="centerX" secondItem="XTJ-AC-GyU" secondAttribute="centerX" id="dg4-lg-kJ1"/>
-                            <constraint firstItem="Ifc-st-GDd" firstAttribute="top" secondItem="CP3-FK-PUD" secondAttribute="bottom" id="eUu-0P-9e6"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Ifc-st-GDd"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="dg4-lg-kJ1"/>
-                                <exclude reference="eUu-0P-9e6"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Ifc-st-GDd"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="dg4-lg-kJ1"/>
-                                <include reference="eUu-0P-9e6"/>
-                            </mask>
-                        </variation>
-                    </view>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicatie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IXr-kt-AjI">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MedicineCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MedicineCell" textLabel="wZa-6N-YjR" imageView="Ojx-oJ-jAe" style="IBUITableViewCellStyleDefault" id="ZbF-sg-8sM">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZbF-sg-8sM" id="piA-gq-iI9">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wZa-6N-YjR">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Medicatie" id="Ojx-oJ-jAe">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XDV-rk-OeF" id="Ui9-Dq-sZo"/>
+                            <outlet property="delegate" destination="XDV-rk-OeF" id="yD0-LZ-Uca"/>
+                        </connections>
+                    </tableView>
                     <connections>
-                        <outlet property="lblMedicine" destination="Ifc-st-GDd" id="ttF-xo-oJa"/>
+                        <outlet property="lblMedicine" destination="IXr-kt-AjI" id="hFP-8z-xSr"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pLl-2n-tyi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1on-sr-ehy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3730.5" y="-659"/>
+            <point key="canvasLocation" x="3763.5" y="-631"/>
         </scene>
         <!--Buddy Weight Controller-->
         <scene sceneID="qeL-jS-bLG">
@@ -616,10 +604,9 @@
     </scenes>
     <resources>
         <image name="ContactLogo" width="25" height="25"/>
-        <image name="Gewicht" width="50" height="50"/>
         <image name="Logo" width="487" height="607"/>
         <image name="Medicatie" width="50" height="50"/>
-        <image name="MedischID" width="50" height="50"/>
+        <image name="Player" width="30" height="30"/>
         <image name="medicatie" width="89" height="50"/>
         <image name="safari" width="20" height="23"/>
     </resources>
