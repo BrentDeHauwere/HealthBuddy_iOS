@@ -34,7 +34,7 @@ class BuddyMedicineController: UITableViewController {
     
 
     func loadMedicinesOfPatients(){
-        medicines = [Medicine(id:1, name: "Buscopan",photoUrl: "link"),Medicine(id:1, name: "Sinutab",photoUrl: "link"),Medicine(id:1, name: "Motilium",photoUrl: "link")];
+        medicines = [Medicine(id:1, name: "Buscopan", photo: nil),Medicine(id:2, name: "Sinutab", photo: nil),Medicine(id:3, name: "Motilium", photo: nil)];
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,5 +49,46 @@ class BuddyMedicineController: UITableViewController {
         return cell;
     }
 
+    //Perform the segue bij klikken op een cell
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("loadNewMedicine", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "loadNewMedicine" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                if let navController = segue.destinationViewController as? UINavigationController {
+                    if let buddyNewMedicine = navController.viewControllers[0] as? BuddyNewMedicineController {
+                        buddyNewMedicine.medicin =  medicines[indexPath.row];
+                        buddyNewMedicine.indexMedicin = indexPath.row;
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    @IBAction func cancelNewMedicine(segue:UIStoryboardSegue) {
+    }
+    
+    @IBAction func saveNewMedicine(segue:UIStoryboardSegue) {
+        if let buddynewMedicineController = segue.sourceViewController as? BuddyNewMedicineController{
+            if let medicine = buddynewMedicineController.medicin {
+                //Indien nieuwe medicijn: append, else: replace
+                if (buddynewMedicineController.indexMedicin == -1) {
+                    medicines.append(medicine);
+                    let indexPath = NSIndexPath(forRow: medicines.count-1, inSection: 0);
+                    tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                    //TODO: save new medicin in db
+                }else{
+                    //TODO: update medicin in db
+                    medicines[buddynewMedicineController.indexMedicin] = buddynewMedicineController.medicin!;
+                    tableView.reloadData();
+                }
+            }
+        }
+    }
+    
+    
 
 }

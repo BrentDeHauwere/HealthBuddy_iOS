@@ -6,11 +6,11 @@
 //  Copyright © 2016 Yen Jacobs. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Medicine{
     let id: Int;
-    let name: String;
-    let photoUrl: String;
+    var name: String;
+    let photo: UIImage?;
 }
 
