@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftHTTP
-import BTNavigationDropdownMenu
+
 
 class LoginController: UIViewController {
     @IBOutlet weak var txtEmail: UITextField!
@@ -19,6 +19,9 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
         btnLogin.layer.cornerRadius = 10;
         btnLogin.clipsToBounds = true;
@@ -65,7 +68,10 @@ class LoginController: UIViewController {
             if success
             {
                 //if role == zorgmantel{
-                self.performSegueWithIdentifier("login_success", sender: self);
+               //self.performSegueWithIdentifier("showPatientsList", sender: self);
+                
+                //if role == zorgbehoevende
+                self.performSegueWithIdentifier("showBuddyView", sender: self);
             }
         }
     }

@@ -10,7 +10,7 @@
 
 import UIKit
 
-class BudyListControler: UITableViewController, UISearchResultsUpdating {
+class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     var patients = [User]();
     var filteredData = [User]();
     var searchController: UISearchController!

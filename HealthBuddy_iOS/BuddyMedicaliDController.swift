@@ -16,10 +16,12 @@ class BuddyMedicaliDController: FormViewController {
     
     @IBOutlet weak var lblMedicalID: UILabel!
     
+  
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         self.loadForm();
+        
     }
     
     override func viewDidLoad() {
@@ -43,27 +45,91 @@ class BuddyMedicaliDController: FormViewController {
     func loadForm(){
         // Create form instace
         let form = FormDescriptor()
-      //  form.title = "test";
+        var row: FormRowDescriptor!;
         
-        // Define first section
-        let section1 = FormSectionDescriptor()
+        // Define section with personal info
+        let sectionPersonalInfo = FormSectionDescriptor();
+        sectionPersonalInfo.headerTitle = "Persoonlijke gegevens";
         
-        var row: FormRowDescriptor! = FormRowDescriptor(tag: "name", rowType: .Email, title: "Email")
-        section1.addRow(row)
+        row = FormRowDescriptor(tag: "Geslacht", rowType: .Picker, title: "Geslacht")
+ 
+        row.configuration[FormRowDescriptor.Configuration.Options] = ["M", "V"]
+        row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
+            switch( value ) {
+            case "M":
+                return "Man"
+            case "V":
+                return "Vrouw"
+            default:
+                return nil
+            }
+            } as TitleFormatterClosure
         
-        row = FormRowDescriptor(tag: "pass", rowType: .Password, title: "Password")
-        section1.addRow(row)
+        row.value = "M"
         
-        // Define second section
-        let section2 = FormSectionDescriptor()
+        sectionPersonalInfo.addRow(row)
+
         
-        row = FormRowDescriptor(tag: "button", rowType: .Button, title: "Submit")
-        section2.addRow(row)
+        row = FormRowDescriptor(tag: "Voornaam", rowType: .Text, title: "Voornaam");
+        sectionPersonalInfo.addRow(row);
         
-        form.sections = [section1, section2]
+        row = FormRowDescriptor(tag: "Achternaam", rowType: .Text, title: "Achternaam");
+        sectionPersonalInfo.addRow(row);
+        
+        row = FormRowDescriptor(tag: "Geboortedatum", rowType: .Date, title: "Geboortedatum")
+        sectionPersonalInfo.addRow(row);
+        
+        
+        //Define address
+
+        let sectionAddress = FormSectionDescriptor();
+        sectionAddress.headerTitle = "Adres";
+        
+        row = FormRowDescriptor(tag: "Straat", rowType: .Text, title: "Straat");
+        sectionAddress.addRow(row);
+        
+        row = FormRowDescriptor(tag: "Huisnummer", rowType: .Number, title: "Huisnummer");
+        sectionAddress.addRow(row);
+        
+        row = FormRowDescriptor(tag: "Postcode", rowType: .Text, title: "Postcode");
+        sectionAddress.addRow(row);
+        
+        row = FormRowDescriptor(tag: "Gemeente", rowType: .Text, title: "Gemeente");
+        sectionAddress.addRow(row);
+        
+        row = FormRowDescriptor(tag: "Land", rowType: .Text, title: "Land");
+        sectionAddress.addRow(row);
+        
+        
+        //Define medical info
+        let sectionMedicalInfo = FormSectionDescriptor();
+        sectionMedicalInfo.headerTitle = "Medische info";
+        
+        row = FormRowDescriptor(tag: "Lengte", rowType: .Number, title: "Lengte");
+        sectionMedicalInfo.addRow(row);
+        
+        row = FormRowDescriptor(tag: "Gewicht", rowType: .Number, title: "Gewicht");
+        sectionMedicalInfo.addRow(row);
+        
+        row = FormRowDescriptor(tag: "Bloedgroep", rowType: .Picker, title: "Bloedgroep")
+        row.configuration[FormRowDescriptor.Configuration.Options] = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
+        sectionMedicalInfo.addRow(row);
+
+        
+        let sectionAllergics = FormSectionDescriptor();
+        sectionAllergics.headerTitle = "Allergieën en reacties";
+        row = FormRowDescriptor(tag: "Allergieën en reacties", rowType: .MultilineText, title: "");
+        sectionAllergics.addRow(row);
+        
+        let sectionMedicalController = FormSectionDescriptor();
+        sectionMedicalController.headerTitle = "Medische aandoeningen";
+        row = FormRowDescriptor(tag: "Medische aandoeningen", rowType: .MultilineText, title: "");
+        sectionMedicalController.addRow(row);
+        
+        form.sections = [sectionPersonalInfo,sectionAddress, sectionMedicalInfo, sectionAllergics, sectionMedicalController];
         
         self.form = form
     }
-
+    
     
 }
