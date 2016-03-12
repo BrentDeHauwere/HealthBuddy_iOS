@@ -42,7 +42,7 @@ class LoginController: UIViewController {
 
         if txtEmail.text == "" || txtPassword.text == ""
         {
-            alertStatus("Vul uw email en wachtwoord in alstublieft", title: "Aanmelden mislukt");
+            Alert.alertStatus("Vul uw email en wachtwoord in alstublieft", title: "Aanmelden mislukt", view: self);
         }else{
             //TODO: Connect to back-end and verify account
             
@@ -60,11 +60,7 @@ class LoginController: UIViewController {
         }
     }
     
-    func alertStatus(message:String, title: String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert);
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil));
-        self.presentViewController(alert, animated: true, completion: nil);
-    }
+ 
 
     @IBAction func backgroundTap(sender: AnyObject) {
         self.view.endEditing(true);
