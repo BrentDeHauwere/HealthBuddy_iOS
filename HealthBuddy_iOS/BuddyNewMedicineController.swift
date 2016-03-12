@@ -13,6 +13,8 @@ class BuddyNewMedicineController: FormViewController {
     
     struct FormTag{
         static let medicinName = "medicinName";
+        static let addSchedule = "addSchedule";
+        static let houre = "houre";
     }
 
     var medicin:Medicine?
@@ -46,13 +48,22 @@ class BuddyNewMedicineController: FormViewController {
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionMedicinInformation.addRow(row);
 
-        form.sections = [sectionMedicinInformation];
         
+        let addNewScheduleSection = FormSectionDescriptor();
+        row = FormRowDescriptor(tag: FormTag.addSchedule, rowType: .Button, title: "Voeg innamemoment toe")
+        row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
+            
+            } as DidSelectClosure
+        addNewScheduleSection.addRow(row);
+        
+        form.sections = [sectionMedicinInformation, addNewScheduleSection];
         self.form = form;
     }
     
+   
     func initForm(){
         self.form.sections[0].rows[0].value = medicin?.name;
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

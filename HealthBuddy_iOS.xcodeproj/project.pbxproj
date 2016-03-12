@@ -18,6 +18,7 @@
 		AC5A51A51C8C382300804C65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5A51A31C8C382300804C65 /* LaunchScreen.storyboard */; };
 		AC5A51B01C8C382300804C65 /* HealthBuddy_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A51AF1C8C382300804C65 /* HealthBuddy_iOSTests.swift */; };
 		AC5A51BB1C8C382300804C65 /* HealthBuddy_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A51BA1C8C382300804C65 /* HealthBuddy_iOSUITests.swift */; };
+		AC5B0B6C1C945CE2005D0558 /* MedicalSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B0B6B1C945CE2005D0558 /* MedicalSchedule.swift */; };
 		AC9EB0921C8F52310084DAC8 /* BuddyMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EB0911C8F52310084DAC8 /* BuddyMedicineController.swift */; };
 		AC9EB0941C8F52420084DAC8 /* BuddyWeightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */; };
 		ACCA96301C9078B200D394BE /* BuddyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */; };
@@ -65,6 +66,7 @@
 		AC5A51B61C8C382300804C65 /* HealthBuddy_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthBuddy_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5A51BA1C8C382300804C65 /* HealthBuddy_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBuddy_iOSUITests.swift; sourceTree = "<group>"; };
 		AC5A51BC1C8C382300804C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC5B0B6B1C945CE2005D0558 /* MedicalSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicalSchedule.swift; sourceTree = "<group>"; };
 		AC9EB0911C8F52310084DAC8 /* BuddyMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMedicineController.swift; sourceTree = "<group>"; };
 		AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyWeightController.swift; sourceTree = "<group>"; };
 		ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyTabBarController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				ACFC56691C8D8D6A00269458 /* User.swift */,
 				AC2EEB581C9167E800356A23 /* Medicine.swift */,
+				AC5B0B6B1C945CE2005D0558 /* MedicalSchedule.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				AC9EB0921C8F52310084DAC8 /* BuddyMedicineController.swift in Sources */,
 				AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */,
 				AC1823281C9440C600F66C9E /* Alert.swift in Sources */,
+				AC5B0B6C1C945CE2005D0558 /* MedicalSchedule.swift in Sources */,
 				ACFC566A1C8D8D6A00269458 /* User.swift in Sources */,
 				ACFC566D1C8D8F8400269458 /* BuddyListController.swift in Sources */,
 				ACCA96301C9078B200D394BE /* BuddyTabBarController.swift in Sources */,

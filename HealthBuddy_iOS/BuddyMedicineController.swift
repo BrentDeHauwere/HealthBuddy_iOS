@@ -35,6 +35,8 @@ class BuddyMedicineController: UITableViewController {
 
     func loadMedicinesOfPatients(){
         medicines = [Medicine(id:1, name: "Buscopan", photo: nil),Medicine(id:2, name: "Sinutab", photo: nil),Medicine(id:3, name: "Motilium", photo: nil)];
+        
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

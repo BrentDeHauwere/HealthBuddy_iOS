@@ -12,6 +12,7 @@ class Medicine{
     var id: Int = -1;
     var name: String = "";
     var photo: UIImage? = nil;
+    var schedule = [MedicalSchedule]();
     
     init(){
         

@@ -10,6 +10,7 @@ import Foundation
 
 
 class User{
+    var id:Int = -1;
     var firstName:String = "";
     var lastName:String = "";
     
