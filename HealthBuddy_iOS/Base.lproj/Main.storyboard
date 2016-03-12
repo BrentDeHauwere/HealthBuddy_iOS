@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -534,73 +533,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <sections>
-                            <tableViewSection headerTitle="Medicijn" id="wPW-ls-0ti">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="stu-fD-Utg">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="stu-fD-Utg" id="ZAt-tv-wQR">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kmb-kw-flc">
-                                                    <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="384" id="8IG-Rs-AUH"/>
-                                                        <constraint firstAttribute="height" constant="43" id="uLN-KX-S5G"/>
-                                                    </constraints>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="8IG-Rs-AUH"/>
-                                                            <exclude reference="uLN-KX-S5G"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <mask key="constraints">
-                                                            <include reference="8IG-Rs-AUH"/>
-                                                            <include reference="uLN-KX-S5G"/>
-                                                        </mask>
-                                                    </variation>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Kmb-kw-flc" firstAttribute="top" secondItem="ZAt-tv-wQR" secondAttribute="topMargin" constant="-8" id="DtJ-6U-HHo"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Kmb-kw-flc" secondAttribute="bottom" constant="-8" id="KsK-i0-6DV"/>
-                                                <constraint firstItem="Kmb-kw-flc" firstAttribute="trailing" secondItem="ZAt-tv-wQR" secondAttribute="trailingMargin" id="ZUV-6O-Nmz"/>
-                                                <constraint firstItem="Kmb-kw-flc" firstAttribute="leading" secondItem="ZAt-tv-wQR" secondAttribute="leadingMargin" id="fUV-4c-HXJ"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="Kmb-kw-flc"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <exclude reference="DtJ-6U-HHo"/>
-                                                    <exclude reference="KsK-i0-6DV"/>
-                                                    <exclude reference="ZUV-6O-Nmz"/>
-                                                    <exclude reference="fUV-4c-HXJ"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="widthClass=compact">
-                                                <mask key="subviews">
-                                                    <include reference="Kmb-kw-flc"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <include reference="DtJ-6U-HHo"/>
-                                                    <include reference="KsK-i0-6DV"/>
-                                                    <include reference="ZUV-6O-Nmz"/>
-                                                    <include reference="fUV-4c-HXJ"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="5jz-a6-hwd" id="dJU-4s-fcK"/>
                             <outlet property="delegate" destination="5jz-a6-hwd" id="hOb-Js-FmR"/>
@@ -618,9 +551,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="lblNameMedicin" destination="Kmb-kw-flc" id="jfM-bh-jJE"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FtT-VS-KCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6Hp-Qs-Fvc" userLabel="Exit" sceneMemberID="exit"/>

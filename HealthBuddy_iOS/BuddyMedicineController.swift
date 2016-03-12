@@ -60,7 +60,6 @@ class BuddyMedicineController: UITableViewController {
                 if let navController = segue.destinationViewController as? UINavigationController {
                     if let buddyNewMedicine = navController.viewControllers[0] as? BuddyNewMedicineController {
                         buddyNewMedicine.medicin =  medicines[indexPath.row];
-                        buddyNewMedicine.indexMedicin = indexPath.row;
                     }
                 }
             }
@@ -75,14 +74,13 @@ class BuddyMedicineController: UITableViewController {
         if let buddynewMedicineController = segue.sourceViewController as? BuddyNewMedicineController{
             if let medicine = buddynewMedicineController.medicin {
                 //Indien nieuwe medicijn: append, else: replace
-                if (buddynewMedicineController.indexMedicin == -1) {
+                if(buddynewMedicineController.newMedicin){
+                    print("NIEUW MEDICIJN");
                     medicines.append(medicine);
                     let indexPath = NSIndexPath(forRow: medicines.count-1, inSection: 0);
                     tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-                    //TODO: save new medicin in db
                 }else{
-                    //TODO: update medicin in db
-                    medicines[buddynewMedicineController.indexMedicin] = buddynewMedicineController.medicin!;
+                    print("UDPATE MEDICIJ");
                     tableView.reloadData();
                 }
             }

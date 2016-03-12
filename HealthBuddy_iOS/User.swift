@@ -9,8 +9,14 @@
 import Foundation
 
 
-struct User{
-    let firstName:String
-    let lastName:String
+class User{
+    var firstName:String = "";
+    var lastName:String = "";
+    
+    init(firstName: String, lastName: String){
+        self.firstName = firstName;
+        self.lastName = lastName;
+    }
+    
     
 }

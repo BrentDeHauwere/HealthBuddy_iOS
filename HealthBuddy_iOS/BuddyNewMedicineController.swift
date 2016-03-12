@@ -7,37 +7,65 @@
 //  Gebruik gemaakt van tutorial: https://www.raywenderlich.com/113394/storyboards-tutorial-in-ios-9-part-2
 
 import UIKit;
+import SwiftForms
 
-class BuddyNewMedicineController: UITableViewController {
+class BuddyNewMedicineController: FormViewController {
     
-    @IBOutlet weak var lblNameMedicin: UITextField!
-    var medicin:Medicine?
-    var indexMedicin = -1;
+    struct FormTag{
+        static let medicinName = "medicinName";
+    }
 
+    var medicin:Medicine?
+    var newMedicin = true;
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder);
+        self.loadForm();
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
         //Formulier opvullen indien bestaande medicijn wordt geupdate
-        if indexMedicin != -1 {
-            lblNameMedicin.text = medicin?.name;
+        if medicin != nil  {
+            newMedicin = false;
+            initForm()
+        }else{
+            newMedicin = true;
         }
+    }
+    
+    func loadForm(){
+        let form = FormDescriptor()
+        var row: FormRowDescriptor!;
+        
+        let sectionMedicinInformation = FormSectionDescriptor();
+        
+        row = FormRowDescriptor(tag: FormTag.medicinName, rowType: .Text, title: "Naam");
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        sectionMedicinInformation.addRow(row);
+
+        form.sections = [sectionMedicinInformation];
+        
+        self.form = form;
     }
     
     func initForm(){
-        lblNameMedicin.text = medicin?.name;
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 {
-            lblNameMedicin.becomeFirstResponder()
-        }
+        self.form.sections[0].rows[0].value = medicin?.name;
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "saveNewMedicine" {
-            medicin = Medicine(id:-1, name: lblNameMedicin.text!, photo: nil);
+            saveChanges();
         }
+    }
+    
+    func saveChanges(){
+        //TODO: update db
+        if(newMedicin){
+            medicin = Medicine();
+        }
+        medicin?.name = self.form.formValues()[FormTag.medicinName]!.description;
     }
 }

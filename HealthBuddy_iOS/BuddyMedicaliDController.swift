@@ -135,7 +135,7 @@ class BuddyMedicaliDController: FormViewController {
         sectionMedicalInfo.addRow(row);
         
         row = FormRowDescriptor(tag: formTag.gewicht, rowType: .Number, title: "Gewicht");
-         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        
         sectionMedicalInfo.addRow(row);
         
         row = FormRowDescriptor(tag: formTag.bloedgroep, rowType: .Picker, title: "Bloedgroep")
@@ -168,13 +168,8 @@ class BuddyMedicaliDController: FormViewController {
     }
     
     func initForm(){
-        print(patient.firstName);
-        self.form.sections[0].rows[0].value = "V";
         self.form.sections[0].rows[1].value = patient.firstName;
         self.form.sections[0].rows[2].value = patient.lastName;
-       
-        
-       
     }
     
     func backButtonPressed(sender:UIButton) {
@@ -210,13 +205,20 @@ class BuddyMedicaliDController: FormViewController {
     
     func submit(sender:UIBarButtonItem){
         //TODO: update database
-        print("Pushed save button");
         pressedSaved = true;
         
+        if(saveForm()){
+            self.navigationController?.popViewControllerAnimated(true);
+        }else{
+            
+        }
+    }
+    
+    func saveForm() -> Bool{
+        //TODO: save each field to db (update)
         let message = self.form.formValues()[formTag.voornaam]!.description;
-        let alert: UIAlertView = UIAlertView(title: "Form output", message: message, delegate: nil, cancelButtonTitle: "OK")
-        
-        alert.show()
+        print(message);
+        return true;
     }
     
     

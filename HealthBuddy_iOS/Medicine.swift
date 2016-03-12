@@ -8,9 +8,18 @@
 
 import UIKit
 
-struct Medicine{
-    let id: Int;
-    var name: String;
-    let photo: UIImage?;
+class Medicine{
+    var id: Int = -1;
+    var name: String = "";
+    var photo: UIImage? = nil;
+    
+    init(){
+        
+    }
+    init(id:Int, name: String, photo:UIImage?){
+        self.id = id;
+        self.name = name;
+        self.photo = photo;
+    }
 }
 
