@@ -52,12 +52,21 @@ class BuddyNewMedicineController: FormViewController {
         let addNewScheduleSection = FormSectionDescriptor();
         row = FormRowDescriptor(tag: FormTag.addSchedule, rowType: .Button, title: "Voeg innamemoment toe")
         row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
-            
+            self.addScheduleForm();
             } as DidSelectClosure
         addNewScheduleSection.addRow(row);
         
         form.sections = [sectionMedicinInformation, addNewScheduleSection];
         self.form = form;
+    }
+    
+    func addScheduleForm(){
+        
+        
+        let row = FormRowDescriptor(tag: FormTag.medicinName, rowType: .Text, title: "Naam");
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        
+        self.form.sections[0].addRow(row);
     }
     
    
