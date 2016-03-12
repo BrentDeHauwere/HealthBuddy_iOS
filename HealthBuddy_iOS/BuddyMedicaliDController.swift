@@ -40,10 +40,14 @@ class BuddyMedicaliDController: FormViewController {
         super.init(coder: aDecoder);
         self.loadForm();
     }
+    
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        hideKeyboardOnHeaderTab();
+        
         lblMedicalID.text = "Medisch ID";
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:"backButtonPressed:");
@@ -51,8 +55,20 @@ class BuddyMedicaliDController: FormViewController {
         self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
         
         self.initForm();
+        
     }
     
+    func hideKeyboardOnHeaderTab(){
+        self.navigationController!.navigationBar.userInteractionEnabled = true;
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "click:");
+        tapGestureRecognizer.numberOfTapsRequired=1;
+        self.navigationController!.navigationBar.addGestureRecognizer(tapGestureRecognizer);
+    }
+    
+    func click(sender: UILabel){
+        print("Hide keyboard");
+        self.view.endEditing(true);
+    }
 
     
     func loadForm(){
@@ -154,14 +170,8 @@ class BuddyMedicaliDController: FormViewController {
         row = FormRowDescriptor(tag: formTag.medischeAandoeningen, rowType: .MultilineText, title: "");
         sectionMedicalController.addRow(row);
         
-        let endSection = FormSectionDescriptor();
-        row = FormRowDescriptor(tag: formTag.stopWijzigen, rowType: .Button, title: "Stop wijzigen")
-        row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
-            self.view.endEditing(true)
-            } as DidSelectClosure
-        endSection.addRow(row);
         
-        form.sections = [sectionPersonalInfo,sectionAddress, sectionMedicalInfo, sectionAllergics, sectionMedicalController, endSection];
+        form.sections = [sectionPersonalInfo,sectionAddress, sectionMedicalInfo, sectionAllergics, sectionMedicalController];
         
         self.form = form
     }
@@ -169,6 +179,11 @@ class BuddyMedicaliDController: FormViewController {
     func initForm(){
         self.form.sections[0].rows[1].value = patient.firstName;
         self.form.sections[0].rows[2].value = patient.lastName;
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func backButtonPressed(sender:UIButton) {
