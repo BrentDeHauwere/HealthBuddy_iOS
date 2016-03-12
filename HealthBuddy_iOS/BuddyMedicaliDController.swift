@@ -49,7 +49,7 @@ class BuddyMedicaliDController: FormViewController {
         
         // Define section with personal info
         let sectionPersonalInfo = FormSectionDescriptor();
-        sectionPersonalInfo.headerTitle = "Persoonlijke gegevens";
+        sectionPersonalInfo.headerTitle = nil;
         
         row = FormRowDescriptor(tag: "Geslacht", rowType: .Picker, title: "Geslacht")
  
@@ -78,6 +78,10 @@ class BuddyMedicaliDController: FormViewController {
         
         row = FormRowDescriptor(tag: "Geboortedatum", rowType: .Date, title: "Geboortedatum")
         sectionPersonalInfo.addRow(row);
+        
+        row = FormRowDescriptor(tag:"phone", rowType: .Phone, title: "Telefoonnummer")
+        sectionPersonalInfo.addRow(row)
+
         
         
         //Define address
@@ -113,6 +117,8 @@ class BuddyMedicaliDController: FormViewController {
         
         row = FormRowDescriptor(tag: "Bloedgroep", rowType: .Picker, title: "Bloedgroep")
         row.configuration[FormRowDescriptor.Configuration.Options] = ["","A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
+        
+       
         sectionMedicalInfo.addRow(row);
 
         
