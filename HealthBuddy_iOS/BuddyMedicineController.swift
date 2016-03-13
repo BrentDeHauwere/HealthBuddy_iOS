@@ -56,6 +56,38 @@ class BuddyMedicineController: UITableViewController {
         self.performSegueWithIdentifier("loadNewMedicine", sender: self)
     }
     
+    
+    //Delete a medicin
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let alert = UIAlertController(title: "Verwijder \(medicines[indexPath.row].name)", message: "Bent u zeker?", preferredStyle: .ActionSheet)
+            
+            let DeleteAction = UIAlertAction(title: "Akkoord", style: .Destructive) { action -> Void in
+                tableView.beginUpdates()
+                self.medicines.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                //TODO: delete record in db
+                tableView.endUpdates()
+            }
+            
+            let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {action -> Void in
+                tableView.setEditing(false, animated: true);
+            }
+            
+            alert.addAction(DeleteAction)
+            alert.addAction(CancelAction)
+            
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+
+   
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "loadNewMedicine" {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -67,6 +99,7 @@ class BuddyMedicineController: UITableViewController {
             }
         }
     }
+   
     
     
     @IBAction func cancelNewMedicine(segue:UIStoryboardSegue) {

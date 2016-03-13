@@ -55,7 +55,7 @@ class LoginController: UIViewController {
                self.performSegueWithIdentifier("showPatientsList", sender: self);
                 
                 //if role == zorgbehoevende
-               // self.performSegueWithIdentifier("showBuddyView", sender: self);
+              //  self.performSegueWithIdentifier("showBuddyView", sender: self);
             }
         }
     }
