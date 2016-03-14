@@ -13,7 +13,8 @@ import SwiftForms
 
 class BuddyMedicaliDController: FormViewController {
     var patient:User!;
-    var pressedSaved = false;
+    var editPatient:User!;
+    
     @IBOutlet weak var lblMedicalID: UILabel!
     
     struct formTag{
@@ -41,7 +42,6 @@ class BuddyMedicaliDController: FormViewController {
         self.loadForm();
     }
     
-    
 
     
     override func viewDidLoad() {
@@ -66,7 +66,6 @@ class BuddyMedicaliDController: FormViewController {
     }
     
     func click(sender: UILabel){
-        print("Hide keyboard");
         self.view.endEditing(true);
     }
 
@@ -99,12 +98,15 @@ class BuddyMedicaliDController: FormViewController {
 
         
         row = FormRowDescriptor(tag: formTag.voornaam, rowType: .Text, title: "Voornaam");
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue];
+
+        
         sectionPersonalInfo.addRow(row);
         
         row = FormRowDescriptor(tag: formTag.naam, rowType: .Text, title: "Naam");
          row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionPersonalInfo.addRow(row);
+        
         
         row = FormRowDescriptor(tag: formTag.geboortedatum, rowType: .Date, title: "Geboortedatum")
         sectionPersonalInfo.addRow(row);
@@ -112,8 +114,6 @@ class BuddyMedicaliDController: FormViewController {
         row = FormRowDescriptor(tag: formTag.phone, rowType: .Phone, title: "Telefoonnummer")
          row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionPersonalInfo.addRow(row)
-
-        
         
         //Define address
 
@@ -176,6 +176,7 @@ class BuddyMedicaliDController: FormViewController {
         self.form = form
     }
     
+    //Initiating the form values with the patient object
     func initForm(){
         self.form.sections[0].rows[1].value = patient.firstName;
         self.form.sections[0].rows[2].value = patient.lastName;
@@ -187,9 +188,8 @@ class BuddyMedicaliDController: FormViewController {
     }
     
     func backButtonPressed(sender:UIButton) {
-        if(pressedSaved){
-            navigationController?.popViewControllerAnimated(true);
-        }else{
+
+        if(patientUpdated()){
             //Create the AlertController
             let actionSheetController: UIAlertController = UIAlertController(title: "Opgelet", message: "U wenst te sluiten zonder de wijzigingen op te slaan", preferredStyle: .ActionSheet)
             
@@ -199,41 +199,44 @@ class BuddyMedicaliDController: FormViewController {
             
             //Create and add first option action
             let noSave: UIAlertAction = UIAlertAction(title: "Wijzigingen niet opslaan", style: .Default) { action -> Void in
-                self.navigationController?.popViewControllerAnimated(true);
+            self.navigationController?.popViewControllerAnimated(true);
             }
             actionSheetController.addAction(noSave);
             
             //Create and add a second option action
             let doSave: UIAlertAction = UIAlertAction(title: "Wijzingen opslaan", style: .Default) { action -> Void in
-                self.navigationController?.popViewControllerAnimated(true);
                 self.submit(self.navigationItem.rightBarButtonItem!);
             }
             actionSheetController.addAction(doSave);
             
             //Present the AlertController
             self.presentViewController(actionSheetController, animated: true, completion: nil)
+        }else{
+             navigationController?.popViewControllerAnimated(true);
         }
         
     }
     
+    func patientUpdated() -> Bool{
+        if self.form.formValues()[formTag.voornaam]!.description !=  patient.firstName{
+            return true;
+        }
+        if self.form.formValues()[formTag.naam]!.description !=  patient.lastName{
+            return true;
+        }
+        return false;
+    }
     
     func submit(sender:UIBarButtonItem){
         //TODO: update database
-        pressedSaved = true;
-        
-        if(saveForm()){
-            self.navigationController?.popViewControllerAnimated(true);
-        }else{
-            
-        }
+        patient.firstName = self.form.formValues()[formTag.voornaam]!.description;
+        patient.lastName = self.form.formValues()[formTag.naam]!.description;
+       
+
+       
+        self.navigationController?.popViewControllerAnimated(true);
     }
     
-    func saveForm() -> Bool{
-        //TODO: save each field to db (update)
-        let message = self.form.formValues()[formTag.voornaam]!.description;
-        print(message);
-        return true;
-    }
-    
+  
     
 }
