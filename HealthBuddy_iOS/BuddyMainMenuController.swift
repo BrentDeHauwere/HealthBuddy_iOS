@@ -23,7 +23,13 @@ class BuddyMainMenuController: UITableViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"ContactenLogo"), style:.Plain, target:self, action:"backButtonPressed:");
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate;
         self.navigationController?.interactivePopGestureRecognizer?.enabled = true;
+    }
     
+    override func viewDidAppear(animated: Bool) {
+        if(self.navigationItem.title != "\(patient.firstName) \(patient.lastName)"){
+            self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
+        }
+         super.viewDidAppear(true);
     }
     
     override func viewWillAppear(animated: Bool) {
