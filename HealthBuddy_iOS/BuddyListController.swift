@@ -30,8 +30,10 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         if tableView.indexPathForSelectedRow != nil {
             tableView.deselectRowAtIndexPath((tableView.indexPathForSelectedRow)!, animated: animated);
         }
+        tableView.reloadData();
         super.viewWillAppear(animated);
     }
+
     
     func loadPatientsList(){
         //TODO: haal alle patienten af met als buddy_id = user_id ingelogde user

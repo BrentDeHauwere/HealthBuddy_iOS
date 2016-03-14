@@ -17,6 +17,7 @@ class BuddyMainMenuController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView(frame: CGRectZero);
+        self.tableView.backgroundColor = UIColor(red: 156.0/255, green: 207.0/255, blue: 88.0/255, alpha: 1);
         self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
      
         
