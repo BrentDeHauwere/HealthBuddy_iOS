@@ -26,9 +26,16 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        if tableView.indexPathForSelectedRow != nil {
+            tableView.deselectRowAtIndexPath((tableView.indexPathForSelectedRow)!, animated: animated);
+        }
+        super.viewWillAppear(animated);
+    }
+    
     func loadPatientsList(){
         //TODO: haal alle patienten af met als buddy_id = user_id ingelogde user
-        
+        self.clearsSelectionOnViewWillAppear=false;
         //mock:
         self.patients = [User(firstName:"Yen", lastName: "Jacobs"),User(firstName:"Elvin", lastName: "Jacobs"),User(firstName:"Gunther", lastName: "Jacobs"),User(firstName:"Sabine", lastName: "Baeyens"),User(firstName:"Dieter", lastName: "Roels")];
     }
