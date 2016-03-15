@@ -22,7 +22,7 @@
 		AC9EB0921C8F52310084DAC8 /* BuddyMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EB0911C8F52310084DAC8 /* BuddyMedicineController.swift */; };
 		AC9EB0941C8F52420084DAC8 /* BuddyWeightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */; };
 		ACCA96301C9078B200D394BE /* BuddyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */; };
-		ACDD4A711C917F7300B3DD1C /* BuddyNewMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDD4A701C917F7300B3DD1C /* BuddyNewMedicineController.swift */; };
+		ACD9022C1C98822D00D260CB /* BuddyNewMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD9022B1C98822D00D260CB /* BuddyNewMedicineController.swift */; };
 		ACF950641C8F311400218754 /* BuddyMainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF950631C8F311400218754 /* BuddyMainMenuController.swift */; };
 		ACFC566A1C8D8D6A00269458 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC56691C8D8D6A00269458 /* User.swift */; };
 		ACFC566D1C8D8F8400269458 /* BuddyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC566C1C8D8F8400269458 /* BuddyListController.swift */; };
@@ -70,7 +70,7 @@
 		AC9EB0911C8F52310084DAC8 /* BuddyMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMedicineController.swift; sourceTree = "<group>"; };
 		AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyWeightController.swift; sourceTree = "<group>"; };
 		ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyTabBarController.swift; sourceTree = "<group>"; };
-		ACDD4A701C917F7300B3DD1C /* BuddyNewMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyNewMedicineController.swift; sourceTree = "<group>"; };
+		ACD9022B1C98822D00D260CB /* BuddyNewMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyNewMedicineController.swift; sourceTree = "<group>"; };
 		ACF950631C8F311400218754 /* BuddyMainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMainMenuController.swift; sourceTree = "<group>"; };
 		ACFC56691C8D8D6A00269458 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ACFC566C1C8D8F8400269458 /* BuddyListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyListController.swift; sourceTree = "<group>"; };
@@ -192,6 +192,7 @@
 		ACFC566B1C8D8F3800269458 /* BuddyControllers */ = {
 			isa = PBXGroup;
 			children = (
+				ACD9022B1C98822D00D260CB /* BuddyNewMedicineController.swift */,
 				AC5A519C1C8C382300804C65 /* LoginController.swift */,
 				ACFC566C1C8D8F8400269458 /* BuddyListController.swift */,
 				ACFC566E1C8DA00C00269458 /* BuddyMedicaliDController.swift */,
@@ -199,7 +200,6 @@
 				AC9EB0911C8F52310084DAC8 /* BuddyMedicineController.swift */,
 				AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */,
 				ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */,
-				ACDD4A701C917F7300B3DD1C /* BuddyNewMedicineController.swift */,
 			);
 			name = BuddyControllers;
 			sourceTree = "<group>";
@@ -398,8 +398,8 @@
 				ACFC566A1C8D8D6A00269458 /* User.swift in Sources */,
 				ACFC566D1C8D8F8400269458 /* BuddyListController.swift in Sources */,
 				ACCA96301C9078B200D394BE /* BuddyTabBarController.swift in Sources */,
-				ACDD4A711C917F7300B3DD1C /* BuddyNewMedicineController.swift in Sources */,
 				AC2EEB591C9167E800356A23 /* Medicine.swift in Sources */,
+				ACD9022C1C98822D00D260CB /* BuddyNewMedicineController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

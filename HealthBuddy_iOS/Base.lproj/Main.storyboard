@@ -464,7 +464,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MedicineCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MedicineCell" textLabel="wZa-6N-YjR" imageView="Ojx-oJ-jAe" style="IBUITableViewCellStyleDefault" id="ZbF-sg-8sM">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MedicineCell" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="MedicineCell" textLabel="wZa-6N-YjR" imageView="Ojx-oJ-jAe" style="IBUITableViewCellStyleDefault" id="ZbF-sg-8sM">
                                 <rect key="frame" x="0.0" y="113" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZbF-sg-8sM" id="piA-gq-iI9">

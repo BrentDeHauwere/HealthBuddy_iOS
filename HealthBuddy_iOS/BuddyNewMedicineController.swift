@@ -15,26 +15,36 @@ class BuddyNewMedicineController: FormViewController {
         static let medicinName = "medicinName";
         static let addSchedule = "addSchedule";
         static let houre = "houre";
+        static let dayOfWeek = "dayOfWeek";
+        static let amount = "amount";
+        static let deleteSchedule = "deleteSchedule";
     }
 
     var medicin:Medicine?
     var newMedicin = true;
+    
+    var scheduleSectionID = 0;
+    var scheduleFormSections = [Int: FormSectionDescriptor]();
+    
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         self.loadForm();
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.addScheduleForm();
 
         //Formulier opvullen indien bestaande medicijn wordt geupdate
         if medicin != nil  {
             newMedicin = false;
+            self.navigationItem.title = "Nieuw medicijn";
             initForm()
         }else{
             newMedicin = true;
+            self.navigationItem.title = "Wijzig medicijn";
         }
     }
     
@@ -61,12 +71,86 @@ class BuddyNewMedicineController: FormViewController {
     }
     
     func addScheduleForm(){
+        let sectionNewSchedule = FormSectionDescriptor();
+        sectionNewSchedule.headerTitle = "Inname-moment \(self.form.sections.count-1)";
+      
+        var row = FormRowDescriptor(tag: "\(FormTag.houre)_\(self.scheduleSectionID)", rowType: .Time, title: "Uur");
+        sectionNewSchedule.addRow(row);
         
+        row = FormRowDescriptor(tag: "\(FormTag.dayOfWeek)_\(self.scheduleSectionID)", rowType: .MultipleSelector, title: "Herhaal")
+        row.configuration[FormRowDescriptor.Configuration.Options] = [0, 1, 2, 3, 4,5,6]
+        row.configuration[FormRowDescriptor.Configuration.AllowsMultipleSelection] = true
+        row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
+            switch( value ) {
+            case 0:
+                return "Elke maandag"
+            case 1:
+                return "Elke dinsdag"
+            case 2:
+                return "Elke woensdag"
+            case 3:
+                return "Elke donderdag"
+            case 4:
+                return "Elke vrijdag"
+            case 5:
+                return "Elke zaterdag"
+            case 6:
+                return "Elke zondag"
+            default:
+                return nil
+            }
+            } as TitleFormatterClosure
         
-        let row = FormRowDescriptor(tag: FormTag.medicinName, rowType: .Text, title: "Naam");
+        sectionNewSchedule.addRow(row)
+        
+        row = FormRowDescriptor(tag: "\(FormTag.amount)_\(self.scheduleSectionID)", rowType: .Text, title: "Dosis");
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        sectionNewSchedule.addRow(row);
         
-        self.form.sections[0].addRow(row);
+        row = FormRowDescriptor(tag: "\(FormTag.deleteSchedule)_\(self.scheduleSectionID)", rowType: .Button, title: "Verwijder inname-moment")
+        row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
+            
+            //Create the AlertController
+            let actionSheetController: UIAlertController = UIAlertController(title: "Verwijder innamemoment", message: "Bevestig", preferredStyle: .ActionSheet)
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil);
+            actionSheetController.addAction(cancelAction)
+            
+            let doAction: UIAlertAction = UIAlertAction(title: "Verwijder", style: .Destructive) { action -> Void in
+                let delimiter = "_";
+                var split = row.tag.componentsSeparatedByString(delimiter);
+                let sectionID = Int(split[1])!;
+                self.deleteScheduleForm(sectionID);
+            }
+            actionSheetController.addAction(doAction);
+        
+            //Present the AlertController
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+           
+            } as DidSelectClosure
+        sectionNewSchedule.addRow(row);
+
+        scheduleFormSections[scheduleSectionID] = sectionNewSchedule;
+        self.form.sections.insert(sectionNewSchedule, atIndex: self.form.sections.count-1);
+        
+        scheduleSectionID++;
+        tableView.reloadData();
+    }
+    
+    //TODO: remove schedule from db
+    func deleteScheduleForm(sectionID:Int){
+        let scheduleToRemove = scheduleFormSections[sectionID];
+        let indexToRemove = self.form.sections.indexOf(scheduleToRemove!);
+        self.form.sections.removeAtIndex(indexToRemove!);
+    
+        //update schedule titles
+        for var i = 1; i < self.form.sections.count-1;i++ {
+            self.form.sections[i].headerTitle = "Inname-moment \(i)";
+        }
+        
+        tableView.reloadData();
+        
+        //REMOVE FROM DB
     }
     
    
