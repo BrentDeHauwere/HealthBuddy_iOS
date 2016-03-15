@@ -51,11 +51,6 @@ class BuddyMedicineController: UITableViewController {
         return cell;
     }
 
-    //Perform the segue bij klikken op een cell
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("loadNewMedicine", sender: self)
-    }
-    
     
     //Delete a medicin
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -84,17 +79,20 @@ class BuddyMedicineController: UITableViewController {
         }
     }
     
-
-   
+    //Perform the segue bij klikken op een cell
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("loadMedicine", sender: self)
+    }
     
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "loadNewMedicine" {
+       
+        if segue.identifier == "loadMedicine" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                if let navController = segue.destinationViewController as? UINavigationController {
-                    if let buddyNewMedicine = navController.viewControllers[0] as? BuddyNewMedicineController {
+                if let buddyNewMedicine = segue.destinationViewController as? BuddyNewMedicineController {
+                        print("I'M HERE!!!");
                         buddyNewMedicine.medicin =  medicines[indexPath.row];
-                    }
                 }
             }
         }
@@ -110,18 +108,16 @@ class BuddyMedicineController: UITableViewController {
             if let medicine = buddynewMedicineController.medicin {
                 //Indien nieuwe medicijn: append, else: replace
                 if(buddynewMedicineController.newMedicin){
-                    print("NIEUW MEDICIJN");
                     medicines.append(medicine);
                     let indexPath = NSIndexPath(forRow: medicines.count-1, inSection: 0);
                     tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
                 }else{
-                    print("UDPATE MEDICIJ");
                     tableView.reloadData();
                 }
             }
         }
     }
-    
-    
-
 }
+
+
+

@@ -40,11 +40,11 @@ class BuddyNewMedicineController: FormViewController {
         //Formulier opvullen indien bestaande medicijn wordt geupdate
         if medicin != nil  {
             newMedicin = false;
-            self.navigationItem.title = "Nieuw medicijn";
+            self.navigationItem.title = "Wijzig medicijn";
             initForm()
         }else{
             newMedicin = true;
-            self.navigationItem.title = "Wijzig medicijn";
+            self.navigationItem.title = "Nieuw medicijn";
         }
     }
     
