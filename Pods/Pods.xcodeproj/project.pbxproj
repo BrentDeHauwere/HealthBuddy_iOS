@@ -376,8 +376,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
+					0A1CAFB68B49093D7F7C1F86FFB0F6A9 = {
+						DevelopmentTeam = 6UAG64VX7S;
+					};
 					AEB25D8E52B8F6807E10D50107FECB4F = {
-						DevelopmentTeam = YH5Q937JE3;
+						DevelopmentTeam = 6UAG64VX7S;
 					};
 				};
 			};
@@ -502,6 +505,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 451E4F7E629AC6CA8EDC55C2F7869EC2 /* SwiftForms.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -517,6 +521,7 @@
 				MODULEMAP_FILE = "Target Support Files/SwiftForms/SwiftForms.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = SwiftForms;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -659,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 451E4F7E629AC6CA8EDC55C2F7869EC2 /* SwiftForms.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -674,6 +680,7 @@
 				MODULEMAP_FILE = "Target Support Files/SwiftForms/SwiftForms.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = SwiftForms;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
