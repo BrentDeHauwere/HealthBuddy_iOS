@@ -18,9 +18,10 @@ class BuddyNewMedicineController: FormViewController {
         static let dayOfWeek = "dayOfWeek";
         static let amount = "amount";
         static let deleteSchedule = "deleteSchedule";
+        static let selectPhoto = "selectPhoto";
     }
 
-    var medicin:Medicine?
+    var medicine:Medicine?
     var newMedicin = true;
     
     var scheduleSectionID = 0;
@@ -38,12 +39,13 @@ class BuddyNewMedicineController: FormViewController {
         self.addScheduleForm();
 
         //Formulier opvullen indien bestaande medicijn wordt geupdate
-        if medicin != nil  {
+        if medicine != nil  {
             newMedicin = false;
             self.navigationItem.title = "Wijzig medicijn";
             initForm()
         }else{
             newMedicin = true;
+            medicine = Medicine();
             self.navigationItem.title = "Nieuw medicijn";
         }
     }
@@ -56,6 +58,15 @@ class BuddyNewMedicineController: FormViewController {
         
         row = FormRowDescriptor(tag: FormTag.medicinName, rowType: .Text, title: "Naam");
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        sectionMedicinInformation.addRow(row);
+        
+        row = FormRowDescriptor(tag: FormTag.selectPhoto, rowType: .Button, title: "Foto")
+        if medicine?.photo != nil {
+            row.title = "Toon foto";
+        }
+        row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
+            self.performSegueWithIdentifier("showMedicinePicture", sender: self);
+            } as DidSelectClosure
         sectionMedicinInformation.addRow(row);
 
         
@@ -78,23 +89,23 @@ class BuddyNewMedicineController: FormViewController {
         sectionNewSchedule.addRow(row);
         
         row = FormRowDescriptor(tag: "\(FormTag.dayOfWeek)_\(self.scheduleSectionID)", rowType: .MultipleSelector, title: "Herhaal")
-        row.configuration[FormRowDescriptor.Configuration.Options] = [0, 1, 2, 3, 4,5,6]
+        row.configuration[FormRowDescriptor.Configuration.Options] = [1, 2, 3, 4, 5,6,7]
         row.configuration[FormRowDescriptor.Configuration.AllowsMultipleSelection] = true
         row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
             switch( value ) {
-            case 0:
-                return "Elke maandag"
             case 1:
-                return "Elke dinsdag"
+                return "Elke maandag"
             case 2:
-                return "Elke woensdag"
+                return "Elke dinsdag"
             case 3:
-                return "Elke donderdag"
+                return "Elke woensdag"
             case 4:
-                return "Elke vrijdag"
+                return "Elke donderdag"
             case 5:
-                return "Elke zaterdag"
+                return "Elke vrijdag"
             case 6:
+                return "Elke zaterdag"
+            case 7:
                 return "Elke zondag"
             default:
                 return nil
@@ -155,21 +166,22 @@ class BuddyNewMedicineController: FormViewController {
     
    
     func initForm(){
-        self.form.sections[0].rows[0].value = medicin?.name;
+        self.form.sections[0].rows[0].value = medicine?.name;
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "saveNewMedicine" {
             saveChanges();
+        }else if segue.identifier == "showMedicinePicture" {
+            let buddyMedicinePictureController = segue.destinationViewController as! BuddyMedicinePictureController;
+            buddyMedicinePictureController.medicine = medicine;
         }
     }
     
     func saveChanges(){
         //TODO: update db
-        if(newMedicin){
-            medicin = Medicine();
-        }
-        medicin?.name = self.form.formValues()[FormTag.medicinName]!.description;
+
+        medicine?.name = self.form.formValues()[FormTag.medicinName]!.description;
     }
 }

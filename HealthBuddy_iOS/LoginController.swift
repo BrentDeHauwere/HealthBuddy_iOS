@@ -19,9 +19,6 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         // Do any additional setup after loading the view, typically from a nib.
         btnLogin.layer.cornerRadius = 10;
         btnLogin.clipsToBounds = true;
@@ -45,15 +42,11 @@ class LoginController: UIViewController {
             Alert.alertStatus("Vul uw email en wachtwoord in alstublieft", title: "Aanmelden mislukt", view: self);
         }else{
             //TODO: Connect to back-end and verify account
-            
-       
-            
             let success = true;
             if success
             {
                 //if role == zorgmantel{
                self.performSegueWithIdentifier("showPatientsList", sender: self);
-                
                 //if role == zorgbehoevende
               //  self.performSegueWithIdentifier("showBuddyView", sender: self);
             }

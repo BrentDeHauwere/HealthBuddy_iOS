@@ -91,8 +91,7 @@ class BuddyMedicineController: UITableViewController {
         if segue.identifier == "loadMedicine" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 if let buddyNewMedicine = segue.destinationViewController as? BuddyNewMedicineController {
-                        print("I'M HERE!!!");
-                        buddyNewMedicine.medicin =  medicines[indexPath.row];
+                        buddyNewMedicine.medicine =  medicines[indexPath.row];
                 }
             }
         }
@@ -105,7 +104,7 @@ class BuddyMedicineController: UITableViewController {
     
     @IBAction func saveNewMedicine(segue:UIStoryboardSegue) {
         if let buddynewMedicineController = segue.sourceViewController as? BuddyNewMedicineController{
-            if let medicine = buddynewMedicineController.medicin {
+            if let medicine = buddynewMedicineController.medicine {
                 //Indien nieuwe medicijn: append, else: replace
                 if(buddynewMedicineController.newMedicin){
                     medicines.append(medicine);

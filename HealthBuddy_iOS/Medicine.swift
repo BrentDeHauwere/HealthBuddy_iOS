@@ -11,7 +11,7 @@ import UIKit
 class Medicine{
     var id: Int = -1;
     var name: String = "";
-    var photo: UIImage? = nil;
+    var photo: UIImage? = UIImage(named: "selectImage");
     var schedule = [MedicalSchedule]();
     
     init(){
