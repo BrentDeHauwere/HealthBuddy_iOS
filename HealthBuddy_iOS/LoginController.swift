@@ -20,7 +20,11 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        /* KAMIEL TEST */
+        let a = APIController()
+        a.getUser(1)
+                
+        /* END KAMIEL TEST */
         
         // Do any additional setup after loading the view, typically from a nib.
         btnLogin.layer.cornerRadius = 10;

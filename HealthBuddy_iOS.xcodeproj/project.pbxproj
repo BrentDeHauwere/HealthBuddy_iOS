@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C7371931C91672A00396D6B /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7371921C91672A00396D6B /* APIController.swift */; };
+		2C7371981C91832E00396D6B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7371971C91832E00396D6B /* DateExtension.swift */; };
 		6D8A5E22C35F4DC93A50FE2B /* Pods_HealthBuddy_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302270A89DF9A481436CBA50 /* Pods_HealthBuddy_iOS.framework */; };
 		AC27CE561C8C5BD700EBFE89 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC27CE541C8C5BD700EBFE89 /* SwiftHTTP.framework */; };
 		AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A519A1C8C382300804C65 /* AppDelegate.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C7371921C91672A00396D6B /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		2C7371971C91832E00396D6B /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		302270A89DF9A481436CBA50 /* Pods_HealthBuddy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthBuddy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62B7CBE15E1C877EACB9D8C6 /* Pods-HealthBuddy_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthBuddy_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		AC27CE531C8C5BD700EBFE89 /* BTNavigationDropdownMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BTNavigationDropdownMenu.framework; path = "Pods/../build/Debug-iphoneos/BTNavigationDropdownMenu.framework"; sourceTree = "<group>"; };
@@ -107,6 +111,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2C7371941C9182F700396D6B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2C7371971C91832E00396D6B /* DateExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		A7FA540DBF4E723C6A88BA3B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +153,7 @@
 		AC5A51991C8C382300804C65 /* HealthBuddy_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				2C7371941C9182F700396D6B /* Extensions */,
 				ACFC566B1C8D8F3800269458 /* BuddyControllers */,
 				ACFC56681C8D8CEB00269458 /* Entity */,
 				AC5A519A1C8C382300804C65 /* AppDelegate.swift */,
@@ -188,6 +201,7 @@
 				AC9EB0911C8F52310084DAC8 /* BuddyMedicineController.swift */,
 				AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */,
 				ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */,
+				2C7371921C91672A00396D6B /* APIController.swift */,
 			);
 			name = BuddyControllers;
 			sourceTree = "<group>";
@@ -378,7 +392,9 @@
 				ACFC566F1C8DA00C00269458 /* BuddyMedicaliDController.swift in Sources */,
 				AC9EB0941C8F52420084DAC8 /* BuddyWeightController.swift in Sources */,
 				AC5A519D1C8C382300804C65 /* LoginController.swift in Sources */,
+				2C7371931C91672A00396D6B /* APIController.swift in Sources */,
 				AC9EB0921C8F52310084DAC8 /* BuddyMedicineController.swift in Sources */,
+				2C7371981C91832E00396D6B /* DateExtension.swift in Sources */,
 				AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */,
 				ACFC566A1C8D8D6A00269458 /* User.swift in Sources */,
 				ACFC566D1C8D8F8400269458 /* BuddyListController.swift in Sources */,

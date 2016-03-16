@@ -30,7 +30,7 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         //TODO: haal alle patienten af met als buddy_id = user_id ingelogde user
         
         //mock:
-        self.patients = [User(firstName:"Yen", lastName: "Jacobs"),User(firstName:"Elvin", lastName: "Jacobs"),User(firstName:"Gunther", lastName: "Jacobs"),User(firstName:"Sabine", lastName: "Baeyens"),User(firstName:"Dieter", lastName: "Roels")];
+        //self.patients = [User(firstName:"Yen", lastName: "Jacobs"),User(firstName:"Elvin", lastName: "Jacobs"),User(firstName:"Gunther", lastName: "Jacobs"),User(firstName:"Sabine", lastName: "Baeyens"),User(firstName:"Dieter", lastName: "Roels")];
     }
     
     func setupSearchBar(){
