@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -233,16 +234,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Medicatie" image="safari" id="EC0-GE-iLA"/>
+                    <tabBarItem key="tabBarItem" title="Medicatie" image="MedicinTabIcon" id="EC0-GE-iLA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q6Y-w2-Rgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2112" y="2279"/>
         </scene>
-        <!--Overzicht-->
+        <!--Dashboard-->
         <scene sceneID="1pN-Lo-UHM">
             <objects>
-                <viewController title="Overzicht" id="cTh-jp-9qo" sceneMemberID="viewController">
+                <viewController title="Dashboard" id="cTh-jp-9qo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0DO-Wy-Cvy"/>
                         <viewControllerLayoutGuide type="bottom" id="3t9-c0-KOR"/>
@@ -252,7 +253,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Overzicht" image="Player" id="LUK-Oe-wVj"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="Player" id="LUK-Oe-wVj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Um-oK-Ihd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -291,7 +292,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Gewicht" image="safari" id="hUd-yv-0vs"/>
+                    <tabBarItem key="tabBarItem" title="Gewicht" image="WeightTabIcon" id="hUd-yv-0vs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQf-Ur-6UA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -556,6 +557,7 @@
                         <viewControllerLayoutGuide type="bottom" id="h25-RS-GCF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CDy-3j-JWh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5b3-pr-eCk">
@@ -591,12 +593,12 @@
                                 <exclude reference="7qy-8f-P3r"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="WQN-Ei-o3a"/>
+                                <exclude reference="n4w-Ue-Fvn"/>
                                 <exclude reference="1Ss-3e-hqV"/>
                                 <exclude reference="L9k-1w-f1D"/>
                                 <exclude reference="XLO-Vg-psP"/>
                                 <exclude reference="giB-fD-Wf0"/>
-                                <exclude reference="WQN-Ei-o3a"/>
-                                <exclude reference="n4w-Ue-Fvn"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -605,12 +607,12 @@
                                 <include reference="7qy-8f-P3r"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="WQN-Ei-o3a"/>
+                                <include reference="n4w-Ue-Fvn"/>
                                 <include reference="1Ss-3e-hqV"/>
                                 <include reference="L9k-1w-f1D"/>
                                 <include reference="XLO-Vg-psP"/>
                                 <include reference="giB-fD-Wf0"/>
-                                <include reference="WQN-Ei-o3a"/>
-                                <include reference="n4w-Ue-Fvn"/>
                             </mask>
                         </variation>
                     </view>
@@ -738,8 +740,9 @@
         <image name="ContactLogo" width="25" height="25"/>
         <image name="Logo" width="487" height="607"/>
         <image name="Medicatie" width="50" height="50"/>
+        <image name="MedicinTabIcon" width="30" height="25"/>
         <image name="Player" width="30" height="30"/>
-        <image name="safari" width="20" height="23"/>
+        <image name="WeightTabIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KXN-pw-ZaX"/>
