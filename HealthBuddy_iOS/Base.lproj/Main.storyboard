@@ -234,16 +234,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Medicatie" image="MedicinTabIcon" id="EC0-GE-iLA"/>
+                    <navigationItem key="navigationItem" id="m16-FH-4Dd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q6Y-w2-Rgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="2279"/>
+            <point key="canvasLocation" x="3030" y="2279"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="1pN-Lo-UHM">
             <objects>
-                <viewController title="Dashboard" id="cTh-jp-9qo" sceneMemberID="viewController">
+                <viewController title="Dashboard" id="cTh-jp-9qo" customClass="PatientDashboardController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0DO-Wy-Cvy"/>
                         <viewControllerLayoutGuide type="bottom" id="3t9-c0-KOR"/>
@@ -251,13 +251,61 @@
                     <view key="view" contentMode="scaleToFill" id="Otv-fN-Qwd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Medkit" translatesAutoresizingMaskIntoConstraints="NO" id="LgA-xR-hJl">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="346" id="7Hb-oV-SQt"/>
+                                    <constraint firstAttribute="width" constant="400" id="KIm-JS-F62"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7Hb-oV-SQt"/>
+                                        <exclude reference="KIm-JS-F62"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="7Hb-oV-SQt"/>
+                                        <include reference="KIm-JS-F62"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LgA-xR-hJl" firstAttribute="leading" secondItem="Otv-fN-Qwd" secondAttribute="leadingMargin" constant="-20" id="Gsb-vC-SRq"/>
+                            <constraint firstItem="LgA-xR-hJl" firstAttribute="top" secondItem="Otv-fN-Qwd" secondAttribute="topMargin" id="YgU-qw-MEa">
+                                <variation key="widthClass=compact" constant="64"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="LgA-xR-hJl" secondAttribute="trailing" constant="-20" id="wwj-gz-nTG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="LgA-xR-hJl"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Gsb-vC-SRq"/>
+                                <exclude reference="YgU-qw-MEa"/>
+                                <exclude reference="wwj-gz-nTG"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="LgA-xR-hJl"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Gsb-vC-SRq"/>
+                                <include reference="YgU-qw-MEa"/>
+                                <include reference="wwj-gz-nTG"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dashboard" image="Player" id="LUK-Oe-wVj"/>
+                    <navigationItem key="navigationItem" id="OF5-G2-57a"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Um-oK-Ihd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="725"/>
+            <point key="canvasLocation" x="3030" y="725"/>
         </scene>
         <!--Buddy Tab Bar Controller-->
         <scene sceneID="RsC-4x-t7b">
@@ -270,9 +318,9 @@
                         <color key="barTintColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="cTh-jp-9qo" kind="relationship" relationship="viewControllers" id="TC9-eR-niV"/>
-                        <segue destination="r9p-XL-Xdv" kind="relationship" relationship="viewControllers" id="QKx-DW-2mY"/>
-                        <segue destination="JaT-Mk-mRr" kind="relationship" relationship="viewControllers" id="4ZR-4t-B6e"/>
+                        <segue destination="L4c-IP-CaP" kind="relationship" relationship="viewControllers" id="TC9-eR-niV"/>
+                        <segue destination="Jzc-0B-xeY" kind="relationship" relationship="viewControllers" id="QKx-DW-2mY"/>
+                        <segue destination="uKa-P9-ae3" kind="relationship" relationship="viewControllers" id="4ZR-4t-B6e"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Sl-e8-knb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,11 +340,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Gewicht" image="WeightTabIcon" id="hUd-yv-0vs"/>
+                    <navigationItem key="navigationItem" id="qfE-eG-NOj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQf-Ur-6UA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="1475"/>
+            <point key="canvasLocation" x="3030" y="1475"/>
         </scene>
         <!--Zorgbehoevenden-->
         <scene sceneID="c7y-8T-6Tm">
@@ -735,12 +783,71 @@
             </objects>
             <point key="canvasLocation" x="4542" y="-963"/>
         </scene>
+        <!--Dashboard-->
+        <scene sceneID="SMa-fc-Vfa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L4c-IP-CaP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="Player" id="LUK-Oe-wVj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="vHN-gX-6qr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cTh-jp-9qo" kind="relationship" relationship="rootViewController" id="QKS-X2-aTr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="azb-Vh-Col" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2112" y="725"/>
+        </scene>
+        <!--Gewicht-->
+        <scene sceneID="tc6-Wb-spF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uKa-P9-ae3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Gewicht" image="WeightTabIcon" id="hUd-yv-0vs"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X7l-h6-eEx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JaT-Mk-mRr" kind="relationship" relationship="rootViewController" id="NiU-KO-w1P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Dt-4F-o9n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2112" y="1475"/>
+        </scene>
+        <!--Medicatie-->
+        <scene sceneID="12O-PH-LTg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jzc-0B-xeY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Medicatie" image="MedicinTabIcon" id="EC0-GE-iLA"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lGx-cB-Ykh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="r9p-XL-Xdv" kind="relationship" relationship="rootViewController" id="nCh-Rb-duu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XPp-Hy-GxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2112" y="2279"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ContactLogo" width="25" height="25"/>
         <image name="Logo" width="487" height="607"/>
         <image name="Medicatie" width="50" height="50"/>
         <image name="MedicinTabIcon" width="30" height="25"/>
+        <image name="Medkit" width="512" height="512"/>
         <image name="Player" width="30" height="30"/>
         <image name="WeightTabIcon" width="30" height="30"/>
     </resources>

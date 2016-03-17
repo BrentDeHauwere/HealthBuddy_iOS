@@ -11,6 +11,7 @@ import SwiftHTTP
 
 
 class LoginController: UIViewController {
+    var loggedInUser:User?;
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
@@ -45,15 +46,27 @@ class LoginController: UIViewController {
             let success = true;
             if success
             {
+                loggedInUser = User(firstName: "Yen", lastName: "Jacobs");
                 //if role == zorgmantel{
               // self.performSegueWithIdentifier("showPatientsList", sender: self);
                 //if role == zorgbehoevende
+                
+                
                 self.performSegueWithIdentifier("showBuddyView", sender: self);
             }
         }
     }
+   
     
- 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showBuddyView" {
+            let destinationTabbar = segue.destinationViewController as! UITabBarController;
+            let destinationNavigationController = destinationTabbar.viewControllers![0] as! UINavigationController;
+            let patientDashboard = destinationNavigationController.viewControllers[0] as! PatientDashboardController;
+            patientDashboard.patient = loggedInUser;
+        }
+    }
+    
 
     @IBAction func backgroundTap(sender: AnyObject) {
         self.view.endEditing(true);
