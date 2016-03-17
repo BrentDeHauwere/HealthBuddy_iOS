@@ -252,42 +252,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Medkit" translatesAutoresizingMaskIntoConstraints="NO" id="LgA-xR-hJl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Medkit" translatesAutoresizingMaskIntoConstraints="NO" id="LgA-xR-hJl">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="346" id="7Hb-oV-SQt"/>
-                                    <constraint firstAttribute="width" constant="400" id="KIm-JS-F62"/>
+                                    <constraint firstAttribute="height" constant="346" id="Bwm-ix-s3C"/>
+                                    <constraint firstAttribute="width" constant="400" id="cjf-VY-lck"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="7Hb-oV-SQt"/>
-                                        <exclude reference="KIm-JS-F62"/>
+                                        <exclude reference="Bwm-ix-s3C"/>
+                                        <exclude reference="cjf-VY-lck"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="7Hb-oV-SQt"/>
-                                        <include reference="KIm-JS-F62"/>
+                                        <include reference="Bwm-ix-s3C"/>
+                                        <include reference="cjf-VY-lck"/>
                                     </mask>
                                 </variation>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LgA-xR-hJl" firstAttribute="leading" secondItem="Otv-fN-Qwd" secondAttribute="leadingMargin" constant="-20" id="Gsb-vC-SRq"/>
-                            <constraint firstItem="LgA-xR-hJl" firstAttribute="top" secondItem="Otv-fN-Qwd" secondAttribute="topMargin" id="YgU-qw-MEa">
-                                <variation key="widthClass=compact" constant="64"/>
-                            </constraint>
-                            <constraint firstAttribute="trailingMargin" secondItem="LgA-xR-hJl" secondAttribute="trailing" constant="-20" id="wwj-gz-nTG"/>
+                            <constraint firstItem="LgA-xR-hJl" firstAttribute="centerX" secondItem="Otv-fN-Qwd" secondAttribute="centerX" id="JQe-o5-Bez"/>
+                            <constraint firstItem="LgA-xR-hJl" firstAttribute="top" secondItem="0DO-Wy-Cvy" secondAttribute="bottom" id="Jzk-kL-5QJ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="LgA-xR-hJl"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Gsb-vC-SRq"/>
-                                <exclude reference="YgU-qw-MEa"/>
-                                <exclude reference="wwj-gz-nTG"/>
+                                <exclude reference="JQe-o5-Bez"/>
+                                <exclude reference="Jzk-kL-5QJ"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -295,9 +291,8 @@
                                 <include reference="LgA-xR-hJl"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Gsb-vC-SRq"/>
-                                <include reference="YgU-qw-MEa"/>
-                                <include reference="wwj-gz-nTG"/>
+                                <include reference="JQe-o5-Bez"/>
+                                <include reference="Jzk-kL-5QJ"/>
                             </mask>
                         </variation>
                     </view>
@@ -809,9 +804,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uKa-P9-ae3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Gewicht" image="WeightTabIcon" id="hUd-yv-0vs"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X7l-h6-eEx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="X7l-h6-eEx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -828,9 +824,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jzc-0B-xeY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Medicatie" image="MedicinTabIcon" id="EC0-GE-iLA"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lGx-cB-Ykh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="lGx-cB-Ykh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
