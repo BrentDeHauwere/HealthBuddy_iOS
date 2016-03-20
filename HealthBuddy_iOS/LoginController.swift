@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftHTTP
+import MRProgress
 
 
 class LoginController: UIViewController {
@@ -42,35 +43,50 @@ class LoginController: UIViewController {
 
     
     @IBAction func ClickSignIn(sender: UIButton) {
-     //   if txtEmail.text == "" || txtPassword.text == ""
-     //   {
-     //       Alert.alertStatus("Vul uw email en wachtwoord in alstublieft", title: "Aanmelden mislukt", view: self);
-     //   }else{
-        
-        
-         do {
-            _ = try DatabaseController.postRequest(Routes.login, parameters: ["email": txtEmail.text!, "password": txtPassword.text!]);
-         } catch let error {
-            print("got an error creating the request: \(error)")
-            Alert.alertStatus("Oeps, er ging iets mis. Probeer opnieuw", title: "Aanmelden mislukt", view: self);
-            return;
-         }
-        
-        
-            
-            
-            /*
+        if txtEmail.text == "" || txtPassword.text == ""
+        {
+            Alert.alertStatus("Vul uw email en wachtwoord in alstublieft", title: "Aanmelden mislukt", view: self);
+        }else{
+            self.logIn();
+  
+        /*
             if self.loggedInUser != nil {
                 self.performSegueWithIdentifier("showPatientsList", sender: self);
             }else{
                 Alert.alertStatus("Oeps, er ging iets mis. Probeer opnieuw", title: "Aanmelden mislukt", view: self);
             }
-*/
-        //}
+        */
+
+        }
+    }
+    
+    func logIn(){
+        do {
+            MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
+            let opt = try HTTP.POST(Routes.login, parameters: ["email": self.txtEmail.text!, "password": self.txtPassword.text!])
+            opt.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    Alert.alertStatus("Oeps er liep iets mis, controleer uw internetverbinding of probeer later opnieuw", title: "Aanmelden mislukt", view: self);
+                    return
+                }
+  
+                print("opt finished: \(response.description)")
+                
+                
+                
+                
+                
+                //TODO: parse response to object
+                MRProgressOverlayView.dismissAllOverlaysForView(self.view, animated: true);
+            }
+        } catch let error {
+            print("got an error creating the request: \(error)")
+        }
     }
     
     
-
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showBuddyView" {

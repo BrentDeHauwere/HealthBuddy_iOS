@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8C11F719129398590B621A76'
-               BlueprintName = 'Pods-HealthBuddy_iOS'
+               BlueprintIdentifier = 'ACEE52E2C9F5A12E002DA568'
+               BlueprintName = 'MRProgress'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_HealthBuddy_iOS.framework'>
+               BuildableName = 'MRProgress.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

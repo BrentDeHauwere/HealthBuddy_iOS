@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MRProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-HealthBuddy_iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06F1561FC022D9B695B8139DB214BEFC</key>
+		<key>2E935B36DB9E21F08D670EBD41D7A4DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0A1CAFB68B49093D7F7C1F86FFB0F6A9</key>
+		<key>39D97CEF88EF8AD2FD56014D7EB29F76</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AEB25D8E52B8F6807E10D50107FECB4F</key>
+		<key>83784D63FAFC898E90A908FE8DB59730</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9CAAB2A1855182D992E2945796B03B4D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
