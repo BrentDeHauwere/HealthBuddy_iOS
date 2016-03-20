@@ -24,6 +24,10 @@ class LoginController: UIViewController {
         btnLogin.layer.cornerRadius = 10;
         btnLogin.clipsToBounds = true;
         
+        //Temporary auto login
+        txtEmail.text = "brentdehauwere@gmail.com";
+        txtPassword.text = "secret";
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,27 +40,37 @@ class LoginController: UIViewController {
         return true;
     }
 
+    
     @IBAction func ClickSignIn(sender: UIButton) {
-
-        if txtEmail.text == "" || txtPassword.text == ""
-        {
-            Alert.alertStatus("Vul uw email en wachtwoord in alstublieft", title: "Aanmelden mislukt", view: self);
-        }else{
-            //TODO: Connect to back-end and verify account
-            let success = true;
-            if success
-            {
-                loggedInUser = User(firstName: "Yen", lastName: "Jacobs");
-                //if role == zorgmantel{
-              // self.performSegueWithIdentifier("showPatientsList", sender: self);
-                //if role == zorgbehoevende
-                
-                
-                self.performSegueWithIdentifier("showBuddyView", sender: self);
+     //   if txtEmail.text == "" || txtPassword.text == ""
+     //   {
+     //       Alert.alertStatus("Vul uw email en wachtwoord in alstublieft", title: "Aanmelden mislukt", view: self);
+     //   }else{
+        
+        
+         do {
+            _ = try DatabaseController.postRequest(Routes.login, parameters: ["email": txtEmail.text!, "password": txtPassword.text!]);
+         } catch let error {
+            print("got an error creating the request: \(error)")
+            Alert.alertStatus("Oeps, er ging iets mis. Probeer opnieuw", title: "Aanmelden mislukt", view: self);
+            return;
+         }
+        
+        
+            
+            
+            /*
+            if self.loggedInUser != nil {
+                self.performSegueWithIdentifier("showPatientsList", sender: self);
+            }else{
+                Alert.alertStatus("Oeps, er ging iets mis. Probeer opnieuw", title: "Aanmelden mislukt", view: self);
             }
-        }
+*/
+        //}
     }
-   
+    
+    
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showBuddyView" {

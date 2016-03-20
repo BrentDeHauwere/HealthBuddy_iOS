@@ -24,6 +24,8 @@
 		AC9EB0941C8F52420084DAC8 /* BuddyWeightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */; };
 		ACCA96301C9078B200D394BE /* BuddyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */; };
 		ACD9022C1C98822D00D260CB /* BuddyNewMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD9022B1C98822D00D260CB /* BuddyNewMedicineController.swift */; };
+		ACE6148D1C9ED6C800922EF7 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6148C1C9ED6C800922EF7 /* DatabaseController.swift */; };
+		ACE6148F1C9ED99400922EF7 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6148E1C9ED99400922EF7 /* Routes.swift */; };
 		ACE77E891C999DD2009706B9 /* BuddyMedicinePictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77E881C999DD2009706B9 /* BuddyMedicinePictureController.swift */; };
 		ACF950641C8F311400218754 /* BuddyMainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF950631C8F311400218754 /* BuddyMainMenuController.swift */; };
 		ACFC566A1C8D8D6A00269458 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC56691C8D8D6A00269458 /* User.swift */; };
@@ -74,6 +76,8 @@
 		AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyWeightController.swift; sourceTree = "<group>"; };
 		ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyTabBarController.swift; sourceTree = "<group>"; };
 		ACD9022B1C98822D00D260CB /* BuddyNewMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyNewMedicineController.swift; sourceTree = "<group>"; };
+		ACE6148C1C9ED6C800922EF7 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
+		ACE6148E1C9ED99400922EF7 /* Routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		ACE77E881C999DD2009706B9 /* BuddyMedicinePictureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMedicinePictureController.swift; sourceTree = "<group>"; };
 		ACF950631C8F311400218754 /* BuddyMainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMainMenuController.swift; sourceTree = "<group>"; };
 		ACFC56691C8D8D6A00269458 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -128,12 +132,12 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		AC20C0441C9AB1DB00E3E458 /* PatientController */ = {
+		AC20C0441C9AB1DB00E3E458 /* PatientControllers */ = {
 			isa = PBXGroup;
 			children = (
 				AC20C0451C9AB20300E3E458 /* PatientDashboardController.swift */,
 			);
-			name = PatientController;
+			name = PatientControllers;
 			sourceTree = "<group>";
 		};
 		AC5A518E1C8C382300804C65 = {
@@ -161,7 +165,8 @@
 		AC5A51991C8C382300804C65 /* HealthBuddy_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				AC20C0441C9AB1DB00E3E458 /* PatientController */,
+				ACE614881C9ED68900922EF7 /* DatabaseControllers */,
+				AC20C0441C9AB1DB00E3E458 /* PatientControllers */,
 				ACFC566B1C8D8F3800269458 /* BuddyControllers */,
 				ACFC56681C8D8CEB00269458 /* Entity */,
 				AC5A519A1C8C382300804C65 /* AppDelegate.swift */,
@@ -190,6 +195,15 @@
 				AC5A51BC1C8C382300804C65 /* Info.plist */,
 			);
 			path = HealthBuddy_iOSUITests;
+			sourceTree = "<group>";
+		};
+		ACE614881C9ED68900922EF7 /* DatabaseControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ACE6148C1C9ED6C800922EF7 /* DatabaseController.swift */,
+				ACE6148E1C9ED99400922EF7 /* Routes.swift */,
+			);
+			name = DatabaseControllers;
 			sourceTree = "<group>";
 		};
 		ACFC56681C8D8CEB00269458 /* Entity */ = {
@@ -411,8 +425,10 @@
 				AC1823281C9440C600F66C9E /* Alert.swift in Sources */,
 				AC5B0B6C1C945CE2005D0558 /* MedicalSchedule.swift in Sources */,
 				ACFC566A1C8D8D6A00269458 /* User.swift in Sources */,
+				ACE6148F1C9ED99400922EF7 /* Routes.swift in Sources */,
 				ACFC566D1C8D8F8400269458 /* BuddyListController.swift in Sources */,
 				ACCA96301C9078B200D394BE /* BuddyTabBarController.swift in Sources */,
+				ACE6148D1C9ED6C800922EF7 /* DatabaseController.swift in Sources */,
 				AC2EEB591C9167E800356A23 /* Medicine.swift in Sources */,
 				ACD9022C1C98822D00D260CB /* BuddyNewMedicineController.swift in Sources */,
 				ACE77E891C999DD2009706B9 /* BuddyMedicinePictureController.swift in Sources */,

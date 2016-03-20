@@ -14,7 +14,6 @@ class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerD
     
     override func viewDidLoad() {
         self.title = "Medicatie foto"
-        print(medicine?.photo);
         MedicineImageView.image = medicine?.photo;
     }
     
