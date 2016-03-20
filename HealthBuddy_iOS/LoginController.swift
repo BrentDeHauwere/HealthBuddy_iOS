@@ -62,13 +62,17 @@ class LoginController: UIViewController {
     }
     
     func logIn(){
-       // MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
+        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
         Alamofire.request(.POST, Routes.login, parameters: ["email": txtEmail.text!, "password":txtPassword.text!])
             .responseJSON { response in
+               MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                
                 if(response.result.isSuccess){
                     Alert.alertStatusWithSymbol(true,message: "Aanmelden geslaagd", seconds: 1.5, view: self.view);
-                    //TODO: parse json to object
+                    
+                    
                     if let JSON = response.result.value {
+                        //TODO: parse json to object
                         print("JSON: \(JSON)")
                     }
                     
@@ -82,6 +86,8 @@ class LoginController: UIViewController {
                     Alert.alertStatusWithSymbol(false,message: "Aanmelden mislukt", seconds: 1.5, view: self.view);
                     return;
                 }
+                
+                
         }
     }
     
