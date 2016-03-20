@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftHTTP
+import Alamofire
 import MRProgress
 
 
@@ -47,6 +47,7 @@ class LoginController: UIViewController {
         {
             Alert.alertStatus("Vul uw email en wachtwoord in alstublieft", title: "Aanmelden mislukt", view: self);
         }else{
+            
             self.logIn();
   
         /*
@@ -61,31 +62,11 @@ class LoginController: UIViewController {
     }
     
     func logIn(){
-        do {
-            MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
-            let opt = try HTTP.POST(Routes.login, parameters: ["email": self.txtEmail.text!, "password": self.txtPassword.text!])
-            opt.start { response in
-                if let err = response.error {
-                    print("error: \(err.localizedDescription)")
-                    MRProgressOverlayView.dismissAllOverlaysForView(self.view, animated: true);
-           
-                    Alert.alertStatus("Oeps er liep iets mis, controleer uw internetverbinding of probeer later opnieuw", title: "Aanmelden mislukt", view: self);
-                    
-                    return
+        Alamofire.request(.POST, Routes.login, parameters: ["email": txtEmail.text!, "password":txtPassword.text!])
+            .responseJSON { response in
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
                 }
-  
-                print("opt finished: \(response.description)")
-                
-                
-                
-                //TODO: parse response to object
-                
-
-                 MRProgressOverlayView.dismissAllOverlaysForView(self.view, animated: true);
-            }
-        } catch let error {
-            print("got an error creating the request: \(error)")
-            MRProgressOverlayView.dismissAllOverlaysForView(self.view, animated: true);
         }
     }
     
