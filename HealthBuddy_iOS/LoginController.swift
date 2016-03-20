@@ -67,7 +67,10 @@ class LoginController: UIViewController {
             opt.start { response in
                 if let err = response.error {
                     print("error: \(err.localizedDescription)")
+                    MRProgressOverlayView.dismissAllOverlaysForView(self.view, animated: true);
+           
                     Alert.alertStatus("Oeps er liep iets mis, controleer uw internetverbinding of probeer later opnieuw", title: "Aanmelden mislukt", view: self);
+                    
                     return
                 }
   
@@ -75,13 +78,14 @@ class LoginController: UIViewController {
                 
                 
                 
-                
-                
                 //TODO: parse response to object
-                MRProgressOverlayView.dismissAllOverlaysForView(self.view, animated: true);
+                
+
+                 MRProgressOverlayView.dismissAllOverlaysForView(self.view, animated: true);
             }
         } catch let error {
             print("got an error creating the request: \(error)")
+            MRProgressOverlayView.dismissAllOverlaysForView(self.view, animated: true);
         }
     }
     
