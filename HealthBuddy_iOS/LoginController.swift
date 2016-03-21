@@ -33,7 +33,6 @@ class LoginController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func textFieldShouldReturn(textfield: UITextField)->Bool{
@@ -47,17 +46,7 @@ class LoginController: UIViewController {
         {
             Alert.alertStatus("Vul uw email en wachtwoord in alstublieft", title: "Aanmelden mislukt", view: self);
         }else{
-            
             self.logIn();
-  
-        /*
-            if self.loggedInUser != nil {
-                self.performSegueWithIdentifier("showPatientsList", sender: self);
-            }else{
-                Alert.alertStatus("Oeps, er ging iets mis. Probeer opnieuw", title: "Aanmelden mislukt", view: self);
-            }
-        */
-
         }
     }
     
@@ -71,24 +60,21 @@ class LoginController: UIViewController {
                 if(response.result.isSuccess){
                     Alert.alertStatusWithSymbol(true,message: "Aanmelden geslaagd", seconds: 1.5, view: self.view);
                     
-                    
                     if let JSON = response.result.value {
-                        //TODO: parse json to object
-                        self.loggedInUser = Mapper<User>().map(JSON);
                         print(JSON);
-                        
-                        print(self.loggedInUser!.description);
-                        
-                        
-                        for var i = 0 ;i < self.loggedInUser?.patients!.count; i++ {
-                            print("Patient \(i+1): \(self.loggedInUser?.patients![i].description)");
-                        }
+                        self.loggedInUser = Mapper<User>().map(JSON);
                     }
                     
                     let delay = 1.5 * Double(NSEC_PER_SEC)
                     let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                     dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                        self.performSegueWithIdentifier("showPatientsList", sender: self);
+                        if self.loggedInUser?.role ==  Roles.Zorgmantel {
+                            self.performSegueWithIdentifier("showPatientsList", sender: self);
+                        }else if self.loggedInUser?.role == Roles.zorgBehoevende {
+                            self.performSegueWithIdentifier("Zorg", sender: self);
+                        }else{
+                            print("No valid role");
+                        }
                     })
                     
                 }else{
@@ -100,17 +86,16 @@ class LoginController: UIViewController {
         }
     }
     
-    
-    
-    
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showBuddyView" {
             let destinationTabbar = segue.destinationViewController as! UITabBarController;
             let destinationNavigationController = destinationTabbar.viewControllers![0] as! UINavigationController;
             let patientDashboard = destinationNavigationController.viewControllers[0] as! PatientDashboardController;
             patientDashboard.patient = loggedInUser;
+        }else if segue.identifier == "showPatientsList" {
+            let destNavController = segue.destinationViewController as! UINavigationController;
+            let patientListView = destNavController.viewControllers[0] as! BuddyListControler;
+            patientListView.patients = (loggedInUser?.patients)!;
         }
     }
     

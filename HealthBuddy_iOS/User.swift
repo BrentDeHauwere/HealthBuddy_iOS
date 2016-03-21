@@ -9,6 +9,11 @@
 import Foundation
 import ObjectMapper
 
+struct Roles{
+    static let Zorgmantel = "Zorgmantel";
+    static let zorgBehoevende = "Zorgbehoevende";
+}
+
 class User: Mappable{
     var apiToken:String?;
     var userId:Int?;

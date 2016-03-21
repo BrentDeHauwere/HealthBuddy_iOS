@@ -18,7 +18,6 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad();
         self.navigationItem.hidesBackButton = true;
-        loadPatientsList();
         setupSearchBar();
     }
     
@@ -34,13 +33,6 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         super.viewWillAppear(animated);
     }
 
-    
-    func loadPatientsList(){
-        //TODO: haal alle patienten af met als buddy_id = user_id ingelogde user
-        self.clearsSelectionOnViewWillAppear=false;
-        //mock:
-        self.patients = [User(firstName:"Yen", lastName: "Jacobs"),User(firstName:"Elvin", lastName: "Jacobs"),User(firstName:"Gunther", lastName: "Jacobs"),User(firstName:"Sabine", lastName: "Baeyens"),User(firstName:"Dieter", lastName: "Roels")];
-    }
     
     func setupSearchBar(){
         tableView.dataSource = self;
