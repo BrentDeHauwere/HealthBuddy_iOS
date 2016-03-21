@@ -75,6 +75,7 @@ class LoginController: UIViewController {
                     if let JSON = response.result.value {
                         //TODO: parse json to object
                         self.loggedInUser = Mapper<User>().map(JSON);
+                        print(JSON);
                         
                         print(self.loggedInUser!.description);
                     }
