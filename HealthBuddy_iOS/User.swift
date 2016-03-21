@@ -7,17 +7,34 @@
 //
 
 import Foundation
+import ObjectMapper
 
-
-class User{
-    var id:Int = -1;
-    var firstName:String = "";
-    var lastName:String = "";
+class User: Mappable{
+    var apiToken:String?;
+    var userId:Int?;
+    var firstName:String?;
+    var lastName:String?;
     
     init(firstName: String, lastName: String){
         self.firstName = firstName;
         self.lastName = lastName;
     }
     
+    required init?(_ map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        apiToken    <- map["api_token"]
+        userId    <- map["id"]
+        firstName   <- map["firstName"]
+        lastName    <- map["lastName"]
+    }
+    
+    
+    var description: String {
+        return "apiToken: \(self.apiToken!)\nuserId: \(self.userId)\nfirstName: \(self.firstName)\nlastName: \(self.lastName)";
+    }
+
     
 }

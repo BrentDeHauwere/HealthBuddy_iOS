@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import MRProgress
-
+import ObjectMapper
 
 class LoginController: UIViewController {
     var loggedInUser:User?;
@@ -63,6 +63,7 @@ class LoginController: UIViewController {
     
     func logIn(){
         MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
+
         Alamofire.request(.POST, Routes.login, parameters: ["email": txtEmail.text!, "password":txtPassword.text!])
             .responseJSON { response in
                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
@@ -73,7 +74,9 @@ class LoginController: UIViewController {
                     
                     if let JSON = response.result.value {
                         //TODO: parse json to object
-                        print("JSON: \(JSON)")
+                        self.loggedInUser = Mapper<User>().map(JSON);
+                        
+                        print(self.loggedInUser!.description);
                     }
                     
                     let delay = 1.5 * Double(NSEC_PER_SEC)
@@ -90,6 +93,8 @@ class LoginController: UIViewController {
                 
         }
     }
+    
+    
     
     
     

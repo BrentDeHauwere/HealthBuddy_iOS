@@ -80,7 +80,7 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("patient", forIndexPath: indexPath) as UITableViewCell;
         let patient: User = filteredData[indexPath.row];
-        cell.textLabel?.text = patient.firstName + " " + patient.lastName;
+        cell.textLabel?.text = patient.firstName! + " " + patient.lastName!;
         return cell;
     }
     
