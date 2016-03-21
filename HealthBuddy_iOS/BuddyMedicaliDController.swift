@@ -52,7 +52,7 @@ class BuddyMedicaliDController: FormViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:"backButtonPressed:");
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Opslaan", style: .Plain, target: self, action: "submit:")
-        self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
+        self.navigationItem.title = "\(patient.firstName!) \(patient.lastName!)";
         
         self.initForm();
         
@@ -178,8 +178,14 @@ class BuddyMedicaliDController: FormViewController {
     
     //Initiating the form values with the patient object
     func initForm(){
+        self.form.sections[0].rows[0].value = patient.gender;
         self.form.sections[0].rows[1].value = patient.firstName;
         self.form.sections[0].rows[2].value = patient.lastName;
+        //TODO: dateOfBirth
+        //  self.form.sections[0].rows[3].value = patient.dateOfBirth;
+        //TODO: telefoonnummer in db?
+        
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -218,6 +224,9 @@ class BuddyMedicaliDController: FormViewController {
     }
     
     func patientUpdated() -> Bool{
+        if self.form.formValues()[formTag.geslacht]!.description != patient.gender {
+            return true;
+        }
         if self.form.formValues()[formTag.voornaam]!.description !=  patient.firstName{
             return true;
         }
@@ -229,10 +238,9 @@ class BuddyMedicaliDController: FormViewController {
     
     func submit(sender:UIBarButtonItem){
         //TODO: update database
+        patient.gender = self.form.formValues()[formTag.geslacht]!.description;
         patient.firstName = self.form.formValues()[formTag.voornaam]!.description;
         patient.lastName = self.form.formValues()[formTag.naam]!.description;
-       
-
        
         self.navigationController?.popViewControllerAnimated(true);
     }

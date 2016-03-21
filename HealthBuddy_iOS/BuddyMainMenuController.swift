@@ -27,8 +27,8 @@ class BuddyMainMenuController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if(self.navigationItem.title != "\(patient.firstName) \(patient.lastName)"){
-            self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
+        if(self.navigationItem.title != "\(patient.firstName!) \(patient.lastName!)"){
+            self.navigationItem.title = "\(patient.firstName!) \(patient.lastName!)";
         }
          super.viewDidAppear(true);
     }
