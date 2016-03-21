@@ -43,6 +43,17 @@ class User: Mappable{
         self.dateOfBirth <- map["profile.dateOfBirth"]
         self.role        <- map["profile.role"]
         self.patients    <- map["profile.patients"]
+        for var i = 0 ; i < self.patients?.count;i++ {
+            self.patients![i].userId      <- map["profile.patients.\(i).id"]
+            self.patients![i].buddyId     <- map["profile.patients.\(i).buddy_id"]
+            self.patients![i].addressId   <- map["profile.patients.\(i).address_id"]
+            self.patients![i].gender      <- map["profile.patients.\(i).gender"]
+            self.patients![i].firstName   <- map["profile.patients.\(i).firstName"]
+            self.patients![i].lastName    <- map["profile.patients.\(i).lastName"]
+            self.patients![i].email       <- map["profile.patients.\(i).email"]
+            self.patients![i].dateOfBirth <- map["profile.patients.\(i).dateOfBirth"]
+            self.patients![i].role        <- map["profile.patients.\(i).role"]
+        }
     }
     
     
