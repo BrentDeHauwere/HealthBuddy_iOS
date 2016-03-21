@@ -13,13 +13,14 @@ class User: Mappable{
     var apiToken:String?;
     var userId:Int?;
     var buddyId:Int?;
-    var addressId:Int?;
+    var addressId:String?;
     var gender:String?;
     var firstName:String?;
     var lastName:String?;
     var email:String?;
     var dateOfBirth:String?;
-    var role:String?
+    var role:String?;
+    var patients:[User]?;
     
     init(firstName: String, lastName: String){
         self.firstName = firstName;
@@ -31,21 +32,22 @@ class User: Mappable{
     }
     
     func mapping(map: Map) {
-        apiToken    <- map["api_token"]
-        userId      <- map["profile.id"]
-        buddyId     <- map["profile.buddy_id"]
-        addressId   <- map["profile.address_id"]
-        gender      <- map["profile.gender"]
-        firstName   <- map["profile.firstName"]
-        lastName    <- map["profile.lastName"]
-        email       <- map["profile.email"]
-        dateOfBirth <- map["profile.dateOfBirth"]
-        role        <- map["profile.role"]
+        self.apiToken    <- map["api_token"]
+        self.userId      <- map["profile.id"]
+        self.buddyId     <- map["profile.buddy_id"]
+        self.addressId   <- map["profile.address_id"]
+        self.gender      <- map["profile.gender"]
+        self.firstName   <- map["profile.firstName"]
+        self.lastName    <- map["profile.lastName"]
+        self.email       <- map["profile.email"]
+        self.dateOfBirth <- map["profile.dateOfBirth"]
+        self.role        <- map["profile.role"]
+        self.patients    <- map["profile.patients"]
     }
     
     
     var description: String {
-        return "apiToken: \(self.apiToken)\nuserId: \(self.userId)\nbuddyId: \(self.buddyId)\naddressId: \(self.addressId)\ngender: \(self.gender)\nfirstName: \(self.firstName)\nlastName: \(self.lastName)\nemail: \(self.email)\ndateOfBirth: \(self.dateOfBirth)\nRole: \(self.role)\n";
+        return "apiToken: \(self.apiToken)\nuserId: \(self.userId)\nbuddyId: \(self.buddyId)\naddressId: \(self.addressId)\ngender: \(self.gender)\nfirstName: \(self.firstName)\nlastName: \(self.lastName)\nemail: \(self.email)\ndateOfBirth: \(self.dateOfBirth)\nRole: \(self.role)\nPatients: \(self.patients)\n";
     }
 
     

@@ -78,6 +78,7 @@ class LoginController: UIViewController {
                         print(JSON);
                         
                         print(self.loggedInUser!.description);
+                        print(self.loggedInUser?.patients![0].description);
                     }
                     
                     let delay = 1.5 * Double(NSEC_PER_SEC)
