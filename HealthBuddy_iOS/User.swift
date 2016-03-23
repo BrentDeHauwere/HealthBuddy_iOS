@@ -33,7 +33,7 @@ class User: Mappable{
     }
     
     required init?(_ map: Map) {
-        
+        mapping(map)
     }
     
     func mapping(map: Map) {

@@ -91,4 +91,5 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
             }
         }
     }
+
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -7,10 +7,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Login Controller-->
+        <!--loginScreen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="loginScreen" id="BYZ-38-t0r" customClass="LoginController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -208,7 +208,7 @@
                         <outlet property="btnLogin" destination="pgh-Bz-8gB" id="ayk-dQ-RTW"/>
                         <outlet property="txtEmail" destination="ffG-ff-hWU" id="XGf-WH-rXK"/>
                         <outlet property="txtPassword" destination="2xv-D0-74b" id="Hv2-Sz-TDM"/>
-                        <segue destination="SOd-kg-HnI" kind="presentation" identifier="showPatientsList" modalTransitionStyle="coverVertical" id="0vY-Qv-dJ6"/>
+                        <segue destination="SOd-kg-HnI" kind="show" identifier="showPatientsList" id="0vY-Qv-dJ6"/>
                         <segue destination="Y78-16-Rnj" kind="presentation" identifier="showBuddyView" id="Itp-IN-egS"/>
                     </connections>
                 </viewController>
@@ -380,7 +380,13 @@
                             <outlet property="delegate" destination="oZT-0o-nep" id="cUq-4r-YMD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Zorgbehoevenden" id="4tV-xR-8Tx"/>
+                    <navigationItem key="navigationItem" title="Zorgbehoevenden" id="4tV-xR-8Tx">
+                        <barButtonItem key="leftBarButtonItem" title="Afmelden" id="tD2-AB-0gL">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" id="RRl-M3-Cxv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="AAt-SJ-9Zi" id="GHa-9Z-UIG"/>
                         <segue destination="v6r-yy-OID" kind="show" identifier="gotoBuddyMenu" id="KCZ-0h-fJ8"/>
