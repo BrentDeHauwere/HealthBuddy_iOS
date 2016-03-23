@@ -65,6 +65,20 @@ class LoginController: UIViewController {
                         self.loggedInUser = Mapper<User>().map(JSON);
                     }
                     
+                    
+                    let route = "http://10.3.50.33/api/schedule/\(self.loggedInUser!.patients![0].userId!)";
+                    print(route);
+                    Alamofire.request(.POST, route, parameters: ["api_token": (self.loggedInUser?.apiToken)!]).responseJSON{
+                        response in
+                        if(response.result.isSuccess) {
+                            if let JSON = response.result.value {
+                                print(JSON);
+                            }
+                        }else{
+                            print("Medicine request failed");
+                        }
+                    }
+                    
                     let delay = 1.5 * Double(NSEC_PER_SEC)
                     let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                     dispatch_after(dispatchTime, dispatch_get_main_queue(), {

@@ -10,6 +10,7 @@ import Foundation
 
 struct Routes{
     
+    
     static let login =  "http://10.3.50.33/api/login";
     //POST: email, password
     

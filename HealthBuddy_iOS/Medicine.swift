@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class Medicine{
-    var id: Int = -1;
-    var name: String = "";
+class Medicine : Mappable {
+    var id: Int?;
+    var name: String?;
+    var photoUrl:String?;
     var photo: UIImage? = UIImage(named: "selectImage");
     var schedule = [MedicalSchedule]();
     
@@ -21,6 +23,17 @@ class Medicine{
         self.id = id;
         self.name = name;
         self.photo = photo;
+    }
+    
+    required init?(_ map: Map) {
+        mapping(map)
+    }
+    
+    func mapping(map: Map) {
+        self.id         <- map["id"]
+        self.name       <- map["name"]
+        self.photoUrl   <- map["photoUrl"]
+        self.schedule   <- map["schedule"]
     }
 }
 

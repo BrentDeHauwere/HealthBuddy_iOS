@@ -26,6 +26,7 @@ class User: Mappable{
     var dateOfBirth:String?;
     var role:String?;
     var patients:[User]?;
+    var medicines:[Medicine]?;
     
     init(firstName: String, lastName: String){
         self.firstName = firstName;

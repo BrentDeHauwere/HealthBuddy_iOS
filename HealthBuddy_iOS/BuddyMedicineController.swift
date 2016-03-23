@@ -23,7 +23,7 @@ class BuddyMedicineController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         lblMedicine.text = "Medicatie";
-        self.navigationItem.title="\(patient.firstName) \(patient.lastName)";
+        self.navigationItem.title="\(patient.firstName!) \(patient.lastName!)";
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:"backButtonPressed:");
         loadMedicinesOfPatients()
     }

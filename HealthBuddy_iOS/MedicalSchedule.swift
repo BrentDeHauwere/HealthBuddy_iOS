@@ -7,23 +7,38 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class MedicalSchedule {
-    var id:Int = -1;
-    var dayOfWeek:Int = -1;
-    var time: String = "";
-    var amount: Int = -1;
+class MedicalSchedule : Mappable {
+    var id:Int?
+    var medicineId:Int?
+    var dayOfWeek:Int?
+    var time: String?;
+    var amount: String?;
     
     init(){
         
     }
 
     
-    init(id:Int, dayOfWeek:Int, time:String, amount:Int){
+    init(id:Int, dayOfWeek:Int, time:String, amount:String){
         self.id = id;
         self.dayOfWeek = dayOfWeek;
         self.time = time;
         self.amount = amount;
     }
+    
+    required init?(_ map: Map) {
+        mapping(map)
+    }
+    
+    func mapping(map: Map) {
+        self.id         <- map["id"]
+        self.medicineId <- map["mediine_id"]
+        self.dayOfWeek  <- map["dayOfWeek"]
+        self.time       <- map["time"]
+        self.amount     <- map["amount"]
+    }
+    
     
 }
