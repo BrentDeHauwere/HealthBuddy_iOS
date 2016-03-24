@@ -16,7 +16,7 @@ class MedicalInfo: Mappable {
     var id:Int?
     var user_id:Int?
     var length:Int?
-    var weight:Double?
+    var weight:String?
     var bloodType:String?
     var medicalCondition:String?
     var allergies:String?
@@ -27,12 +27,12 @@ class MedicalInfo: Mappable {
     
     func mapping(map: Map) {
         self.id <- map["id"]
-        self.user_id <- map["user_id"]
-        self.length <- map["length"]
-        self.weight <- map["weight"]
-        self.bloodType <- map["bloodType"]
-        self.medicalCondition <- map["medicalCondition"]
-        self.allergies <- map["allergies"]
+        self.user_id            <- (map["user_id"], TransformOf<Int, String>(fromJSON: { ($0 == nil) ? nil : Int($0!) }, toJSON: { $0.map { String($0) } }))
+        self.length             <- (map["length"], TransformOf<Int, String>(fromJSON: { ($0 == nil) ? nil : Int($0!) }, toJSON: { $0.map { String($0) } }))
+        self.weight             <- map["weight"]
+        self.bloodType          <- map["bloodType"]
+        self.medicalCondition   <- map["medicalCondition"]
+        self.allergies          <- map["allergies"]
     }
     
     var description: String {

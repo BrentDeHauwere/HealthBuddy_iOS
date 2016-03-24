@@ -27,6 +27,7 @@ class User: Mappable {
     var patients:[User]?;
     var medicines:[Medicine]?;
     var address: Address?;
+    var medicalInfo: MedicalInfo?;
     
     required init?(_ map: Map) {
         mapping(map)
@@ -45,11 +46,12 @@ class User: Mappable {
         self.patients    <- map["patients"]
         self.medicines   <- map["medicines"]
         self.address     <- map["address"]
+        self.medicalInfo <- map["medicalinfo"]
     }
     
     
     var description: String {
-        return "userId: \(self.userId)\nbuddyId: \(self.buddyId)\naddressId: \(self.addressId)\ngender: \(self.gender)\nfirstName: \(self.firstName)\nlastName: \(self.lastName)\nemail: \(self.email)\ndateOfBirth: \(self.dateOfBirth)\nRole: \(self.role)\nPatients: \(self.patients)\nMedicines: \(self.medicines), Address: \(self.address?.description)";
+        return "userId: \(self.userId)\nbuddyId: \(self.buddyId)\naddressId: \(self.addressId)\ngender: \(self.gender)\nfirstName: \(self.firstName)\nlastName: \(self.lastName)\nemail: \(self.email)\ndateOfBirth: \(self.dateOfBirth)\nRole: \(self.role)\nPatients: \(self.patients)\nMedicines: \(self.medicines), Address: \(self.address?.description), medicalInfo: \(self.medicalInfo?.description)";
     }
 
     
