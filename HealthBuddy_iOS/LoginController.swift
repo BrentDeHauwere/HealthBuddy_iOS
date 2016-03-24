@@ -52,33 +52,22 @@ class LoginController: UIViewController {
     
     func logIn(){
         MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
-
         Alamofire.request(.POST, Routes.login, parameters: ["email": txtEmail.text!, "password":txtPassword.text!])
             .responseJSON { response in
-               MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
-                
+                 MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
                 if(response.result.isSuccess){
                     Alert.alertStatusWithSymbol(true,message: "Aanmelden geslaagd", seconds: 1.5, view: self.view);
                     
+                    
                     if let JSON = response.result.value {
-                        print(JSON);
-                        self.loggedInUser = Mapper<User>().map(JSON);
+                        let JSONDict = JSON as! NSDictionary as NSDictionary;
+                        let api_token = JSONDict["api_token"];
+                        Authentication.token = api_token! as? String;
+                        print(Authentication.token!);
                     }
                     
-                    
-                    let route = "http://10.3.50.33/api/schedule/\(self.loggedInUser!.patients![0].userId!)";
-                    print(route);
-                    Alamofire.request(.POST, route, parameters: ["api_token": (self.loggedInUser?.apiToken)!]).responseJSON{
-                        response in
-                        if(response.result.isSuccess) {
-                            if let JSON = response.result.value {
-                                print(JSON);
-                            }
-                        }else{
-                            print("Medicine request failed");
-                        }
-                    }
-                    
+                    self.loadMedicineData();
+                
                     let delay = 1.5 * Double(NSEC_PER_SEC)
                     let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                     dispatch_after(dispatchTime, dispatch_get_main_queue(), {
@@ -93,10 +82,25 @@ class LoginController: UIViewController {
                     
                 }else{
                     Alert.alertStatusWithSymbol(false,message: "Aanmelden mislukt", seconds: 1.5, view: self.view);
-                    return;
                 }
-                
-                
+        }
+       
+    }
+    
+    func loadMedicineData() {
+        for var i = 0; i < self.loggedInUser?.patients?.count;i++ {
+            let route = "http://10.3.50.33/api/schedule/\(self.loggedInUser!.patients![i].userId!)";
+            print(route);
+            Alamofire.request(.POST, route, parameters: ["api_token": (self.loggedInUser?.apiToken)!]).responseJSON{
+                response in
+                if(response.result.isSuccess) {
+                    if let JSON = response.result.value {
+                        print(JSON);
+                    }
+                }else{
+                    print("Medicine request failed");
+                }
+            }
         }
     }
     
