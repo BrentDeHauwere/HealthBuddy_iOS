@@ -184,11 +184,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/User.swift"
-            timestampString = "480435087.697495"
+            timestampString = "480501810.665046"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "mapping(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthBuddy_iOS/User.swift"
+            timestampString = "480501342.161842"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "mapping(_:)"
             landmarkType = "5">
          </BreakpointContent>

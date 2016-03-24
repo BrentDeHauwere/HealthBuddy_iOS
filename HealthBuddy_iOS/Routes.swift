@@ -14,5 +14,9 @@ struct Routes{
     static let login =  "http://10.3.50.33/api/login";
     //POST: email, password
     
+    static let buddyProfile = "http://10.3.50.33/api/profile";
+    //POST: api_token
+    
+    
     
 }
