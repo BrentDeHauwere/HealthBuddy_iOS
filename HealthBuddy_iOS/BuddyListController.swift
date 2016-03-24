@@ -11,7 +11,7 @@
 import UIKit
 
 class BuddyListControler: UITableViewController, UISearchResultsUpdating {
-    var patients = [User]();
+    var loggedInUser:User?
     var filteredData = [User]();
     var searchController: UISearchController!
 
@@ -36,7 +36,7 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     
     func setupSearchBar(){
         tableView.dataSource = self;
-        filteredData = patients;
+        filteredData = (loggedInUser?.patients)!;
         searchController = UISearchController(searchResultsController: nil);
         searchController.searchResultsUpdater = self;
         searchController.dimsBackgroundDuringPresentation = false;
@@ -51,12 +51,12 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         filteredData.removeAll();
         if let searchText = searchController.searchBar.text {
             if searchText.isEmpty{
-                filteredData = patients;
+                filteredData = (loggedInUser?.patients)!;
             }else{
-                for var i = 0; i < patients.count; i++ {
-                    let fullName = "\(patients[i].firstName) \(patients[i].lastName)";
+                for var i = 0; i < loggedInUser?.patients!.count; i++ {
+                    let fullName = "\(loggedInUser!.patients![i].firstName) \(loggedInUser!.patients![i].lastName)";
                     if(fullName.lowercaseString.rangeOfString(searchText.lowercaseString) != nil){
-                        filteredData.append(patients[i]);
+                        filteredData.append(loggedInUser!.patients![i]);
                     }
                 }
             }

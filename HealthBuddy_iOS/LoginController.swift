@@ -122,7 +122,7 @@ class LoginController: UIViewController {
         }else if segue.identifier == "showPatientsList" {
             let destNavController = segue.destinationViewController as! UINavigationController;
             let patientListView = destNavController.viewControllers[0] as! BuddyListControler;
-            patientListView.patients = (loggedInUser?.patients)!;
+            patientListView.loggedInUser = self.loggedInUser;
         }
     }
     
