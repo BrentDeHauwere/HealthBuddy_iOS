@@ -79,7 +79,7 @@ class LoginController: UIViewController {
                     if let JSON = response.result.value {
                         self.loggedInUser = Mapper<User>().map(JSON);
                         print(JSON);
-                        /*
+                        
                         print(self.loggedInUser?.description)
                         for var i = 0 ; i < self.loggedInUser?.patients?.count ; i++ {
                             print("\n\(self.loggedInUser?.patients![0].description)");
@@ -90,7 +90,7 @@ class LoginController: UIViewController {
                                 }
                             }
                         }
-                        */
+                        
                
                     }
                     
