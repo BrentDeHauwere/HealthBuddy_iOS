@@ -19,6 +19,7 @@ class Medicine : Mappable {
     init(){
         
     }
+    
     init(id:Int, name: String, photo:UIImage?){
         self.id = id;
         self.name = name;
@@ -35,5 +36,9 @@ class Medicine : Mappable {
         self.photoUrl   <- map["photoUrl"]
         self.schedule   <- map["schedule"]
     }
+    var description: String {
+        return "medicineId: \(self.id)\nname: \(self.name)\nphotoUrl: \(self.photoUrl)\nphoto \(self.photo)\nschedule\(self.schedule)";
+    }
+    
 }
 

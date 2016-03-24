@@ -71,7 +71,7 @@ class LoginController: UIViewController {
     
     func getProfile(){
         Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
-            .responseString { response in
+            .responseJSON { response in
                 if response.result.isSuccess {
                     MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
                     Alert.alertStatusWithSymbol(true,message: "Aanmelden geslaagd", seconds: 1.5, view: self.view);
@@ -80,8 +80,13 @@ class LoginController: UIViewController {
                         self.loggedInUser = Mapper<User>().map(JSON);
                         print(JSON);
                         print(self.loggedInUser?.description)
-                        print("PATIENT 1: ");
-                        print(self.loggedInUser?.patients?[0].description);
+                        for var i = 0 ; i < self.loggedInUser?.patients?.count ; i++ {
+                            print("\n\(self.loggedInUser?.patients![0].description)");
+                           // for var j = 0 ; j < self.loggedInUser?.patients?.count ; j++ {
+                           //     print(self.loggedInUser?.patients![i].medicines![j].description);
+                           // }
+                        }
+               
                     }
                     
                     
