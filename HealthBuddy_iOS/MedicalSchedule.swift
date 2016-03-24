@@ -34,11 +34,13 @@ class MedicalSchedule : Mappable {
     
     func mapping(map: Map) {
         self.id         <- map["id"]
-        self.medicineId <- map["mediine_id"]
-        self.dayOfWeek  <- map["dayOfWeek"]
+        self.medicineId <- (map["medicine_id"], TransformOf<Int, String>(fromJSON: { ($0 == nil) ? nil : Int($0!) }, toJSON: { $0.map { String($0) } }))
+        self.dayOfWeek  <- (map["dayOfWeek"], TransformOf<Int, String>(fromJSON: { ($0 == nil) ? nil : Int($0!) }, toJSON: { $0.map { String($0) } }))
         self.time       <- map["time"]
         self.amount     <- map["amount"]
     }
     
-    
+    var description: String {
+        return "id: \(self.id), medicineId: \(self.medicineId), dayOfWeek: \(self.dayOfWeek), time: \(self.time), amount: \(self.amount)";
+    }
 }

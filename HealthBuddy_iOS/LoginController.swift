@@ -79,13 +79,18 @@ class LoginController: UIViewController {
                     if let JSON = response.result.value {
                         self.loggedInUser = Mapper<User>().map(JSON);
                         print(JSON);
+                        /*
                         print(self.loggedInUser?.description)
                         for var i = 0 ; i < self.loggedInUser?.patients?.count ; i++ {
                             print("\n\(self.loggedInUser?.patients![0].description)");
-                           // for var j = 0 ; j < self.loggedInUser?.patients?.count ; j++ {
-                           //     print(self.loggedInUser?.patients![i].medicines![j].description);
-                           // }
+                            for var j = 0 ; j < self.loggedInUser?.patients?.count ; j++ {
+                                print(self.loggedInUser?.patients![i].medicines![j].description);
+                                for var k = 0 ; k < self.loggedInUser?.patients![i].medicines![j].schedules.count; k++ {
+                                    print(self.loggedInUser?.patients![i].medicines![j].schedules[k].description);
+                                }
+                            }
                         }
+                        */
                
                     }
                     
