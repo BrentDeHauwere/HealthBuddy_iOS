@@ -4,6 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MRProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ObjectMapper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-HealthBuddy_iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -14,25 +29,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftHTTP.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06F1561FC022D9B695B8139DB214BEFC</key>
+		<key>2D297012F81A89D38FA0004D9065BB46</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0A1CAFB68B49093D7F7C1F86FFB0F6A9</key>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AEB25D8E52B8F6807E10D50107FECB4F</key>
+		<key>9CAAB2A1855182D992E2945796B03B4D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C8F54543305BD95F34FAB796C9CAAFCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ECF263BEF308B80E68EE592DDE979361</key>
 		<dict>
 			<key>primary</key>
 			<true/>

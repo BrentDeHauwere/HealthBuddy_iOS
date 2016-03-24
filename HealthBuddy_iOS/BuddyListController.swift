@@ -18,7 +18,6 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad();
         self.navigationItem.hidesBackButton = true;
-        loadPatientsList();
         setupSearchBar();
     }
     
@@ -26,12 +25,14 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         super.didReceiveMemoryWarning()
     }
     
-    func loadPatientsList(){
-        //TODO: haal alle patienten af met als buddy_id = user_id ingelogde user
-        
-        //mock:
-        //self.patients = [User(firstName:"Yen", lastName: "Jacobs"),User(firstName:"Elvin", lastName: "Jacobs"),User(firstName:"Gunther", lastName: "Jacobs"),User(firstName:"Sabine", lastName: "Baeyens"),User(firstName:"Dieter", lastName: "Roels")];
+    override func viewWillAppear(animated: Bool) {
+        if tableView.indexPathForSelectedRow != nil {
+            tableView.deselectRowAtIndexPath((tableView.indexPathForSelectedRow)!, animated: animated);
+        }
+        tableView.reloadData();
+        super.viewWillAppear(animated);
     }
+
     
     func setupSearchBar(){
         tableView.dataSource = self;
@@ -63,9 +64,6 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         }
     }
     
-    
-
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filteredData.count;
     }
@@ -74,7 +72,7 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("patient", forIndexPath: indexPath) as UITableViewCell;
         let patient: User = filteredData[indexPath.row];
-        cell.textLabel?.text = patient.firstName + " " + patient.lastName;
+        cell.textLabel?.text = patient.firstName! + " " + patient.lastName!;
         return cell;
     }
     
@@ -93,4 +91,5 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
             }
         }
     }
+
 }

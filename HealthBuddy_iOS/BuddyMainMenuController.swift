@@ -13,13 +13,33 @@ class BuddyMainMenuController: UITableViewController {
     var menuItems = ["Medisch ID","Medicatie","Gewicht"];
     var descriptions = ["Persoonlijke gegevens","Monitoring","Monitoring"];
     var logos = [UIImage(named: "MedischID"),UIImage(named: "Medicatie"),UIImage(named: "Gewicht")];
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView(frame: CGRectZero);
-        self.navigationItem.title = "\(patient.firstName) \(patient.lastName)";
+        self.tableView.backgroundColor = UIColor(red: 156.0/255, green: 207.0/255, blue: 88.0/255, alpha: 1);
+        self.navigationItem.title = "\(patient.firstName!) \(patient.lastName!)";
+     
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"ContactenLogo"), style:.Plain, target:self, action:"backButtonPressed:");
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate;
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = true;
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        if(self.navigationItem.title != "\(patient.firstName!) \(patient.lastName!)"){
+            self.navigationItem.title = "\(patient.firstName!) \(patient.lastName!)";
+        }
+         super.viewDidAppear(true);
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if tableView.indexPathForSelectedRow != nil {
+            tableView.deselectRowAtIndexPath((tableView.indexPathForSelectedRow)!, animated: animated);
+        }
+        super.viewWillAppear(animated);
+    }
+    
     
     func backButtonPressed(sender:UIButton) {
         navigationController?.popViewControllerAnimated(true)

@@ -1,13 +1,46 @@
 PODS:
+  - Alamofire (3.2.1)
+  - MRProgress (0.8.3):
+    - MRProgress/ActivityIndicator (= 0.8.3)
+    - MRProgress/Blur (= 0.8.3)
+    - MRProgress/Circular (= 0.8.3)
+    - MRProgress/Icons (= 0.8.3)
+    - MRProgress/NavigationBarProgress (= 0.8.3)
+    - MRProgress/Overlay (= 0.8.3)
+  - MRProgress/ActivityIndicator (0.8.3):
+    - MRProgress/Stopable
+  - MRProgress/Blur (0.8.3):
+    - MRProgress/Helper
+  - MRProgress/Circular (0.8.3):
+    - MRProgress/Helper
+    - MRProgress/ProgressBaseClass
+    - MRProgress/Stopable
+  - MRProgress/Helper (0.8.3)
+  - MRProgress/Icons (0.8.3)
+  - MRProgress/NavigationBarProgress (0.8.3):
+    - MRProgress/ProgressBaseClass
+  - MRProgress/Overlay (0.8.3):
+    - MRProgress/ActivityIndicator
+    - MRProgress/Blur
+    - MRProgress/Circular
+    - MRProgress/Helper
+    - MRProgress/Icons
+  - MRProgress/ProgressBaseClass (0.8.3)
+  - MRProgress/Stopable (0.8.3):
+    - MRProgress/Helper
+  - ObjectMapper (1.1.5)
   - SwiftForms (1.0.2)
-  - SwiftHTTP (1.0.4)
 
 DEPENDENCIES:
+  - Alamofire (~> 3.0)
+  - MRProgress
+  - ObjectMapper (~> 1.1)
   - SwiftForms
-  - SwiftHTTP (~> 1.0.4)
 
 SPEC CHECKSUMS:
+  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
+  ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
   SwiftForms: c439aca9cf462383a1292c028bd14915de42bf6b
-  SwiftHTTP: 7e084af3bf628b17589c7b61a9df8750947a9813
 
 COCOAPODS: 0.39.0
