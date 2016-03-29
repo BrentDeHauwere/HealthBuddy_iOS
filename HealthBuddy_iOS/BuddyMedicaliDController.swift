@@ -16,26 +16,28 @@ class BuddyMedicaliDController: FormViewController {
     
     var addressUpdated = false;
     var medicalInfoUpdated = false;
+    var userUpdated = false;
     
     @IBOutlet weak var lblMedicalID: UILabel!
     
     struct formTag{
-        static let geslacht = "geslacht";
-        static let voornaam = "voornaam";
-        static let naam = "naam";
-        static let geboortedatum = "geboortedatum";
+        static let gender = "gender";
+        static let firstName = "firstName";
+        static let lastName = "lastName";
+        static let dateOfBirth = "dateOfBirth";
         static let phone = "phone";
-        static let straat = "straat";
-        static let huisnummer = "huisnummer";
-        static let postcode = "postcode";
-        static let gemeeente = "gemeente";
-        static let land = "land";
+        static let street = "street";
+        static let streetNumber = "streetNumber"
+        static let bus = "bus";
+        static let zipCode = "zipCode";
+        static let city = "city";
+        static let country = "country";
         static let length = "length";
         static let weight = "weight";
         static let bloodType = "bloodType";
         static let allergies = "allergies";
         static let medicalCondition = "medicalCondition";
-        static let stopWijzigen = "stopWijzigen";
+
     }
   
     
@@ -80,7 +82,7 @@ class BuddyMedicaliDController: FormViewController {
         // Define section with personal info
         let sectionPersonalInfo = FormSectionDescriptor();
         sectionPersonalInfo.headerTitle="Persoonlijke informatie"
-        row = FormRowDescriptor(tag: formTag.geslacht, rowType: .Picker, title: "Geslacht")
+        row = FormRowDescriptor(tag: formTag.gender, rowType: .Picker, title: "Geslacht")
  
         row.configuration[FormRowDescriptor.Configuration.Options] = ["M", "V"]
         row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
@@ -99,18 +101,18 @@ class BuddyMedicaliDController: FormViewController {
         sectionPersonalInfo.addRow(row)
 
         
-        row = FormRowDescriptor(tag: formTag.voornaam, rowType: .Text, title: "Voornaam");
+        row = FormRowDescriptor(tag: formTag.firstName, rowType: .Text, title: "Voornaam");
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue];
 
         
         sectionPersonalInfo.addRow(row);
         
-        row = FormRowDescriptor(tag: formTag.naam, rowType: .Text, title: "Naam");
+        row = FormRowDescriptor(tag: formTag.lastName, rowType: .Text, title: "Naam");
          row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionPersonalInfo.addRow(row);
         
         
-        row = FormRowDescriptor(tag: formTag.geboortedatum, rowType: .Date, title: "Geboortedatum")
+        row = FormRowDescriptor(tag: formTag.dateOfBirth, rowType: .Date, title: "Geboortedatum")
         sectionPersonalInfo.addRow(row);
         
         row = FormRowDescriptor(tag: formTag.phone, rowType: .Phone, title: "Telefoonnummer")
@@ -122,23 +124,27 @@ class BuddyMedicaliDController: FormViewController {
         let sectionAddress = FormSectionDescriptor();
         sectionAddress.headerTitle = "Adres";
         
-        row = FormRowDescriptor(tag: formTag.straat, rowType: .Text, title: "Straat");
+        row = FormRowDescriptor(tag: formTag.street, rowType: .Text, title: "Straat");
          row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionAddress.addRow(row);
         
-        row = FormRowDescriptor(tag: formTag.huisnummer, rowType: .Number, title: "Huisnummer");
+        row = FormRowDescriptor(tag: formTag.streetNumber, rowType: .Number, title: "Huisnummer");
          row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionAddress.addRow(row);
         
-        row = FormRowDescriptor(tag: formTag.postcode, rowType: .Text, title: "Postcode");
+        row = FormRowDescriptor(tag: formTag.bus, rowType: .Text, title: "Bus");
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        sectionAddress.addRow(row);
+        
+        row = FormRowDescriptor(tag: formTag.zipCode, rowType: .Text, title: "Postcode");
          row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionAddress.addRow(row);
         
-        row = FormRowDescriptor(tag: formTag.gemeeente, rowType: .Text, title: "Gemeente");
+        row = FormRowDescriptor(tag: formTag.city, rowType: .Text, title: "Gemeente");
          row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionAddress.addRow(row);
         
-        row = FormRowDescriptor(tag: formTag.land, rowType: .Text, title: "Land");
+        row = FormRowDescriptor(tag: formTag.country, rowType: .Text, title: "Land");
          row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionAddress.addRow(row);
         
@@ -183,18 +189,16 @@ class BuddyMedicaliDController: FormViewController {
         self.form.sections[0].rows[0].value = patient.gender;
         self.form.sections[0].rows[1].value = patient.firstName;
         self.form.sections[0].rows[2].value = patient.lastName;
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.dateFromString(patient.dateOfBirth!);
-        self.form.sections[0].rows[3].value = date;
+
+        self.form.sections[0].rows[3].value = patient.dateOfBirth;
         self.form.sections[0].rows[4].value = patient.phone;
 
         self.form.sections[1].rows[0].value = patient.address?.street;
         self.form.sections[1].rows[1].value = patient.address?.streetNumber;
-        self.form.sections[1].rows[2].value = patient.address?.zipCode;
-        self.form.sections[1].rows[3].value = patient.address?.city;
-        self.form.sections[1].rows[4].value = patient.address?.country;
+        self.form.sections[1].rows[2].value = patient.address?.bus;
+        self.form.sections[1].rows[3].value = patient.address?.zipCode;
+        self.form.sections[1].rows[4].value = patient.address?.city;
+        self.form.sections[1].rows[5].value = patient.address?.country;
         
         if(patient.medicalInfo?.length != nil){
             self.form.sections[2].rows[0].value = String(patient.medicalInfo!.length!);
@@ -245,6 +249,8 @@ class BuddyMedicaliDController: FormViewController {
     
     func patientUpdated() -> Bool{
         
+        
+        
         //Address updated? 
         /*
         if self.form.formValues()[formTag.straat]?.description != patient.address!.street || self.form.formValues()[formTag.huisnummer]?.description != patient.address!.streetNumber || self.form.formValues()[formTag.postcode]?.description != patient.address!.zipCode || self.form.formValues()[formTag.gemeeente]?.description != patient.address!.city || self.form.formValues()[formTag.land]?.description != patient.address!.country
@@ -253,8 +259,13 @@ class BuddyMedicaliDController: FormViewController {
         }
         */
 
- 
-   
+
+
+        if self.form.formValues()[formTag.gender]?.description != patient.gender || self.form.formValues()[formTag.firstName]?.description != patient.firstName || self.form.formValues()[formTag.lastName]?.description != patient.lastName || self.form.formValues()[formTag.dateOfBirth]?.description != patient.dateOfBirth?.description  || self.form.sections[0].rows[4].value != patient.phone
+        {
+            userUpdated = true;
+        }
+
 
         if self.form.formValues()[formTag.length]?.description != patient.medicalInfo?.length?.description || self.form.formValues()[formTag.weight]?.description != patient.medicalInfo?.weight || self.form.formValues()[formTag.bloodType]?.description != patient.medicalInfo?.bloodType || self.form.sections[3].rows[0].value != patient.medicalInfo?.allergies || self.form.sections[4].rows[0].value != patient.medicalInfo?.medicalCondition
         {
@@ -262,7 +273,7 @@ class BuddyMedicaliDController: FormViewController {
         }
         
         
-        return medicalInfoUpdated;
+        return userUpdated || medicalInfoUpdated;
     }
     
     func submit(sender:UIBarButtonItem){
@@ -298,13 +309,19 @@ class BuddyMedicaliDController: FormViewController {
             patient.medicalInfo!.allergies = self.form.formValues()[formTag.allergies]!.description;
             patient.medicalInfo!.medicalCondition = self.form.formValues()[formTag.medicalCondition]!.description;
         }
+        if userUpdated {
+            patient.gender = self.form.formValues()[formTag.gender]!.description;
+            patient.firstName = self.form.formValues()[formTag.firstName]!.description;
+            patient.lastName = self.form.formValues()[formTag.lastName]!.description;
+            patient.dateOfBirth = self.form.formValues()[formTag.dateOfBirth] as? NSDate;
+            patient.phone = self.form.formValues()[formTag.phone]!.description;
+        }
     }
     func updateDatabase(){
         if addressUpdated {
-            
+            //TODO: update address
         }
-        
-        print(patient.userId.dynamicType);
+
         if medicalInfoUpdated {
             Alamofire.request(.POST, Routes.updateMedicalInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.length: (patient.medicalInfo?.length)!, formTag.weight: (patient.medicalInfo?.weight)!, formTag.bloodType: (patient.medicalInfo?.bloodType)!, formTag.allergies: (patient.medicalInfo?.allergies)!, formTag.medicalCondition: (patient.medicalInfo?.medicalCondition)!])   .responseJSON { response in
                 if response.result.isSuccess {
@@ -312,7 +329,22 @@ class BuddyMedicaliDController: FormViewController {
                         print(JSON);
                     }
                 }else{
-                    Alert.alertStatus("Update van medische info mislukt.", title: "Error", view: self);
+                    print("Update medical info failed");
+                }
+            }
+        }
+        
+        if userUpdated {
+            print( patient.dateOfBirth!);
+            Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: patient.gender!, formTag.firstName: patient.firstName!, formTag.lastName : patient.lastName!, formTag.dateOfBirth: patient.dateOfBirth!, formTag.phone: patient.phone!]) .responseJSON { response in
+                if let JSON = response.result.value {
+                    print(JSON);
+                }
+
+                if response.result.isSuccess {
+                    print("Update user succeeded")
+                }else{
+                    print("update user failed");
                 }
             }
         }

@@ -23,7 +23,8 @@ class User: Mappable {
     var lastName:String?;
     var email:String?;
     var phone:String?;
-    var dateOfBirth:String?;
+    var dateOfBirthS:String?;
+    var dateOfBirth:NSDate?;
     var role:String?;
     var patients:[User]?;
     var medicines:[Medicine]?;
@@ -43,17 +44,21 @@ class User: Mappable {
         self.lastName    <- map["lastName"]
         self.email       <- map["email"]
         self.phone       <- map["phone"]
-        self.dateOfBirth <- map["dateOfBirth"]
+        self.dateOfBirthS <- map["dateOfBirth"]
         self.role        <- map["role"] 
         self.patients    <- map["patients"]
         self.medicines   <- map["medicines"]
         self.address     <- map["address"]
         self.medicalInfo <- map["medicalinfo"]
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.dateOfBirth = dateFormatter.dateFromString(self.dateOfBirthS!);
     }
     
     
     var description: String {
-        return "userId: \(self.userId)\nbuddyId: \(self.buddyId)\naddressId: \(self.addressId)\ngender: \(self.gender)\nfirstName: \(self.firstName)\nlastName: \(self.lastName)\nemail: \(self.email)\ndateOfBirth: \(self.dateOfBirth)\nRole: \(self.role)\nPatients: \(self.patients)\nMedicines: \(self.medicines), Address: \(self.address?.description), medicalInfo: \(self.medicalInfo?.description)";
+        return "userId: \(self.userId)\nbuddyId: \(self.buddyId)\naddressId: \(self.addressId)\ngender: \(self.gender)\nfirstName: \(self.firstName)\nlastName: \(self.lastName)\nemail: \(self.email)\nphone: \(self.phone)\ndateOfBirth: \(self.dateOfBirth)\nRole: \(self.role)\nPatients: \(self.patients)\nMedicines: \(self.medicines), Address: \(self.address?.description), medicalInfo: \(self.medicalInfo?.description)";
     }
 
     
