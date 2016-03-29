@@ -33,6 +33,8 @@ class MedicalInfo: Mappable {
         self.bloodType          <- map["bloodType"]
         self.medicalCondition   <- map["medicalCondition"]
         self.allergies          <- map["allergies"]
+        
+        
     }
     
     var description: String {

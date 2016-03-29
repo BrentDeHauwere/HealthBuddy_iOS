@@ -33,8 +33,8 @@ class BuddyMedicaliDController: FormViewController {
         static let length = "length";
         static let weight = "weight";
         static let bloodType = "bloodType";
-        static let allergieën = "allergieën";
-        static let medischeAandoeningen = "medischeAandoeningen";
+        static let allergies = "allergies";
+        static let medicalCondition = "medicalCondition";
         static let stopWijzigen = "stopWijzigen";
     }
   
@@ -164,12 +164,12 @@ class BuddyMedicaliDController: FormViewController {
         
         let sectionAllergics = FormSectionDescriptor();
         sectionAllergics.headerTitle = "Allergieën en reacties";
-        row = FormRowDescriptor(tag: formTag.allergieën, rowType: .MultilineText, title: "");
+        row = FormRowDescriptor(tag: formTag.allergies, rowType: .MultilineText, title: "");
         sectionAllergics.addRow(row);
         
         let sectionMedicalController = FormSectionDescriptor();
         sectionMedicalController.headerTitle = "Medische aandoeningen";
-        row = FormRowDescriptor(tag: formTag.medischeAandoeningen, rowType: .MultilineText, title: "");
+        row = FormRowDescriptor(tag: formTag.medicalCondition, rowType: .MultilineText, title: "");
         sectionMedicalController.addRow(row);
         
         
@@ -188,6 +188,7 @@ class BuddyMedicaliDController: FormViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.dateFromString(patient.dateOfBirth!);
         self.form.sections[0].rows[3].value = date;
+        self.form.sections[0].rows[4].value = patient.phone;
 
         self.form.sections[1].rows[0].value = patient.address?.street;
         self.form.sections[1].rows[1].value = patient.address?.streetNumber;
@@ -252,9 +253,10 @@ class BuddyMedicaliDController: FormViewController {
         }
         */
 
+ 
+   
 
-        
-        if self.form.formValues()[formTag.length]?.description != patient.medicalInfo?.length?.description || self.form.formValues()[formTag.weight]?.description != patient.medicalInfo?.weight || self.form.formValues()[formTag.bloodType]?.description != patient.medicalInfo?.bloodType
+        if self.form.formValues()[formTag.length]?.description != patient.medicalInfo?.length?.description || self.form.formValues()[formTag.weight]?.description != patient.medicalInfo?.weight || self.form.formValues()[formTag.bloodType]?.description != patient.medicalInfo?.bloodType || self.form.sections[3].rows[0].value != patient.medicalInfo?.allergies || self.form.sections[4].rows[0].value != patient.medicalInfo?.medicalCondition
         {
             medicalInfoUpdated = true;
         }
@@ -293,8 +295,8 @@ class BuddyMedicaliDController: FormViewController {
             patient.medicalInfo!.length = Int(self.form.formValues()[formTag.length]!.description);
             patient.medicalInfo!.weight = self.form.formValues()[formTag.weight]!.description;
             patient.medicalInfo!.bloodType = self.form.formValues()[formTag.bloodType]!.description;
-            patient.medicalInfo!.allergies = self.form.formValues()[formTag.allergieën]!.description;
-            patient.medicalInfo!.medicalCondition = self.form.formValues()[formTag.medischeAandoeningen]!.description;
+            patient.medicalInfo!.allergies = self.form.formValues()[formTag.allergies]!.description;
+            patient.medicalInfo!.medicalCondition = self.form.formValues()[formTag.medicalCondition]!.description;
         }
     }
     func updateDatabase(){
@@ -304,7 +306,7 @@ class BuddyMedicaliDController: FormViewController {
         
         print(patient.userId.dynamicType);
         if medicalInfoUpdated {
-            Alamofire.request(.POST, Routes.updateMedicalInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.length: (patient.medicalInfo?.length)!, formTag.weight: (patient.medicalInfo?.weight)!, formTag.bloodType: (patient.medicalInfo?.bloodType)!])   .responseJSON { response in
+            Alamofire.request(.POST, Routes.updateMedicalInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.length: (patient.medicalInfo?.length)!, formTag.weight: (patient.medicalInfo?.weight)!, formTag.bloodType: (patient.medicalInfo?.bloodType)!, formTag.allergies: (patient.medicalInfo?.allergies)!, formTag.medicalCondition: (patient.medicalInfo?.medicalCondition)!])   .responseJSON { response in
                 if response.result.isSuccess {
                     if let JSON = response.result.value {
                         print(JSON);
