@@ -9,14 +9,16 @@
 import UIKit
 import SwiftForms
 import Alamofire
-
+import MRProgress
 
 class BuddyMedicaliDController: FormViewController {
     var patient:User!;
     
-    var addressUpdated = false;
-    var medicalInfoUpdated = false;
-    var userUpdated = false;
+    var addressUpdate = false;
+    var medicalInfoUpdate = false;
+    var userUpdate = false;
+    
+    var goBack = false;
     
     @IBOutlet weak var lblMedicalID: UILabel!
     
@@ -226,16 +228,16 @@ class BuddyMedicaliDController: FormViewController {
             actionSheetController.addAction(cancelAction)
             
             //Create and add first option action
-            let noSave: UIAlertAction = UIAlertAction(title: "Wijzigingen niet opslaan", style: .Default) { action -> Void in
+            let noSave: UIAlertAction = UIAlertAction(title: "Wijzigingen niet opslaan", style: .Destructive) { action -> Void in
             self.navigationController?.popViewControllerAnimated(true);
             }
             actionSheetController.addAction(noSave);
             
             //Create and add a second option action
             let doSave: UIAlertAction = UIAlertAction(title: "Wijzingen opslaan", style: .Default) { action -> Void in
+                MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
                 self.updateEntity()
                 self.updateDatabase()
-                self.navigationController?.popViewControllerAnimated(true);
             }
             actionSheetController.addAction(doSave);
             
@@ -263,32 +265,29 @@ class BuddyMedicaliDController: FormViewController {
 
         if self.form.formValues()[formTag.gender]?.description != patient.gender || self.form.formValues()[formTag.firstName]?.description != patient.firstName || self.form.formValues()[formTag.lastName]?.description != patient.lastName || self.form.formValues()[formTag.dateOfBirth]?.description != patient.dateOfBirth?.description  || self.form.sections[0].rows[4].value != patient.phone
         {
-            userUpdated = true;
+            userUpdate = true;
         }
 
 
         if self.form.formValues()[formTag.length]?.description != patient.medicalInfo?.length?.description || self.form.formValues()[formTag.weight]?.description != patient.medicalInfo?.weight || self.form.formValues()[formTag.bloodType]?.description != patient.medicalInfo?.bloodType || self.form.sections[3].rows[0].value != patient.medicalInfo?.allergies || self.form.sections[4].rows[0].value != patient.medicalInfo?.medicalCondition
         {
-            medicalInfoUpdated = true;
+            medicalInfoUpdate = true;
         }
         
         
-        return userUpdated || medicalInfoUpdated;
+        return userUpdate || medicalInfoUpdate;
     }
     
     func submit(sender:UIBarButtonItem){
         //TODO: update database
-        
-        
         if patientUpdated()
         {
+            MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
             updateEntity();
             updateDatabase()
+        }else{
+            Alert.alertStatusWithSymbol(true,message: "Gegevens opgeslaan", seconds: 1.5, view: self.view);
         }
-        
-       
-       
-        self.navigationController?.popViewControllerAnimated(true);
     }
     
     func updateEntity(){
@@ -302,14 +301,14 @@ class BuddyMedicaliDController: FormViewController {
         */
         
         //Medical condition
-        if medicalInfoUpdated {
+        if medicalInfoUpdate {
             patient.medicalInfo!.length = Int(self.form.formValues()[formTag.length]!.description);
             patient.medicalInfo!.weight = self.form.formValues()[formTag.weight]!.description;
             patient.medicalInfo!.bloodType = self.form.formValues()[formTag.bloodType]!.description;
             patient.medicalInfo!.allergies = self.form.formValues()[formTag.allergies]!.description;
             patient.medicalInfo!.medicalCondition = self.form.formValues()[formTag.medicalCondition]!.description;
         }
-        if userUpdated {
+        if userUpdate {
             patient.gender = self.form.formValues()[formTag.gender]!.description;
             patient.firstName = self.form.formValues()[formTag.firstName]!.description;
             patient.lastName = self.form.formValues()[formTag.lastName]!.description;
@@ -317,38 +316,64 @@ class BuddyMedicaliDController: FormViewController {
             patient.phone = self.form.formValues()[formTag.phone]!.description;
         }
     }
+    
     func updateDatabase(){
-        if addressUpdated {
-            //TODO: update address
-        }
-
-        if medicalInfoUpdated {
+        let group = dispatch_group_create()
+        var errors = [String]();
+        
+        if medicalInfoUpdate{
+            dispatch_group_enter(group)
             Alamofire.request(.POST, Routes.updateMedicalInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.length: (patient.medicalInfo?.length)!, formTag.weight: (patient.medicalInfo?.weight)!, formTag.bloodType: (patient.medicalInfo?.bloodType)!, formTag.allergies: (patient.medicalInfo?.allergies)!, formTag.medicalCondition: (patient.medicalInfo?.medicalCondition)!])   .responseJSON { response in
                 if response.result.isSuccess {
+                    print("Update medical info succeeded");
                     if let JSON = response.result.value {
                         print(JSON);
                     }
                 }else{
                     print("Update medical info failed");
+                    //TODO: fill in errors array
                 }
+                dispatch_group_leave(group)
             }
         }
         
-        if userUpdated {
+        if userUpdate {
+            dispatch_group_enter(group)
             print( patient.dateOfBirth!);
             Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: patient.gender!, formTag.firstName: patient.firstName!, formTag.lastName : patient.lastName!, formTag.dateOfBirth: patient.dateOfBirth!, formTag.phone: patient.phone!]) .responseJSON { response in
-                if let JSON = response.result.value {
-                    print(JSON);
-                }
+               
 
                 if response.result.isSuccess {
                     print("Update user succeeded")
+                    if let JSON = response.result.value {
+                        print(JSON);
+                    }
                 }else{
                     print("update user failed");
+                    errors.append("Telefoonnr mag niet null zijn");
+                    //TODO: fill in errors array
                 }
+                 dispatch_group_leave(group)
+            }
+        }
+
+        dispatch_group_notify(group, dispatch_get_main_queue()) {
+            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+            print(errors.count);
+            if errors.count <= 0 {
+                Alert.alertStatusWithSymbol(true, message: "Wijzigingen opgeslaan", seconds: 1.5, view: self.view);
+            } else {
+                Alert.alertStatusWithSymbol(false, message: "Wijzigingen opslaan mislukt", seconds: 1.5, view: self.view);
+                let delay = 1.5 * Double(NSEC_PER_SEC)
+                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    Alert.alertStatus(errors.joinWithSeparator("\n"), title: "Wijzigingen niet doorgevoerd", view: self);
+                });
             }
         }
     }
+    
+
     
   
     
