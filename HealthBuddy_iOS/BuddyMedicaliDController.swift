@@ -15,6 +15,9 @@ class BuddyMedicaliDController: FormViewController {
     var patient:User!;
     var editPatient:User!;
     
+    var addressUpdated = false;
+    var medicalInfoUpdated = false;
+    
     @IBOutlet weak var lblMedicalID: UILabel!
     
     struct formTag{
@@ -146,11 +149,11 @@ class BuddyMedicaliDController: FormViewController {
         sectionMedicalInfo.headerTitle = "Medische info";
         
         row = FormRowDescriptor(tag: formTag.lengte, rowType: .Number, title: "Lengte");
-         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionMedicalInfo.addRow(row);
         
         row = FormRowDescriptor(tag: formTag.gewicht, rowType: .Number, title: "Gewicht");
-        
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionMedicalInfo.addRow(row);
         
         row = FormRowDescriptor(tag: formTag.bloedgroep, rowType: .Picker, title: "Bloedgroep")
@@ -181,11 +184,26 @@ class BuddyMedicaliDController: FormViewController {
         self.form.sections[0].rows[0].value = patient.gender;
         self.form.sections[0].rows[1].value = patient.firstName;
         self.form.sections[0].rows[2].value = patient.lastName;
-        //TODO: dateOfBirth
-        //  self.form.sections[0].rows[3].value = patient.dateOfBirth;
-        //TODO: telefoonnummer in db?
         
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.dateFromString(patient.dateOfBirth!);
+        self.form.sections[0].rows[3].value = date;
+
+        self.form.sections[1].rows[0].value = patient.address?.street;
+        self.form.sections[1].rows[1].value = patient.address?.streetNumber;
+        self.form.sections[1].rows[2].value = patient.address?.zipCode;
+        self.form.sections[1].rows[3].value = patient.address?.city;
+        self.form.sections[1].rows[4].value = patient.address?.country;
         
+        if(patient.medicalInfo?.length != nil){
+            self.form.sections[2].rows[0].value = String(patient.medicalInfo!.length!);
+        }
+        self.form.sections[2].rows[1].value = patient.medicalInfo?.weight;
+        self.form.sections[2].rows[2].value = patient.medicalInfo?.bloodType;
+       
+        self.form.sections[3].rows[0].value = patient.medicalInfo?.allergies;
+        self.form.sections[4].rows[0].value = patient.medicalInfo?.medicalCondition;
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -194,7 +212,7 @@ class BuddyMedicaliDController: FormViewController {
     }
     
     func backButtonPressed(sender:UIButton) {
-
+        
         if(patientUpdated()){
             //Create the AlertController
             let actionSheetController: UIAlertController = UIAlertController(title: "Opgelet", message: "U wenst te sluiten zonder de wijzigingen op te slaan", preferredStyle: .ActionSheet)
@@ -211,7 +229,9 @@ class BuddyMedicaliDController: FormViewController {
             
             //Create and add a second option action
             let doSave: UIAlertAction = UIAlertAction(title: "Wijzingen opslaan", style: .Default) { action -> Void in
-                self.submit(self.navigationItem.rightBarButtonItem!);
+                self.updateEntity()
+                self.updateDatabase()
+                self.navigationController?.popViewControllerAnimated(true);
             }
             actionSheetController.addAction(doSave);
             
@@ -224,25 +244,72 @@ class BuddyMedicaliDController: FormViewController {
     }
     
     func patientUpdated() -> Bool{
-        if self.form.formValues()[formTag.geslacht]!.description != patient.gender {
-            return true;
+        
+        //Address updated? 
+        /*
+        if self.form.formValues()[formTag.straat]?.description != patient.address!.street || self.form.formValues()[formTag.huisnummer]?.description != patient.address!.streetNumber || self.form.formValues()[formTag.postcode]?.description != patient.address!.zipCode || self.form.formValues()[formTag.gemeeente]?.description != patient.address!.city || self.form.formValues()[formTag.land]?.description != patient.address!.country
+        {
+            addressUpdated = true;
         }
-        if self.form.formValues()[formTag.voornaam]!.description !=  patient.firstName{
-            return true;
+        */
+        
+        print(self.form.formValues()[formTag.lengte]?.description != patient.medicalInfo?.length?.description)
+        print(self.form.formValues()[formTag.gewicht]?.description != patient.medicalInfo?.weight);
+         print(self.form.formValues()[formTag.bloedgroep]?.description != patient.medicalInfo?.bloodType);
+       
+
+     
+        
+        if self.form.formValues()[formTag.lengte]?.description != patient.medicalInfo?.length?.description || self.form.formValues()[formTag.gewicht]?.description != patient.medicalInfo?.weight || self.form.formValues()[formTag.bloedgroep]?.description != patient.medicalInfo?.bloodType
+        {
+            medicalInfoUpdated = true;
         }
-        if self.form.formValues()[formTag.naam]!.description !=  patient.lastName{
-            return true;
-        }
-        return false;
+        
+        
+        return medicalInfoUpdated;
     }
     
     func submit(sender:UIBarButtonItem){
         //TODO: update database
-        patient.gender = self.form.formValues()[formTag.geslacht]!.description;
-        patient.firstName = self.form.formValues()[formTag.voornaam]!.description;
-        patient.lastName = self.form.formValues()[formTag.naam]!.description;
+        
+        
+        if patientUpdated()
+        {
+            updateEntity();
+            updateDatabase()
+        }
+        
+       
        
         self.navigationController?.popViewControllerAnimated(true);
+    }
+    
+    func updateEntity(){
+        //Address
+        /*
+        patient.address!.street = self.form.formValues()[formTag.straat]!.description;
+        patient.address!.streetNumber = self.form.formValues()[formTag.huisnummer]!.description;
+        patient.address!.zipCode = self.form.formValues()[formTag.postcode]!.description;
+        patient.address!.city = self.form.formValues()[formTag.gemeeente]!.description;
+        patient.address!.country = self.form.formValues()[formTag.land]!.description;
+        */
+        
+        //Medical condition
+        if medicalInfoUpdated {
+            patient.medicalInfo!.length = Int(self.form.formValues()[formTag.lengte]!.description);
+            patient.medicalInfo!.weight = self.form.formValues()[formTag.gewicht]!.description;
+            patient.medicalInfo!.bloodType = self.form.formValues()[formTag.bloedgroep]!.description;
+            patient.medicalInfo!.allergies = self.form.formValues()[formTag.allergieën]!.description;
+            patient.medicalInfo!.medicalCondition = self.form.formValues()[formTag.medischeAandoeningen]!.description;
+        }
+    }
+    func updateDatabase(){
+        if addressUpdated {
+            
+        }
+        if medicalInfoUpdated {
+            
+        }
     }
     
   

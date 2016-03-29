@@ -10,7 +10,7 @@ import Foundation
 
 struct Routes{
     
-    
+    //GET DATA
     static let login =  "http://10.3.50.33/api/login";
     //POST: email, password
     
@@ -19,4 +19,7 @@ struct Routes{
     
     
     
+    
+    //UPDATE
+    static let updateMedicalInfo = "http://10.3.50.33/api/user/1/medicalinfo/update"
 }
