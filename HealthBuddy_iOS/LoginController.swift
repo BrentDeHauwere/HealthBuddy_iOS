@@ -59,6 +59,7 @@ class LoginController: UIViewController {
                         let JSONDict = JSON as! NSDictionary as NSDictionary;
                         let api_token = JSONDict["api_token"];
                         Authentication.token = api_token! as? String;
+                        print("api_token: \(Authentication.token)");
                         self.getProfile();
                     }
                 }else{

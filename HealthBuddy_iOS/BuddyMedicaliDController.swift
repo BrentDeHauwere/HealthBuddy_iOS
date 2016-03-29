@@ -8,12 +8,11 @@
 
 import UIKit
 import SwiftForms
-
+import Alamofire
 
 
 class BuddyMedicaliDController: FormViewController {
     var patient:User!;
-    var editPatient:User!;
     
     var addressUpdated = false;
     var medicalInfoUpdated = false;
@@ -31,9 +30,9 @@ class BuddyMedicaliDController: FormViewController {
         static let postcode = "postcode";
         static let gemeeente = "gemeente";
         static let land = "land";
-        static let lengte = "lengte";
-        static let gewicht = "gewicht";
-        static let bloedgroep = "bloedgroep";
+        static let length = "length";
+        static let weight = "weight";
+        static let bloodType = "bloodType";
         static let allergieën = "allergieën";
         static let medischeAandoeningen = "medischeAandoeningen";
         static let stopWijzigen = "stopWijzigen";
@@ -148,15 +147,15 @@ class BuddyMedicaliDController: FormViewController {
         let sectionMedicalInfo = FormSectionDescriptor();
         sectionMedicalInfo.headerTitle = "Medische info";
         
-        row = FormRowDescriptor(tag: formTag.lengte, rowType: .Number, title: "Lengte");
+        row = FormRowDescriptor(tag: formTag.length, rowType: .Number, title: "Lengte");
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionMedicalInfo.addRow(row);
         
-        row = FormRowDescriptor(tag: formTag.gewicht, rowType: .Number, title: "Gewicht");
+        row = FormRowDescriptor(tag: formTag.weight, rowType: .Number, title: "Gewicht");
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionMedicalInfo.addRow(row);
         
-        row = FormRowDescriptor(tag: formTag.bloedgroep, rowType: .Picker, title: "Bloedgroep")
+        row = FormRowDescriptor(tag: formTag.bloodType, rowType: .Picker, title: "Bloedgroep")
         row.configuration[FormRowDescriptor.Configuration.Options] = ["","A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
         row.value="";
        
@@ -252,15 +251,10 @@ class BuddyMedicaliDController: FormViewController {
             addressUpdated = true;
         }
         */
-        
-        print(self.form.formValues()[formTag.lengte]?.description != patient.medicalInfo?.length?.description)
-        print(self.form.formValues()[formTag.gewicht]?.description != patient.medicalInfo?.weight);
-         print(self.form.formValues()[formTag.bloedgroep]?.description != patient.medicalInfo?.bloodType);
-       
 
-     
+
         
-        if self.form.formValues()[formTag.lengte]?.description != patient.medicalInfo?.length?.description || self.form.formValues()[formTag.gewicht]?.description != patient.medicalInfo?.weight || self.form.formValues()[formTag.bloedgroep]?.description != patient.medicalInfo?.bloodType
+        if self.form.formValues()[formTag.length]?.description != patient.medicalInfo?.length?.description || self.form.formValues()[formTag.weight]?.description != patient.medicalInfo?.weight || self.form.formValues()[formTag.bloodType]?.description != patient.medicalInfo?.bloodType
         {
             medicalInfoUpdated = true;
         }
@@ -296,9 +290,9 @@ class BuddyMedicaliDController: FormViewController {
         
         //Medical condition
         if medicalInfoUpdated {
-            patient.medicalInfo!.length = Int(self.form.formValues()[formTag.lengte]!.description);
-            patient.medicalInfo!.weight = self.form.formValues()[formTag.gewicht]!.description;
-            patient.medicalInfo!.bloodType = self.form.formValues()[formTag.bloedgroep]!.description;
+            patient.medicalInfo!.length = Int(self.form.formValues()[formTag.length]!.description);
+            patient.medicalInfo!.weight = self.form.formValues()[formTag.weight]!.description;
+            patient.medicalInfo!.bloodType = self.form.formValues()[formTag.bloodType]!.description;
             patient.medicalInfo!.allergies = self.form.formValues()[formTag.allergieën]!.description;
             patient.medicalInfo!.medicalCondition = self.form.formValues()[formTag.medischeAandoeningen]!.description;
         }
@@ -307,8 +301,18 @@ class BuddyMedicaliDController: FormViewController {
         if addressUpdated {
             
         }
+        
+        print(patient.userId.dynamicType);
         if medicalInfoUpdated {
-            
+            Alamofire.request(.POST, Routes.updateMedicalInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.length: (patient.medicalInfo?.length)!, formTag.weight: (patient.medicalInfo?.weight)!, formTag.bloodType: (patient.medicalInfo?.bloodType)!])   .responseJSON { response in
+                if response.result.isSuccess {
+                    if let JSON = response.result.value {
+                        print(JSON);
+                    }
+                }else{
+                    Alert.alertStatus("Update van medische info mislukt.", title: "Error", view: self);
+                }
+            }
         }
     }
     

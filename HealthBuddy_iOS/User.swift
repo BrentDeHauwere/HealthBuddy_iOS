@@ -22,6 +22,7 @@ class User: Mappable {
     var firstName:String?;
     var lastName:String?;
     var email:String?;
+    var phone:String?;
     var dateOfBirth:String?;
     var role:String?;
     var patients:[User]?;
@@ -41,6 +42,7 @@ class User: Mappable {
         self.firstName   <- map["firstName"]
         self.lastName    <- map["lastName"]
         self.email       <- map["email"]
+        self.phone       <- map["phone"]
         self.dateOfBirth <- map["dateOfBirth"]
         self.role        <- map["role"] 
         self.patients    <- map["patients"]
