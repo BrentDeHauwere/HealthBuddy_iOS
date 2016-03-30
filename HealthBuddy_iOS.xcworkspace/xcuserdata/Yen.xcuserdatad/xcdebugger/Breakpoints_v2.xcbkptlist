@@ -193,5 +193,53 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthBuddy_iOS/BuddyMedicaliDController.swift"
+            timestampString = "481031274.862994"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
+            landmarkName = "updateDatabase()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthBuddy_iOS.BuddyMedicaliDController.updateDatabase (HealthBuddy_iOS.BuddyMedicaliDController)() -&gt; ()"
+                  moduleName = "HealthBuddy_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yen/Documents/Bachelor%202/Mobile%20Apps%20Project/HealthBuddy/HealthBuddy_iOS/HealthBuddy_iOS/BuddyMedicaliDController.swift"
+                  timestampString = "481031274.900688"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "317"
+                  endingLineNumber = "317"
+                  offsetFromSymbolStart = "8730">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthBuddy_iOS.BuddyMedicaliDController.(updateDatabase (HealthBuddy_iOS.BuddyMedicaliDController) -&gt; () -&gt; ()).(closure #2)"
+                  moduleName = "HealthBuddy_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yen/Documents/Bachelor%202/Mobile%20Apps%20Project/HealthBuddy/HealthBuddy_iOS/HealthBuddy_iOS/BuddyMedicaliDController.swift"
+                  timestampString = "481031274.900941"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "318"
+                  endingLineNumber = "318"
+                  offsetFromSymbolStart = "177">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

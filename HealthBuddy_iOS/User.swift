@@ -54,6 +54,9 @@ class User: Mappable {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         self.dateOfBirth = dateFormatter.dateFromString(self.dateOfBirthS!);
+        if self.dateOfBirth == nil {
+            dateOfBirth = NSDate();
+        }
     }
     
     func updateUserInfo(user:User){

@@ -291,6 +291,9 @@ class BuddyMedicaliDController: FormViewController {
         let group = dispatch_group_create()
         let errors = [String]();
         
+        print("TEL VAL: \(self.form.sections[0].rows[4].value)");
+
+        
         if medicalInfoUpdate{
             dispatch_group_enter(group)
             Alamofire.request(.POST, Routes.updateMedicalInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.length:Int(self.form.formValues()[formTag.length]!.description)! , formTag.weight: self.form.formValues()[formTag.weight]!.description, formTag.bloodType: self.form.formValues()[formTag.bloodType]!.description, formTag.allergies: self.form.formValues()[formTag.allergies]!.description, formTag.medicalCondition: self.form.formValues()[formTag.medicalCondition]!.description])   .responseJSON { response in
@@ -311,7 +314,7 @@ class BuddyMedicaliDController: FormViewController {
         
         if userUpdate {
             dispatch_group_enter(group)
-            Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: self.form.formValues()[formTag.gender]!.description, formTag.firstName: self.form.formValues()[formTag.firstName]!.description, formTag.lastName : self.form.formValues()[formTag.lastName]!.description, formTag.dateOfBirth: (self.form.formValues()[formTag.dateOfBirth] as? NSDate)!, formTag.phone: self.form.formValues()[formTag.phone]!.description]) .responseJSON { response in
+            Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: self.form.formValues()[formTag.gender]!.description, formTag.firstName: self.form.formValues()[formTag.firstName]!.description, formTag.lastName : self.form.formValues()[formTag.lastName]!.description, formTag.dateOfBirth: self.form.formValues()[formTag.dateOfBirth] as! NSDate, formTag.phone: (self.form.formValues()[formTag.phone]!.description == "<null>") ? " " : self.form.formValues()[formTag.phone]!.description]) .responseJSON { response in
                 if response.result.isSuccess {
                     print("Update user succeeded")
                     if let JSON = response.result.value {
