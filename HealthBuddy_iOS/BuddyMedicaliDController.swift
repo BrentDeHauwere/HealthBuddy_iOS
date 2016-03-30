@@ -281,21 +281,26 @@ class BuddyMedicaliDController: FormViewController {
     
     func updateDatabase(){
         let group = dispatch_group_create()
-        let errors = [String]();
+        var errors = [String]();
         
         if addressUpdate {
             dispatch_group_enter(group)
-            Alamofire.request(.POST, Routes.updateAddress(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.street: self.form.formValues()[formTag.street]!.description, formTag.streetNumber: self.form.formValues()[formTag.streetNumber]!.description, formTag.bus: self.form.formValues()[formTag.bus]!.description, formTag.zipCode: self.form.formValues()[formTag.zipCode]!.description, formTag.city: self.form.formValues()[formTag.city]!.description,formTag.country: self.form.formValues()[formTag.country]!.description])   .responseJSON { response in
+            Alamofire.request(.POST, Routes.updateAddress(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.street: self.form.formValues()[formTag.street]!.description, formTag.streetNumber: self.form.formValues()[formTag.streetNumber]!.description, formTag.bus: self.form.formValues()[formTag.bus]!.description, formTag.zipCode: self.form.formValues()[formTag.zipCode]!.description, formTag.city: self.form.formValues()[formTag.city]!.description,formTag.country: self.form.formValues()[formTag.country]!.description], headers: ["Accept": "application/json"])   .responseJSON { response in
                 if response.result.isSuccess {
-                    print("Update address info succeeded");
                     if let JSON = response.result.value {
                         print(JSON);
-                        self.patient.address = Mapper<Address>().map(JSON);
-                        self.addressUpdate = false;
+                        if response.response?.statusCode == 200 {
+                            self.patient.address = Mapper<Address>().map(JSON);
+                            self.addressUpdate = false;
+                        }else if response.response?.statusCode == 422 {
+                            //TODO: fill in error array
+                            print("Ongeldige values address update");
+                        }
+                    }else{
+                        print("Ongeldige json response address update");
                     }
                 }else{
-                    print("Update address info failed");
-                    //TODO: fill in errors array
+                    print("Ongeldige request address update");
                 }
                 dispatch_group_leave(group)
             }
@@ -304,17 +309,23 @@ class BuddyMedicaliDController: FormViewController {
         
         if medicalInfoUpdate{
             dispatch_group_enter(group)
-            Alamofire.request(.POST, Routes.updateMedicalInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.length:Int(self.form.formValues()[formTag.length]!.description)! , formTag.weight: self.form.formValues()[formTag.weight]!.description, formTag.bloodType: self.form.formValues()[formTag.bloodType]!.description, formTag.allergies: self.form.formValues()[formTag.allergies]!.description, formTag.medicalCondition: self.form.formValues()[formTag.medicalCondition]!.description])   .responseJSON { response in
+            Alamofire.request(.POST, Routes.updateMedicalInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.length:Int(self.form.formValues()[formTag.length]!.description)! , formTag.weight: self.form.formValues()[formTag.weight]!.description, formTag.bloodType: self.form.formValues()[formTag.bloodType]!.description, formTag.allergies: self.form.formValues()[formTag.allergies]!.description, formTag.medicalCondition: self.form.formValues()[formTag.medicalCondition]!.description], headers: ["Accept": "application/json"])   .responseJSON { response in
                 if response.result.isSuccess {
                     print("Update medical info succeeded");
                     if let JSON = response.result.value {
                         print(JSON);
-                        self.patient.medicalInfo = Mapper<MedicalInfo>().map(JSON);
-                        self.medicalInfoUpdate = false;
+                        if response.response?.statusCode == 200 {
+                            self.patient.medicalInfo = Mapper<MedicalInfo>().map(JSON);
+                            self.medicalInfoUpdate = false;
+                        }else if response.response?.statusCode == 422 {
+                            //TODO: fill in error array
+                            print("Ongeldige values medicalinfo update");
+                        }
+                    }else{
+                        print("Ongeldige json response medicalinfo update");
                     }
                 }else{
-                    print("Update medical info failed");
-                    //TODO: fill in errors array
+                    print("Ongeldige request medicalinfo update");
                 }
                 dispatch_group_leave(group)
             }
@@ -322,17 +333,24 @@ class BuddyMedicaliDController: FormViewController {
         
         if userUpdate {
             dispatch_group_enter(group)
-            Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: self.form.formValues()[formTag.gender]!.description, formTag.firstName: self.form.formValues()[formTag.firstName]!.description, formTag.lastName : self.form.formValues()[formTag.lastName]!.description, formTag.dateOfBirth: self.form.formValues()[formTag.dateOfBirth] as! NSDate, formTag.phone: (self.form.formValues()[formTag.phone]!.description == "<null>") ? " " : self.form.formValues()[formTag.phone]!.description]) .responseJSON { response in
+            Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: self.form.formValues()[formTag.gender]!.description, formTag.firstName: self.form.formValues()[formTag.firstName]!.description, formTag.lastName : self.form.formValues()[formTag.lastName]!.description, formTag.dateOfBirth: self.form.formValues()[formTag.dateOfBirth] as! NSDate, formTag.phone: (self.form.formValues()[formTag.phone]!.description == "<null>") ? " " : self.form.formValues()[formTag.phone]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
                 if response.result.isSuccess {
                     print("Update user succeeded")
                     if let JSON = response.result.value {
                         print(JSON);
-                        let updatedUser = Mapper<User>().map(JSON);
-                        self.patient.updateUserInfo(updatedUser!);
-                        self.userUpdate = false;
+                        if response.response?.statusCode == 200 {
+                            let updatedUser = Mapper<User>().map(JSON);
+                            self.patient.updateUserInfo(updatedUser!);
+                            self.userUpdate = false;
+                        }else if response.response?.statusCode == 422 {
+                            //TODO: fill in error array
+                            print("Ongeldige values user info update");
+                        }
+                    }else{
+                        print("Ongeldige json response userinfo update");
                     }
                 }else{
-                    print("update user failed");
+                    print("Ongeldige request userinfo update");
                     //TODO: fill in errors array
                 }
                  dispatch_group_leave(group)
