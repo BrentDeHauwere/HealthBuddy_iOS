@@ -295,6 +295,10 @@ class BuddyMedicaliDController: FormViewController {
                         }else if response.response?.statusCode == 422 {
                             //TODO: fill in error array
                             print("Ongeldige values address update");
+                            let JSONDict = JSON as! NSDictionary as NSDictionary;
+                            for (_, value) in JSONDict {
+                                errors.append("\(value)");
+                            }
                         }
                     }else{
                         print("Ongeldige json response address update");
@@ -309,7 +313,7 @@ class BuddyMedicaliDController: FormViewController {
         
         if medicalInfoUpdate{
             dispatch_group_enter(group)
-            Alamofire.request(.POST, Routes.updateMedicalInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.length:Int(self.form.formValues()[formTag.length]!.description)! , formTag.weight: self.form.formValues()[formTag.weight]!.description, formTag.bloodType: self.form.formValues()[formTag.bloodType]!.description, formTag.allergies: self.form.formValues()[formTag.allergies]!.description, formTag.medicalCondition: self.form.formValues()[formTag.medicalCondition]!.description], headers: ["Accept": "application/json"])   .responseJSON { response in
+            Alamofire.request(.POST, Routes.updateMedicalInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.length:self.form.formValues()[formTag.length]!.description , formTag.weight: self.form.formValues()[formTag.weight]!.description, formTag.bloodType: self.form.formValues()[formTag.bloodType]!.description, formTag.allergies: self.form.formValues()[formTag.allergies]!.description, formTag.medicalCondition: self.form.formValues()[formTag.medicalCondition]!.description], headers: ["Accept": "application/json"])   .responseJSON { response in
                 if response.result.isSuccess {
                     print("Update medical info succeeded");
                     if let JSON = response.result.value {
@@ -320,6 +324,10 @@ class BuddyMedicaliDController: FormViewController {
                         }else if response.response?.statusCode == 422 {
                             //TODO: fill in error array
                             print("Ongeldige values medicalinfo update");
+                            let JSONDict = JSON as! NSDictionary as NSDictionary;
+                            for (_, value) in JSONDict {
+                                errors.append("\(value)");
+                            }
                         }
                     }else{
                         print("Ongeldige json response medicalinfo update");
@@ -333,7 +341,7 @@ class BuddyMedicaliDController: FormViewController {
         
         if userUpdate {
             dispatch_group_enter(group)
-            Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: self.form.formValues()[formTag.gender]!.description, formTag.firstName: self.form.formValues()[formTag.firstName]!.description, formTag.lastName : self.form.formValues()[formTag.lastName]!.description, formTag.dateOfBirth: self.form.formValues()[formTag.dateOfBirth] as! NSDate, formTag.phone: (self.form.formValues()[formTag.phone]!.description == "<null>") ? " " : self.form.formValues()[formTag.phone]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
+            Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: self.form.formValues()[formTag.gender]!.description, formTag.firstName: self.form.formValues()[formTag.firstName]!.description, formTag.lastName : self.form.formValues()[formTag.lastName]!.description, formTag.dateOfBirth: self.form.formValues()[formTag.dateOfBirth] as! NSDate, formTag.phone: (self.form.formValues()[formTag.phone]!.description == "<null>") ? NSNull() : self.form.formValues()[formTag.phone]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
                 if response.result.isSuccess {
                     print("Update user succeeded")
                     if let JSON = response.result.value {
@@ -345,6 +353,10 @@ class BuddyMedicaliDController: FormViewController {
                         }else if response.response?.statusCode == 422 {
                             //TODO: fill in error array
                             print("Ongeldige values user info update");
+                            let JSONDict = JSON as! NSDictionary as NSDictionary;
+                            for (_, value) in JSONDict {
+                                errors.append("\(value)");
+                            }
                         }
                     }else{
                         print("Ongeldige json response userinfo update");
