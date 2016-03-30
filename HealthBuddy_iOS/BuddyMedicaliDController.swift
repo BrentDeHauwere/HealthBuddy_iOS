@@ -280,19 +280,16 @@ class BuddyMedicaliDController: FormViewController {
         //TODO: update database
         if patientUpdated()
         {
-            MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
+            MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, animated: true);
             updateDatabase()
         }else{
-            Alert.alertStatusWithSymbol(true,message: "Gegevens opgeslaan", seconds: 1.5, view: self.view);
+            Alert.alertStatusWithSymbol(true,message: "Gegevens opgeslaan", seconds: 1.5, view: self.navigationController!.view);
         }
     }
     
     func updateDatabase(){
         let group = dispatch_group_create()
         let errors = [String]();
-        
-        print("TEL VAL: \(self.form.sections[0].rows[4].value)");
-
         
         if medicalInfoUpdate{
             dispatch_group_enter(group)
@@ -332,11 +329,11 @@ class BuddyMedicaliDController: FormViewController {
         }
 
         dispatch_group_notify(group, dispatch_get_main_queue()) {
-            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+            MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
             if errors.count <= 0 {
-                Alert.alertStatusWithSymbol(true, message: "Wijzigingen opgeslaan", seconds: 1.5, view: self.view);
+                Alert.alertStatusWithSymbol(true, message: "Wijzigingen opgeslaan", seconds: 1.5, view: self.navigationController!.view);
             } else {
-                Alert.alertStatusWithSymbol(false, message: "Wijzigingen opslaan mislukt", seconds: 1.5, view: self.view);
+                Alert.alertStatusWithSymbol(false, message: "Wijzigingen opslaan mislukt", seconds: 1.5, view: self.navigationController!.view);
                 let delay = 1.5 * Double(NSEC_PER_SEC)
                 let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                 dispatch_after(dispatchTime, dispatch_get_main_queue(), {

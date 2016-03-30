@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/BuddyMedicaliDController.swift"
-            timestampString = "481031274.862994"
+            timestampString = "481032107.279892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "updateDatabase()"
             landmarkType = "5">
             <Locations>
