@@ -56,10 +56,21 @@ class User: Mappable {
         self.dateOfBirth = dateFormatter.dateFromString(self.dateOfBirthS!);
     }
     
+    func updateUserInfo(user:User){
+        self.userId = user.userId;
+        self.buddyId = user.buddyId;
+        self.addressId = user.addressId;
+        self.gender = user.gender;
+        self.firstName = user.firstName;
+        self.lastName = user.lastName;
+        self.email = user.email;
+        self.phone = user.phone;
+        self.dateOfBirthS = user.dateOfBirthS;
+        self.dateOfBirth = user.dateOfBirth;
+        self.role = user.role;
+    }
     
     var description: String {
-        return "userId: \(self.userId)\nbuddyId: \(self.buddyId)\naddressId: \(self.addressId)\ngender: \(self.gender)\nfirstName: \(self.firstName)\nlastName: \(self.lastName)\nemail: \(self.email)\nphone: \(self.phone)\ndateOfBirth: \(self.dateOfBirth)\nRole: \(self.role)\nPatients: \(self.patients)\nMedicines: \(self.medicines), Address: \(self.address?.description), medicalInfo: \(self.medicalInfo?.description)";
+        return "userId: \(self.userId)\nbuddyId: \(self.buddyId)\naddressId: \(self.addressId)\ngender: \(self.gender)\nfirstName: \(self.firstName)\nlastName: \(self.lastName)\nemail: \(self.email)\nphone: \(self.phone)\ndateOfBirthNSDate: \(self.dateOfBirth)\nDateOfBirthS: \(self.dateOfBirthS)\nRole: \(self.role)\nPatients: \(self.patients)\nMedicines: \(self.medicines), Address: \(self.address?.description), medicalInfo: \(self.medicalInfo?.description)";
     }
-
-    
 }
