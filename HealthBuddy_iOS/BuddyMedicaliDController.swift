@@ -234,7 +234,7 @@ class BuddyMedicaliDController: FormViewController {
             
             //Create and add a second option action
             let doSave: UIAlertAction = UIAlertAction(title: "Wijzingen opslaan", style: .Default) { action -> Void in
-                MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
+                MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, animated: true);
                 self.updateDatabase()
             }
             actionSheetController.addAction(doSave);
@@ -248,18 +248,10 @@ class BuddyMedicaliDController: FormViewController {
     }
     
     func patientUpdated() -> Bool{
-        
-        
-        
-        //Address updated? 
-        /*
-        if self.form.formValues()[formTag.straat]?.description != patient.address!.street || self.form.formValues()[formTag.huisnummer]?.description != patient.address!.streetNumber || self.form.formValues()[formTag.postcode]?.description != patient.address!.zipCode || self.form.formValues()[formTag.gemeeente]?.description != patient.address!.city || self.form.formValues()[formTag.land]?.description != patient.address!.country
+        if self.form.formValues()[formTag.street]?.description != patient.address!.street || self.form.formValues()[formTag.streetNumber]?.description != patient.address!.streetNumber || self.form.formValues()[formTag.bus]?.description != patient.address!.bus || self.form.formValues()[formTag.zipCode]?.description != patient.address!.zipCode || self.form.formValues()[formTag.city]?.description != patient.address!.city || self.form.formValues()[formTag.country]?.description != patient.address!.country
         {
-            addressUpdated = true;
+            addressUpdate = true;
         }
-        */
-
-
 
         if self.form.formValues()[formTag.gender]?.description != patient.gender || self.form.formValues()[formTag.firstName]?.description != patient.firstName || self.form.formValues()[formTag.lastName]?.description != patient.lastName || self.form.formValues()[formTag.dateOfBirth]?.description != patient.dateOfBirth?.description  || self.form.sections[0].rows[4].value != patient.phone
         {
@@ -273,7 +265,7 @@ class BuddyMedicaliDController: FormViewController {
         }
         
         
-        return userUpdate || medicalInfoUpdate;
+        return userUpdate || medicalInfoUpdate || addressUpdate;
     }
     
     func submit(sender:UIBarButtonItem){
@@ -290,6 +282,25 @@ class BuddyMedicaliDController: FormViewController {
     func updateDatabase(){
         let group = dispatch_group_create()
         let errors = [String]();
+        
+        if addressUpdate {
+            dispatch_group_enter(group)
+            Alamofire.request(.POST, Routes.updateAddress(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.street: self.form.formValues()[formTag.street]!.description, formTag.streetNumber: self.form.formValues()[formTag.streetNumber]!.description, formTag.bus: self.form.formValues()[formTag.bus]!.description, formTag.zipCode: self.form.formValues()[formTag.zipCode]!.description, formTag.city: self.form.formValues()[formTag.city]!.description,formTag.country: self.form.formValues()[formTag.country]!.description])   .responseJSON { response in
+                if response.result.isSuccess {
+                    print("Update address info succeeded");
+                    if let JSON = response.result.value {
+                        print(JSON);
+                        self.patient.address = Mapper<Address>().map(JSON);
+                        self.addressUpdate = false;
+                    }
+                }else{
+                    print("Update address info failed");
+                    //TODO: fill in errors array
+                }
+                dispatch_group_leave(group)
+            }
+
+        }
         
         if medicalInfoUpdate{
             dispatch_group_enter(group)

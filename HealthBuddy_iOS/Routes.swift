@@ -27,5 +27,9 @@ struct Routes{
     static func updateMedicalInfo(patientId:Int) -> String{
         return "http://10.3.50.33/api/user/\(patientId)/medicalinfo/update";
     }
+    
+    static func updateAddress(patientId:Int) -> String{
+        return "http://10.3.50.33/api/user/\(patientId)/address/update";
+    }
    
 }
