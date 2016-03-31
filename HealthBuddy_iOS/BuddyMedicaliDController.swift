@@ -62,7 +62,7 @@ class BuddyMedicaliDController: FormViewController {
         self.navigationItem.title = "\(patient.firstName!) \(patient.lastName!)";
         
         self.initForm();
-        
+       
     }
     
     func hideKeyboardOnHeaderTab(){
@@ -288,7 +288,10 @@ class BuddyMedicaliDController: FormViewController {
         
         if userUpdate {
             dispatch_group_enter(group)
-            Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: self.form.formValues()[formTag.gender]!.description, formTag.firstName: self.form.formValues()[formTag.firstName]!.description, formTag.lastName : self.form.formValues()[formTag.lastName]!.description, formTag.dateOfBirth: self.form.formValues()[formTag.dateOfBirth] as! NSDate, formTag.phone: (self.form.formValues()[formTag.phone]!.description == "<null>") ? " " : self.form.formValues()[formTag.phone]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd";
+            Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: self.form.formValues()[formTag.gender]!.description, formTag.firstName: self.form.formValues()[formTag.firstName]!.description, formTag.lastName : self.form.formValues()[formTag.lastName]!.description, formTag.dateOfBirth: dateFormatter.stringFromDate(self.form.formValues()[formTag.dateOfBirth] as! NSDate), formTag.phone: (self.form.formValues()[formTag.phone]!.description == "<null>") ? " " : self.form.formValues()[formTag.phone]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
                 if response.result.isSuccess {
                     if let JSON = response.result.value {
                         print(JSON);
