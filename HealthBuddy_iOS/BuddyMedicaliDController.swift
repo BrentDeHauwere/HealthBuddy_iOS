@@ -290,7 +290,6 @@ class BuddyMedicaliDController: FormViewController {
             dispatch_group_enter(group)
             Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: self.form.formValues()[formTag.gender]!.description, formTag.firstName: self.form.formValues()[formTag.firstName]!.description, formTag.lastName : self.form.formValues()[formTag.lastName]!.description, formTag.dateOfBirth: self.form.formValues()[formTag.dateOfBirth] as! NSDate, formTag.phone: (self.form.formValues()[formTag.phone]!.description == "<null>") ? " " : self.form.formValues()[formTag.phone]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
                 if response.result.isSuccess {
-                    print("Update user succeeded")
                     if let JSON = response.result.value {
                         print(JSON);
                         if response.response?.statusCode == 200 {
@@ -353,7 +352,6 @@ class BuddyMedicaliDController: FormViewController {
             dispatch_group_enter(group)
             Alamofire.request(.POST, Routes.updateMedicalInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.length:self.form.formValues()[formTag.length]!.description , formTag.weight: self.form.formValues()[formTag.weight]!.description, formTag.bloodType: self.form.formValues()[formTag.bloodType]!.description, formTag.allergies: self.form.formValues()[formTag.allergies]!.description, formTag.medicalCondition: self.form.formValues()[formTag.medicalCondition]!.description], headers: ["Accept": "application/json"])   .responseJSON { response in
                 if response.result.isSuccess {
-                    print("Update medical info succeeded");
                     if let JSON = response.result.value {
                         print(JSON);
                         if response.response?.statusCode == 200 {
