@@ -53,7 +53,7 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
             if searchText.isEmpty{
                 filteredData = (loggedInUser?.patients)!;
             }else{
-                for var i = 0; i < loggedInUser?.patients!.count; i++ {
+                for var i = 0; i < loggedInUser?.patients!.count; i += 1 {
                     let fullName = "\(loggedInUser!.patients![i].firstName) \(loggedInUser!.patients![i].lastName)";
                     if(fullName.lowercaseString.rangeOfString(searchText.lowercaseString) != nil){
                         filteredData.append(loggedInUser!.patients![i]);

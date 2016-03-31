@@ -144,7 +144,7 @@ class BuddyNewMedicineController: FormViewController {
         scheduleFormSections[scheduleSectionID] = sectionNewSchedule;
         self.form.sections.insert(sectionNewSchedule, atIndex: self.form.sections.count-1);
         
-        scheduleSectionID++;
+        scheduleSectionID += 1;
         tableView.reloadData();
     }
     
@@ -155,7 +155,7 @@ class BuddyNewMedicineController: FormViewController {
         self.form.sections.removeAtIndex(indexToRemove!);
     
         //update schedule titles
-        for var i = 1; i < self.form.sections.count-1;i++ {
+        for i in 1 ..< self.form.sections.count-1 {
             self.form.sections[i].headerTitle = "Inname-moment \(i)";
         }
         

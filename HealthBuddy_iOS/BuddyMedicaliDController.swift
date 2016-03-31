@@ -57,8 +57,8 @@ class BuddyMedicaliDController: FormViewController {
         
         lblMedicalID.text = "Medisch ID";
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:"backButtonPressed:");
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Opslaan", style: .Plain, target: self, action: "submit:")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:#selector(BuddyMedicaliDController.backButtonPressed(_:)));
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Opslaan", style: .Plain, target: self, action: #selector(BuddyMedicaliDController.submit(_:)))
         self.navigationItem.title = "\(patient.firstName!) \(patient.lastName!)";
         
         self.initForm();
@@ -67,7 +67,7 @@ class BuddyMedicaliDController: FormViewController {
     
     func hideKeyboardOnHeaderTab(){
         self.navigationController!.navigationBar.userInteractionEnabled = true;
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "click:");
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuddyMedicaliDController.click(_:)));
         tapGestureRecognizer.numberOfTapsRequired=1;
         self.navigationController!.navigationBar.addGestureRecognizer(tapGestureRecognizer);
     }

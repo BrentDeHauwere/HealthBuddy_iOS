@@ -24,7 +24,7 @@ class BuddyMedicineController: UITableViewController {
         super.viewDidLoad()
         lblMedicine.text = "Medicatie";
         self.navigationItem.title="\(patient.firstName!) \(patient.lastName!)";
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:"backButtonPressed:");
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:#selector(BuddyMedicineController.backButtonPressed(_:)));
     }
     
     func backButtonPressed(sender:UIButton){
