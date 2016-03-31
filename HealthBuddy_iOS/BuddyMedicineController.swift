@@ -49,7 +49,7 @@ class BuddyMedicineController: UITableViewController {
     //Delete a medicin
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            let alert = UIAlertController(title: "Verwijder \(self.patient.medicines![indexPath.row].name)", message: "Bent u zeker?", preferredStyle: .ActionSheet)
+            let alert = UIAlertController(title: "Verwijder \(self.patient.medicines![indexPath.row].name!)", message: "Bent u zeker?", preferredStyle: .ActionSheet)
             
             let DeleteAction = UIAlertAction(title: "Akkoord", style: .Destructive) { action -> Void in
                 tableView.beginUpdates()
