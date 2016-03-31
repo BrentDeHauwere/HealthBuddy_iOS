@@ -88,7 +88,7 @@ class LoginController: UIViewController {
                         if self.loggedInUser?.role ==  Roles.Zorgmantel {
                             self.performSegueWithIdentifier("showPatientsList", sender: self);
                         }else if self.loggedInUser?.role == Roles.zorgBehoevende {
-                            self.performSegueWithIdentifier("Zorg", sender: self);
+                            self.performSegueWithIdentifier("showBuddyView", sender: self);
                         }else{
                             print("No valid role");
                         }
