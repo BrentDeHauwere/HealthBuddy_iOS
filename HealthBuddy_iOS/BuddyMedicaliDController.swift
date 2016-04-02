@@ -220,6 +220,7 @@ class BuddyMedicaliDController: FormViewController {
     
     func backButtonPressed(sender:UIButton) {
         self.view.endEditing(true);
+        
         if(patientUpdated()){
             //Create the AlertController
             let actionSheetController: UIAlertController = UIAlertController(title: "Opgelet", message: "U wenst te sluiten zonder de wijzigingen op te slaan", preferredStyle: .ActionSheet)
@@ -251,18 +252,17 @@ class BuddyMedicaliDController: FormViewController {
     }
     
     func patientUpdated() -> Bool{
-        if self.form.formValues()[formTag.street]?.description != patient.address!.street || self.form.formValues()[formTag.streetNumber]?.description != patient.address!.streetNumber || self.form.formValues()[formTag.bus]?.description != patient.address!.bus || self.form.formValues()[formTag.zipCode]?.description != patient.address!.zipCode || self.form.formValues()[formTag.city]?.description != patient.address!.city || self.form.formValues()[formTag.country]?.description != patient.address!.country
-        {
-            addressUpdate = true;
-        }
-
-        if self.form.formValues()[formTag.gender]?.description != patient.gender || self.form.formValues()[formTag.firstName]?.description != patient.firstName || self.form.formValues()[formTag.lastName]?.description != patient.lastName || self.form.formValues()[formTag.dateOfBirth]?.description != patient.dateOfBirth?.description  || self.form.sections[0].rows[4].value != patient.phone
+        if self.form.sections[0].rows[0].value != patient.gender || self.form.sections[0].rows[1].value != patient.firstName || self.form.sections[0].rows[2].value != patient.lastName || self.form.formValues()[formTag.dateOfBirth]?.description != patient.dateOfBirth?.description  || self.form.sections[0].rows[4].value != patient.phone
         {
             userUpdate = true;
         }
 
+        if self.form.sections[1].rows[0].value != patient.address!.street || self.form.sections[1].rows[1].value != patient.address!.streetNumber || self.form.sections[1].rows[2].value != patient.address!.bus || self.form.sections[1].rows[3].value != patient.address!.zipCode || self.form.sections[1].rows[4].value != patient.address!.city || self.form.sections[1].rows[5].value != patient.address!.country
+        {
+            addressUpdate = true;
+        }
 
-        if self.form.formValues()[formTag.length]?.description != patient.medicalInfo?.length?.description || self.form.formValues()[formTag.weight]?.description != patient.medicalInfo?.weight || self.form.formValues()[formTag.bloodType]?.description != patient.medicalInfo?.bloodType || self.form.sections[3].rows[0].value != patient.medicalInfo?.allergies || self.form.sections[4].rows[0].value != patient.medicalInfo?.medicalCondition
+        if self.form.sections[2].rows[0].value != patient.medicalInfo?.length?.description || self.form.sections[2].rows[1].value != patient.medicalInfo?.weight || self.form.sections[2].rows[2].value != patient.medicalInfo?.bloodType || self.form.sections[3].rows[0].value != patient.medicalInfo?.allergies || self.form.sections[4].rows[0].value != patient.medicalInfo?.medicalCondition
         {
             medicalInfoUpdate = true;
         }
