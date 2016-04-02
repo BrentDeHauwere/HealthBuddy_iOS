@@ -13,6 +13,7 @@ class BuddyNewMedicineController: FormViewController {
     
     struct FormTag{
         static let medicinName = "medicinName";
+        static let info = "info";
         static let addSchedule = "addSchedule";
         static let houre = "houre";
         static let dayOfWeek = "dayOfWeek";
@@ -57,6 +58,10 @@ class BuddyNewMedicineController: FormViewController {
         let sectionMedicinInformation = FormSectionDescriptor();
         
         row = FormRowDescriptor(tag: FormTag.medicinName, rowType: .Text, title: "Naam");
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        sectionMedicinInformation.addRow(row);
+        
+        row = FormRowDescriptor(tag: FormTag.info, rowType: .MultilineText, title: "Info");
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionMedicinInformation.addRow(row);
         
