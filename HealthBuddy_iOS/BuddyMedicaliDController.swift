@@ -276,7 +276,7 @@ class BuddyMedicaliDController: FormViewController {
         self.view.endEditing(true);
         if patientUpdated()
         {
-            MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Gegevens opgeslaan...", mode: .Indeterminate, animated: true) { response in
+            MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Gegevens bewaren...", mode: .Indeterminate, animated: true) { response in
                 self.annulateBtnPressed = true;
                 MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
                 Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
