@@ -20,6 +20,7 @@ class BuddyMedicaliDController: FormViewController {
     var userUpdate = false;
     
     var backBtnPressed = false;
+    var annulateBtnPressed = false;
     
     @IBOutlet weak var lblMedicalID: UILabel!
     
@@ -275,7 +276,13 @@ class BuddyMedicaliDController: FormViewController {
         self.view.endEditing(true);
         if patientUpdated()
         {
-            MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, animated: true);
+            MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Gegevens opgeslaan...", mode: .Indeterminate, animated: true) { response in
+                self.annulateBtnPressed = true;
+                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
+                    tasks.forEach({ $0.cancel() })
+                }
+            }
             updateDatabase()
         }else{
             Alert.alertStatusWithSymbol(true,message: "Gegevens opgeslaan", seconds: 1.5, view: self.navigationController!.view);
@@ -384,6 +391,11 @@ class BuddyMedicaliDController: FormViewController {
        
         dispatch_group_notify(group, dispatch_get_main_queue()) {
             MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
+            
+            if self.annulateBtnPressed {
+                errors.append("Opslaan geannuleerd");
+            }
+            
             if errors.count <= 0 {
                 Alert.alertStatusWithSymbol(true, message: "Wijzigingen opgeslaan", seconds: 1.5, view: self.navigationController!.view);
                 if self.backBtnPressed {

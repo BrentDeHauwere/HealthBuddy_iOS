@@ -50,7 +50,14 @@ class LoginController: UIViewController {
     }
     
     func logIn(){
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
+      
+        MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Aanmelden...", mode: .Indeterminate, animated: true) { response in
+            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+            Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
+                tasks.forEach({ $0.cancel() })
+            }
+        }
+
         Alamofire.request(.POST, Routes.login, parameters: ["email": txtEmail.text!, "password":txtPassword.text!])
             .responseJSON { response in
                 if(response.result.isSuccess){
