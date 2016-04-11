@@ -8,12 +8,21 @@
 
 import UIKit
 
-class BuddyTabBarController: UITabBarController {
-
+class PatientTabBarController: UITabBarController {
+    
+    var patient:User?;
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
         UINavigationBar.appearance().translucent = false
-        // Do any additional setup after loading the view.
+        let barViewControllers = self.viewControllers
+        
+        let destinationNavigationController = barViewControllers![0] as! UINavigationController
+        let patientDashboard = destinationNavigationController.viewControllers[0] as! PatientDashboardController
+        patientDashboard.patient = patient
+        
+        let destinationNavigationController2 = barViewControllers![1] as! UINavigationController
+        let patientMedicine = destinationNavigationController2.viewControllers[0] as! PatientMedicineController
+        patientMedicine.patient = patient
     }
 
     override func didReceiveMemoryWarning() {

@@ -25,8 +25,8 @@ class LoginController: UIViewController {
         btnLogin.layer.cornerRadius = 10;
         btnLogin.clipsToBounds = true;
         //Temporary auto login
-        txtEmail.text = "brentdehauwere@gmail.com";
-        txtPassword.text = "secret";
+        txtEmail.text = "eddi@gmail.com";
+        txtPassword.text = "secret1";
         
     }
 
@@ -109,10 +109,8 @@ class LoginController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showBuddyView" {
-            let destinationTabbar = segue.destinationViewController as! UITabBarController;
-            let destinationNavigationController = destinationTabbar.viewControllers![0] as! UINavigationController;
-            let patientDashboard = destinationNavigationController.viewControllers[0] as! PatientDashboardController;
-            patientDashboard.patient = loggedInUser;
+            let destinationTabbar = segue.destinationViewController as! PatientTabBarController;
+            destinationTabbar.patient = loggedInUser;
         }else if segue.identifier == "showPatientsList" {
             let destNavController = segue.destinationViewController as! UINavigationController;
             let patientListView = destNavController.viewControllers[0] as! BuddyListControler;
