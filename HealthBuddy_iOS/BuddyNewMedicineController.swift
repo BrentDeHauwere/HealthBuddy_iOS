@@ -37,7 +37,6 @@ class BuddyNewMedicineController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addScheduleForm();
 
         //Formulier opvullen indien bestaande medicijn wordt geupdate
         if medicine != nil  {
@@ -172,7 +171,15 @@ class BuddyNewMedicineController: FormViewController {
    
     func initForm(){
         self.form.sections[0].rows[0].value = medicine?.name;
+        self.form.sections[0].rows[1].value = medicine?.info;
         
+        if let numberOfSchedules = self.medicine?.schedules.count {
+            for i in 0 ..< numberOfSchedules  {
+                self.addScheduleForm();
+                self.form.sections[i+1].rows[0].value = self.medicine?.schedules[i].time;
+                self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].amount;
+            }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
