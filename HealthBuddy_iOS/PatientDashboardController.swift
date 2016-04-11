@@ -13,6 +13,6 @@ class PatientDashboardController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.title = "\(patient!.firstName) \(patient!.lastName)";
+        self.title = "\(patient!.firstName!) \(patient!.lastName!)";
     }
 }

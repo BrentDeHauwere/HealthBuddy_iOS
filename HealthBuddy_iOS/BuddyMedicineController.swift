@@ -12,7 +12,7 @@ class BuddyMedicineController: UITableViewController {
     @IBOutlet weak var lblMedicine: UILabel!
     
     var patient:User!
-    var medicines = [Medicine]();
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -24,8 +24,7 @@ class BuddyMedicineController: UITableViewController {
         super.viewDidLoad()
         lblMedicine.text = "Medicatie";
         self.navigationItem.title="\(patient.firstName!) \(patient.lastName!)";
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:"backButtonPressed:");
-        loadMedicinesOfPatients()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:#selector(BuddyMedicineController.backButtonPressed(_:)));
     }
     
     func backButtonPressed(sender:UIButton){
@@ -33,20 +32,15 @@ class BuddyMedicineController: UITableViewController {
     }
     
 
-    func loadMedicinesOfPatients(){
-        medicines = [Medicine(id:1, name: "Buscopan", photo: nil),Medicine(id:2, name: "Sinutab", photo: nil),Medicine(id:3, name: "Motilium", photo: nil)];
-        
-        
-    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.medicines.count;
+        return self.patient.medicines!.count;
     }
     
     //Maakt de cell op in de table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("MedicineCell", forIndexPath: indexPath) as UITableViewCell;
-        let medicine:Medicine = medicines[indexPath.row];
+        let medicine:Medicine = self.patient.medicines![indexPath.row];
         cell.textLabel?.text = medicine.name;
         return cell;
     }
@@ -55,11 +49,11 @@ class BuddyMedicineController: UITableViewController {
     //Delete a medicin
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            let alert = UIAlertController(title: "Verwijder \(medicines[indexPath.row].name)", message: "Bent u zeker?", preferredStyle: .ActionSheet)
+            let alert = UIAlertController(title: "Verwijder \(self.patient.medicines![indexPath.row].name!)", message: "Bent u zeker?", preferredStyle: .ActionSheet)
             
             let DeleteAction = UIAlertAction(title: "Akkoord", style: .Destructive) { action -> Void in
                 tableView.beginUpdates()
-                self.medicines.removeAtIndex(indexPath.row)
+                self.patient.medicines!.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
                 //TODO: delete record in db
                 tableView.endUpdates()
@@ -91,7 +85,7 @@ class BuddyMedicineController: UITableViewController {
         if segue.identifier == "loadMedicine" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 if let buddyNewMedicine = segue.destinationViewController as? BuddyNewMedicineController {
-                        buddyNewMedicine.medicine =  medicines[indexPath.row];
+                        buddyNewMedicine.medicine =  self.patient.medicines![indexPath.row];
                 }
             }
         }
@@ -107,8 +101,8 @@ class BuddyMedicineController: UITableViewController {
             if let medicine = buddynewMedicineController.medicine {
                 //Indien nieuwe medicijn: append, else: replace
                 if(buddynewMedicineController.newMedicin){
-                    medicines.append(medicine);
-                    let indexPath = NSIndexPath(forRow: medicines.count-1, inSection: 0);
+                    self.patient.medicines?.append(medicine);
+                    let indexPath = NSIndexPath(forRow: self.patient.medicines!.count-1, inSection: 0);
                     tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
                 }else{
                     tableView.reloadData();

@@ -13,6 +13,7 @@ class BuddyNewMedicineController: FormViewController {
     
     struct FormTag{
         static let medicinName = "medicinName";
+        static let info = "info";
         static let addSchedule = "addSchedule";
         static let houre = "houre";
         static let dayOfWeek = "dayOfWeek";
@@ -57,6 +58,10 @@ class BuddyNewMedicineController: FormViewController {
         let sectionMedicinInformation = FormSectionDescriptor();
         
         row = FormRowDescriptor(tag: FormTag.medicinName, rowType: .Text, title: "Naam");
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        sectionMedicinInformation.addRow(row);
+        
+        row = FormRowDescriptor(tag: FormTag.info, rowType: .MultilineText, title: "Info");
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionMedicinInformation.addRow(row);
         
@@ -144,7 +149,7 @@ class BuddyNewMedicineController: FormViewController {
         scheduleFormSections[scheduleSectionID] = sectionNewSchedule;
         self.form.sections.insert(sectionNewSchedule, atIndex: self.form.sections.count-1);
         
-        scheduleSectionID++;
+        scheduleSectionID += 1;
         tableView.reloadData();
     }
     
@@ -155,7 +160,7 @@ class BuddyNewMedicineController: FormViewController {
         self.form.sections.removeAtIndex(indexToRemove!);
     
         //update schedule titles
-        for var i = 1; i < self.form.sections.count-1;i++ {
+        for i in 1 ..< self.form.sections.count-1 {
             self.form.sections[i].headerTitle = "Inname-moment \(i)";
         }
         

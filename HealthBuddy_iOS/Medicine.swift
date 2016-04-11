@@ -12,13 +12,15 @@ import ObjectMapper
 class Medicine : Mappable {
     var id: Int?;
     var name: String?;
+    var info:String?
     var photoUrl:String?;
     var photo: UIImage? = UIImage(named: "selectImage");
-    var schedule = [MedicalSchedule]();
+    var schedules = [MedicalSchedule]();
     
     init(){
         
     }
+    
     init(id:Int, name: String, photo:UIImage?){
         self.id = id;
         self.name = name;
@@ -32,8 +34,13 @@ class Medicine : Mappable {
     func mapping(map: Map) {
         self.id         <- map["id"]
         self.name       <- map["name"]
+        self.info       <- map["info"]
         self.photoUrl   <- map["photoUrl"]
-        self.schedule   <- map["schedule"]
+        self.schedules   <- map["schedule"]
     }
+    var description: String {
+        return "medicineId: \(self.id)\nname: \(self.name)\ninfo: \(self.info)\nphotoUrl: \(self.photoUrl)\nphoto \(self.photo)\nschedule\(self.schedules)";
+    }
+    
 }
 

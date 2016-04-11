@@ -10,7 +10,6 @@
 		6D8A5E22C35F4DC93A50FE2B /* Pods_HealthBuddy_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302270A89DF9A481436CBA50 /* Pods_HealthBuddy_iOS.framework */; };
 		AC1823281C9440C600F66C9E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1823271C9440C600F66C9E /* Alert.swift */; };
 		AC20C0461C9AB20300E3E458 /* PatientDashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20C0451C9AB20300E3E458 /* PatientDashboardController.swift */; };
-		AC27CE561C8C5BD700EBFE89 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC27CE541C8C5BD700EBFE89 /* SwiftHTTP.framework */; };
 		AC2EEB591C9167E800356A23 /* Medicine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2EEB581C9167E800356A23 /* Medicine.swift */; };
 		AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A519A1C8C382300804C65 /* AppDelegate.swift */; };
 		AC5A519D1C8C382300804C65 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A519C1C8C382300804C65 /* LoginController.swift */; };
@@ -25,6 +24,8 @@
 		ACCA96301C9078B200D394BE /* BuddyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */; };
 		ACD9022C1C98822D00D260CB /* BuddyNewMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD9022B1C98822D00D260CB /* BuddyNewMedicineController.swift */; };
 		ACD9F6AA1CA2CB3C003F64C3 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD9F6A91CA2CB3C003F64C3 /* Authentication.swift */; };
+		ACDAD0B81CA3F943008D53A8 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAD0B71CA3F943008D53A8 /* Address.swift */; };
+		ACDAD0BA1CA3F94B008D53A8 /* MedicalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAD0B91CA3F94B008D53A8 /* MedicalInfo.swift */; };
 		ACE6148F1C9ED99400922EF7 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6148E1C9ED99400922EF7 /* Routes.swift */; };
 		ACE77E891C999DD2009706B9 /* BuddyMedicinePictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77E881C999DD2009706B9 /* BuddyMedicinePictureController.swift */; };
 		ACF950641C8F311400218754 /* BuddyMainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF950631C8F311400218754 /* BuddyMainMenuController.swift */; };
@@ -77,6 +78,8 @@
 		ACCA962F1C9078B200D394BE /* BuddyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyTabBarController.swift; sourceTree = "<group>"; };
 		ACD9022B1C98822D00D260CB /* BuddyNewMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyNewMedicineController.swift; sourceTree = "<group>"; };
 		ACD9F6A91CA2CB3C003F64C3 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		ACDAD0B71CA3F943008D53A8 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		ACDAD0B91CA3F94B008D53A8 /* MedicalInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicalInfo.swift; sourceTree = "<group>"; };
 		ACE6148E1C9ED99400922EF7 /* Routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		ACE77E881C999DD2009706B9 /* BuddyMedicinePictureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMedicinePictureController.swift; sourceTree = "<group>"; };
 		ACF950631C8F311400218754 /* BuddyMainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMainMenuController.swift; sourceTree = "<group>"; };
@@ -91,7 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC27CE561C8C5BD700EBFE89 /* SwiftHTTP.framework in Frameworks */,
 				6D8A5E22C35F4DC93A50FE2B /* Pods_HealthBuddy_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +219,8 @@
 		ACFC56681C8D8CEB00269458 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				ACDAD0B91CA3F94B008D53A8 /* MedicalInfo.swift */,
+				ACDAD0B71CA3F943008D53A8 /* Address.swift */,
 				ACFC56691C8D8D6A00269458 /* User.swift */,
 				AC2EEB581C9167E800356A23 /* Medicine.swift */,
 				AC5B0B6B1C945CE2005D0558 /* MedicalSchedule.swift */,
@@ -423,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACDAD0B81CA3F943008D53A8 /* Address.swift in Sources */,
 				ACF950641C8F311400218754 /* BuddyMainMenuController.swift in Sources */,
 				ACFC566F1C8DA00C00269458 /* BuddyMedicaliDController.swift in Sources */,
 				AC9EB0941C8F52420084DAC8 /* BuddyWeightController.swift in Sources */,
@@ -434,6 +439,7 @@
 				ACD9F6AA1CA2CB3C003F64C3 /* Authentication.swift in Sources */,
 				AC5B0B6C1C945CE2005D0558 /* MedicalSchedule.swift in Sources */,
 				ACFC566A1C8D8D6A00269458 /* User.swift in Sources */,
+				ACDAD0BA1CA3F94B008D53A8 /* MedicalInfo.swift in Sources */,
 				ACE6148F1C9ED99400922EF7 /* Routes.swift in Sources */,
 				ACFC566D1C8D8F8400269458 /* BuddyListController.swift in Sources */,
 				ACCA96301C9078B200D394BE /* BuddyTabBarController.swift in Sources */,

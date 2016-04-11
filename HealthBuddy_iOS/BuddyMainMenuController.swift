@@ -21,7 +21,7 @@ class BuddyMainMenuController: UITableViewController {
         self.navigationItem.title = "\(patient.firstName!) \(patient.lastName!)";
      
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"ContactenLogo"), style:.Plain, target:self, action:"backButtonPressed:");
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"ContactenLogo"), style:.Plain, target:self, action:#selector(BuddyMainMenuController.backButtonPressed(_:)));
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate;
         self.navigationController?.interactivePopGestureRecognizer?.enabled = true;
     }

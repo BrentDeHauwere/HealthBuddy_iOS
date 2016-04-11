@@ -24,7 +24,6 @@ class LoginController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         btnLogin.layer.cornerRadius = 10;
         btnLogin.clipsToBounds = true;
-        
         //Temporary auto login
         txtEmail.text = "brentdehauwere@gmail.com";
         txtPassword.text = "secret";
@@ -51,7 +50,14 @@ class LoginController: UIViewController {
     }
     
     func logIn(){
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true);
+      
+        MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Aanmelden...", mode: .Indeterminate, animated: true) { response in
+            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+            Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
+                tasks.forEach({ $0.cancel() })
+            }
+        }
+
         Alamofire.request(.POST, Routes.login, parameters: ["email": txtEmail.text!, "password":txtPassword.text!])
             .responseJSON { response in
                 if(response.result.isSuccess){
@@ -59,6 +65,7 @@ class LoginController: UIViewController {
                         let JSONDict = JSON as! NSDictionary as NSDictionary;
                         let api_token = JSONDict["api_token"];
                         Authentication.token = api_token! as? String;
+                        print("api_token: \(Authentication.token)");
                         self.getProfile();
                     }
                 }else{
@@ -71,7 +78,7 @@ class LoginController: UIViewController {
     
     func getProfile(){
         Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
-            .responseString { response in
+            .responseJSON { response in
                 if response.result.isSuccess {
                     MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
                     Alert.alertStatusWithSymbol(true,message: "Aanmelden geslaagd", seconds: 1.5, view: self.view);
@@ -79,9 +86,6 @@ class LoginController: UIViewController {
                     if let JSON = response.result.value {
                         self.loggedInUser = Mapper<User>().map(JSON);
                         print(JSON);
-                        print(self.loggedInUser?.description)
-                        print("PATIENT 1: ");
-                        print(self.loggedInUser?.patients?[0].description);
                     }
                     
                     
@@ -91,7 +95,7 @@ class LoginController: UIViewController {
                         if self.loggedInUser?.role ==  Roles.Zorgmantel {
                             self.performSegueWithIdentifier("showPatientsList", sender: self);
                         }else if self.loggedInUser?.role == Roles.zorgBehoevende {
-                            self.performSegueWithIdentifier("Zorg", sender: self);
+                            self.performSegueWithIdentifier("showBuddyView", sender: self);
                         }else{
                             print("No valid role");
                         }
@@ -112,7 +116,7 @@ class LoginController: UIViewController {
         }else if segue.identifier == "showPatientsList" {
             let destNavController = segue.destinationViewController as! UINavigationController;
             let patientListView = destNavController.viewControllers[0] as! BuddyListControler;
-            patientListView.patients = (loggedInUser?.patients)!;
+            patientListView.loggedInUser = self.loggedInUser;
         }
     }
     
