@@ -1,1 +1,0 @@
-# HealthBuddy_iOS
