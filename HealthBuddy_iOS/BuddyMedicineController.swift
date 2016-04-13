@@ -81,14 +81,15 @@ class BuddyMedicineController: UITableViewController {
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-       
         if segue.identifier == "loadMedicine" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                if let buddyNewMedicine = segue.destinationViewController as? BuddyNewMedicineController {
-                        buddyNewMedicine.medicine =  self.patient.medicines![indexPath.row];
+                if let navController = segue.destinationViewController as? UINavigationController {
+                    let buddyNewMedicine = navController.viewControllers[0] as! BuddyNewMedicineController;
+                    buddyNewMedicine.medicine =  self.patient.medicines![indexPath.row];
                 }
             }
         }
+ 
     }
    
     

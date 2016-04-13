@@ -89,7 +89,7 @@ class BuddyNewMedicineController: FormViewController {
         let sectionNewSchedule = FormSectionDescriptor();
         sectionNewSchedule.headerTitle = "Inname-moment \(self.form.sections.count-1)";
       
-        var row = FormRowDescriptor(tag: "\(FormTag.houre)_\(self.scheduleSectionID)", rowType: .Time, title: "Uur");
+        var row = FormRowDescriptor(tag: "\(FormTag.houre)_\(self.scheduleSectionID)", rowType: .Text, title: "Uur");
         sectionNewSchedule.addRow(row);
         
         row = FormRowDescriptor(tag: "\(FormTag.dayOfWeek)_\(self.scheduleSectionID)", rowType: .MultipleSelector, title: "Herhaal")
@@ -176,10 +176,13 @@ class BuddyNewMedicineController: FormViewController {
         if let numberOfSchedules = self.medicine?.schedules.count {
             for i in 0 ..< numberOfSchedules  {
                 self.addScheduleForm();
+                
                 self.form.sections[i+1].rows[0].value = self.medicine?.schedules[i].time;
+                self.form.sections[i+1].rows[1].value = self.medicine?.schedules[i].dayOfWeek;
                 self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].amount;
             }
         }
+ 
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
