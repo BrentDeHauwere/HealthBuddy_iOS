@@ -591,6 +591,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="goToSaveNewMedicine" unwindAction="saveNewMedicine:" id="4xV-YM-YNc"/>
+                        <segue destination="hET-Mv-UvV" kind="show" identifier="showMedicinePicture" id="UIU-1M-rhl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FtT-VS-KCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
