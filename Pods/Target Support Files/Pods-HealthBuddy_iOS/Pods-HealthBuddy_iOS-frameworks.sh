@@ -85,14 +85,12 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-HealthBuddy_iOS/Alamofire.framework"
-  install_framework "Pods-HealthBuddy_iOS/AlamofireImage.framework"
   install_framework "Pods-HealthBuddy_iOS/MRProgress.framework"
   install_framework "Pods-HealthBuddy_iOS/ObjectMapper.framework"
   install_framework "Pods-HealthBuddy_iOS/SwiftForms.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-HealthBuddy_iOS/Alamofire.framework"
-  install_framework "Pods-HealthBuddy_iOS/AlamofireImage.framework"
   install_framework "Pods-HealthBuddy_iOS/MRProgress.framework"
   install_framework "Pods-HealthBuddy_iOS/ObjectMapper.framework"
   install_framework "Pods-HealthBuddy_iOS/SwiftForms.framework"
