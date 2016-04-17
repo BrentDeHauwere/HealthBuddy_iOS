@@ -16,7 +16,7 @@ class BuddyNewMedicineController: FormViewController {
         static let info = "info";
         static let addSchedule = "addSchedule";
         static let houre = "houre";
-        static let dayOfWeek = "dayOfWeek";
+        static let interval = "interval";
         static let amount = "amount";
         static let deleteSchedule = "deleteSchedule";
         static let selectPhoto = "selectPhoto";
@@ -178,7 +178,6 @@ class BuddyNewMedicineController: FormViewController {
                 self.addScheduleForm();
                 
                 self.form.sections[i+1].rows[0].value = self.medicine?.schedules[i].time;
-                self.form.sections[i+1].rows[1].value = self.medicine?.schedules[i].dayOfWeek;
                 self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].amount;
             }
         }
