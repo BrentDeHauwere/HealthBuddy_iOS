@@ -102,6 +102,7 @@ class BuddyMedicineController: UITableViewController {
         }
  
     }
+
     
     @IBAction func saveNewMedicine(segue:UIStoryboardSegue) {
         if let buddynewMedicineController = segue.sourceViewController as? BuddyNewMedicineController{
@@ -117,6 +118,12 @@ class BuddyMedicineController: UITableViewController {
                 }
             }
         }
+    }
+ 
+    
+    
+    @IBAction func cancelToPlayersViewController(segue:UIStoryboardSegue) {
+        
     }
     
     func deleteMedicine(medicineId:Int, dispatchGroup:dispatch_group_t){

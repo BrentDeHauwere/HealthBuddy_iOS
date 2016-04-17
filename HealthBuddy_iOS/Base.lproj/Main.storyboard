@@ -580,17 +580,17 @@
                     <navigationItem key="navigationItem" title="  " id="ZSt-Ir-3gJ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="adt-VO-6FU">
                             <connections>
-                                <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="cancelNewMedicine" unwindAction="cancelNewMedicine:" id="CT9-HN-zsS"/>
+                                <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="goBack" unwindAction="cancelToPlayersViewController:" id="SIb-ie-hvS"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cfy-ZW-3aw">
                             <connections>
-                                <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="saveNewMedicine" unwindAction="saveNewMedicine:" id="mIH-US-y7y"/>
+                                <action selector="clickSave:" destination="5jz-a6-hwd" id="5QA-De-ZQy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="hET-Mv-UvV" kind="show" identifier="showMedicinePicture" id="xby-i9-sXC"/>
+                        <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="goToSaveNewMedicine" unwindAction="saveNewMedicine:" id="4xV-YM-YNc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FtT-VS-KCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -856,6 +856,6 @@
         <image name="WeightTabIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QBc-Vo-xvA"/>
+        <segue reference="7gd-n9-BcH"/>
     </inferredMetricsTieBreakers>
 </document>

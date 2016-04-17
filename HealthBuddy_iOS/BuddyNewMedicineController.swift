@@ -197,21 +197,24 @@ class BuddyNewMedicineController: FormViewController {
         }
     }
     
+   
+    @IBAction func clickSave(sender: AnyObject) {
+        MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Gegevens bewaren...", mode: .Indeterminate, animated: true) { response in
+            self.annulateBtnPressed = true;
+            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+            Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
+                tasks.forEach({ $0.cancel() })
+            }
+        }
+        if(newMedicin){
+            saveMedicine();
+        }else{
+            updateChanges();
+        }
+
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "saveNewMedicine" {
-            MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Gegevens bewaren...", mode: .Indeterminate, animated: true) { response in
-                self.annulateBtnPressed = true;
-                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
-                Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
-                    tasks.forEach({ $0.cancel() })
-                }
-            }
-            if(newMedicin){
-                saveMedicine();
-            }else{
-                updateChanges();
-            }
-        }else if segue.identifier == "showMedicinePicture" {
+        if segue.identifier == "showMedicinePicture" {
             let buddyMedicinePictureController = segue.destinationViewController as! BuddyMedicinePictureController;
             buddyMedicinePictureController.medicine = medicine;
         }
@@ -258,12 +261,19 @@ class BuddyNewMedicineController: FormViewController {
             dispatch_group_notify(group, dispatch_get_main_queue()) {
                 print("I WAS HERE");
                 MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
+                
                 if self.annulateBtnPressed {
                     errors.append("Opslaan geannuleerd");
                 }
             
                 if errors.count <= 0 {
                     Alert.alertStatusWithSymbol(true, message: "Medicatie opgeslaan", seconds: 1.5, view: self.navigationController!.view);
+                    let delay = 1.5 * Double(NSEC_PER_SEC)
+                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                        self.performSegueWithIdentifier("goToSaveNewMedicine", sender: self);
+                    });
+                    
                 } else {
                     Alert.alertStatusWithSymbol(false, message: "Medicatie opslaan mislukt", seconds: 1.5, view: self.navigationController!.view);
                     let delay = 1.5 * Double(NSEC_PER_SEC)
