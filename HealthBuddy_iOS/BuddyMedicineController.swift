@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import MRProgress
 
 class BuddyMedicineController: UITableViewController {
     @IBOutlet weak var lblMedicine: UILabel!
@@ -52,11 +54,14 @@ class BuddyMedicineController: UITableViewController {
             let alert = UIAlertController(title: "Verwijder \(self.patient.medicines![indexPath.row].name!)", message: "Bent u zeker?", preferredStyle: .ActionSheet)
             
             let DeleteAction = UIAlertAction(title: "Akkoord", style: .Destructive) { action -> Void in
-                tableView.beginUpdates()
-                self.patient.medicines!.removeAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-                //TODO: delete record in db
-                tableView.endUpdates()
+                let group = dispatch_group_create();
+                self.deleteMedicine(self.patient.medicines![indexPath.row].id!, dispatchGroup: group);
+                dispatch_group_notify(group, dispatch_get_main_queue()) {
+                    tableView.beginUpdates()
+                    self.patient.medicines!.removeAtIndex(indexPath.row)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                    tableView.endUpdates()
+                }
             }
             
             let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {action -> Void in
@@ -78,7 +83,6 @@ class BuddyMedicineController: UITableViewController {
         self.performSegueWithIdentifier("loadMedicine", sender: self)
     }
     
-
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "loadMedicine" {
@@ -86,15 +90,17 @@ class BuddyMedicineController: UITableViewController {
                 if let navController = segue.destinationViewController as? UINavigationController {
                     let buddyNewMedicine = navController.viewControllers[0] as! BuddyNewMedicineController;
                     buddyNewMedicine.medicine =  self.patient.medicines![indexPath.row];
+                    buddyNewMedicine.patientId = self.patient.userId;
                 }
             }
         }
+        if segue.identifier == "loadNewMedicine"{
+            if let navController = segue.destinationViewController as? UINavigationController {
+                let buddyNewMedicine = navController.viewControllers[0] as! BuddyNewMedicineController;
+                buddyNewMedicine.patientId = self.patient.userId;
+            }
+        }
  
-    }
-   
-    
-    
-    @IBAction func cancelNewMedicine(segue:UIStoryboardSegue) {
     }
     
     @IBAction func saveNewMedicine(segue:UIStoryboardSegue) {
@@ -102,6 +108,7 @@ class BuddyMedicineController: UITableViewController {
             if let medicine = buddynewMedicineController.medicine {
                 //Indien nieuwe medicijn: append, else: replace
                 if(buddynewMedicineController.newMedicin){
+                    print("Nieuw medicijn name: \(medicine.name)")
                     self.patient.medicines?.append(medicine);
                     let indexPath = NSIndexPath(forRow: self.patient.medicines!.count-1, inSection: 0);
                     tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
@@ -109,6 +116,24 @@ class BuddyMedicineController: UITableViewController {
                     tableView.reloadData();
                 }
             }
+        }
+    }
+    
+    func deleteMedicine(medicineId:Int, dispatchGroup:dispatch_group_t){
+        dispatch_group_enter(dispatchGroup)
+        Alamofire.request(.POST, Routes.deleteMedicine(patient.userId!, medicineId: medicineId ), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"])   .responseString { response in
+            if response.result.isSuccess {
+                if let string = response.result.value {
+                    print(string);
+                }else{
+                    print("Ongeldige json response medicalinfo update");
+                    Alert.alertStatusWithSymbol(false,message: "Verwijderen mislukt", seconds: 1.5, view: self.view);
+                }
+            }else{
+                print("Ongeldige request medicalinfo update");
+                Alert.alertStatusWithSymbol(false,message: "Verwijderen mislukt", seconds: 1.5, view: self.view);
+            }
+            dispatch_group_leave(dispatchGroup);
         }
     }
 }

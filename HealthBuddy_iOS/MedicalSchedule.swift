@@ -43,6 +43,12 @@ class MedicalSchedule : Mappable {
             self.start_date = dateFormatter.dateFromString(self.start_date_s!);
             self.end_date = dateFormatter.dateFromString(self.end_date_s!);
         }
+        if(self.start_date == nil){
+            self.start_date = NSDate();
+        }
+        if(self.end_date == nil){
+            self.end_date = NSDate();
+        }
     }
     
     var description: String {

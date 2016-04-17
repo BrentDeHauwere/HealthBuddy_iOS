@@ -548,6 +548,7 @@
                     <navigationItem key="navigationItem" id="rPe-XU-3V7">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mgO-kM-bl7">
                             <connections>
+                                <action selector="saveNewMedicine:" destination="XDV-rk-OeF" id="JQT-Vv-WyK"/>
                                 <segue destination="3ea-SC-M8A" kind="presentation" identifier="loadNewMedicine" id="QBc-Vo-xvA"/>
                             </connections>
                         </barButtonItem>
@@ -595,7 +596,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FtT-VS-KCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6Hp-Qs-Fvc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5292" y="-626"/>
+            <point key="canvasLocation" x="5314.5" y="-631"/>
         </scene>
         <!--Buddy Medicine Picture Controller-->
         <scene sceneID="4uY-DW-6EA">
@@ -671,7 +672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UhM-AM-DNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6127.5" y="-631"/>
+            <point key="canvasLocation" x="6079.5" y="-631"/>
         </scene>
         <!--Buddy Weight Controller-->
         <scene sceneID="qeL-jS-bLG">
@@ -782,7 +783,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DbF-aS-J9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4623" y="-947"/>
+            <point key="canvasLocation" x="4540.5" y="-631"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="SMa-fc-Vfa">
@@ -855,6 +856,6 @@
         <image name="WeightTabIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7gd-n9-BcH"/>
+        <segue reference="QBc-Vo-xvA"/>
     </inferredMetricsTieBreakers>
 </document>

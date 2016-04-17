@@ -7,7 +7,10 @@
 //  Gebruik gemaakt van tutorial: https://www.raywenderlich.com/113394/storyboards-tutorial-in-ios-9-part-2
 
 import UIKit;
+import Alamofire
 import SwiftForms
+import MRProgress
+import ObjectMapper
 
 class BuddyNewMedicineController: FormViewController {
     
@@ -20,10 +23,14 @@ class BuddyNewMedicineController: FormViewController {
         static let amount = "amount";
         static let deleteSchedule = "deleteSchedule";
         static let selectPhoto = "selectPhoto";
+        static let start_date = "start_date";
+        static let end_date = "end_date";
     }
 
     var medicine:Medicine?
+    var patientId:Int?
     var newMedicin = true;
+    var annulateBtnPressed = false;
     
     var scheduleSectionID = 0;
     var scheduleFormSections = [Int: FormSectionDescriptor]();
@@ -90,27 +97,30 @@ class BuddyNewMedicineController: FormViewController {
         sectionNewSchedule.headerTitle = "Inname-moment \(self.form.sections.count-1)";
       
         var row = FormRowDescriptor(tag: "\(FormTag.houre)_\(self.scheduleSectionID)", rowType: .Text, title: "Uur");
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionNewSchedule.addRow(row);
         
-        row = FormRowDescriptor(tag: "\(FormTag.dayOfWeek)_\(self.scheduleSectionID)", rowType: .MultipleSelector, title: "Herhaal")
-        row.configuration[FormRowDescriptor.Configuration.Options] = [1, 2, 3, 4, 5,6,7]
-        row.configuration[FormRowDescriptor.Configuration.AllowsMultipleSelection] = true
+        row = FormRowDescriptor(tag: "\(FormTag.start_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Start inname");
+        sectionNewSchedule.addRow(row);
+        
+        row = FormRowDescriptor(tag: "\(FormTag.end_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Stop inname");
+        sectionNewSchedule.addRow(row);
+        
+        row = FormRowDescriptor(tag: "\(FormTag.interval)_\(self.scheduleSectionID)", rowType: .MultipleSelector, title: "Herhaal")
+        row.configuration[FormRowDescriptor.Configuration.Options] = [1,2,3,7,14]
+       // row.configuration[FormRowDescriptor.Configuration.AllowsMultipleSelection] = true
         row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
             switch( value ) {
             case 1:
-                return "Elke maandag"
+                return "Elke dag"
             case 2:
-                return "Elke dinsdag"
+                return "Elke  twee dagen"
             case 3:
-                return "Elke woensdag"
-            case 4:
-                return "Elke donderdag"
-            case 5:
-                return "Elke vrijdag"
-            case 6:
-                return "Elke zaterdag"
+                return "Elke drie dagen"
             case 7:
-                return "Elke zondag"
+                return "Elke week"
+            case 14:
+                return "Elke twee weken"
             default:
                 return nil
             }
@@ -121,6 +131,8 @@ class BuddyNewMedicineController: FormViewController {
         row = FormRowDescriptor(tag: "\(FormTag.amount)_\(self.scheduleSectionID)", rowType: .Text, title: "Dosis");
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionNewSchedule.addRow(row);
+        
+        
         
         row = FormRowDescriptor(tag: "\(FormTag.deleteSchedule)_\(self.scheduleSectionID)", rowType: .Button, title: "Verwijder inname-moment")
         row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
@@ -176,26 +188,94 @@ class BuddyNewMedicineController: FormViewController {
         if let numberOfSchedules = self.medicine?.schedules.count {
             for i in 0 ..< numberOfSchedules  {
                 self.addScheduleForm();
-                
                 self.form.sections[i+1].rows[0].value = self.medicine?.schedules[i].time;
-                self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].amount;
+                self.form.sections[i+1].rows[1].value = self.medicine?.schedules[i].start_date;
+                self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].end_date;
+                self.form.sections[i+1].rows[3].value = self.medicine?.schedules[i].interval;
+                self.form.sections[i+1].rows[4].value = self.medicine?.schedules[i].amount;
             }
         }
- 
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "saveNewMedicine" {
-            saveChanges();
+            MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Gegevens bewaren...", mode: .Indeterminate, animated: true) { response in
+                self.annulateBtnPressed = true;
+                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
+                    tasks.forEach({ $0.cancel() })
+                }
+            }
+            if(newMedicin){
+                saveMedicine();
+            }else{
+                updateChanges();
+            }
         }else if segue.identifier == "showMedicinePicture" {
             let buddyMedicinePictureController = segue.destinationViewController as! BuddyMedicinePictureController;
             buddyMedicinePictureController.medicine = medicine;
         }
     }
     
-    func saveChanges(){
-        //TODO: update db
+    func saveMedicine(){
+        let group = dispatch_group_create()
+        var errors = [String]();
+        
+        dispatch_group_enter(group)
 
-        medicine?.name = self.form.formValues()[FormTag.medicinName]!.description;
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd";
+        
+        Alamofire.request(.POST, Routes.createMedicine(self.patientId!), parameters: ["api_token": Authentication.token!, "name": self.form.formValues()[FormTag.medicinName]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
+                if response.result.isSuccess {
+                    if let JSON = response.result.value {
+                        print(JSON);
+                        if response.response?.statusCode == 200 {
+                            let newMedicine = Mapper<Medicine>().map(JSON);
+                            self.medicine?.updateMedicineInfo(newMedicine!);
+                            print("Medicine toegevoegd");
+                        }else if response.response?.statusCode == 422 {
+                            print("No valid input given");
+                            let JSONDict = JSON as! NSDictionary as NSDictionary;
+                            for (_, value) in JSONDict {
+                                let errorsArray = value as! NSArray;
+                                for (error) in errorsArray {
+                                    errors.append("\(error)");
+                                    print(error);
+                                }
+                            }
+                            errors.append("\n");
+                        }
+                    }else{
+                        print("Ongeldige json response medicine creation");
+                    }
+                }else{
+                    print("Ongeldige request medicine creation");
+                }
+                dispatch_group_leave(group)
+            }
+    
+            dispatch_group_notify(group, dispatch_get_main_queue()) {
+                print("I WAS HERE");
+                MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
+                if self.annulateBtnPressed {
+                    errors.append("Opslaan geannuleerd");
+                }
+            
+                if errors.count <= 0 {
+                    Alert.alertStatusWithSymbol(true, message: "Medicatie opgeslaan", seconds: 1.5, view: self.navigationController!.view);
+                } else {
+                    Alert.alertStatusWithSymbol(false, message: "Medicatie opslaan mislukt", seconds: 1.5, view: self.navigationController!.view);
+                    let delay = 1.5 * Double(NSEC_PER_SEC)
+                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                        Alert.alertStatus(errors.joinWithSeparator("\n"), title: "Ongeldige invoer: ", view: self);
+                    });
+                }
+            }
+        }
+
+    func updateChanges(){
+        
     }
 }
