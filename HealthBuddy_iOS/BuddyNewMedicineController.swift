@@ -207,9 +207,9 @@ class BuddyNewMedicineController: FormViewController {
             }
         }
         if(newMedicin){
-            saveMedicine();
+            saveMedicine(Routes.createMedicine(self.patientId!));
         }else{
-            updateChanges();
+            saveMedicine(Routes.updateMedicine(self.patientId!, medicineId: self.medicine!.id!));
         }
 
     }
@@ -220,72 +220,74 @@ class BuddyNewMedicineController: FormViewController {
         }
     }
     
-    func saveMedicine(){
+    func saveMedicine(saveMedicineRoute:String){
         let group = dispatch_group_create()
         var errors = [String]();
-        
         dispatch_group_enter(group)
-
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd";
         
-        Alamofire.request(.POST, Routes.createMedicine(self.patientId!), parameters: ["api_token": Authentication.token!, "name": self.form.formValues()[FormTag.medicinName]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
-                if response.result.isSuccess {
-                    if let JSON = response.result.value {
-                        print(JSON);
-                        if response.response?.statusCode == 200 {
-                            let newMedicine = Mapper<Medicine>().map(JSON);
-                            self.medicine?.updateMedicineInfo(newMedicine!);
-                            print("Medicine toegevoegd");
-                        }else if response.response?.statusCode == 422 {
-                            print("No valid input given");
-                            let JSONDict = JSON as! NSDictionary as NSDictionary;
-                            for (_, value) in JSONDict {
-                                let errorsArray = value as! NSArray;
-                                for (error) in errorsArray {
-                                    errors.append("\(error)");
-                                    print(error);
-                                }
+        Alamofire.request(.POST, saveMedicineRoute, parameters: ["api_token": Authentication.token!, "name": self.form.formValues()[FormTag.medicinName]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
+            if response.result.isSuccess {
+                if let JSON = response.result.value {
+                    print(JSON);
+                    if response.response?.statusCode == 200 {
+                        let newMedicine = Mapper<Medicine>().map(JSON);
+                        self.medicine?.updateMedicineInfo(newMedicine!);
+                        print("Medicine toegevoegd");
+                    }else if response.response?.statusCode == 422 {
+                        print("No valid input given");
+                        let JSONDict = JSON as! NSDictionary as NSDictionary;
+                        for (_, value) in JSONDict {
+                            let errorsArray = value as! NSArray;
+                            for (error) in errorsArray {
+                                errors.append("\(error)");
+                                print(error);
                             }
-                            errors.append("\n");
                         }
-                    }else{
-                        print("Ongeldige json response medicine creation");
+                        errors.append("\n");
                     }
                 }else{
-                    print("Ongeldige request medicine creation");
+                    print("Ongeldige json response medicine creation");
                 }
-                dispatch_group_leave(group)
+            }else{
+                print("Ongeldige request medicine creation");
             }
-    
-            dispatch_group_notify(group, dispatch_get_main_queue()) {
-                print("I WAS HERE");
-                MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
+            dispatch_group_leave(group)
+        }
+       
+        /*
+        if let numberOfSchedules = self.medicine?.schedules.count {
+            for i in 0 ..< numberOfSchedules  {
                 
-                if self.annulateBtnPressed {
-                    errors.append("Opslaan geannuleerd");
-                }
+                //self.form.sections[i+1].rows[0].value;
             
-                if errors.count <= 0 {
-                    Alert.alertStatusWithSymbol(true, message: "Medicatie opgeslaan", seconds: 1.5, view: self.navigationController!.view);
-                    let delay = 1.5 * Double(NSEC_PER_SEC)
-                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                        self.performSegueWithIdentifier("goToSaveNewMedicine", sender: self);
-                    });
-                    
-                } else {
-                    Alert.alertStatusWithSymbol(false, message: "Medicatie opslaan mislukt", seconds: 1.5, view: self.navigationController!.view);
-                    let delay = 1.5 * Double(NSEC_PER_SEC)
-                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                        Alert.alertStatus(errors.joinWithSeparator("\n"), title: "Ongeldige invoer: ", view: self);
-                    });
-                }
             }
         }
+         */
 
-    func updateChanges(){
-        
+    
+        dispatch_group_notify(group, dispatch_get_main_queue()) {
+            MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
+                
+            if self.annulateBtnPressed {
+                errors.append("Opslaan geannuleerd");
+            }
+            
+            if errors.count <= 0 {
+                Alert.alertStatusWithSymbol(true, message: "Medicatie opgeslaan", seconds: 1.5, view: self.navigationController!.view);
+                let delay = 1.5 * Double(NSEC_PER_SEC)
+                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    self.performSegueWithIdentifier("goToSaveNewMedicine", sender: self);
+                });
+                    
+            } else {
+                Alert.alertStatusWithSymbol(false, message: "Medicatie opslaan mislukt", seconds: 1.5, view: self.navigationController!.view);
+                let delay = 1.5 * Double(NSEC_PER_SEC)
+                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    Alert.alertStatus(errors.joinWithSeparator("\n"), title: "Ongeldige invoer: ", view: self);
+                });
+            }
+        }
     }
 }

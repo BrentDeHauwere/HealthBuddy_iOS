@@ -27,6 +27,7 @@ class BuddyMedicineController: UITableViewController {
         lblMedicine.text = "Medicatie";
         self.navigationItem.title="\(patient.firstName!) \(patient.lastName!)";
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:#selector(BuddyMedicineController.backButtonPressed(_:)));
+        self.patient.medicines!.sortInPlace { $0.name < $1.name }
     }
     
     func backButtonPressed(sender:UIButton){
@@ -109,10 +110,11 @@ class BuddyMedicineController: UITableViewController {
             if let medicine = buddynewMedicineController.medicine {
                 //Indien nieuwe medicijn: append, else: replace
                 if(buddynewMedicineController.newMedicin){
-                    print("Nieuw medicijn name: \(medicine.name)")
                     self.patient.medicines?.append(medicine);
+                    self.patient.medicines!.sortInPlace { $0.name < $1.name }
                     let indexPath = NSIndexPath(forRow: self.patient.medicines!.count-1, inSection: 0);
-                    tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                    tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                    tableView.reloadData();
                 }else{
                     tableView.reloadData();
                 }
