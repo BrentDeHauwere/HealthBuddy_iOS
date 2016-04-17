@@ -221,7 +221,7 @@ class BuddyNewMedicineController: FormViewController {
     }
     
     func saveMedicine(saveMedicineRoute:String){
-        let imageData = UIImagePNGRepresentation(self.medicine!.photo!);
+        let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
         let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
         print(base64String);
         
@@ -229,7 +229,7 @@ class BuddyNewMedicineController: FormViewController {
         var errors = [String]();
         dispatch_group_enter(group)
         
-        Alamofire.request(.POST, saveMedicineRoute, parameters: ["api_token": Authentication.token!, "name": self.form.formValues()[FormTag.medicinName]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description, "photo": base64String], headers: ["Accept": "application/json"]) .responseJSON { response in
+        Alamofire.request(.POST, saveMedicineRoute, parameters: ["api_token": Authentication.token!, "name": self.form.formValues()[FormTag.medicinName]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
             if response.result.isSuccess {
                 if let JSON = response.result.value {
                     print(JSON);
@@ -257,6 +257,7 @@ class BuddyNewMedicineController: FormViewController {
             }
             dispatch_group_leave(group)
         }
+   
        
         /*
         if let numberOfSchedules = self.medicine?.schedules.count {
