@@ -38,6 +38,14 @@ class Medicine : Mappable {
         self.photoUrl   <- map["photoUrl"]
         self.schedules   <- map["schedule"]
     }
+    
+    func updateMedicineInfo(medicine:Medicine){
+        self.id = medicine.id;
+        self.name = medicine.name;
+        self.info = medicine.info;
+        self.photoUrl = medicine.photoUrl;
+    }
+
     var description: String {
         return "medicineId: \(self.id)\nname: \(self.name)\ninfo: \(self.info)\nphotoUrl: \(self.photoUrl)\nphoto \(self.photo)\nschedule\(self.schedules)";
     }

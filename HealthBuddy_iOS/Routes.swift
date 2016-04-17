@@ -14,11 +14,15 @@ struct Routes{
     static let login =  "http://10.3.50.33/api/login";
     //POST: email, password
     
-    static let buddyProfile = "http://10.3.50.33/api/buddyprofile";
+    static let buddyProfile = "http://10.3.50.33/api/profile";
     //POST: api_token
     
     
     
+    //CREATE
+    static func createMedicine(patientId:Int)->String {
+         return "http://10.3.50.33/api/user/\(patientId)/medicine/create";
+    }
     
     //UPDATE
     static func updateUserInfo(patientId: Int) -> String {
@@ -30,6 +34,15 @@ struct Routes{
     
     static func updateAddress(patientId:Int) -> String{
         return "http://10.3.50.33/api/user/\(patientId)/address/update";
+    }
+    
+    static func updateMedicine(patientId: Int, medicineId:Int)->String {
+        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/update";
+    }
+    
+    //DELETE
+    static func deleteMedicine(patientId:Int, medicineId:Int)->String{
+        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/delete";
     }
    
 }
