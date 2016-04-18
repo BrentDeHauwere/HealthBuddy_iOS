@@ -213,7 +213,6 @@ class BuddyNewMedicineController: FormViewController {
                 self.addScheduleForm();
                 self.scheduleFormSectionsNewState[(scheduleSectionID-1)] = false;
                 self.sectionScheduleID[(scheduleSectionID-1)] = self.medicine?.schedules[i].id;
-                print("SectionID  \(scheduleSectionID-1) -- DB schedule ID: \(self.sectionScheduleID[(scheduleSectionID-1)])")
                 self.form.sections[i+1].rows[0].value = self.medicine?.schedules[i].time;
                 self.form.sections[i+1].rows[1].value = self.medicine?.schedules[i].start_date;
                 self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].end_date;
@@ -336,14 +335,10 @@ class BuddyNewMedicineController: FormViewController {
             if let newSchedule:Bool = self.scheduleFormSectionsNewState[sectionID]! {
                 if(newSchedule){
                     storeScheduleRoute = Routes.createSchedule(self.patientId!, medicineId: (self.medicine?.id)!);
-                                       print("Amount:");
-                    print(self.form.formValues()["\(FormTag.amount)_\(sectionID)"]!.description)
                 }
                 else
                 {
-                    print("SectionID \(sectionID): update schedule")
                     storeScheduleRoute = Routes.updateScheudle(self.patientId!, medicineId: (self.medicine?.id)!, scheduleId:self.sectionScheduleID[sectionID]!);
-                    print(storeScheduleRoute);
                 }
                 
                 var interval = self.form.formValues()["\(FormTag.interval)_\(sectionID)"]!.description;
@@ -362,7 +357,6 @@ class BuddyNewMedicineController: FormViewController {
                                 if(newSchedule){
                                     print("schedule toegevoegd");
                                     let newSchedule = Mapper<MedicalSchedule>().map(JSON);
-                                    print(newSchedule?.description);
                                     self.medicine?.schedules.append(newSchedule!);
                                 }else{
                                     let updatedSchedule = Mapper<MedicalSchedule>().map(JSON);
@@ -406,7 +400,6 @@ class BuddyNewMedicineController: FormViewController {
         }
 
         dispatch_group_notify(group, dispatch_get_main_queue()) {
-            print("FINALLY!!!");
             MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
                 
             if self.annulateBtnPressed {
