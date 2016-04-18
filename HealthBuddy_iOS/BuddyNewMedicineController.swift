@@ -294,7 +294,16 @@ class BuddyNewMedicineController: FormViewController {
             
             if errors.count <= 0 {
                 self.savedMedicin = true;
-                self.storeSchedules();
+                if(self.scheduleFormSections.count>0){
+                    self.storeSchedules();
+                }else{
+                    Alert.alertStatusWithSymbol(true, message: "Medicatie opgeslaan", seconds: 1.5, view: self.navigationController!.view);
+                    let delay = 1.5 * Double(NSEC_PER_SEC)
+                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                        self.performSegueWithIdentifier("goToSaveNewMedicine", sender: self);
+                    });
+                }
             } else {
                 MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
                 Alert.alertStatusWithSymbol(false, message: "Medicatie opslaan mislukt", seconds: 1.5, view: self.navigationController!.view);
@@ -348,10 +357,9 @@ class BuddyNewMedicineController: FormViewController {
                             if response.response?.statusCode == 200 {
                                 print("schedule toegevoegd");
                                 if(newSchedule){
-                                    print("Schedule toegevoegd in object");
-                                    let newSchedule = Mapper<MedicalSchedule>().map(JSON)!;
-                                    print(newSchedule.description);
-                                    self.medicine?.schedules.append(newSchedule);
+                                    let newSchedule = Mapper<MedicalSchedule>().map(JSON);
+                                    print(newSchedule?.description);
+                                    self.medicine?.schedules.append(newSchedule!);
                                 }
 
                             }else if response.response?.statusCode == 422 {
