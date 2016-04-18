@@ -353,11 +353,9 @@ class BuddyNewMedicineController: FormViewController {
                     print("Time: ");
                     print(self.form.formValues()["\(FormTag.time)_\(sectionID)"]!.description)
                     print("Start date: ")
-                    print(self.form.formValues()["\(FormTag.start_date)_\(self.scheduleSectionID)"]);
-             //       print(dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.start_date)_\(+self.scheduleSectionID)"] as! NSDate));
+                    print(dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.start_date)_\(sectionID)"] as! NSDate));
                     print("End date: ")
-                    print(self.form.formValues()["\(FormTag.end_date)_\(self.scheduleSectionID)"])
-                //    print(dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.end_date)_\(+self.scheduleSectionID)"] as! NSDate));
+                    print(dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.end_date)_\(sectionID)"] as! NSDate));
                     print("Interval: ")
                     print(self.form.formValues()["\(FormTag.interval)_\(sectionID)"]!.description)
                     print("Amount:");
