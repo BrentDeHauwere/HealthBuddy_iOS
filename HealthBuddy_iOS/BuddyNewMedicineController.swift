@@ -15,10 +15,10 @@ import ObjectMapper
 class BuddyNewMedicineController: FormViewController {
     
     struct FormTag{
-        static let medicinName = "medicinName";
+        static let name = "name";
         static let info = "info";
         static let addSchedule = "addSchedule";
-        static let houre = "houre";
+        static let time = "time";
         static let interval = "interval";
         static let amount = "amount";
         static let deleteSchedule = "deleteSchedule";
@@ -34,6 +34,7 @@ class BuddyNewMedicineController: FormViewController {
     
     var scheduleSectionID = 0;
     var scheduleFormSections = [Int: FormSectionDescriptor]();
+    
     
 
     required init(coder aDecoder: NSCoder) {
@@ -63,7 +64,7 @@ class BuddyNewMedicineController: FormViewController {
         
         let sectionMedicinInformation = FormSectionDescriptor();
         
-        row = FormRowDescriptor(tag: FormTag.medicinName, rowType: .Text, title: "Naam");
+        row = FormRowDescriptor(tag: FormTag.name, rowType: .Text, title: "Naam");
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionMedicinInformation.addRow(row);
         
@@ -96,7 +97,7 @@ class BuddyNewMedicineController: FormViewController {
         let sectionNewSchedule = FormSectionDescriptor();
         sectionNewSchedule.headerTitle = "Inname-moment \(self.form.sections.count-1)";
       
-        var row = FormRowDescriptor(tag: "\(FormTag.houre)_\(self.scheduleSectionID)", rowType: .Text, title: "Uur");
+        var row = FormRowDescriptor(tag: "\(FormTag.time)_\(self.scheduleSectionID)", rowType: .Text, title: "Uur");
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionNewSchedule.addRow(row);
         
@@ -207,9 +208,9 @@ class BuddyNewMedicineController: FormViewController {
             }
         }
         if(newMedicin){
-            saveMedicine(Routes.createMedicine(self.patientId!));
+            saveMedicine();
         }else{
-            saveMedicine(Routes.updateMedicine(self.patientId!, medicineId: self.medicine!.id!));
+            updateMedicine();
         }
 
     }
@@ -220,16 +221,17 @@ class BuddyNewMedicineController: FormViewController {
         }
     }
     
-    func saveMedicine(saveMedicineRoute:String){
+    func saveMedicine(){
         let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
         let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
         print(base64String);
         
         let group = dispatch_group_create()
         var errors = [String]();
-        dispatch_group_enter(group)
         
-        Alamofire.request(.POST, saveMedicineRoute, parameters: ["api_token": Authentication.token!, "name": self.form.formValues()[FormTag.medicinName]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
+        dispatch_group_enter(group)
+        Alamofire.request(.POST, Routes.createMedicine(self.patientId!), parameters: ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
+            print(response.result.value);
             if response.result.isSuccess {
                 if let JSON = response.result.value {
                     print(JSON);
@@ -244,30 +246,59 @@ class BuddyNewMedicineController: FormViewController {
                             let errorsArray = value as! NSArray;
                             for (error) in errorsArray {
                                 errors.append("\(error)");
-                                print(error);
                             }
                         }
                         errors.append("\n");
                     }
                 }else{
-                    print("Ongeldige json response medicine creation");
+                    print("Ongeldige json response medicine");
                 }
             }else{
-                print("Ongeldige request medicine creation");
+                print("Ongeldige request medicine");
             }
             dispatch_group_leave(group)
         }
    
        
-        /*
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd";
+
+        
         if let numberOfSchedules = self.medicine?.schedules.count {
-            for i in 0 ..< numberOfSchedules  {
-                
+            for _ in 0 ..< numberOfSchedules  {
+                dispatch_group_enter(group)
+                Alamofire.request(.POST, saveScheduleRoute, parameters: ["api_token": Authentication.token!, FormTag.time : self.form.formValues()[FormTag.time]!.description, FormTag.amount: self.form.formValues()[FormTag.amount]!.description, FormTag.start_date: dateFormatter.stringFromDate(self.form.formValues()[FormTag.start_date] as! NSDate), FormTag.end_date: dateFormatter.stringFromDate(self.form.formValues()[FormTag.end_date] as! NSDate), FormTag.interval: self.form.formValues()[FormTag.interval]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
+                    print(response.result.value);
+                    if response.result.isSuccess {
+                        if let JSON = response.result.value {
+                            print(JSON);
+                            if response.response?.statusCode == 200 {
+                                
+                                print("schedule toegevoegd");
+                            }else if response.response?.statusCode == 422 {
+                                print("No valid input given");
+                                let JSONDict = JSON as! NSDictionary as NSDictionary;
+                                for (_, value) in JSONDict {
+                                    let errorsArray = value as! NSArray;
+                                    for (error) in errorsArray {
+                                        errors.append("\(error)");
+                                    }
+                                }
+                                errors.append("\n");
+                            }
+                        }else{
+                            print("Ongeldige json response schedule");
+                        }
+                    }else{
+                        print("Ongeldige request schedule");
+                    }
+                    dispatch_group_leave(group)
+                }
                 //self.form.sections[i+1].rows[0].value;
             
             }
         }
-         */
+        
 
     
         dispatch_group_notify(group, dispatch_get_main_queue()) {
@@ -285,6 +316,70 @@ class BuddyNewMedicineController: FormViewController {
                     self.performSegueWithIdentifier("goToSaveNewMedicine", sender: self);
                 });
                     
+            } else {
+                Alert.alertStatusWithSymbol(false, message: "Medicatie opslaan mislukt", seconds: 1.5, view: self.navigationController!.view);
+                let delay = 1.5 * Double(NSEC_PER_SEC)
+                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    Alert.alertStatus(errors.joinWithSeparator("\n"), title: "Ongeldige invoer: ", view: self);
+                });
+            }
+        }
+    }
+    
+    func updateMedicine(){
+        let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
+        let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        print(base64String);
+        
+        let group = dispatch_group_create()
+        var errors = [String]();
+        
+        dispatch_group_enter(group)
+        Alamofire.request(.POST, Routes.updateMedicine(self.patientId!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
+            print(response.result.value);
+            if response.result.isSuccess {
+                if let JSON = response.result.value {
+                    print(JSON);
+                    if response.response?.statusCode == 200 {
+                        let newMedicine = Mapper<Medicine>().map(JSON);
+                        self.medicine?.updateMedicineInfo(newMedicine!);
+                        print("Medicine toegevoegd");
+                    }else if response.response?.statusCode == 422 {
+                        print("No valid input given");
+                        let JSONDict = JSON as! NSDictionary as NSDictionary;
+                        for (_, value) in JSONDict {
+                            let errorsArray = value as! NSArray;
+                            for (error) in errorsArray {
+                                errors.append("\(error)");
+                            }
+                        }
+                        errors.append("\n");
+                    }
+                }else{
+                    print("Ongeldige json response medicine");
+                }
+            }else{
+                print("Ongeldige request medicine");
+            }
+            dispatch_group_leave(group)
+        }
+        
+        dispatch_group_notify(group, dispatch_get_main_queue()) {
+            MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
+            
+            if self.annulateBtnPressed {
+                errors.append("Opslaan geannuleerd");
+            }
+            
+            if errors.count <= 0 {
+                Alert.alertStatusWithSymbol(true, message: "Medicatie opgeslaan", seconds: 1.5, view: self.navigationController!.view);
+                let delay = 1.5 * Double(NSEC_PER_SEC)
+                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    self.performSegueWithIdentifier("goToSaveNewMedicine", sender: self);
+                });
+                
             } else {
                 Alert.alertStatusWithSymbol(false, message: "Medicatie opslaan mislukt", seconds: 1.5, view: self.navigationController!.view);
                 let delay = 1.5 * Double(NSEC_PER_SEC)

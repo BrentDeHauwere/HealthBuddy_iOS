@@ -264,12 +264,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/BuddyNewMedicineController.swift"
-            timestampString = "482603151.170583"
+            timestampString = "482679577.345455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
-            landmarkName = "saveMedicine(_:)"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "saveMedicine()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -280,12 +280,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/BuddyNewMedicineController.swift"
-            timestampString = "482599115.926128"
+            timestampString = "482670598.688819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
-            landmarkName = "saveMedicine(_:)"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "saveMedicine(_:saveScheduleRoute:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
