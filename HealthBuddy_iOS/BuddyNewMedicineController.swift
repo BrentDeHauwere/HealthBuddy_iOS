@@ -56,7 +56,7 @@ class BuddyNewMedicineController: FormViewController {
         //Formulier opvullen indien bestaande medicijn wordt geupdate
         if medicine != nil  {
             newMedicin = false;
-            self.navigationItem.title = "Wijzig medicijn";
+            self.navigationItem.title = "Wijzig \((self.medicine?.name)!)";
             initForm()
         }else{
             newMedicin = true;
@@ -340,8 +340,8 @@ class BuddyNewMedicineController: FormViewController {
                     print(self.form.formValues()["\(FormTag.amount)_\(sectionID)"]!.description)
                 }else{
                     print("SectionID \(sectionID): update schedule")
-                 //   storeScheduleRoute = Routes.updateScheudle(self.patientId!, medicineId: (self.medicine?.id)!, scheduleId: <#T##Int#>)
-                    //TODO: updateScheduleRoute
+                    storeScheduleRoute = Routes.updateScheudle(self.patientId!, medicineId: (self.medicine?.id)!, scheduleId:self.sectionScheduleID[sectionID]!);
+                    print(storeScheduleRoute);
                 }
                 
                 var interval = self.form.formValues()["\(FormTag.interval)_\(sectionID)"]!.description;
@@ -355,11 +355,14 @@ class BuddyNewMedicineController: FormViewController {
                         if let JSON = response.result.value {
                             print(JSON);
                             if response.response?.statusCode == 200 {
-                                print("schedule toegevoegd");
+                                
                                 if(newSchedule){
+                                    print("schedule toegevoegd");
                                     let newSchedule = Mapper<MedicalSchedule>().map(JSON);
                                     print(newSchedule?.description);
                                     self.medicine?.schedules.append(newSchedule!);
+                                }else{
+                                    print("Schedule updated");
                                 }
 
                             }else if response.response?.statusCode == 422 {
@@ -384,11 +387,11 @@ class BuddyNewMedicineController: FormViewController {
                     dispatch_group_leave(scheduleGroup)
                 }
             }
-            
+
+
             dispatch_group_notify(scheduleGroup, dispatch_get_main_queue()) {
-            
                 MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
-                
+ 
                 if self.annulateBtnPressed {
                     errors.append("Opslaan geannuleerd");
                 }
@@ -405,10 +408,11 @@ class BuddyNewMedicineController: FormViewController {
                     let delay = 1.5 * Double(NSEC_PER_SEC)
                     let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                     dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                    Alert.alertStatus(errors.joinWithSeparator("\n"), title: "Ongeldige invoer: ", view: self);
+                        Alert.alertStatus(errors.joinWithSeparator("\n"), title: "Ongeldige invoer: ", view: self);
                     });
                 }
             }
+            
         }
     }
     
