@@ -573,6 +573,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections/>
                         <connections>
+                            <outlet property="dataSource" destination="5jz-a6-hwd" id="dJU-4s-fcK"/>
                             <outlet property="delegate" destination="5jz-a6-hwd" id="hOb-Js-FmR"/>
                         </connections>
                     </tableView>
