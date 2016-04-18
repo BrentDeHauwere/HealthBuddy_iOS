@@ -46,6 +46,10 @@ struct Routes{
         return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/update";
     }
     
+    static func updateScheudle(patientId:Int, medicineId:Int, scheduleId:Int)->String {
+        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/schedule/\(scheduleId)/update";
+    }
+    
     //DELETE
     static func deleteMedicine(patientId:Int, medicineId:Int)->String{
         return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/delete";

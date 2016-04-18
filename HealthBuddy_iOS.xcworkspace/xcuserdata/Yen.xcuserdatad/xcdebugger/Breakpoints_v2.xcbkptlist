@@ -264,11 +264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/BuddyNewMedicineController.swift"
-            timestampString = "482683411.662336"
+            timestampString = "482687019.488202"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "314"
-            endingLineNumber = "314"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "storeMedicin(_:)"
             landmarkType = "5">
          </BreakpointContent>

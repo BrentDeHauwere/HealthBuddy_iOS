@@ -112,7 +112,7 @@ class BuddyNewMedicineController: FormViewController {
         row.value = NSDate();
         sectionNewSchedule.addRow(row);
         
-        row = FormRowDescriptor(tag: "\(FormTag.interval)_\(self.scheduleSectionID)", rowType: .MultipleSelector, title: "Herhaal")
+        row = FormRowDescriptor(tag: "\(FormTag.interval)_\(self.scheduleSectionID)", rowType: .MultipleSelector, title: "Interval")
         row.configuration[FormRowDescriptor.Configuration.Options] = [1,2,3,7,14]
        // row.configuration[FormRowDescriptor.Configuration.AllowsMultipleSelection] = true
         row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
@@ -268,22 +268,61 @@ class BuddyNewMedicineController: FormViewController {
             }
             dispatch_group_leave(medicineGroup)
         }
-   
-        /*
+    
+        dispatch_group_notify(medicineGroup, dispatch_get_main_queue()) {
+            if self.annulateBtnPressed {
+                errors.append("Opslaan geannuleerd");
+            }
+            
+            if errors.count <= 0 {
+                self.newMedicin = false;
+                self.storeSchedules();
+            } else {
+                MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
+                Alert.alertStatusWithSymbol(false, message: "Medicatie opslaan mislukt", seconds: 1.5, view: self.navigationController!.view);
+                let delay = 1.5 * Double(NSEC_PER_SEC)
+                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    Alert.alertStatus(errors.joinWithSeparator("\n"), title: "Ongeldige invoer: ", view: self);
+                });
+            }
+        }
+    }
+    
+    func storeSchedules(){
+        let scheduleGroup = dispatch_group_create()
+        var errors = [String]();
+        
+        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd";
+        
 
-      
-        if let numberOfSchedules = self.medicine?.schedules.count {
-            for _ in 0 ..< numberOfSchedules  {
-                dispatch_group_enter(group)
-                Alamofire.request(.POST, saveScheduleRoute, parameters: ["api_token": Authentication.token!, FormTag.time : self.form.formValues()[FormTag.time]!.description, FormTag.amount: self.form.formValues()[FormTag.amount]!.description, FormTag.start_date: dateFormatter.stringFromDate(self.form.formValues()[FormTag.start_date] as! NSDate), FormTag.end_date: dateFormatter.stringFromDate(self.form.formValues()[FormTag.end_date] as! NSDate), FormTag.interval: self.form.formValues()[FormTag.interval]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
-                    print(response.result.value);
+        for(sectionID, _) in self.scheduleFormSections {
+            var storeScheduleRoute = "";
+            if let newSchedule:Bool = self.scheduleFormSectionsNewState[sectionID]! {
+                dispatch_group_enter(scheduleGroup)
+                if(newSchedule){
+                    storeScheduleRoute = Routes.createSchedule(self.patientId!, medicineId: (self.medicine?.id)!);
+                                       print("Amount:");
+                    print(self.form.formValues()["\(FormTag.amount)_\(sectionID)"]!.description)
+                }else{
+                    print("SectionID \(sectionID): update schedule")
+                    storeScheduleRoute = Routes.
+                    //TODO: updateScheduleRoute
+                }
+                
+                var interval = self.form.formValues()["\(FormTag.interval)_\(sectionID)"]!.description;
+                interval = interval.componentsSeparatedByCharactersInSet(
+                    NSCharacterSet
+                        .decimalDigitCharacterSet()
+                        .invertedSet)
+                    .joinWithSeparator("")
+                Alamofire.request(.POST, storeScheduleRoute, parameters: ["api_token": Authentication.token!, FormTag.time : self.form.formValues()["\(FormTag.time)_\(sectionID)"]!.description,  FormTag.amount: self.form.formValues()["\(FormTag.amount)_\(sectionID)"]!.description, FormTag.start_date: dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.start_date)_\(sectionID)"] as! NSDate), FormTag.end_date: dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.end_date)_\(sectionID)"] as! NSDate), FormTag.interval: Int(interval)!], headers: ["Accept": "application/json"]) .responseJSON { response in
                     if response.result.isSuccess {
                         if let JSON = response.result.value {
                             print(JSON);
                             if response.response?.statusCode == 200 {
-                                
                                 print("schedule toegevoegd");
                             }else if response.response?.statusCode == 422 {
                                 print("No valid input given");
@@ -302,70 +341,35 @@ class BuddyNewMedicineController: FormViewController {
                     }else{
                         print("Ongeldige request schedule");
                     }
-                    dispatch_group_leave(group)
+                    dispatch_group_leave(scheduleGroup)
                 }
-                //self.form.sections[i+1].rows[0].value;
-            
             }
-        }
-        */
-
-    
-        dispatch_group_notify(medicineGroup, dispatch_get_main_queue()) {
-            MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
+            
+            dispatch_group_notify(scheduleGroup, dispatch_get_main_queue()) {
+            
+                MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
                 
-            if self.annulateBtnPressed {
-                errors.append("Opslaan geannuleerd");
-            }
-            
-            if errors.count <= 0 {
-               /* Alert.alertStatusWithSymbol(true, message: "Medicatie opgeslaan", seconds: 1.5, view: self.navigationController!.view);
-                let delay = 1.5 * Double(NSEC_PER_SEC)
-                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                    self.performSegueWithIdentifier("goToSaveNewMedicine", sender: self);
-                });
-                */
-                self.storeSchedules();
-            } else {
-                Alert.alertStatusWithSymbol(false, message: "Medicatie opslaan mislukt", seconds: 1.5, view: self.navigationController!.view);
-                let delay = 1.5 * Double(NSEC_PER_SEC)
-                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                if self.annulateBtnPressed {
+                    errors.append("Opslaan geannuleerd");
+                }
+                
+                if errors.count <= 0 {
+                    Alert.alertStatusWithSymbol(true, message: "Medicatie opgeslaan", seconds: 1.5, view: self.navigationController!.view);
+                    let delay = 1.5 * Double(NSEC_PER_SEC)
+                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                        self.performSegueWithIdentifier("goToSaveNewMedicine", sender: self);
+                    });
+                } else {
+                    Alert.alertStatusWithSymbol(false, message: "Medicatie opslaan mislukt", seconds: 1.5, view: self.navigationController!.view);
+                    let delay = 1.5 * Double(NSEC_PER_SEC)
+                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
                     Alert.alertStatus(errors.joinWithSeparator("\n"), title: "Ongeldige invoer: ", view: self);
-                });
-            }
-        }
-    }
-    
-    func storeSchedules(){
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd";
-
-        
-        for(sectionID, _) in self.scheduleFormSections {
-            if let newSchedule:Bool = self.scheduleFormSectionsNewState[sectionID]! {
-                if(newSchedule){
-                    print("NIEUWE SCHEDULE");
-                    print("SectionID \(sectionID): create schedule")
-                    let storeScheduleRoute = Routes.createSchedule(self.patientId!, medicineId: (self.medicine?.id)!);
-                    print("Save to route: \(storeScheduleRoute)");
-                    print("Time: ");
-                    print(self.form.formValues()["\(FormTag.time)_\(sectionID)"]!.description)
-                    print("Start date: ")
-                    print(dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.start_date)_\(sectionID)"] as! NSDate));
-                    print("End date: ")
-                    print(dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.end_date)_\(sectionID)"] as! NSDate));
-                    print("Interval: ")
-                    print(self.form.formValues()["\(FormTag.interval)_\(sectionID)"]!.description)
-                    print("Amount:");
-                    print(self.form.formValues()["\(FormTag.amount)_\(sectionID)"]!.description)
-                    print();
-                }else{
-                    print("SectionID \(sectionID): update schedule")
-                    //TODO: updateScheduleRoute
+                    });
                 }
             }
         }
     }
+    
 }
