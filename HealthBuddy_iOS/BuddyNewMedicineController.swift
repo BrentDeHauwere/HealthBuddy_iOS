@@ -102,6 +102,7 @@ class BuddyNewMedicineController: FormViewController {
         sectionNewSchedule.headerTitle = "Inname-moment \(self.form.sections.count-1)";
       
         var row = FormRowDescriptor(tag: "\(FormTag.time)_\(self.scheduleSectionID)", rowType: .Time, title: "Uur");
+        row.value = NSDate();
         sectionNewSchedule.addRow(row);
         
         row = FormRowDescriptor(tag: "\(FormTag.start_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Start inname");
@@ -135,7 +136,7 @@ class BuddyNewMedicineController: FormViewController {
                 return nil
             }
             } as TitleFormatterClosure
-        
+        row.value = 1;
         sectionNewSchedule.addRow(row)
         
         row = FormRowDescriptor(tag: "\(FormTag.amount)_\(self.scheduleSectionID)", rowType: .Text, title: "Hoeveelheid");
@@ -279,6 +280,7 @@ class BuddyNewMedicineController: FormViewController {
         dispatch_group_notify(medicineGroup, dispatch_get_main_queue()) {
             if self.annulateBtnPressed {
                 errors.append("Opslaan geannuleerd");
+                self.annulateBtnPressed = false;
             }
             
             if errors.count <= 0 {
@@ -307,8 +309,10 @@ class BuddyNewMedicineController: FormViewController {
         let timeFormatter = NSDateFormatter();
         timeFormatter.dateFormat = "HH:mm:ss";
 
-
+        var i = 0;
         for(sectionID, _) in self.scheduleFormSections {
+            i += 1;
+            let currentI = i;
             var storeScheduleRoute = "";
             if let newSchedule:Bool = self.scheduleFormSectionsNewState[sectionID]! {
                 dispatch_group_enter(scheduleGroup)
@@ -343,6 +347,8 @@ class BuddyNewMedicineController: FormViewController {
                                 let JSONDict = JSON as! NSDictionary as NSDictionary;
                                 for (_, value) in JSONDict {
                                     let errorsArray = value as! NSArray;
+                                    
+                                    errors.append("Inname-moment \(currentI): ");
                                     for (error) in errorsArray {
                                         errors.append("\(error)");
                                     }
