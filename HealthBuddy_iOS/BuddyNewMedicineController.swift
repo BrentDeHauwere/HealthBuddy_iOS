@@ -207,6 +207,7 @@ class BuddyNewMedicineController: FormViewController {
         self.form.sections[0].rows[0].value = medicine?.name;
         self.form.sections[0].rows[1].value = medicine?.info;
         
+        
         if let numberOfSchedules = self.medicine?.schedules.count {
             for i in 0 ..< numberOfSchedules  {
                 self.addScheduleForm();
@@ -355,13 +356,24 @@ class BuddyNewMedicineController: FormViewController {
                         if let JSON = response.result.value {
                             print(JSON);
                             if response.response?.statusCode == 200 {
-                                
                                 if(newSchedule){
                                     print("schedule toegevoegd");
                                     let newSchedule = Mapper<MedicalSchedule>().map(JSON);
                                     print(newSchedule?.description);
                                     self.medicine?.schedules.append(newSchedule!);
                                 }else{
+                                    let updatedSchedule = Mapper<MedicalSchedule>().map(JSON);
+                                    if let numberOfSchedules = self.medicine?.schedules.count {
+                                        print("Number of schedules: \(numberOfSchedules)");
+                                        //TODO: waarom 0 als result?
+                                        for i in 0 ..< numberOfSchedules  {
+                                            print("\(self.medicine?.schedules[i].id) == \(updatedSchedule?.id)")
+                                            if(self.medicine?.schedules[i].id == updatedSchedule?.id){
+                                                print("Schedule met ID \(self.medicine?.schedules[i].id) vervangen");
+                                                self.medicine?.schedules[i] = updatedSchedule!;
+                                            }
+                                        }
+                                    }
                                     print("Schedule updated");
                                 }
 
@@ -384,6 +396,7 @@ class BuddyNewMedicineController: FormViewController {
                     }else{
                         print("Ongeldige request schedule");
                     }
+            
                     dispatch_group_leave(scheduleGroup)
                 }
             }
