@@ -40,6 +40,9 @@ class BuddyNewMedicineController: FormViewController {
     //Hou van elke section bij of deze section nieuw of alreeds bestaat
     var scheduleFormSectionsNewState = [Int: Bool]();
     
+    //Hou van elke sectionID de scheduleID bij
+    var sectionScheduleID = [Int:Int]();
+    
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
@@ -179,6 +182,12 @@ class BuddyNewMedicineController: FormViewController {
     
     //TODO: remove schedule from db
     func deleteScheduleForm(sectionID:Int){
+        if(self.medicine?.id != nil){
+            if let scheduleID =  self.sectionScheduleID[sectionID]{
+                deleteSchedule(scheduleID, medicineId: (self.medicine?.id)!);
+            }
+        }
+        
         let scheduleToRemove = scheduleFormSections[sectionID];
         let indexToRemove = self.form.sections.indexOf(scheduleToRemove!);
         self.form.sections.removeAtIndex(indexToRemove!);
@@ -189,10 +198,8 @@ class BuddyNewMedicineController: FormViewController {
         for i in 1 ..< self.form.sections.count-1 {
             self.form.sections[i].headerTitle = "Inname-moment \(i)";
         }
-        
+
         tableView.reloadData();
-        
-        //REMOVE FROM DB
     }
     
    
@@ -204,6 +211,8 @@ class BuddyNewMedicineController: FormViewController {
             for i in 0 ..< numberOfSchedules  {
                 self.addScheduleForm();
                 self.scheduleFormSectionsNewState[(scheduleSectionID-1)] = false;
+                self.sectionScheduleID[(scheduleSectionID-1)] = self.medicine?.schedules[i].id;
+                print("SectionID  \(scheduleSectionID-1) -- DB schedule ID: \(self.sectionScheduleID[(scheduleSectionID-1)])")
                 self.form.sections[i+1].rows[0].value = self.medicine?.schedules[i].time;
                 self.form.sections[i+1].rows[1].value = self.medicine?.schedules[i].start_date;
                 self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].end_date;
@@ -339,7 +348,10 @@ class BuddyNewMedicineController: FormViewController {
                             if response.response?.statusCode == 200 {
                                 print("schedule toegevoegd");
                                 if(newSchedule){
-                                    self.medicine?.schedules.append(Mapper<MedicalSchedule>().map(JSON)!);
+                                    print("Schedule toegevoegd in object");
+                                    let newSchedule = Mapper<MedicalSchedule>().map(JSON)!;
+                                    print(newSchedule.description);
+                                    self.medicine?.schedules.append(newSchedule);
                                 }
 
                             }else if response.response?.statusCode == 422 {
@@ -389,6 +401,13 @@ class BuddyNewMedicineController: FormViewController {
                     });
                 }
             }
+        }
+    }
+    
+    func deleteSchedule(scheduleId: Int, medicineId:Int){
+        Alamofire.request(.POST, Routes.deleteSchedule(self.patientId!, medicineId: medicineId, scheduleId: scheduleId), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseString { response in
+            print("Verwijder schedule \(scheduleId)")
+            print(response);
         }
     }
     

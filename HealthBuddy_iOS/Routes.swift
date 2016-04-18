@@ -54,5 +54,8 @@ struct Routes{
     static func deleteMedicine(patientId:Int, medicineId:Int)->String{
         return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/delete";
     }
+    static func deleteSchedule(patientId:Int, medicineId:Int, scheduleId:Int)->String{
+        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/schedule/\(scheduleId)/delete";
+    }
    
 }
