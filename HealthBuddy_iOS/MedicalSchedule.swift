@@ -65,6 +65,19 @@ class MedicalSchedule : Mappable {
         }
     }
     
+    func updateSchedule(schedule:MedicalSchedule){
+        self.id = schedule.id;
+        self.medicineId = schedule.medicineId;
+        self.time_s = schedule.time_s;
+        self.amount = schedule.amount;
+        self.start_date_s = schedule.start_date_s;
+        self.end_date_s = schedule.end_date_s;
+        self.time = schedule.time;
+        self.start_date = schedule.start_date;
+        self.end_date = schedule.end_date;
+        self.interval = schedule.interval;
+    }
+    
     var description: String {
         return "id: \(self.id), medicineId: \(self.medicineId), time: \(self.time), amount: \(self.amount)";
     }

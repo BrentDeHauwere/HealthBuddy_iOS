@@ -30,6 +30,7 @@ class BuddyNewMedicineController: FormViewController {
     var medicine:Medicine?
     var patientId:Int?
     var newMedicin = true;
+    var savedMedicin = false;
     var annulateBtnPressed = false;
     
     //Hou elk section bij met unieke ID
@@ -221,7 +222,11 @@ class BuddyNewMedicineController: FormViewController {
             }
         }
         if(newMedicin){
-            storeMedicin(Routes.createMedicine(self.patientId!));
+            if(savedMedicin){
+                storeMedicin(Routes.updateMedicine(self.patientId!, medicineId: self.medicine!.id!))
+            }else{
+                storeMedicin(Routes.createMedicine(self.patientId!));
+            }
         }else{
             storeMedicin(Routes.updateMedicine(self.patientId!, medicineId: self.medicine!.id!))
         }
@@ -249,8 +254,7 @@ class BuddyNewMedicineController: FormViewController {
                 if let JSON = response.result.value {
                     print(JSON);
                     if response.response?.statusCode == 200 {
-                        let newMedicine = Mapper<Medicine>().map(JSON);
-                        self.medicine?.updateMedicineInfo(newMedicine!);
+                        self.medicine = Mapper<Medicine>().map(JSON);
                         print("Medicine toegevoegd");
                     }else if response.response?.statusCode == 422 {
                         print("No valid input given");
@@ -278,7 +282,7 @@ class BuddyNewMedicineController: FormViewController {
             }
             
             if errors.count <= 0 {
-                self.newMedicin = false;
+                self.savedMedicin = true;
                 self.storeSchedules();
             } else {
                 MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
@@ -330,6 +334,10 @@ class BuddyNewMedicineController: FormViewController {
                             print(JSON);
                             if response.response?.statusCode == 200 {
                                 print("schedule toegevoegd");
+                                if(newSchedule){
+                                    self.medicine?.schedules.append(Mapper<MedicalSchedule>().map(JSON)!);
+                                }
+
                             }else if response.response?.statusCode == 422 {
                                 print("No valid input given");
                                 let JSONDict = JSON as! NSDictionary as NSDictionary;

@@ -110,6 +110,7 @@ class BuddyMedicineController: UITableViewController {
             if let medicine = buddynewMedicineController.medicine {
                 //Indien nieuwe medicijn: append, else: replace
                 if(buddynewMedicineController.newMedicin){
+                    print("NIEUW MEDICIJN TOEVOEGEN AAN LIJST")
                     self.patient.medicines?.append(medicine);
                     self.patient.medicines!.sortInPlace { $0.name < $1.name }
                     let indexPath = NSIndexPath(forRow: self.patient.medicines!.count-1, inSection: 0);
