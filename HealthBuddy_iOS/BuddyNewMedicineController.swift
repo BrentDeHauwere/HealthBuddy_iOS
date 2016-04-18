@@ -100,16 +100,19 @@ class BuddyNewMedicineController: FormViewController {
         let sectionNewSchedule = FormSectionDescriptor();
         sectionNewSchedule.headerTitle = "Inname-moment \(self.form.sections.count-1)";
       
-        var row = FormRowDescriptor(tag: "\(FormTag.time)_\(self.scheduleSectionID)", rowType: .Text, title: "Uur");
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        var row = FormRowDescriptor(tag: "\(FormTag.time)_\(self.scheduleSectionID)", rowType: .Time, title: "Uur");
         sectionNewSchedule.addRow(row);
         
         row = FormRowDescriptor(tag: "\(FormTag.start_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Start inname");
-        row.value = NSDate();
+        let today = NSDate();
+        var tomorrow = today.dateByAddingTimeInterval(60*60*24);
+        row.value = tomorrow;
         sectionNewSchedule.addRow(row);
         
+        
         row = FormRowDescriptor(tag: "\(FormTag.end_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Stop inname");
-        row.value = NSDate();
+        tomorrow = tomorrow.dateByAddingTimeInterval(60*60*24)
+        row.value = tomorrow;
         sectionNewSchedule.addRow(row);
         
         row = FormRowDescriptor(tag: "\(FormTag.interval)_\(self.scheduleSectionID)", rowType: .MultipleSelector, title: "Interval")
@@ -134,7 +137,7 @@ class BuddyNewMedicineController: FormViewController {
         
         sectionNewSchedule.addRow(row)
         
-        row = FormRowDescriptor(tag: "\(FormTag.amount)_\(self.scheduleSectionID)", rowType: .Text, title: "Dosis");
+        row = FormRowDescriptor(tag: "\(FormTag.amount)_\(self.scheduleSectionID)", rowType: .Text, title: "Hoeveelheid");
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
         sectionNewSchedule.addRow(row);
         
@@ -297,6 +300,9 @@ class BuddyNewMedicineController: FormViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd";
         
+        let timeFormatter = NSDateFormatter();
+        timeFormatter.dateFormat = "HH:mm:ss";
+
 
         for(sectionID, _) in self.scheduleFormSections {
             var storeScheduleRoute = "";
@@ -308,7 +314,7 @@ class BuddyNewMedicineController: FormViewController {
                     print(self.form.formValues()["\(FormTag.amount)_\(sectionID)"]!.description)
                 }else{
                     print("SectionID \(sectionID): update schedule")
-                    storeScheduleRoute = Routes.
+                 //   storeScheduleRoute = Routes.updateScheudle(self.patientId!, medicineId: (self.medicine?.id)!, scheduleId: <#T##Int#>)
                     //TODO: updateScheduleRoute
                 }
                 
@@ -318,7 +324,7 @@ class BuddyNewMedicineController: FormViewController {
                         .decimalDigitCharacterSet()
                         .invertedSet)
                     .joinWithSeparator("")
-                Alamofire.request(.POST, storeScheduleRoute, parameters: ["api_token": Authentication.token!, FormTag.time : self.form.formValues()["\(FormTag.time)_\(sectionID)"]!.description,  FormTag.amount: self.form.formValues()["\(FormTag.amount)_\(sectionID)"]!.description, FormTag.start_date: dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.start_date)_\(sectionID)"] as! NSDate), FormTag.end_date: dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.end_date)_\(sectionID)"] as! NSDate), FormTag.interval: Int(interval)!], headers: ["Accept": "application/json"]) .responseJSON { response in
+                Alamofire.request(.POST, storeScheduleRoute, parameters: ["api_token": Authentication.token!, FormTag.time : timeFormatter.stringFromDate(self.form.formValues()["\(FormTag.time)_\(sectionID)"] as! NSDate),  FormTag.amount: self.form.formValues()["\(FormTag.amount)_\(sectionID)"]!.description, FormTag.start_date: dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.start_date)_\(sectionID)"] as! NSDate), FormTag.end_date: dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.end_date)_\(sectionID)"] as! NSDate), FormTag.interval: Int(interval)!], headers: ["Accept": "application/json"]) .responseJSON { response in
                     if response.result.isSuccess {
                         if let JSON = response.result.value {
                             print(JSON);

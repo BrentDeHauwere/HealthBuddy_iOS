@@ -12,13 +12,15 @@ import ObjectMapper
 class MedicalSchedule : Mappable {
     var id:Int?
     var medicineId:Int?
-    var time: String?;
+    var time_s: String?;
+    var time:NSDate?;
     var amount: String?;
     var interval: Int?;
     var start_date_s:String?;
     var end_date_s:String?;
     var start_date:NSDate?;
     var end_date:NSDate?;
+  
     
     init(){
         
@@ -31,7 +33,7 @@ class MedicalSchedule : Mappable {
     func mapping(map: Map) {
         self.id         <- map["id"]
         self.medicineId <- (map["medicine_id"], TransformOf<Int, String>(fromJSON: { ($0 == nil) ? nil : Int($0!) }, toJSON: { $0.map { String($0) } }))
-        self.time       <- map["time"]
+        self.time_s       <- map["time"]
         self.amount     <- map["amount"]
         self.interval <- (map["interval"], TransformOf<Int, String>(fromJSON: { ($0 == nil) ? nil : Int($0!) }, toJSON: { $0.map { String($0) } }))
         self.start_date_s <- map["start_date"]
@@ -43,6 +45,18 @@ class MedicalSchedule : Mappable {
             self.start_date = dateFormatter.dateFromString(self.start_date_s!);
             self.end_date = dateFormatter.dateFromString(self.end_date_s!);
         }
+        
+        if(self.time_s != nil){
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "HH:mm:ss"
+            self.time = dateFormatter.dateFromString(self.time_s!);
+        }
+        
+        if(self.time == nil){
+            self.time = NSDate();
+        }
+      
+        
         if(self.start_date == nil){
             self.start_date = NSDate();
         }
