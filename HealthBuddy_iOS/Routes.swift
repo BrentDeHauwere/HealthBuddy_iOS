@@ -14,9 +14,19 @@ struct Routes{
     static let login =  "http://10.3.50.33/api/login";
     //POST: email, password
     
-    static let buddyProfile = "http://10.3.50.33/api/buddyprofile";
+    static let buddyProfile = "http://10.3.50.33/api/profile";
     //POST: api_token
     
+    
+    
+    //CREATE
+    static func createMedicine(patientId:Int)->String {
+         return "http://10.3.50.33/api/user/\(patientId)/medicine/create";
+    }
+    
+    static func createSchedule(patientId:Int, medicineId:Int)->String {
+        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/schedule/create";
+    }
     
     
     
@@ -30,6 +40,22 @@ struct Routes{
     
     static func updateAddress(patientId:Int) -> String{
         return "http://10.3.50.33/api/user/\(patientId)/address/update";
+    }
+    
+    static func updateMedicine(patientId: Int, medicineId:Int)->String {
+        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/update";
+    }
+    
+    static func updateScheudle(patientId:Int, medicineId:Int, scheduleId:Int)->String {
+        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/schedule/\(scheduleId)/update";
+    }
+    
+    //DELETE
+    static func deleteMedicine(patientId:Int, medicineId:Int)->String{
+        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/delete";
+    }
+    static func deleteSchedule(patientId:Int, medicineId:Int, scheduleId:Int)->String{
+        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/schedule/\(scheduleId)/delete";
     }
    
 }
