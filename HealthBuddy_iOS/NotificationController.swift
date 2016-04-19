@@ -11,41 +11,74 @@ import Foundation
 class NotificationController : NSObject {
     static func updateToDoList(schedules: [MedicalSchedule]){
         
-        /* Properties MedicalSchedule
-         var id:Int?
-         var medicineId:Int?
-         var time: String?;
-         var amount: String?;
-         var interval: Int?;
-         var start_date_s:String?;
-         var end_date_s:String?;
-         var start_date:NSDate?;
-         var end_date:NSDate?; */
+        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         
         for schedule in schedules {
-            // schedule 1 week in advance
-            let weeksInAdvance = 1;
+            // schedule 2 weeks in advance
+            let daysInAdvance = 14;
             
-            let now = NSDate.init();
-            if let started = schedule.start_date?.isBeforeDate(now), let ended = schedule.end_date?.isAfterDate(now){
+            let now = NSDate();
+            let future = now.addDays(daysInAdvance);
+            
+            if let started = schedule.start_date?.isBeforeDate(future), let ended = schedule.end_date?.isAfterDate(now){
                 if started && !ended {
-                    let message : NSDate
-                    let medicijn = 
-                    let text = "Neem \"\(started)\" Is Overdue"
-                    let todoItem = TodoItem(deadline: date, title: message, UUID: NSUUID().UUIDString)
+                    
+                    // calculate timespans (in days)
+                    let startToNow = daysBetween(schedule.start_date!, end: now)
+                    
+                    // days in the future the next schedule needs to be made
+                    let daysInFuture = 3 - (startToNow % 3)
+                    
+                    let nextScheduleDate: NSDate = now;
+                    nextScheduleDate.addDays(daysInFuture)
+                    
+                    // set time for the schedule
+                    let unitFlags: NSCalendarUnit = [.Minute, .Hour, .Day, .Month, .Year]
+                    let scheduleComponents = NSCalendar.currentCalendar().components(unitFlags, fromDate: nextScheduleDate)
+                    
+                    // getting time from time String
+                    let format = NSDateFormatter()
+                    format.dateFormat = "HH:mm:ss"
+                    let dateFromString = format.dateFromString(schedule.time_s!)!
+                    
+                    let time = NSCalendar.currentCalendar().components(unitFlags, fromDate: dateFromString )
+                    
+                    scheduleComponents.hour = time.hour
+                    scheduleComponents.minute = time.minute
+                    let scheduleDate = cal.dateFromComponents(scheduleComponents)
+                    
+                    // amount of times scheduled (in the next {{daysInAdvance}} days)
+                    let times = Int(floor(Double(daysInAdvance)/Double(schedule.interval!)))
+                    
+                    for _ in 1...times {
+                        // placeholder
+                        let medicine : Medicine = Medicine(id:-20, name: "testMedicijn", photo:nil)
+                        
+                        let message = "Neem \(medicine.name) (\(schedule.amount)x)"
+                        let todoItem = TodoItem(deadline: scheduleDate!, title: message, UUID: NSUUID().UUIDString)
+                        ToDoList.sharedInstance.addItem(todoItem)
+                        
+                        scheduleDate!.addDays(schedule.interval!)
+                    }
+                    
                 }
             }
-            
-            /*
-            let todoItem = TodoItem(deadline: schedule., title: titleField.text!, UUID: NSUUID().UUIDString)
-            TodoList.sharedInstance.addItem(todoItem) // schedule a local notification to persist this item
-            */
+
         }
+    }
+    
+    private static func daysBetween(let start: NSDate, let end: NSDate) -> Int{
+        let calendar: NSCalendar = NSCalendar.currentCalendar()
+        let date1 = calendar.startOfDayForDate(start)
+        let date2 = calendar.startOfDayForDate(end)
+        let flags = NSCalendarUnit.Day
+        let dayComponent = calendar.components(flags, fromDate: date1, toDate: date2, options: [])
+        return dayComponent.day
     }
 }
 
 // extension functions to NSDate
-// src: 
+// src:
 // http://stackoverflow.com/questions/26198526/nsdate-comparison-using-swift
 extension NSDate {
     // 'this' comes after dateToCompare
@@ -85,4 +118,5 @@ extension NSDate {
         let dateWithHoursAdded: NSDate = self.dateByAddingTimeInterval(secondsInHours)
         return dateWithHoursAdded
     }
+    
 }
