@@ -259,7 +259,7 @@ class BuddyNewMedicineController: FormViewController {
         var errors = [String]();
         
         dispatch_group_enter(medicineGroup)
-        Alamofire.request(.POST, Route, parameters: ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
+        Alamofire.request(.POST, Route, parameters: ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description,"photo": base64String], headers: ["Accept": "application/json"]) .responseJSON { response in
             print(response.result.value);
             if response.result.isSuccess {
                 if let JSON = response.result.value {
@@ -367,9 +367,7 @@ class BuddyNewMedicineController: FormViewController {
                                         print("Number of schedules BIJ UPDATE: \(numberOfSchedules)");
                                         //TODO: waarom 0 als result?
                                         for i in 0 ..< numberOfSchedules  {
-                                            print("\(self.medicine?.schedules[i].id) == \(updatedSchedule?.id)")
                                             if(self.medicine?.schedules[i].id == updatedSchedule?.id){
-                                                print("Schedule met ID \(self.medicine?.schedules[i].id) vervangen");
                                                 self.medicine?.schedules[i] = updatedSchedule!;
                                             }
                                         }
