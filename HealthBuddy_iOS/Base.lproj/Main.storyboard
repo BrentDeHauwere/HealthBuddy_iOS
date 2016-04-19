@@ -252,47 +252,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Medkit" translatesAutoresizingMaskIntoConstraints="NO" id="LgA-xR-hJl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Medkit" translatesAutoresizingMaskIntoConstraints="NO" id="vRc-Xz-1GK">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="346" id="Bwm-ix-s3C"/>
-                                    <constraint firstAttribute="width" constant="400" id="cjf-VY-lck"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Bwm-ix-s3C"/>
-                                        <exclude reference="cjf-VY-lck"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Bwm-ix-s3C"/>
-                                        <include reference="cjf-VY-lck"/>
-                                    </mask>
-                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Completion" translatesAutoresizingMaskIntoConstraints="NO" id="rAd-33-CbQ">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LgA-xR-hJl" firstAttribute="centerX" secondItem="Otv-fN-Qwd" secondAttribute="centerX" id="JQe-o5-Bez"/>
-                            <constraint firstItem="LgA-xR-hJl" firstAttribute="top" secondItem="0DO-Wy-Cvy" secondAttribute="bottom" id="Jzk-kL-5QJ"/>
+                            <constraint firstItem="vRc-Xz-1GK" firstAttribute="trailing" secondItem="rAd-33-CbQ" secondAttribute="trailing" id="9P5-tX-lbf"/>
+                            <constraint firstItem="vRc-Xz-1GK" firstAttribute="top" secondItem="0DO-Wy-Cvy" secondAttribute="bottom" constant="121" id="BsK-2F-tQ0"/>
+                            <constraint firstItem="rAd-33-CbQ" firstAttribute="top" secondItem="vRc-Xz-1GK" secondAttribute="top" id="Mog-Mi-zVI"/>
+                            <constraint firstItem="3t9-c0-KOR" firstAttribute="top" secondItem="rAd-33-CbQ" secondAttribute="bottom" constant="206" id="Qz7-RR-HVJ"/>
+                            <constraint firstItem="vRc-Xz-1GK" firstAttribute="leading" secondItem="rAd-33-CbQ" secondAttribute="leading" id="WKZ-eS-HzX"/>
+                            <constraint firstItem="rAd-33-CbQ" firstAttribute="bottom" secondItem="vRc-Xz-1GK" secondAttribute="bottom" id="gUp-o4-ZS0"/>
+                            <constraint firstItem="vRc-Xz-1GK" firstAttribute="trailing" secondItem="Otv-fN-Qwd" secondAttribute="trailingMargin" id="iJe-6y-vLD"/>
+                            <constraint firstItem="rAd-33-CbQ" firstAttribute="leading" secondItem="Otv-fN-Qwd" secondAttribute="leadingMargin" id="y3Y-Gm-e2A"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="LgA-xR-hJl"/>
+                                <exclude reference="vRc-Xz-1GK"/>
+                                <exclude reference="rAd-33-CbQ"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="JQe-o5-Bez"/>
-                                <exclude reference="Jzk-kL-5QJ"/>
+                                <exclude reference="Mog-Mi-zVI"/>
+                                <exclude reference="gUp-o4-ZS0"/>
+                                <exclude reference="y3Y-Gm-e2A"/>
+                                <exclude reference="9P5-tX-lbf"/>
+                                <exclude reference="BsK-2F-tQ0"/>
+                                <exclude reference="WKZ-eS-HzX"/>
+                                <exclude reference="iJe-6y-vLD"/>
+                                <exclude reference="Qz7-RR-HVJ"/>
                             </mask>
                         </variation>
-                        <variation key="widthClass=compact">
+                        <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="LgA-xR-hJl"/>
+                                <include reference="vRc-Xz-1GK"/>
+                                <include reference="rAd-33-CbQ"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="JQe-o5-Bez"/>
-                                <include reference="Jzk-kL-5QJ"/>
+                                <include reference="Mog-Mi-zVI"/>
+                                <include reference="gUp-o4-ZS0"/>
+                                <include reference="y3Y-Gm-e2A"/>
+                                <include reference="9P5-tX-lbf"/>
+                                <include reference="BsK-2F-tQ0"/>
+                                <include reference="WKZ-eS-HzX"/>
+                                <include reference="iJe-6y-vLD"/>
+                                <include reference="Qz7-RR-HVJ"/>
                             </mask>
                         </variation>
                     </view>
@@ -300,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Um-oK-Ihd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3030" y="725"/>
+            <point key="canvasLocation" x="3030" y="724.5"/>
         </scene>
         <!--Buddy Tab Bar Controller-->
         <scene sceneID="RsC-4x-t7b">
@@ -848,6 +855,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Completion" width="512" height="512"/>
         <image name="ContactLogo" width="25" height="25"/>
         <image name="Logo" width="487" height="607"/>
         <image name="Medicatie" width="50" height="50"/>
