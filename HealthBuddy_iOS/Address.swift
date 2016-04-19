@@ -7,8 +7,6 @@
 //
 
 import Foundation
-<<<<<<< HEAD
-=======
 import ObjectMapper
 
 class Address: Mappable {
@@ -40,4 +38,3 @@ class Address: Mappable {
         return "id: \(self.id)\nstreet: \(self.street)\nbus: \(self.bus)\nzipCode: \(self.zipCode)\ncity: \(self.city)\ncountry: \(self.country), \(self.streetNumber)";
     }
 }
->>>>>>> master
