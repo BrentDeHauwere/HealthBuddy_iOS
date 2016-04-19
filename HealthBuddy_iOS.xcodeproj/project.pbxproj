@@ -33,6 +33,7 @@
 		ACFC566D1C8D8F8400269458 /* BuddyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC566C1C8D8F8400269458 /* BuddyListController.swift */; };
 		ACFC566F1C8DA00C00269458 /* BuddyMedicaliDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC566E1C8DA00C00269458 /* BuddyMedicaliDController.swift */; };
 		DC1323F91CBBC9F100D86E24 /* PatientMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1323F81CBBC9F100D86E24 /* PatientMedicineController.swift */; };
+		DC4C7E761CC674D800EB51BA /* PatientShowMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C7E751CC674D800EB51BA /* PatientShowMedicineController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		ACFC566C1C8D8F8400269458 /* BuddyListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyListController.swift; sourceTree = "<group>"; };
 		ACFC566E1C8DA00C00269458 /* BuddyMedicaliDController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMedicaliDController.swift; sourceTree = "<group>"; };
 		DC1323F81CBBC9F100D86E24 /* PatientMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientMedicineController.swift; sourceTree = "<group>"; };
+		DC4C7E751CC674D800EB51BA /* PatientShowMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientShowMedicineController.swift; sourceTree = "<group>"; };
 		E438C33C75837497E5B76C34 /* Pods-HealthBuddy_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthBuddy_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +144,7 @@
 				AC20C0451C9AB20300E3E458 /* PatientDashboardController.swift */,
 				DC1323F81CBBC9F100D86E24 /* PatientMedicineController.swift */,
 				ACCA962F1C9078B200D394BE /* PatientTabBarController.swift */,
+				DC4C7E751CC674D800EB51BA /* PatientShowMedicineController.swift */,
 			);
 			name = PatientControllers;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				ACFC566F1C8DA00C00269458 /* BuddyMedicaliDController.swift in Sources */,
 				AC9EB0941C8F52420084DAC8 /* BuddyWeightController.swift in Sources */,
 				AC5A519D1C8C382300804C65 /* LoginController.swift in Sources */,
+				DC4C7E761CC674D800EB51BA /* PatientShowMedicineController.swift in Sources */,
 				AC9EB0921C8F52310084DAC8 /* BuddyMedicineController.swift in Sources */,
 				AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */,
 				AC20C0461C9AB20300E3E458 /* PatientDashboardController.swift in Sources */,
