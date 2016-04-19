@@ -101,6 +101,7 @@ class BuddyNewMedicineController: FormViewController {
         }
         row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
             self.performSegueWithIdentifier("showMedicinePicture", sender: self);
+            self.view.endEditing(true);
             } as DidSelectClosure
         sectionMedicinInformation.addRow(row);
 

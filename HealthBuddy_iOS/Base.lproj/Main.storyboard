@@ -591,7 +591,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="goToSaveNewMedicine" unwindAction="saveNewMedicine:" id="4xV-YM-YNc"/>
-                        <segue destination="hET-Mv-UvV" kind="show" identifier="showMedicinePicture" id="UIU-1M-rhl"/>
+                        <segue destination="hET-Mv-UvV" kind="showDetail" identifier="showMedicinePicture" action="showViewController:sender:" id="UIU-1M-rhl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FtT-VS-KCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -614,7 +614,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rey-xt-p4y">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9uf-aW-O2V">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9uf-aW-O2V">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="536" id="EQ9-M2-47X">
@@ -656,7 +656,8 @@
                                         <exclude reference="S0a-9u-gYx"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="536"/>
                                     <mask key="subviews">
                                         <include reference="9uf-aW-O2V"/>
                                     </mask>
@@ -930,6 +931,6 @@
         <image name="WeightTabIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7gd-n9-BcH"/>
+        <segue reference="QBc-Vo-xvA"/>
     </inferredMetricsTieBreakers>
 </document>
