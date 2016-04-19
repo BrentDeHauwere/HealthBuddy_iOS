@@ -289,7 +289,6 @@ class BuddyNewMedicineController: FormViewController {
             print(response.result.value);
             if response.result.isSuccess {
                 if let JSON = response.result.value {
-                    print(JSON);
                     if response.response?.statusCode == 200 {
                         let newMedicine = Mapper<Medicine>().map(JSON);
                         print(newMedicine);
@@ -308,9 +307,11 @@ class BuddyNewMedicineController: FormViewController {
                     }
                 }else{
                     print("Ongeldige json response medicine");
+                    errors.append("Opgeslaan medicijn mislukt");
                 }
             }else{
                 print("Ongeldige request medicine");
+                errors.append("Opgeslaan medicijn mislukt");
             }
             dispatch_group_leave(medicineGroup)
         }
