@@ -317,7 +317,7 @@ class BuddyNewMedicineController: FormViewController {
     }
     
     func storeSchedules(){
-        var group = dispatch_group_create()
+        let group = dispatch_group_create()
         var errors = [String]();
         
         
