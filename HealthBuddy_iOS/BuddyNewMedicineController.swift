@@ -109,7 +109,6 @@ class BuddyNewMedicineController: FormViewController {
         sectionNewSchedule.headerTitle = "Inname-moment \(self.form.sections.count-1)";
       
         var row = FormRowDescriptor(tag: "\(FormTag.time)_\(self.scheduleSectionID)", rowType: .Time, title: "Uur");
-        row.value = NSDate();
         sectionNewSchedule.addRow(row);
         
         row = FormRowDescriptor(tag: "\(FormTag.start_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Start inname");
@@ -156,8 +155,6 @@ class BuddyNewMedicineController: FormViewController {
             } as TitleFormatterClosure
         if(sectionCount>2){
             row.value = self.form.sections[sectionCount-2].rows[3].value;
-        }else{
-            row.value = 1;
         }
         sectionNewSchedule.addRow(row)
         
@@ -394,8 +391,10 @@ class BuddyNewMedicineController: FormViewController {
                         .decimalDigitCharacterSet()
                         .invertedSet)
                     .joinWithSeparator("")
+                print(interval);
                 dispatch_group_enter(group);
-                Alamofire.request(.POST, storeScheduleRoute, parameters: ["api_token": Authentication.token!, FormTag.time : timeFormatter.stringFromDate(self.form.formValues()["\(FormTag.time)_\(sectionID)"] as! NSDate),  FormTag.amount: self.form.formValues()["\(FormTag.amount)_\(sectionID)"]!.description, FormTag.start_date: dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.start_date)_\(sectionID)"] as! NSDate), FormTag.end_date: dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.end_date)_\(sectionID)"] as! NSDate), FormTag.interval: Int(interval)!], headers: ["Accept": "application/json"]) .responseJSON { response in
+                print(self.form.formValues()["\(FormTag.time)_\(sectionID)"]!.description);
+                Alamofire.request(.POST, storeScheduleRoute, parameters: ["api_token": Authentication.token!, FormTag.time : self.form.formValues()["\(FormTag.time)_\(sectionID)"]!.description == "<null>" ? "<null>" : timeFormatter.stringFromDate(self.form.formValues()["\(FormTag.time)_\(sectionID)"] as! NSDate),  FormTag.amount: self.form.formValues()["\(FormTag.amount)_\(sectionID)"]!.description, FormTag.start_date: dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.start_date)_\(sectionID)"] as! NSDate), FormTag.end_date: dateFormatter.stringFromDate(self.form.formValues()["\(FormTag.end_date)_\(sectionID)"] as! NSDate), FormTag.interval: interval],headers: ["Accept": "application/json"]) .responseJSON { response in
                     dispatch_group_leave(group);
                     if response.result.isSuccess {
                         if let JSON = response.result.value {
