@@ -59,6 +59,7 @@ class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerD
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage;
         MedicineImageView.image = image;
         medicine?.photo = image;
+        print("IMAGE IS UPDATED IN CONTROLLER");
         self.dismissViewControllerAnimated(true, completion: nil);
     }
     
