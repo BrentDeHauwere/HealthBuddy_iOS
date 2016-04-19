@@ -32,6 +32,9 @@ class BuddyNewMedicineController: FormViewController {
     var newMedicin = true;
     var savedMedicin = false;
     var annulateBtnPressed = false;
+    var lastUpdatedImage:UIImage?
+
+   
     
     //Hou elk section bij met unieke ID
     var scheduleSectionID = 0;
@@ -52,7 +55,6 @@ class BuddyNewMedicineController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         //Formulier opvullen indien bestaande medicijn wordt geupdate
         if medicine != nil  {
             newMedicin = false;
@@ -205,11 +207,32 @@ class BuddyNewMedicineController: FormViewController {
    
     func initForm(){
         self.form.sections[0].rows[0].value = medicine?.name;
-        self.form.sections[0].rows[1].value = medicine?.info;        
+        self.form.sections[0].rows[1].value = medicine?.info;
+        
+        print(Routes.showMedicine(patientId!, medicineId: self.medicine!.id!));
+        Alamofire.request(.POST, Routes.showMedicine(patientId!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
+            if response.result.isSuccess {
+                if let JSON = response.result.value {
+                    print(JSON);
+                    if response.response?.statusCode == 200 {
+                        let newMedicine = Mapper<Medicine>().map(JSON);
+                        self.medicine?.updateMedicineInfo(newMedicine!);
+                        print("Medicine toegevoegd");
+                    }else if response.response?.statusCode == 422 {
+                        print("Medicine show failed");
+                    }
+                }else{
+                    print("Ongeldige json response medicine show");
+                }
+            }else{
+                print("Ongeldige request medicine show ");
+            }
+        }
+        lastUpdatedImage = self.medicine?.photo;
+
         
         if let numberOfSchedules = self.medicine?.schedules.count {
             for i in 0 ..< numberOfSchedules  {
-                print("AANTAL SCHEDULES IN MEDICINE OBJECT BIJ INIT: \(numberOfSchedules)");
                 self.addScheduleForm();
                 self.scheduleFormSectionsNewState[(scheduleSectionID-1)] = false;
                 self.sectionScheduleID[(scheduleSectionID-1)] = self.medicine?.schedules[i].id;
@@ -245,28 +268,37 @@ class BuddyNewMedicineController: FormViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMedicinePicture" {
             let buddyMedicinePictureController = segue.destinationViewController as! BuddyMedicinePictureController;
-            buddyMedicinePictureController.medicine = medicine;
+            buddyMedicinePictureController.medicine = self.medicine;
+   
         }
     }
     
     func storeMedicin(Route:String){
         print("Stuur naar \(Route)")
-        let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
-        let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        
+        var params = ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description];
+        
+        if(lastUpdatedImage != self.medicine?.photo){
+            print("Image update");
+            if(self.medicine?.photo != nil){
+                let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
+                let photoBase64 = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength);
+                params["photo"] = photoBase64;
+            }
+        }
         
         let medicineGroup = dispatch_group_create()
         var errors = [String]();
         
         dispatch_group_enter(medicineGroup)
-        Alamofire.request(.POST, Route, parameters: ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description,"photo": base64String], headers: ["Accept": "application/json"]) .responseJSON { response in
-            print(response.result.value);
+        Alamofire.request(.POST, Route, parameters: params, headers: ["Accept": "application/json"]) .responseJSON { response in
             if response.result.isSuccess {
                 if let JSON = response.result.value {
-                    print(JSON);
                     if response.response?.statusCode == 200 {
                         let newMedicine = Mapper<Medicine>().map(JSON);
                         print(newMedicine);
                         self.medicine?.updateMedicineInfo(newMedicine!);
+                        self.lastUpdatedImage = self.medicine?.photo;
                         print("Medicine toegevoegd");
                     }else if response.response?.statusCode == 422 {
                         print("No valid input given");
@@ -281,9 +313,11 @@ class BuddyNewMedicineController: FormViewController {
                     }
                 }else{
                     print("Ongeldige json response medicine");
+                    errors.append("Opgeslaan medicijn mislukt");
                 }
             }else{
                 print("Ongeldige request medicine");
+                errors.append("Opgeslaan medicijn mislukt");
             }
             dispatch_group_leave(medicineGroup)
         }
@@ -363,7 +397,6 @@ class BuddyNewMedicineController: FormViewController {
                                 }else{
                                     let updatedSchedule = Mapper<MedicalSchedule>().map(JSON);
                                     if let numberOfSchedules = self.medicine?.schedules.count {
-                                        print("Number of schedules BIJ UPDATE: \(numberOfSchedules)");
                                         //TODO: waarom 0 als result?
                                         for i in 0 ..< numberOfSchedules  {
                                             if(self.medicine?.schedules[i].id == updatedSchedule?.id){
