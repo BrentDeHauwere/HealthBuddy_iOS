@@ -103,6 +103,8 @@ class BuddyNewMedicineController: FormViewController {
     }
     
     func addScheduleForm(){
+        
+        
         let sectionNewSchedule = FormSectionDescriptor();
         sectionNewSchedule.headerTitle = "Inname-moment \(self.form.sections.count-1)";
       
@@ -111,15 +113,26 @@ class BuddyNewMedicineController: FormViewController {
         sectionNewSchedule.addRow(row);
         
         row = FormRowDescriptor(tag: "\(FormTag.start_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Start inname");
+        print("Aantal sections: \(self.form.sections.count)");
+       
         let today = NSDate();
         var tomorrow = today.dateByAddingTimeInterval(60*60*24);
-        row.value = tomorrow;
+        let sectionCount = self.form.sections.count;
+        
+        if (sectionCount>2){
+            row.value = self.form.sections[sectionCount-2].rows[1].value;
+        }else{
+            row.value = tomorrow;
+        }
         sectionNewSchedule.addRow(row);
-        
-        
+
         row = FormRowDescriptor(tag: "\(FormTag.end_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Stop inname");
         tomorrow = tomorrow.dateByAddingTimeInterval(60*60*24)
-        row.value = tomorrow;
+        if(sectionCount>2){
+            row.value = self.form.sections[sectionCount-2].rows[2].value;
+        }else{
+            row.value = tomorrow;
+        }
         sectionNewSchedule.addRow(row);
         
         row = FormRowDescriptor(tag: "\(FormTag.interval)_\(self.scheduleSectionID)", rowType: .MultipleSelector, title: "Interval")
@@ -141,7 +154,11 @@ class BuddyNewMedicineController: FormViewController {
                 return nil
             }
             } as TitleFormatterClosure
-        row.value = 1;
+        if(sectionCount>2){
+            row.value = self.form.sections[sectionCount-2].rows[3].value;
+        }else{
+            row.value = 1;
+        }
         sectionNewSchedule.addRow(row)
         
         row = FormRowDescriptor(tag: "\(FormTag.amount)_\(self.scheduleSectionID)", rowType: .Text, title: "Hoeveelheid");
