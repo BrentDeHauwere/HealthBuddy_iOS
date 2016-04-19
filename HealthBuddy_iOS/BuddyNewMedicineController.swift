@@ -210,6 +210,7 @@ class BuddyNewMedicineController: FormViewController {
         
         if let numberOfSchedules = self.medicine?.schedules.count {
             for i in 0 ..< numberOfSchedules  {
+                print("AANTAL SCHEDULES IN MEDICINE OBJECT BIJ INIT: \(numberOfSchedules)");
                 self.addScheduleForm();
                 self.scheduleFormSectionsNewState[(scheduleSectionID-1)] = false;
                 self.sectionScheduleID[(scheduleSectionID-1)] = self.medicine?.schedules[i].id;
@@ -250,9 +251,9 @@ class BuddyNewMedicineController: FormViewController {
     }
     
     func storeMedicin(Route:String){
-      //  let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
-      //   let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-      //  print(base64String);
+        print("Stuur naar \(Route)")
+        let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
+        let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
         
         let medicineGroup = dispatch_group_create()
         var errors = [String]();
@@ -264,7 +265,9 @@ class BuddyNewMedicineController: FormViewController {
                 if let JSON = response.result.value {
                     print(JSON);
                     if response.response?.statusCode == 200 {
-                        self.medicine = Mapper<Medicine>().map(JSON);
+                        let newMedicine = Mapper<Medicine>().map(JSON);
+                        print(newMedicine);
+                        self.medicine?.updateMedicineInfo(newMedicine!);
                         print("Medicine toegevoegd");
                     }else if response.response?.statusCode == 422 {
                         print("No valid input given");
@@ -317,9 +320,9 @@ class BuddyNewMedicineController: FormViewController {
     }
     
     func storeSchedules(){
-        var group = dispatch_group_create()
+        let group = dispatch_group_create()
         var errors = [String]();
-        
+
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd";
@@ -361,7 +364,7 @@ class BuddyNewMedicineController: FormViewController {
                                 }else{
                                     let updatedSchedule = Mapper<MedicalSchedule>().map(JSON);
                                     if let numberOfSchedules = self.medicine?.schedules.count {
-                                        print("Number of schedules: \(numberOfSchedules)");
+                                        print("Number of schedules BIJ UPDATE: \(numberOfSchedules)");
                                         //TODO: waarom 0 als result?
                                         for i in 0 ..< numberOfSchedules  {
                                             print("\(self.medicine?.schedules[i].id) == \(updatedSchedule?.id)")
