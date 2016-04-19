@@ -18,9 +18,10 @@ class MedicalSchedule : Mappable {
     var interval: Int?;
     var start_date_s:String?;
     var end_date_s:String?;
+    var updated_at_s:String?;
     var start_date:NSDate?;
     var end_date:NSDate?;
-  
+    var updated_at:NSDate?;
     
     init(){
         
@@ -38,12 +39,19 @@ class MedicalSchedule : Mappable {
         self.interval <- (map["interval"], TransformOf<Int, String>(fromJSON: { ($0 == nil) ? nil : Int($0!) }, toJSON: { $0.map { String($0) } }))
         self.start_date_s <- map["start_date"]
         self.end_date_s <- map["end_date"]
+        self.updated_at_s <- map["updated_at"]
         
         if(self.start_date_s != nil && self.end_date_s != nil){
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
             self.start_date = dateFormatter.dateFromString(self.start_date_s!);
             self.end_date = dateFormatter.dateFromString(self.end_date_s!);
+        }
+        
+        if(self.updated_at_s != nil){
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            self.updated_at = dateFormatter.dateFromString(self.updated_at_s!);
         }
         
         if(self.time_s != nil){

@@ -11,10 +11,25 @@ import UIKit
 class PatientShowMedicineController: UIViewController {
     var medicine:Medicine!;
     var patientID:Int!;
+    var schedule:MedicalSchedule!;
+    
+    @IBOutlet weak var MedicineTitle: UILabel!
+    @IBOutlet weak var ImageView: UIImageView!
+    @IBOutlet weak var DateTitle: UILabel!
+    @IBOutlet weak var Amount: UILabel!
+    @IBOutlet weak var takeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //ImageView.image;
+        MedicineTitle.text = self.medicine.name;
+        DateTitle.text = self.schedule.start_date_s;
+        Amount.text = self.schedule.amount;
+        print(self.schedule.updated_at);
+        /*if(self.schedule.updated_at!.equalToDate(NSDate())){
+            takeButton.setTitle("Je hebt deze medicatie al ingenomen", forState: UIControlState.Normal)
+            takeButton.enabled = false;
+        }*/
         // Do any additional setup after loading the view.
     }
 
@@ -24,6 +39,9 @@ class PatientShowMedicineController: UIViewController {
     }
     
 
+    @IBAction func touched(sender: AnyObject) {
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -34,4 +52,22 @@ class PatientShowMedicineController: UIViewController {
     }
     */
 
+}
+
+extension NSDate {
+    func isBetweeen(date date1: NSDate, andDate date2: NSDate) -> Bool {
+        return date1.compare(self).rawValue * self.compare(date2).rawValue >= 0
+    }
+    
+    func daysSince1970() -> Int {
+        return (Int)(self.timeIntervalSince1970 / (60*60*24));
+    }
+    func equalToDate(dateToCompare: NSDate) -> Bool {
+        var isEqualTo = false
+        
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedSame {
+            isEqualTo = true
+        }
+        return isEqualTo
+    }
 }
