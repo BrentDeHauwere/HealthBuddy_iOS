@@ -55,6 +55,8 @@ class BuddyNewMedicineController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardOnHeaderTab()
+        
         //Formulier opvullen indien bestaande medicijn wordt geupdate
         if medicine != nil  {
             newMedicin = false;
@@ -66,6 +68,18 @@ class BuddyNewMedicineController: FormViewController {
             self.navigationItem.title = "Nieuw medicijn";
         }
     }
+    
+    func hideKeyboardOnHeaderTab(){
+        self.navigationController!.navigationBar.userInteractionEnabled = true;
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuddyNewMedicineController.click(_:)));
+        tapGestureRecognizer.numberOfTapsRequired=1;
+        self.navigationController!.navigationBar.addGestureRecognizer(tapGestureRecognizer);
+    }
+    
+    func click(sender: UILabel){
+        self.view.endEditing(true);
+    }
+
     
     func loadForm(){
         let form = FormDescriptor()
