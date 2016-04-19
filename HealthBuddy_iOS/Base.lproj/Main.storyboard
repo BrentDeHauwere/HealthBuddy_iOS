@@ -261,7 +261,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                        <real key="value" value="0.69999999999999996"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
@@ -269,6 +269,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="progressImage"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="centerImage" value="takePill"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="refreshRate">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -279,6 +282,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OF5-G2-57a"/>
+                    <connections>
+                        <outlet property="circleProgressView" destination="J1L-0M-RCg" id="hee-XH-s1w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Um-oK-Ihd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
