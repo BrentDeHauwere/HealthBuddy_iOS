@@ -8,13 +8,23 @@
 
 import UIKit
 
-class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
+    @IBOutlet var ScrollView: UIScrollView!
     @IBOutlet weak var MedicineImageView: UIImageView!
+   
     var medicine:Medicine?
     
     override func viewDidLoad() {
-        self.title = "Medicatie foto"
-        MedicineImageView.image = medicine?.photo;
+        if(self.medicine?.photo != nil){
+            self.title = "\((self.medicine?.name)!) foto"
+            MedicineImageView.image = medicine?.photo;
+        }else{
+            self.title = "Medicatie foto"
+            MedicineImageView.image = UIImage(named: "selectImage")
+        }
+        
+        self.ScrollView.minimumZoomScale = 1;
+        self.ScrollView.maximumZoomScale = 6;
     }
     
     @IBAction func selectImage(sender: AnyObject) {
@@ -48,12 +58,12 @@ class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerD
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage;
         MedicineImageView.image = image;
         medicine?.photo = image;
+        print("IMAGE IS UPDATED IN CONTROLLER");
         self.dismissViewControllerAnimated(true, completion: nil);
     }
     
-  
-    
-   
-    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.MedicineImageView;
+    }
     
 }

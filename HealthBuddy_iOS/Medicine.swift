@@ -13,8 +13,8 @@ class Medicine : Mappable {
     var id: Int?;
     var name: String?;
     var info:String?
-    var photoUrl:String?;
-    var photo: UIImage? = UIImage(named: "selectImage");
+    var photo: UIImage?;
+    var photo64String:String?;
     var schedules = [MedicalSchedule]();
     
     init(){
@@ -35,19 +35,27 @@ class Medicine : Mappable {
         self.id         <- map["id"]
         self.name       <- map["name"]
         self.info       <- map["info"]
-        self.photoUrl   <- map["photoUrl"]
         self.schedules   <- map["schedule"]
+        self.photo64String <- map["photo"]
+        
+       
+        if(self.photo64String != nil && self.photo64String != ""){
+            let decodedData = NSData(base64EncodedString: self.photo64String!, options: NSDataBase64DecodingOptions(rawValue: 0))
+            let decodedimage = UIImage(data: decodedData!)
+            self.photo = decodedimage! as UIImage;
+        }
     }
     
     func updateMedicineInfo(medicine:Medicine){
         self.id = medicine.id;
         self.name = medicine.name;
         self.info = medicine.info;
-        self.photoUrl = medicine.photoUrl;
+        self.photo = medicine.photo;
+        self.photo64String = medicine.photo64String;
     }
 
     var description: String {
-        return "medicineId: \(self.id)\nname: \(self.name)\ninfo: \(self.info)\nphotoUrl: \(self.photoUrl)\nphoto \(self.photo)\nschedule\(self.schedules)";
+        return "medicineId: \(self.id)\nname: \(self.name)\ninfo: \(self.info)\nphotoUrl: \nphoto \(self.photo)\nschedule\(self.schedules)";
     }
     
 }
