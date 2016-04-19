@@ -25,8 +25,8 @@ class LoginController: UIViewController {
         btnLogin.layer.cornerRadius = 10;
         btnLogin.clipsToBounds = true;
         //Temporary auto login
-        txtEmail.text = "eddi@gmail.com";
-        txtPassword.text = "secret1";
+        txtEmail.text = "eddi_wallie@gmail.com";
+        txtPassword.text = "secret";
         
     }
 
