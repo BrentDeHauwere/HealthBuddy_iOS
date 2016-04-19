@@ -205,11 +205,31 @@ class BuddyNewMedicineController: FormViewController {
    
     func initForm(){
         self.form.sections[0].rows[0].value = medicine?.name;
-        self.form.sections[0].rows[1].value = medicine?.info;        
+        self.form.sections[0].rows[1].value = medicine?.info;
+        
+        print(Routes.showMedicine(patientId!, medicineId: self.medicine!.id!));
+        Alamofire.request(.POST, Routes.showMedicine(patientId!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
+            if response.result.isSuccess {
+                if let JSON = response.result.value {
+                    print(JSON);
+                    if response.response?.statusCode == 200 {
+                        let newMedicine = Mapper<Medicine>().map(JSON);
+                        self.medicine?.updateMedicineInfo(newMedicine!);
+                        print("Medicine toegevoegd");
+                    }else if response.response?.statusCode == 422 {
+                        print("Medicine show failed");
+                    }
+                }else{
+                    print("Ongeldige json response medicine show");
+                }
+            }else{
+                print("Ongeldige request medicine show ");
+            }
+        }
+
         
         if let numberOfSchedules = self.medicine?.schedules.count {
             for i in 0 ..< numberOfSchedules  {
-                print("AANTAL SCHEDULES IN MEDICINE OBJECT BIJ INIT: \(numberOfSchedules)");
                 self.addScheduleForm();
                 self.scheduleFormSectionsNewState[(scheduleSectionID-1)] = false;
                 self.sectionScheduleID[(scheduleSectionID-1)] = self.medicine?.schedules[i].id;
@@ -251,14 +271,21 @@ class BuddyNewMedicineController: FormViewController {
     
     func storeMedicin(Route:String){
         print("Stuur naar \(Route)")
-        let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
-        let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        
+        var params = [String:String]();
+        if(self.medicine?.photo != nil){
+            let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
+            let photoBase64 = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength);
+            params = ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description,"photo": photoBase64];
+        }else{
+            params = ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description];
+        }
         
         let medicineGroup = dispatch_group_create()
         var errors = [String]();
         
         dispatch_group_enter(medicineGroup)
-        Alamofire.request(.POST, Route, parameters: ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description,"photo": base64String], headers: ["Accept": "application/json"]) .responseJSON { response in
+        Alamofire.request(.POST, Route, parameters: params, headers: ["Accept": "application/json"]) .responseJSON { response in
             print(response.result.value);
             if response.result.isSuccess {
                 if let JSON = response.result.value {
