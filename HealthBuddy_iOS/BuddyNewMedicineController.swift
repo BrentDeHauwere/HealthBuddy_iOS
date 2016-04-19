@@ -205,8 +205,7 @@ class BuddyNewMedicineController: FormViewController {
    
     func initForm(){
         self.form.sections[0].rows[0].value = medicine?.name;
-        self.form.sections[0].rows[1].value = medicine?.info;
-        
+        self.form.sections[0].rows[1].value = medicine?.info;        
         
         if let numberOfSchedules = self.medicine?.schedules.count {
             for i in 0 ..< numberOfSchedules  {
