@@ -26,6 +26,8 @@ class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerD
         
         self.ScrollView.minimumZoomScale = 1;
         self.ScrollView.maximumZoomScale = 6;
+        
+       
     }
     
     @IBAction func selectImage(sender: AnyObject) {

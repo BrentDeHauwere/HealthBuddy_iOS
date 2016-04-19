@@ -591,7 +591,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="goToSaveNewMedicine" unwindAction="saveNewMedicine:" id="4xV-YM-YNc"/>
-                        <segue destination="hET-Mv-UvV" kind="showDetail" identifier="showMedicinePicture" action="showViewController:sender:" id="UIU-1M-rhl"/>
+                        <segue destination="hET-Mv-UvV" kind="show" identifier="showMedicinePicture" id="UIU-1M-rhl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FtT-VS-KCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -611,6 +611,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tm7-IO-QLH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="vKk-is-X0A"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="edit" id="ZlT-TK-rGE">
+                                        <connections>
+                                            <action selector="selectImage:" destination="hET-Mv-UvV" id="QYm-zT-Cwz"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="vKk-is-X0A"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="vKk-is-X0A"/>
+                                    </mask>
+                                </variation>
+                            </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rey-xt-p4y">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
@@ -656,8 +679,7 @@
                                         <exclude reference="S0a-9u-gYx"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="536"/>
+                                <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="9uf-aW-O2V"/>
                                     </mask>
@@ -673,44 +695,27 @@
                                     <outlet property="delegate" destination="hET-Mv-UvV" id="DOL-PG-ifQ"/>
                                 </connections>
                             </scrollView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tm7-IO-QLH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="vKk-is-X0A"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem systemItem="edit" id="ZlT-TK-rGE">
-                                        <connections>
-                                            <action selector="selectImage:" destination="hET-Mv-UvV" id="QYm-zT-Cwz"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="vKk-is-X0A"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="vKk-is-X0A"/>
-                                    </mask>
-                                </variation>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Tm7-IO-QLH" firstAttribute="leading" secondItem="hpd-Wd-QCk" secondAttribute="leadingMargin" constant="-20" id="4RU-Am-81m"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tm7-IO-QLH" secondAttribute="trailing" constant="-20" id="XC9-kR-rvU"/>
-                            <constraint firstAttribute="trailing" secondItem="Rey-xt-p4y" secondAttribute="trailing" id="Z7u-W0-rqb"/>
+                            <constraint firstAttribute="trailing" secondItem="Rey-xt-p4y" secondAttribute="trailing" id="Z7u-W0-rqb">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="Tm7-IO-QLH" firstAttribute="bottom" secondItem="hpd-Wd-QCk" secondAttribute="bottomMargin" id="Zlu-1J-lgg"/>
-                            <constraint firstAttribute="bottom" secondItem="Rey-xt-p4y" secondAttribute="bottom" id="c4n-YQ-ZTO"/>
+                            <constraint firstAttribute="bottom" secondItem="Rey-xt-p4y" secondAttribute="bottom" id="c4n-YQ-ZTO">
+                                <variation key="widthClass=compact" constant="49"/>
+                            </constraint>
                             <constraint firstItem="Rey-xt-p4y" firstAttribute="leading" secondItem="hpd-Wd-QCk" secondAttribute="leading" id="fQx-cL-jOo"/>
-                            <constraint firstItem="Rey-xt-p4y" firstAttribute="top" secondItem="mpN-y4-HYK" secondAttribute="bottom" id="miP-nb-XtT"/>
+                            <constraint firstItem="Rey-xt-p4y" firstAttribute="top" secondItem="mpN-y4-HYK" secondAttribute="bottom" id="miP-nb-XtT">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="Rey-xt-p4y"/>
                                 <exclude reference="Tm7-IO-QLH"/>
+                                <exclude reference="Rey-xt-p4y"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="4RU-Am-81m"/>
@@ -724,8 +729,8 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="Rey-xt-p4y"/>
                                 <include reference="Tm7-IO-QLH"/>
+                                <include reference="Rey-xt-p4y"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="4RU-Am-81m"/>
@@ -931,6 +936,6 @@
         <image name="WeightTabIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QBc-Vo-xvA"/>
+        <segue reference="7gd-n9-BcH"/>
     </inferredMetricsTieBreakers>
 </document>
