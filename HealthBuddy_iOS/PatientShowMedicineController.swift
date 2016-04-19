@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire;
 
 class PatientShowMedicineController: UIViewController {
     var medicine:Medicine!;
@@ -21,7 +22,25 @@ class PatientShowMedicineController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ImageView.image;
+        print(Routes.showMedicine(patientID!, medicineId: self.medicine!.id!));
+        Alamofire.request(.POST, Routes.showMedicine(patientID!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
+            if response.result.isSuccess {
+                if let JSON = response.result.value {
+                    if response.response?.statusCode == 200 {
+                        let newMedicine = Mapper<Medicine>().map(JSON);
+                        self.medicine?.updateMedicineInfo(newMedicine!);
+                        print("Medicine updated");
+                    }else if response.response?.statusCode == 422 {
+                        print("Medicine show failed");
+                    }
+                }else{
+                    print("Ongeldige json response medicine show");
+                }
+            }else{
+                print("Ongeldige request medicine show ");
+            }
+        }
+        ImageView.image = medicine.photo;
         MedicineTitle.text = self.medicine.name;
         DateTitle.text = self.schedule.start_date_s;
         Amount.text = self.schedule.amount;
