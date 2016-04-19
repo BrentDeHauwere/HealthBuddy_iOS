@@ -6,7 +6,7 @@
 //  Copyright © 2016 Yen Jacobs. All rights reserved.
 //
 
-import UIKit;
+import UIKit
 
 class PatientDashboardController: UIViewController {
     var patient:User?;
@@ -14,5 +14,6 @@ class PatientDashboardController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         self.title = "\(patient!.firstName!) \(patient!.lastName!)";
+        
     }
 }

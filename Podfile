@@ -7,6 +7,7 @@ target 'HealthBuddy_iOS' do
     pod 'MRProgress'
     pod 'Alamofire', '~> 3.0'
     pod 'ObjectMapper', '~> 1.1'
+    pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProgressView.git'
 end
 
 target 'HealthBuddy_iOSTests' do

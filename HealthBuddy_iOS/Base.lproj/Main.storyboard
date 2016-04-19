@@ -248,60 +248,35 @@
                         <viewControllerLayoutGuide type="top" id="0DO-Wy-Cvy"/>
                         <viewControllerLayoutGuide type="bottom" id="3t9-c0-KOR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Otv-fN-Qwd">
+                    <view key="view" contentMode="scaleToFill" id="6YA-AX-wVx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Medkit" translatesAutoresizingMaskIntoConstraints="NO" id="vRc-Xz-1GK">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Completion" translatesAutoresizingMaskIntoConstraints="NO" id="rAd-33-CbQ">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1L-0M-RCg" customClass="CircleProgressView" customModule="CircleProgressView">
+                                <rect key="frame" x="175" y="150" width="250" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="MVz-tP-lfQ"/>
+                                    <constraint firstAttribute="height" constant="250" id="eGC-wV-Fbv"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="progressImage"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="centerImage" value="takePill"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="vRc-Xz-1GK" firstAttribute="trailing" secondItem="rAd-33-CbQ" secondAttribute="trailing" id="9P5-tX-lbf"/>
-                            <constraint firstItem="vRc-Xz-1GK" firstAttribute="top" secondItem="0DO-Wy-Cvy" secondAttribute="bottom" constant="121" id="BsK-2F-tQ0"/>
-                            <constraint firstItem="rAd-33-CbQ" firstAttribute="top" secondItem="vRc-Xz-1GK" secondAttribute="top" id="Mog-Mi-zVI"/>
-                            <constraint firstItem="3t9-c0-KOR" firstAttribute="top" secondItem="rAd-33-CbQ" secondAttribute="bottom" constant="206" id="Qz7-RR-HVJ"/>
-                            <constraint firstItem="vRc-Xz-1GK" firstAttribute="leading" secondItem="rAd-33-CbQ" secondAttribute="leading" id="WKZ-eS-HzX"/>
-                            <constraint firstItem="rAd-33-CbQ" firstAttribute="bottom" secondItem="vRc-Xz-1GK" secondAttribute="bottom" id="gUp-o4-ZS0"/>
-                            <constraint firstItem="vRc-Xz-1GK" firstAttribute="trailing" secondItem="Otv-fN-Qwd" secondAttribute="trailingMargin" id="iJe-6y-vLD"/>
-                            <constraint firstItem="rAd-33-CbQ" firstAttribute="leading" secondItem="Otv-fN-Qwd" secondAttribute="leadingMargin" id="y3Y-Gm-e2A"/>
+                            <constraint firstAttribute="centerX" secondItem="J1L-0M-RCg" secondAttribute="centerX" id="Gih-iP-6dY"/>
+                            <constraint firstAttribute="centerY" secondItem="J1L-0M-RCg" secondAttribute="centerY" constant="25" id="p8D-5i-gO5"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="vRc-Xz-1GK"/>
-                                <exclude reference="rAd-33-CbQ"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="Mog-Mi-zVI"/>
-                                <exclude reference="gUp-o4-ZS0"/>
-                                <exclude reference="y3Y-Gm-e2A"/>
-                                <exclude reference="9P5-tX-lbf"/>
-                                <exclude reference="BsK-2F-tQ0"/>
-                                <exclude reference="WKZ-eS-HzX"/>
-                                <exclude reference="iJe-6y-vLD"/>
-                                <exclude reference="Qz7-RR-HVJ"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="vRc-Xz-1GK"/>
-                                <include reference="rAd-33-CbQ"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="Mog-Mi-zVI"/>
-                                <include reference="gUp-o4-ZS0"/>
-                                <include reference="y3Y-Gm-e2A"/>
-                                <include reference="9P5-tX-lbf"/>
-                                <include reference="BsK-2F-tQ0"/>
-                                <include reference="WKZ-eS-HzX"/>
-                                <include reference="iJe-6y-vLD"/>
-                                <include reference="Qz7-RR-HVJ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="OF5-G2-57a"/>
                 </viewController>
@@ -855,14 +830,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Completion" width="512" height="512"/>
         <image name="ContactLogo" width="25" height="25"/>
         <image name="Logo" width="487" height="607"/>
         <image name="Medicatie" width="50" height="50"/>
         <image name="MedicinTabIcon" width="30" height="25"/>
-        <image name="Medkit" width="512" height="512"/>
         <image name="Player" width="30" height="30"/>
         <image name="WeightTabIcon" width="30" height="30"/>
+        <image name="progressImage" width="250" height="250"/>
+        <image name="takePill" width="380" height="380"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7gd-n9-BcH"/>
