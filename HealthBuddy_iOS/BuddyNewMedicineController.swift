@@ -55,7 +55,6 @@ class BuddyNewMedicineController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardOnHeaderTab()
         
         //Formulier opvullen indien bestaande medicijn wordt geupdate
         if medicine != nil  {
@@ -69,8 +68,7 @@ class BuddyNewMedicineController: FormViewController {
         }
     }
     
-    func hideKeyboardOnHeaderTab(){
-        self.navigationController!.navigationBar.userInteractionEnabled = true;
+    override func viewWillAppear(animated: Bool) {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuddyNewMedicineController.click(_:)));
         tapGestureRecognizer.numberOfTapsRequired=1;
         self.navigationController!.navigationBar.addGestureRecognizer(tapGestureRecognizer);
@@ -290,6 +288,7 @@ class BuddyNewMedicineController: FormViewController {
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMedicinePicture" {
+            self.navigationController!.navigationBar.gestureRecognizers?.forEach( self.navigationController!.navigationBar.removeGestureRecognizer)
             let buddyMedicinePictureController = segue.destinationViewController as! BuddyMedicinePictureController;
             buddyMedicinePictureController.medicine = self.medicine;
    
