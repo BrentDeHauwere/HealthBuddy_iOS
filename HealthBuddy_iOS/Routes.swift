@@ -18,6 +18,9 @@ struct Routes{
     //POST: api_token
     
     
+    static func showMedicine(patientId:Int, medicineId:Int)->String {
+        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/show";
+    }
     
     //CREATE
     static func createMedicine(patientId:Int)->String {

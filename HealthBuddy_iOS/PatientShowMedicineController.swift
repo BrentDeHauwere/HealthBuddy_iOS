@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire;
+import MRProgress;
+import ObjectMapper;
 
 class PatientShowMedicineController: UIViewController {
     var medicine:Medicine!;
