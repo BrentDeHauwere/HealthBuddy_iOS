@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -607,7 +608,7 @@
                         <viewControllerLayoutGuide type="bottom" id="h25-RS-GCF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hpd-Wd-QCk">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rey-xt-p4y">
@@ -655,8 +656,7 @@
                                         <exclude reference="S0a-9u-gYx"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="487"/>
+                                <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="9uf-aW-O2V"/>
                                     </mask>
@@ -712,13 +712,13 @@
                                 <exclude reference="Tm7-IO-QLH"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="4RU-Am-81m"/>
+                                <exclude reference="XC9-kR-rvU"/>
+                                <exclude reference="Zlu-1J-lgg"/>
                                 <exclude reference="Z7u-W0-rqb"/>
                                 <exclude reference="c4n-YQ-ZTO"/>
                                 <exclude reference="fQx-cL-jOo"/>
                                 <exclude reference="miP-nb-XtT"/>
-                                <exclude reference="4RU-Am-81m"/>
-                                <exclude reference="XC9-kR-rvU"/>
-                                <exclude reference="Zlu-1J-lgg"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -727,13 +727,13 @@
                                 <include reference="Tm7-IO-QLH"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="4RU-Am-81m"/>
+                                <include reference="XC9-kR-rvU"/>
+                                <include reference="Zlu-1J-lgg"/>
                                 <include reference="Z7u-W0-rqb"/>
                                 <include reference="c4n-YQ-ZTO"/>
                                 <include reference="fQx-cL-jOo"/>
                                 <include reference="miP-nb-XtT"/>
-                                <include reference="4RU-Am-81m"/>
-                                <include reference="XC9-kR-rvU"/>
-                                <include reference="Zlu-1J-lgg"/>
                             </mask>
                         </variation>
                     </view>

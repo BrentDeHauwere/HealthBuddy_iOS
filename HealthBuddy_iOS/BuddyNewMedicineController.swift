@@ -184,18 +184,13 @@ class BuddyNewMedicineController: FormViewController {
     
     //TODO: remove schedule from db
     func deleteScheduleForm(sectionID:Int){
-        if(self.medicine?.id != nil){
-            if let scheduleID =  self.sectionScheduleID[sectionID]{
-                deleteSchedule(scheduleID, medicineId: (self.medicine?.id)!);
-            }
-        }
-        
         let scheduleToRemove = scheduleFormSections[sectionID];
         let indexToRemove = self.form.sections.indexOf(scheduleToRemove!);
         self.form.sections.removeAtIndex(indexToRemove!);
-        scheduleFormSections.removeValueForKey(sectionID);
-        scheduleFormSectionsNewState.removeValueForKey(sectionID);
-    
+      //  scheduleFormSections.removeValueForKey(sectionID);
+      //  scheduleFormSectionsNewState.removeValueForKey(sectionID);
+        scheduleFormSectionsNewState[sectionID] = nil;
+        
         //update schedule titles
         for i in 1 ..< self.form.sections.count-1 {
             self.form.sections[i].headerTitle = "Inname-moment \(i)";
@@ -213,7 +208,6 @@ class BuddyNewMedicineController: FormViewController {
         Alamofire.request(.POST, Routes.showMedicine(patientId!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
             if response.result.isSuccess {
                 if let JSON = response.result.value {
-                    print(JSON);
                     if response.response?.statusCode == 200 {
                         let newMedicine = Mapper<Medicine>().map(JSON);
                         self.medicine?.updateMedicineInfo(newMedicine!);
@@ -296,7 +290,6 @@ class BuddyNewMedicineController: FormViewController {
                 if let JSON = response.result.value {
                     if response.response?.statusCode == 200 {
                         let newMedicine = Mapper<Medicine>().map(JSON);
-                        print(newMedicine);
                         self.medicine?.updateMedicineInfo(newMedicine!);
                         self.lastUpdatedImage = self.medicine?.photo;
                         print("Medicine toegevoegd");
@@ -365,10 +358,11 @@ class BuddyNewMedicineController: FormViewController {
 
         var i = 0;
         for(sectionID, _) in self.scheduleFormSections {
+            print("sectionID \(sectionID): updated: \(self.scheduleFormSectionsNewState[sectionID])");
             i += 1;
             let currentI = i;
             var storeScheduleRoute = "";
-            if let newSchedule:Bool = self.scheduleFormSectionsNewState[sectionID]! {
+            if let newSchedule:Bool = self.scheduleFormSectionsNewState[sectionID] {
                 if(newSchedule){
                     storeScheduleRoute = Routes.createSchedule(self.patientId!, medicineId: (self.medicine?.id)!);
                 }
@@ -394,10 +388,10 @@ class BuddyNewMedicineController: FormViewController {
                                     print("schedule toegevoegd");
                                     let newSchedule = Mapper<MedicalSchedule>().map(JSON);
                                     self.medicine?.schedules.append(newSchedule!);
+                                    self.sectionScheduleID[sectionID] = newSchedule!.id;
                                 }else{
                                     let updatedSchedule = Mapper<MedicalSchedule>().map(JSON);
                                     if let numberOfSchedules = self.medicine?.schedules.count {
-                                        //TODO: waarom 0 als result?
                                         for i in 0 ..< numberOfSchedules  {
                                             if(self.medicine?.schedules[i].id == updatedSchedule?.id){
                                                 self.medicine?.schedules[i] = updatedSchedule!;
@@ -429,6 +423,10 @@ class BuddyNewMedicineController: FormViewController {
                         print("Ongeldige request schedule");
                     }
                 }
+            }else{
+                //Schedule state is nil -> Delete
+                print("Delete sectionID \(sectionID)");
+                deleteSchedule(sectionScheduleID[sectionID]!, medicineId: (self.medicine?.id)!);
             }
         }
 
@@ -461,6 +459,15 @@ class BuddyNewMedicineController: FormViewController {
         Alamofire.request(.POST, Routes.deleteSchedule(self.patientId!, medicineId: medicineId, scheduleId: scheduleId), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseString { response in
             print("Verwijder schedule \(scheduleId)")
             print(response);
+            if let numberOfSchedules = self.medicine?.schedules.count {
+                for i in 0 ..< numberOfSchedules  {
+                    if(self.medicine?.schedules[i].id == scheduleId){
+                        print("Remove schedule \(i) in object");
+                        self.medicine?.schedules.removeAtIndex(i);
+                        break;
+                    }
+                }
+            }
         }
     }
     
