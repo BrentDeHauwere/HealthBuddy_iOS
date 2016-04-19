@@ -548,6 +548,7 @@
                     <navigationItem key="navigationItem" id="rPe-XU-3V7">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mgO-kM-bl7">
                             <connections>
+                                <action selector="saveNewMedicine:" destination="XDV-rk-OeF" id="JQT-Vv-WyK"/>
                                 <segue destination="3ea-SC-M8A" kind="presentation" identifier="loadNewMedicine" id="QBc-Vo-xvA"/>
                             </connections>
                         </barButtonItem>
@@ -555,7 +556,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="lblMedicine" destination="IXr-kt-AjI" id="hFP-8z-xSr"/>
-                        <segue destination="5jz-a6-hwd" kind="show" identifier="loadMedicine" id="IHY-9h-ayc"/>
+                        <segue destination="3ea-SC-M8A" kind="show" identifier="loadMedicine" id="7gd-n9-BcH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1on-sr-ehy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -579,23 +580,24 @@
                     <navigationItem key="navigationItem" title="  " id="ZSt-Ir-3gJ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="adt-VO-6FU">
                             <connections>
-                                <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="cancelNewMedicine" unwindAction="cancelNewMedicine:" id="CT9-HN-zsS"/>
+                                <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="goBack" unwindAction="cancelToPlayersViewController:" id="SIb-ie-hvS"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cfy-ZW-3aw">
                             <connections>
-                                <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="saveNewMedicine" unwindAction="saveNewMedicine:" id="mIH-US-y7y"/>
+                                <action selector="clickSave:" destination="5jz-a6-hwd" id="5QA-De-ZQy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="hET-Mv-UvV" kind="show" identifier="showMedicinePicture" id="xby-i9-sXC"/>
+                        <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="goToSaveNewMedicine" unwindAction="saveNewMedicine:" id="4xV-YM-YNc"/>
+                        <segue destination="hET-Mv-UvV" kind="show" identifier="showMedicinePicture" id="UIU-1M-rhl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FtT-VS-KCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6Hp-Qs-Fvc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5292" y="-626"/>
+            <point key="canvasLocation" x="5314.5" y="-631"/>
         </scene>
         <!--Buddy Medicine Picture Controller-->
         <scene sceneID="4uY-DW-6EA">
@@ -671,7 +673,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UhM-AM-DNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6127.5" y="-631"/>
+            <point key="canvasLocation" x="6079.5" y="-631"/>
         </scene>
         <!--Buddy Weight Controller-->
         <scene sceneID="qeL-jS-bLG">
@@ -736,7 +738,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H95-n6-Mkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3730.5" y="70"/>
+            <point key="canvasLocation" x="3772.5" y="514"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ivM-af-3Ai">
@@ -782,7 +784,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DbF-aS-J9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4542" y="-963"/>
+            <point key="canvasLocation" x="4540.5" y="-631"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="SMa-fc-Vfa">
@@ -855,6 +857,10 @@
         <image name="WeightTabIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="IHY-9h-ayc"/>
+=======
+        <segue reference="7gd-n9-BcH"/>
+>>>>>>> master
     </inferredMetricsTieBreakers>
 </document>

@@ -394,6 +394,7 @@ class BuddyMedicaliDController: FormViewController {
             
             if self.annulateBtnPressed {
                 errors.append("Opslaan geannuleerd");
+                self.annulateBtnPressed = false;
             }
             
             if errors.count <= 0 {
