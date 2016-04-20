@@ -15,7 +15,6 @@ class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerD
     var medicine:Medicine?
     
     override func viewDidLoad() {
-        
         if(self.medicine?.photo != nil){
             self.title = "\((self.medicine?.name)!) foto"
             MedicineImageView.image = medicine?.photo;
