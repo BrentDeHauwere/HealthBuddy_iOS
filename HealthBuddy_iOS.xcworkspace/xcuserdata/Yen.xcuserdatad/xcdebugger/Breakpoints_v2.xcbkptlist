@@ -216,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/BuddyListController.swift"
-            timestampString = "481119435.592004"
+            timestampString = "482852170.29178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "updateSearchResultsForSearchController(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -232,11 +232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/BuddyListController.swift"
-            timestampString = "481119435.592004"
+            timestampString = "482852170.29178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "updateSearchResultsForSearchController(_:)"
             landmarkType = "5">
          </BreakpointContent>

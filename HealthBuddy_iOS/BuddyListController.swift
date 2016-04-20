@@ -9,6 +9,8 @@
 //
 
 import UIKit
+import Alamofire
+import ObjectMapper
 
 class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     var loggedInUser:User?
@@ -19,11 +21,30 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         super.viewDidLoad();
         self.navigationItem.hidesBackButton = true;
         setupSearchBar();
+        let refreshControl = UIRefreshControl();
+        refreshControl.addTarget(self, action: #selector(BuddyListControler.refreshData), forControlEvents: .ValueChanged)
+        self.tableView.addSubview(refreshControl);
+        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func refreshData(refreshControl: UIRefreshControl){
+        Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
+            .responseJSON { response in
+            if response.result.isSuccess {
+            if let JSON = response.result.value {
+                    self.loggedInUser = Mapper<User>().map(JSON);
+                    self.filteredData = (self.loggedInUser?.patients)!;
+                    self.tableView.reloadData();
+                    refreshControl.endRefreshing();
+                }
+            }else{
+                Alert.alertStatusWithSymbol(false,message: "Refresh mislukt", seconds: 1.5, view: self.view);
+                print("FAILED TO GET PROFILES");
+                refreshControl.endRefreshing();
+            }
+        }
     }
+
     
     override func viewWillAppear(animated: Bool) {
         if tableView.indexPathForSelectedRow != nil {
@@ -37,13 +58,13 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     func setupSearchBar(){
         tableView.dataSource = self;
         filteredData = (loggedInUser?.patients)!;
+        self.filteredData.sortInPlace{$0.firstName < $1.firstName};
         searchController = UISearchController(searchResultsController: nil);
         searchController.searchResultsUpdater = self;
         searchController.dimsBackgroundDuringPresentation = false;
         searchController.searchBar.sizeToFit();
         tableView.tableHeaderView = searchController.searchBar;
         definesPresentationContext = true;
-
     }
     
     //update the list when searching

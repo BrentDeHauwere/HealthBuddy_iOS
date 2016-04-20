@@ -323,7 +323,9 @@ class BuddyNewMedicineController: FormViewController {
                         print("Medicine toegevoegd");
                     }else if response.response?.statusCode == 422 {
                         print("No valid input given");
+                        print(response.result.value);
                         let JSONDict = JSON as! NSDictionary as NSDictionary;
+                        print("Dict: \(JSONDict)");
                         for (_, value) in JSONDict {
                             let errorsArray = value as! NSArray;
                             for (error) in errorsArray {
