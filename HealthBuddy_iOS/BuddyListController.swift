@@ -27,6 +27,12 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated);
+        print("Updated logged in user, Aantal users: \(self.loggedInUser?.patients?.count)");
+    }
+
+    
     func refreshData(refreshControl: UIRefreshControl){
         Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
             .responseJSON { response in
@@ -38,9 +44,9 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
                     refreshControl.endRefreshing();
                 }
             }else{
-                Alert.alertStatusWithSymbol(false,message: "Refresh mislukt", seconds: 1.5, view: self.view);
-                print("FAILED TO GET PROFILES");
                 refreshControl.endRefreshing();
+                Alert.alertStatusWithSymbol(false,message: "Refresh mislukt", seconds: 1.5, view: self.view);
+                print("FAILED TO GET PROFILES");                
             }
         }
     }
