@@ -66,7 +66,6 @@ class LoginController: UIViewController {
                         Authentication.token = api_token! as? String;
                         print("api_token: \(Authentication.token)");
                         self.getProfile();
-                        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector:  #selector(LoginController.updateProfile), userInfo: nil, repeats: true);
                     }
                 }else{
                     MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
@@ -76,17 +75,7 @@ class LoginController: UIViewController {
        
     }
     
-    func updateProfile(){
-        Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
-            .responseJSON { response in
-                if response.result.isSuccess {
-                    if let JSON = response.result.value {
-                        self.loggedInUser = Mapper<User>().map(JSON);
-                    }
-                }
-        }
-    }
-    
+        
     func getProfile(){
         Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
             .responseJSON { response in

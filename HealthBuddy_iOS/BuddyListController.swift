@@ -21,17 +21,32 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         super.viewDidLoad();
         self.navigationItem.hidesBackButton = true;
         setupSearchBar();
+        
+        //Setup refresh gesture
         let refreshControl = UIRefreshControl();
         refreshControl.addTarget(self, action: #selector(BuddyListControler.refreshData), forControlEvents: .ValueChanged)
         self.tableView.addSubview(refreshControl);
         
+        //Returing task sync app with back-end
+        NSTimer.scheduledTimerWithTimeInterval(600, target: self, selector:  #selector(BuddyListControler.scheduleRefreshData), userInfo: nil, repeats: true);
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated);
-        print("Updated logged in user, Aantal users: \(self.loggedInUser?.patients?.count)");
-    }
+    
+    func scheduleRefreshData(){
+        Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
+            .responseJSON { response in
+                if response.result.isSuccess {
+                    if let JSON = response.result.value {
+                        self.loggedInUser = Mapper<User>().map(JSON);
+                        self.filteredData = (self.loggedInUser?.patients)!;
+                        self.filteredData.sortInPlace{$0.firstName < $1.firstName};
+                        self.tableView.reloadData();
+                        print("Data refreshed");
+                    }
+                }
+        }
 
+    }
     
     func refreshData(refreshControl: UIRefreshControl){
         Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
@@ -41,7 +56,9 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
                     self.loggedInUser = Mapper<User>().map(JSON);
                     self.filteredData = (self.loggedInUser?.patients)!;
                     self.tableView.reloadData();
+                    self.filteredData.sortInPlace{$0.firstName < $1.firstName};
                     refreshControl.endRefreshing();
+                    print("Data refreshed");
                 }
             }else{
                 refreshControl.endRefreshing();
@@ -50,7 +67,6 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
             }
         }
     }
-
     
     override func viewWillAppear(animated: Bool) {
         if tableView.indexPathForSelectedRow != nil {
