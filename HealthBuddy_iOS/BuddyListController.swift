@@ -24,7 +24,7 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         
         //Setup refresh gesture
         let refreshControl = UIRefreshControl();
-        refreshControl.addTarget(self, action: #selector(BuddyListControler.refreshData), forControlEvents: .ValueChanged)
+        refreshControl.addTarget(self, action: #selector(BuddyListControler.refreshDataOnDemand), forControlEvents: .ValueChanged)
         self.tableView.addSubview(refreshControl);
         
         //Returing task sync app with back-end
@@ -45,10 +45,9 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
                     }
                 }
         }
-
     }
     
-    func refreshData(refreshControl: UIRefreshControl){
+    func refreshDataOnDemand(refreshControl: UIRefreshControl){
         Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
             .responseJSON { response in
             if response.result.isSuccess {
