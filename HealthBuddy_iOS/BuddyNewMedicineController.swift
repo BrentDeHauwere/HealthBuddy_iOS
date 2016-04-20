@@ -456,7 +456,10 @@ class BuddyNewMedicineController: FormViewController {
             }else{
                 //Schedule state is nil -> Delete
                 print("Delete sectionID \(sectionID)");
-                deleteSchedule(sectionScheduleID[sectionID]!, medicineId: (self.medicine?.id)!);
+                let scheduleID = sectionScheduleID[sectionID];
+                if (scheduleID != nil){
+                    deleteSchedule(sectionScheduleID[sectionID]!, medicineId: (self.medicine?.id)!);
+                }
             }
         }
 
