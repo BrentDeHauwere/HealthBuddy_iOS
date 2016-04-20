@@ -29,8 +29,9 @@ class PatientShowMedicineController: UIViewController {
             if response.result.isSuccess {
                 if let JSON = response.result.value {
                     if response.response?.statusCode == 200 {
+                        print(JSON);
                         let newMedicine = Mapper<Medicine>().map(JSON);
-                        self.medicine?.updateMedicineInfo(newMedicine!);
+                        self.medicine.updateMedicineInfo(newMedicine!);
                         print("Medicine updated");
                     }else if response.response?.statusCode == 422 {
                         print("Medicine show failed");
@@ -42,7 +43,16 @@ class PatientShowMedicineController: UIViewController {
                 print("Ongeldige request medicine show ");
             }
         }
-        ImageView.image = medicine.photo;
+        
+        print(medicine.photo64String);
+        
+        if(medicine.photo != nil){
+            ImageView.image = medicine.photo;
+        }
+        else{
+            ImageView.image = UIImage(named: "selectImage");
+        }
+        
         MedicineTitle.text = self.medicine.name;
         DateTitle.text = self.schedule.start_date_s;
         Amount.text = self.schedule.amount;
@@ -61,7 +71,42 @@ class PatientShowMedicineController: UIViewController {
     
 
     @IBAction func touched(sender: AnyObject) {
+        MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Innemen...", mode: .Indeterminate, animated: true) { response in
+            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+            Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
+                tasks.forEach({ $0.cancel() })
+            }
+        }
         
+        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+        /*Alamofire.request(.POST, Routes.updatesScheduleUpdated(self.patientID!, medicineId: (self.medicine?.id)!, scheduleId:self.schedule.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"])
+            .responseJSON {
+                response in
+            if response.result.isSuccess {
+                if let JSON = response.result.value {
+                    print(JSON);
+                    if response.response?.statusCode == 200 {
+                        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                        self.navigationController?.popViewControllerAnimated(true);
+                        
+                    }else if response.response?.statusCode == 422 {
+                        print("Ongeldig");
+                        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                        Alert.alertStatusWithSymbol(false,message:  "Mislukt", seconds: 1.5, view: self.view);
+                    }
+                }else{
+                    print("Ongeldige json response schedule");
+                    MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                    Alert.alertStatusWithSymbol(false,message:  "Mislukt", seconds: 1.5, view: self.view);
+                }
+            }
+            else
+            {
+                print("Ongeldige request schedule");
+                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                Alert.alertStatusWithSymbol(false,message:  "Mislukt", seconds: 1.5, view: self.view);
+            }
+        }*/
     }
     /*
     // MARK: - Navigation
