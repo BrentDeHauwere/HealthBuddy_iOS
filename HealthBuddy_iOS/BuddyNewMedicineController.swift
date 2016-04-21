@@ -258,7 +258,7 @@ class BuddyNewMedicineController: FormViewController {
                 self.scheduleFormSectionsNewState[(scheduleSectionID-1)] = false;
                 self.sectionScheduleID[(scheduleSectionID-1)] = self.medicine?.schedules[i].id;
                 self.form.sections[i+1].rows[0].value = self.medicine?.schedules[i].time;
-                self.form.sections[i+1].rows[1].value = self.medicine?.schedules[i].start_date;
+                self.form.sections[i+1].rows[1].value = self.medicine?.schedules[i].start_date;                
                 self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].end_date;
                 self.form.sections[i+1].rows[3].value = self.medicine?.schedules[i].interval;
                 self.form.sections[i+1].rows[4].value = self.medicine?.schedules[i].amount;

@@ -41,6 +41,7 @@ class MedicalSchedule : Mappable {
         
         if(self.start_date_s != nil && self.end_date_s != nil){
             let dateFormatter = NSDateFormatter()
+            dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00");
             dateFormatter.dateFormat = "yyyy-MM-dd"
             self.start_date = dateFormatter.dateFromString(self.start_date_s!);
             self.end_date = dateFormatter.dateFromString(self.end_date_s!);
@@ -48,6 +49,7 @@ class MedicalSchedule : Mappable {
         
         if(self.time_s != nil){
             let dateFormatter = NSDateFormatter()
+            dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00");
             dateFormatter.dateFormat = "HH:mm:ss"
             self.time = dateFormatter.dateFromString(self.time_s!);
         }

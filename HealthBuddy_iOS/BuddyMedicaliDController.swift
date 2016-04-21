@@ -192,8 +192,7 @@ class BuddyMedicaliDController: FormViewController {
     func initForm(){
         self.form.sections[0].rows[0].value = patient.gender;
         self.form.sections[0].rows[1].value = patient.firstName;
-        self.form.sections[0].rows[2].value = patient.lastName;
-
+        self.form.sections[0].rows[2].value = patient.lastName;        
         self.form.sections[0].rows[3].value = patient.dateOfBirth;
         self.form.sections[0].rows[4].value = patient.phone;
 
