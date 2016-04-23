@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MRProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RSDayFlow.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftForms.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +42,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2D297012F81A89D38FA0004D9065BB46</key>
+		<key>1520003FEBEC114D6C84F832AFEDB994</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>35446C788499AC9E3FADC9F845F99F30</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>AB8338A5373AE60C1072233B91CF1619</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C8F54543305BD95F34FAB796C9CAAFCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ECF263BEF308B80E68EE592DDE979361</key>
+		<key>E163CFD67E89CAF7331C0966E9C4AFCB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

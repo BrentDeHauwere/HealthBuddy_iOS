@@ -68,17 +68,6 @@ class BuddyNewMedicineController: FormViewController {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuddyNewMedicineController.click(_:)));
-        tapGestureRecognizer.numberOfTapsRequired=1;
-        self.navigationController!.navigationBar.addGestureRecognizer(tapGestureRecognizer);
-    }
-    
-    func click(sender: UILabel){
-        self.view.endEditing(true);
-    }
-
-    
     func loadForm(){
         let form = FormDescriptor()
         var row: FormRowDescriptor!;
@@ -116,12 +105,14 @@ class BuddyNewMedicineController: FormViewController {
     }
     
     func addScheduleForm(){
-        
-        
         let sectionNewSchedule = FormSectionDescriptor();
         sectionNewSchedule.headerTitle = "Inname-moment \(self.form.sections.count-1)";
       
-        var row = FormRowDescriptor(tag: "\(FormTag.time)_\(self.scheduleSectionID)", rowType: .Time, title: "Uur");
+        var row = FormRowDescriptor(tag: "\(FormTag.amount)_\(self.scheduleSectionID)", rowType: .Text, title: "Hoeveelheid");
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        sectionNewSchedule.addRow(row);
+        
+        row = FormRowDescriptor(tag: "\(FormTag.time)_\(self.scheduleSectionID)", rowType: .Time, title: "Uur");
         sectionNewSchedule.addRow(row);
         
         row = FormRowDescriptor(tag: "\(FormTag.start_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Start inname");
@@ -132,7 +123,7 @@ class BuddyNewMedicineController: FormViewController {
         let sectionCount = self.form.sections.count;
         
         if (sectionCount>2){
-            row.value = self.form.sections[sectionCount-2].rows[1].value;
+            row.value = self.form.sections[sectionCount-2].rows[2].value;
         }else{
             row.value = tomorrow;
         }
@@ -141,7 +132,7 @@ class BuddyNewMedicineController: FormViewController {
         row = FormRowDescriptor(tag: "\(FormTag.end_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Stop inname");
         tomorrow = tomorrow.dateByAddingTimeInterval(60*60*24)
         if(sectionCount>2){
-            row.value = self.form.sections[sectionCount-2].rows[2].value;
+            row.value = self.form.sections[sectionCount-2].rows[3].value;
         }else{
             row.value = tomorrow;
         }
@@ -149,7 +140,6 @@ class BuddyNewMedicineController: FormViewController {
         
         row = FormRowDescriptor(tag: "\(FormTag.interval)_\(self.scheduleSectionID)", rowType: .MultipleSelector, title: "Interval")
         row.configuration[FormRowDescriptor.Configuration.Options] = [1,2,3,7,14]
-       // row.configuration[FormRowDescriptor.Configuration.AllowsMultipleSelection] = true
         row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
             switch( value ) {
             case 1:
@@ -167,15 +157,9 @@ class BuddyNewMedicineController: FormViewController {
             }
             } as TitleFormatterClosure
         if(sectionCount>2){
-            row.value = self.form.sections[sectionCount-2].rows[3].value;
+            row.value = self.form.sections[sectionCount-2].rows[4].value;
         }
         sectionNewSchedule.addRow(row)
-        
-        row = FormRowDescriptor(tag: "\(FormTag.amount)_\(self.scheduleSectionID)", rowType: .Text, title: "Hoeveelheid");
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
-        sectionNewSchedule.addRow(row);
-        
-        
         
         row = FormRowDescriptor(tag: "\(FormTag.deleteSchedule)_\(self.scheduleSectionID)", rowType: .Button, title: "Verwijder inname-moment")
         row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
@@ -257,17 +241,18 @@ class BuddyNewMedicineController: FormViewController {
                 self.addScheduleForm();
                 self.scheduleFormSectionsNewState[(scheduleSectionID-1)] = false;
                 self.sectionScheduleID[(scheduleSectionID-1)] = self.medicine?.schedules[i].id;
-                self.form.sections[i+1].rows[0].value = self.medicine?.schedules[i].time;
-                self.form.sections[i+1].rows[1].value = self.medicine?.schedules[i].start_date;
-                self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].end_date;
-                self.form.sections[i+1].rows[3].value = self.medicine?.schedules[i].interval;
-                self.form.sections[i+1].rows[4].value = self.medicine?.schedules[i].amount;
+                self.form.sections[i+1].rows[0].value = self.medicine?.schedules[i].amount;
+                self.form.sections[i+1].rows[1].value = self.medicine?.schedules[i].time;
+                self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].start_date;
+                self.form.sections[i+1].rows[3].value = self.medicine?.schedules[i].end_date;
+                self.form.sections[i+1].rows[4].value = self.medicine?.schedules[i].interval;
             }
         }
     }
     
    
     @IBAction func clickSave(sender: AnyObject) {
+        self.view.endEditing(true);
         MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Gegevens bewaren...", mode: .Indeterminate, animated: true) { response in
             self.annulateBtnPressed = true;
             MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
@@ -286,9 +271,11 @@ class BuddyNewMedicineController: FormViewController {
         }
 
     }
+    
+
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMedicinePicture" {
-            self.navigationController!.navigationBar.gestureRecognizers?.forEach( self.navigationController!.navigationBar.removeGestureRecognizer)
             let buddyMedicinePictureController = segue.destinationViewController as! BuddyMedicinePictureController;
             buddyMedicinePictureController.medicine = self.medicine;
    
@@ -323,7 +310,9 @@ class BuddyNewMedicineController: FormViewController {
                         print("Medicine toegevoegd");
                     }else if response.response?.statusCode == 422 {
                         print("No valid input given");
+                        print(response.result.value);
                         let JSONDict = JSON as! NSDictionary as NSDictionary;
+                        print("Dict: \(JSONDict)");
                         for (_, value) in JSONDict {
                             let errorsArray = value as! NSArray;
                             for (error) in errorsArray {
@@ -454,9 +443,9 @@ class BuddyNewMedicineController: FormViewController {
                     }
                 }
             }else{
-                //Schedule state is nil -> Delete
-                print("Delete sectionID \(sectionID)");
-                deleteSchedule(sectionScheduleID[sectionID]!, medicineId: (self.medicine?.id)!);
+                if (sectionScheduleID[sectionID] != nil){
+                    deleteSchedule(sectionScheduleID[sectionID]!, medicineId: (self.medicine?.id)!);
+                }
             }
         }
 
