@@ -10,9 +10,9 @@ import UIKit
 
 class BuddyMainMenuController: UITableViewController {
     var patient:User!;
-    var menuItems = ["Medisch ID","Medicatie","Gewicht"];
-    var descriptions = ["Persoonlijke gegevens","Monitoring","Monitoring"];
-    var logos = [UIImage(named: "MedischID"),UIImage(named: "Medicatie"),UIImage(named: "Gewicht")];
+    var menuItems = ["Medisch ID","Medicatie"];
+    var descriptions = ["Persoonlijke gegevens","Monitoring"];
+    var logos = [UIImage(named: "MedischID"),UIImage(named: "Medicatie")];
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +70,6 @@ class BuddyMainMenuController: UITableViewController {
                 self.performSegueWithIdentifier("showMedicaliD", sender: self);
             case 1:
                 self.performSegueWithIdentifier("showMedicine", sender: self);
-            case 2:
-                self.performSegueWithIdentifier("showWeight", sender: self);
             default:
                 print("Ongeldig menu-item, error from BuddyMainMenuController @tableView didSelectRowAtIndexpath");
         }
@@ -79,15 +77,12 @@ class BuddyMainMenuController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showMedicaliD" {
+       if segue.identifier == "showMedicaliD" {
             let medicalIdBoard = segue.destinationViewController as! BuddyMedicaliDController;
             medicalIdBoard.patient = self.patient;
         }else if segue.identifier == "showMedicine" {
-            let medicineBoard = segue.destinationViewController as! BuddyMedicineController;
-            medicineBoard.patient = self.patient;
-        }else if segue.identifier == "showWeight" {
-            let weightBoard = segue.destinationViewController as! BuddyWeightController;
-            weightBoard.patient = self.patient;
+            let tabbar = segue.destinationViewController as! BuddyMedicineTabBarController;
+            tabbar.patient = self.patient;
         }else{
             print("No segue preparation");
         }

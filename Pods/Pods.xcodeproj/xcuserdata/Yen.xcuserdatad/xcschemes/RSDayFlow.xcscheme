@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '78417EB3F65975E5F2D90B8E'
-               BlueprintName = 'Alamofire'
+               BlueprintIdentifier = 'BBD8B0F189D989B9BF0C8C6B'
+               BlueprintName = 'RSDayFlow'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Alamofire.framework'>
+               BuildableName = 'RSDayFlow.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

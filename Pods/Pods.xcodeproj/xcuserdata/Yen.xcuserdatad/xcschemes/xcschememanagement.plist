@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RSDayFlow.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftForms.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +37,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2D297012F81A89D38FA0004D9065BB46</key>
+		<key>3870BF16DAE3522D760E671522B114DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B3EA2E2CFAD756DB37400151C84679C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C8F54543305BD95F34FAB796C9CAAFCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ECF263BEF308B80E68EE592DDE979361</key>
+		<key>D9073D4ED7698C5C8C2E39CF2A011FFE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

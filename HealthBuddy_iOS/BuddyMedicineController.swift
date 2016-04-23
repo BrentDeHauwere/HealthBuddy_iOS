@@ -24,14 +24,32 @@ class BuddyMedicineController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         lblMedicine.text = "Medicatie";
-        self.navigationItem.title="\(patient.firstName!) \(patient.lastName!)";
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:#selector(BuddyMedicineController.backButtonPressed(_:)));
+       
+        self.navigationController?.navigationBar.translucent = false;
+   
+        self.extendedLayoutIncludesOpaqueBars = false;
+        self.automaticallyAdjustsScrollViewInsets = false;
+
+        
+        self.tabBarController!.title="\(patient.firstName!) \(patient.lastName!)";
+        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"Menu"), style:.Plain, target:self, action:#selector(BuddyMedicineController.backButtonPressed(_:)));
+
         self.patient.medicines!.sortInPlace { $0.name < $1.name }
         let refreshControl = UIRefreshControl();
         refreshControl.addTarget(self, action: #selector(BuddyMedicineController.refreshData), forControlEvents: .ValueChanged)
         self.tableView.addSubview(refreshControl);
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        let addMedicineBarBtn = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(BuddyMedicineController.addMedicineBtn));
+        self.tabBarController!.navigationItem.rightBarButtonItem = addMedicineBarBtn;
+    }
+    
+    func addMedicineBtn(){
+        self.performSegueWithIdentifier("loadNewMedicine", sender: self);
+    }
     
     func refreshData(refreshControl: UIRefreshControl){
         Alamofire.request(.POST, Routes.showPatient(patient.userId!), parameters: ["api_token": Authentication.token!])
