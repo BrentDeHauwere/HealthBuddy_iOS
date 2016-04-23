@@ -21,10 +21,6 @@ struct Routes{
         return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/show";
     }
     
-    static func showMedicine(patientId:Int, medicineId:Int)->String {
-        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/show";
-    }
-    
     //CREATE
     static func createMedicine(patientId:Int)->String {
          return "http://10.3.50.33/api/user/\(patientId)/medicine/create";
@@ -32,6 +28,11 @@ struct Routes{
     
     static func createSchedule(patientId:Int, medicineId:Int)->String {
         return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/schedule/create";
+    }
+    
+    /* api/user/myuserid/schedule/scheduleid/intake/create ALLEEN APITOKEN*/
+    static func createIntake(patientId:Int, scheduleId:Int)->String {
+        return "http://10.3.50.33/api/user/\(patientId)/schedule/\(scheduleId)/intake/create";
     }
     
     

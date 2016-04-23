@@ -40,7 +40,6 @@ class PatientMedicineController: UITableViewController {
                         medicinesVm.append(schedule);
                         if(added == false){
                             medicinesToday.append(medicine);
-                            print(medicine.name);
                             added = true;
                         }
                     }
@@ -48,7 +47,6 @@ class PatientMedicineController: UITableViewController {
                         medicinesM.append(schedule);
                         if(added == false){
                             medicinesToday.append(medicine);
-                            print(medicine.name);
                             added = true;
                         }
                     }
@@ -56,7 +54,6 @@ class PatientMedicineController: UITableViewController {
                         medicinesNm.append(schedule);
                         if(added == false){
                             medicinesToday.append(medicine);
-                            print(medicine.name);
                             added = true;
                         }
                     }
@@ -64,7 +61,6 @@ class PatientMedicineController: UITableViewController {
                         medicinesA.append(schedule);
                         if(added == false){
                             medicinesToday.append(medicine);
-                            print(medicine.name);
                             added = true;
                         }
                     }
@@ -78,16 +74,36 @@ class PatientMedicineController: UITableViewController {
         sections.append("Namiddag");
         sections.append("Avond");
         
-        for medicine in medicinesToday {
-             print((medicine.name)!);
+        medicinesVm.sortInPlace({$0.time!.compare($1.time!) == NSComparisonResult.OrderedAscending } );
+        
+        for medicine in medicinesVm{
+            print((medicine.time_s)!);
+        }
+       
+        medicinesM.sortInPlace({$0.time!.compare($1.time!) == NSComparisonResult.OrderedAscending } );
+        
+        for medicine in medicinesM{
+            print((medicine.time_s)!);
         }
         
+        medicinesNm.sortInPlace({$0.time!.compare($1.time!) == NSComparisonResult.OrderedAscending } );
+        
+        
+        for medicine in medicinesNm{
+            print((medicine.time_s)!);
+        }
+        
+        medicinesA.sortInPlace({$0.time!.compare($1.time!) == NSComparisonResult.OrderedAscending } );
+        print(medicinesA);
+        
+        for medicine in medicinesA{
+            print((medicine.time_s)!);
+        }
         
     }
     func getMedicine(schedule:MedicalSchedule) -> Medicine! {
         var medicine : Medicine!;
         for medi in medicinesToday{
-            print("\(schedule.medicineId) == \(medi.id)");
             if(medi.id == schedule.medicineId){
                 
                 medicine = medi;
@@ -128,7 +144,13 @@ class PatientMedicineController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("MedicineCell", forIndexPath: indexPath) as UITableViewCell;
+        var cell = self.tableView.dequeueReusableCellWithIdentifier("MedicineCell", forIndexPath: indexPath) as UITableViewCell;
+        if(self.medicinesVm[indexPath.row].updated_at != nil){
+            if(self.medicinesVm[indexPath.row].updated_at!.equalToDate(NSDate())){
+                print("gothere");
+                cell = self.tableView.dequeueReusableCellWithIdentifier("takenMedicine", forIndexPath: indexPath) as UITableViewCell;
+            }
+        }
         let section = indexPath.section;
         if(section == 0){
             cell.textLabel?.text = (self.getMedicine(self.medicinesVm[indexPath.row]).name)!;

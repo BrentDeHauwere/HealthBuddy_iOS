@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/PatientMedicineController.swift"
-            timestampString = "482775784.655398"
+            timestampString = "482852368.369882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "getMedicine(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,12 +58,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/PatientMedicineController.swift"
-            timestampString = "482775784.655398"
+            timestampString = "482852368.369882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "getMedicine(_:)"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthBuddy_iOS.PatientMedicineController.viewDidLoad () -&gt; ()"
+                  moduleName = "HealthBuddy_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Boey/GitHub/My%20Projects/HealthBuddy_iOS/HealthBuddy_iOS/PatientMedicineController.swift"
+                  timestampString = "482832422.10927"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "7725">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthBuddy_iOS.PatientMedicineController.(viewDidLoad () -&gt; ()).(closure #1)"
+                  moduleName = "HealthBuddy_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Boey/GitHub/My%20Projects/HealthBuddy_iOS/HealthBuddy_iOS/PatientMedicineController.swift"
+                  timestampString = "482832422.109445"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "27">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthBuddy_iOS/PatientShowMedicineController.swift"
+            timestampString = "482855492.292694"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

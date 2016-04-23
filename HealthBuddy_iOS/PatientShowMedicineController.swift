@@ -11,19 +11,27 @@ import Alamofire;
 import MRProgress;
 import ObjectMapper;
 
-class PatientShowMedicineController: UIViewController {
+class PatientShowMedicineController: UIViewController,UIScrollViewDelegate {
     var medicine:Medicine!;
     var patientID:Int!;
     var schedule:MedicalSchedule!;
     
-    @IBOutlet weak var MedicineTitle: UILabel!
+    @IBOutlet weak var medicineInfoTextView: UITextView!
+    //@IBOutlet weak var medicineInfo: UILabel!
     @IBOutlet weak var ImageView: UIImageView!
-    @IBOutlet weak var DateTitle: UILabel!
     @IBOutlet weak var Amount: UILabel!
     @IBOutlet weak var takeButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
+        self.scrollView.minimumZoomScale = 1;
+        self.scrollView.maximumZoomScale = 6;
+        self.title = medicine.name;
+        medicineInfoTextView.editable = false;
+        
+        //medicineInfoTextView.text = medicine.info;
+        
         print(Routes.showMedicine(patientID!, medicineId: self.medicine!.id!));
         Alamofire.request(.POST, Routes.showMedicine(patientID!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
             if response.result.isSuccess {
@@ -32,6 +40,15 @@ class PatientShowMedicineController: UIViewController {
                         print(JSON);
                         let newMedicine = Mapper<Medicine>().map(JSON);
                         self.medicine.updateMedicineInfo(newMedicine!);
+                        
+                        if(self.medicine.photo != nil){
+                            self.ImageView.image = self.medicine.photo;
+                        }
+                        else{
+                            self.ImageView.image = UIImage(named: "selectImage");
+                        }
+                        
+                        
                         print("Medicine updated");
                     }else if response.response?.statusCode == 422 {
                         print("Medicine show failed");
@@ -44,31 +61,43 @@ class PatientShowMedicineController: UIViewController {
             }
         }
         
-        print(medicine.photo64String);
         
-        if(medicine.photo != nil){
-            ImageView.image = medicine.photo;
+        
+        
+        if(self.medicine.photo != nil){
+            self.ImageView.image = self.medicine.photo;
         }
         else{
-            ImageView.image = UIImage(named: "selectImage");
+            self.ImageView.image = UIImage(named: "selectImage");
         }
         
-        MedicineTitle.text = self.medicine.name;
-        DateTitle.text = self.schedule.start_date_s;
+        //MedicineTitle.text = self.medicine.name;
         Amount.text = self.schedule.amount;
+        
         print(self.schedule.updated_at);
-        /*if(self.schedule.updated_at!.equalToDate(NSDate())){
-            takeButton.setTitle("Je hebt deze medicatie al ingenomen", forState: UIControlState.Normal)
-            takeButton.enabled = false;
-        }*/
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        if(self.schedule.updated_at != nil){
+            if(self.schedule.updated_at!.equalToDate(NSDate())){
+                takeButton.setTitle("Je hebt deze medicatie al ingenomen", forState: UIControlState.Normal)
+                takeButton.enabled = false;
+            }
+        }
+        
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(PatientShowMedicineController.tapScrollView));
+        singleTap.numberOfTapsRequired = 1;
+        scrollView.addGestureRecognizer(singleTap);
     }
     
+    func tapScrollView(){
+        performSegueWithIdentifier("showImagePatient", sender: self)
+        
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.ImageView;
+    }
 
     @IBAction func touched(sender: AnyObject) {
         MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Innemen...", mode: .Indeterminate, animated: true) { response in
@@ -78,8 +107,9 @@ class PatientShowMedicineController: UIViewController {
             }
         }
         
+        
         MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
-        /*Alamofire.request(.POST, Routes.updatesScheduleUpdated(self.patientID!, medicineId: (self.medicine?.id)!, scheduleId:self.schedule.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"])
+        Alamofire.request(.POST, Routes.createIntake(self.patientID!, scheduleId:self.schedule.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"])
             .responseJSON {
                 response in
             if response.result.isSuccess {
@@ -87,6 +117,7 @@ class PatientShowMedicineController: UIViewController {
                     print(JSON);
                     if response.response?.statusCode == 200 {
                         MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                        
                         self.navigationController?.popViewControllerAnimated(true);
                         
                     }else if response.response?.statusCode == 422 {
@@ -106,7 +137,12 @@ class PatientShowMedicineController: UIViewController {
                 MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
                 Alert.alertStatusWithSymbol(false,message:  "Mislukt", seconds: 1.5, view: self.view);
             }
-        }*/
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let controller = segue.destinationViewController as? PatientShowImageController;
+        controller?.image = ImageView.image;
     }
     /*
     // MARK: - Navigation
@@ -126,12 +162,16 @@ extension NSDate {
     }
     
     func daysSince1970() -> Int {
-        return (Int)(self.timeIntervalSince1970 / (60*60*24));
+        let order = Double(self.timeIntervalSince1970 / (60*60*24));
+        let int = Int(ceil(order));
+        return int;
     }
+    
     func equalToDate(dateToCompare: NSDate) -> Bool {
         var isEqualTo = false
-        
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedSame {
+        let order = NSCalendar.currentCalendar().compareDate(self, toDate: dateToCompare,
+                                                             toUnitGranularity: .Day)
+        if order == NSComparisonResult.OrderedSame {
             isEqualTo = true
         }
         return isEqualTo
