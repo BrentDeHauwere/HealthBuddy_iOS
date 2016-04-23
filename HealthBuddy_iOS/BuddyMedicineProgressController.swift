@@ -14,6 +14,5 @@ class BuddyMedicineProgressController: UIViewController {
     override func viewDidLoad() {
          self.navigationItem.title = "\(patient!.firstName!) \(patient!.lastName!)";
          self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Overzicht", style: .Plain, target: self, action: nil);
-    }
-    
+    }    
 }

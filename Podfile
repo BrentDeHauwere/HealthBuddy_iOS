@@ -8,6 +8,7 @@ target 'HealthBuddy_iOS' do
     pod 'Alamofire', '~> 3.0'
     pod 'ObjectMapper', '~> 1.1'
     pod 'RSDayFlow'
+    pod 'IQKeyboardManagerSwift'
 end
 
 target 'HealthBuddy_iOSTests' do

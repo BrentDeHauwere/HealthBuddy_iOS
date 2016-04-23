@@ -12,7 +12,7 @@ import Alamofire
 import MRProgress
 import ObjectMapper
 
-class BuddyMedicaliDController: FormViewController {
+class BuddyMedicaliDController: FormViewController, UITextFieldDelegate {
     var patient:User!;
     
     var addressUpdate = false;
@@ -48,8 +48,12 @@ class BuddyMedicaliDController: FormViewController {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         self.loadForm();
+        
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        print("EDITING");
+    }
 
     
     override func viewDidLoad() {
@@ -63,7 +67,6 @@ class BuddyMedicaliDController: FormViewController {
         self.navigationItem.title = "\(patient.firstName!) \(patient.lastName!)";
         
         self.initForm();
-       
     }
     
     func hideKeyboardOnHeaderTab(){
@@ -231,12 +234,14 @@ class BuddyMedicaliDController: FormViewController {
             
             //Create and add first option action
             let noSave: UIAlertAction = UIAlertAction(title: "Wijzigingen niet opslaan", style: .Destructive) { action -> Void in
+                self.view.endEditing(true);
                 self.navigationController?.popViewControllerAnimated(true);
             }
             actionSheetController.addAction(noSave);
             
             //Create and add a second option action
             let doSave: UIAlertAction = UIAlertAction(title: "Wijzingen opslaan", style: .Default) { action -> Void in
+                self.view.endEditing(true);
                 self.backBtnPressed = true;
                 MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, animated: true);
                 self.updateDatabase()
@@ -410,6 +415,8 @@ class BuddyMedicaliDController: FormViewController {
                 });
             }
         }
+        
+
     }
     
 
