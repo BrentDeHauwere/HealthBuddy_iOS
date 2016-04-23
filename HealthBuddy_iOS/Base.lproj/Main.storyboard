@@ -238,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q6Y-w2-Rgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3030" y="2279"/>
+            <point key="canvasLocation" x="2934" y="2239"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="1pN-Lo-UHM">
@@ -300,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Um-oK-Ihd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3030" y="725"/>
+            <point key="canvasLocation" x="2943" y="1489"/>
         </scene>
         <!--Buddy Tab Bar Controller-->
         <scene sceneID="RsC-4x-t7b">
@@ -315,31 +315,11 @@
                     <connections>
                         <segue destination="L4c-IP-CaP" kind="relationship" relationship="viewControllers" id="TC9-eR-niV"/>
                         <segue destination="Jzc-0B-xeY" kind="relationship" relationship="viewControllers" id="QKx-DW-2mY"/>
-                        <segue destination="uKa-P9-ae3" kind="relationship" relationship="viewControllers" id="4ZR-4t-B6e"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Sl-e8-knb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1206" y="1489"/>
-        </scene>
-        <!--Gewicht-->
-        <scene sceneID="EtV-kT-Nu2">
-            <objects>
-                <viewController title="Gewicht" id="JaT-Mk-mRr" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pJv-cd-9C8"/>
-                        <viewControllerLayoutGuide type="bottom" id="FhB-Gl-dG4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1FG-nQ-Gql">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="qfE-eG-NOj"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nQf-Ur-6UA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3030" y="1475"/>
         </scene>
         <!--Zorgbehoevenden-->
         <scene sceneID="c7y-8T-6Tm">
@@ -576,10 +556,30 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Dashboard" image="Player" id="5pG-hD-fEm"/>
+                    <connections>
+                        <segue destination="op1-Xe-sY7" kind="show" identifier="showProgress" id="3eW-nU-Lqp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0w2-Xc-eVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4588.5" y="164"/>
+        </scene>
+        <!--Buddy Medicine Progress Controller-->
+        <scene sceneID="VLn-Mg-Hor">
+            <objects>
+                <viewController id="op1-Xe-sY7" customClass="BuddyMedicineProgressController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZtC-Yz-z1h"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Au-q1-bFe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qil-Em-ow9">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AIN-mx-jAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5379" y="164"/>
         </scene>
         <!--New Medicine-->
         <scene sceneID="PH6-v4-fua">
@@ -836,27 +836,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azb-Vh-Col" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="725"/>
-        </scene>
-        <!--Gewicht-->
-        <scene sceneID="tc6-Wb-spF">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uKa-P9-ae3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gewicht" image="WeightTabIcon" id="hUd-yv-0vs"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="X7l-h6-eEx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="JaT-Mk-mRr" kind="relationship" relationship="rootViewController" id="NiU-KO-w1P"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Dt-4F-o9n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2112" y="1475"/>
+            <point key="canvasLocation" x="2049" y="1489"/>
         </scene>
         <!--Medicatie-->
         <scene sceneID="12O-PH-LTg">
@@ -876,7 +856,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPp-Hy-GxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="2279"/>
+            <point key="canvasLocation" x="2010" y="2239"/>
         </scene>
         <!--Buddy Medicine Tab Bar Controller-->
         <scene sceneID="A5n-V9-HH1">
@@ -911,7 +891,6 @@
         <image name="MedicinTabIcon" width="30" height="25"/>
         <image name="Medkit" width="512" height="512"/>
         <image name="Player" width="30" height="30"/>
-        <image name="WeightTabIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QBc-Vo-xvA"/>
