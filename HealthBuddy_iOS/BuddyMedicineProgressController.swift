@@ -22,7 +22,7 @@ class BuddyMedicineProgressController: UIViewController {
     }
     
     func getProgress()->Double{
-        return 5/10;
+        return 10/10;
     }
     
 }

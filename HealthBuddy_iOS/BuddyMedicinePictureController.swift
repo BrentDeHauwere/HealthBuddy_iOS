@@ -7,24 +7,78 @@
 //  Gebruik gemaakt van tutorial: https://www.youtube.com/watch?v=PW6u55a5gZg
 
 import UIKit
+import Alamofire
+import ObjectMapper
+import MRProgress
 
 class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     @IBOutlet var ScrollView: UIScrollView!
     @IBOutlet weak var MedicineImageView: UIImageView!
    
     var medicine:Medicine?
+    var patientId:Int?
     
     override func viewDidLoad() {
-        if(self.medicine?.photo != nil){
+        MedicineImageView.image = UIImage(named: "selectImage")
+        
+        
+        if medicine != nil {
+            print("FOTO: \(medicine?.photo)");
+            if(medicine?.photo == nil){
+                initForm();
+            }
+            else{
+                MedicineImageView.image = medicine?.photo;
+            }
+        }else{
+            if(medicine!.photo != nil){
+                self.MedicineImageView.image = medicine!.photo;
+            }
+        }
+        
+        if(self.medicine?.name != nil){
             self.title = "\((self.medicine?.name)!) foto"
-            MedicineImageView.image = medicine?.photo;
         }else{
             self.title = "Medicatie foto"
-            MedicineImageView.image = UIImage(named: "selectImage")
         }
         
         self.ScrollView.minimumZoomScale = 1;
         self.ScrollView.maximumZoomScale = 6;
+        
+        
+       
+    }
+    
+    func initForm(){
+        MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Foto zoeken...", mode: .Indeterminate, animated: true) { response in
+            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+            Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
+                tasks.forEach({ $0.cancel() })
+            }
+        }
+        
+        Alamofire.request(.POST, Routes.showMedicine(patientId!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
+            MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
+            if response.result.isSuccess {
+                if let JSON = response.result.value {
+                    if response.response?.statusCode == 200 {
+                        let newMedicine = Mapper<Medicine>().map(JSON);
+                        self.medicine?.updateMedicineInfo(newMedicine!);
+                        if(self.medicine!.photo != nil){
+                            print("Foto toegevoegd");
+                            self.MedicineImageView.image = self.medicine?.photo;
+                        }
+                       
+                    }else if response.response?.statusCode == 422 {
+                        print("Medicine show failed");
+                    }
+                }else{
+                    print("Ongeldige json response medicine show");
+                }
+            }else{
+                print("Ongeldige request medicine show ");
+            }
+        }
     }
     
     @IBAction func selectImage(sender: AnyObject) {
@@ -58,7 +112,6 @@ class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerD
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage;
         MedicineImageView.image = image;
         medicine?.photo = image;
-        print("IMAGE IS UPDATED IN CONTROLLER");
         self.dismissViewControllerAnimated(true, completion: nil);
     }
     

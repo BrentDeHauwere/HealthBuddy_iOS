@@ -32,7 +32,6 @@ class BuddyNewMedicineController: FormViewController {
     var newMedicin = true;
     var savedMedicin = false;
     var annulateBtnPressed = false;
-    var lastUpdatedImage:UIImage?
 
    
     
@@ -67,6 +66,7 @@ class BuddyNewMedicineController: FormViewController {
             self.navigationItem.title = "Nieuw medicijn";
         }
     }
+    
     
     func loadForm(){
         let form = FormDescriptor()
@@ -214,28 +214,6 @@ class BuddyNewMedicineController: FormViewController {
     func initForm(){
         self.form.sections[0].rows[0].value = medicine?.name;
         self.form.sections[0].rows[1].value = medicine?.info;
-        
-        print(Routes.showMedicine(patientId!, medicineId: self.medicine!.id!));
-        Alamofire.request(.POST, Routes.showMedicine(patientId!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
-            if response.result.isSuccess {
-                if let JSON = response.result.value {
-                    if response.response?.statusCode == 200 {
-                        let newMedicine = Mapper<Medicine>().map(JSON);
-                        self.medicine?.updateMedicineInfo(newMedicine!);
-                        print("Medicine toegevoegd");
-                    }else if response.response?.statusCode == 422 {
-                        print("Medicine show failed");
-                    }
-                }else{
-                    print("Ongeldige json response medicine show");
-                }
-            }else{
-                print("Ongeldige request medicine show ");
-            }
-        }
-        lastUpdatedImage = self.medicine?.photo;
-
-        
         if let numberOfSchedules = self.medicine?.schedules.count {
             for i in 0 ..< numberOfSchedules  {
                 self.addScheduleForm();
@@ -278,7 +256,7 @@ class BuddyNewMedicineController: FormViewController {
         if segue.identifier == "showMedicinePicture" {
             let buddyMedicinePictureController = segue.destinationViewController as! BuddyMedicinePictureController;
             buddyMedicinePictureController.medicine = self.medicine;
-   
+            buddyMedicinePictureController.patientId = self.patientId;
         }
     }
     
@@ -287,14 +265,14 @@ class BuddyNewMedicineController: FormViewController {
         
         var params = ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description];
         
-        if(lastUpdatedImage != self.medicine?.photo){
+        //TODO: check if image need to be updated
             print("Image update");
             if(self.medicine?.photo != nil){
                 let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
                 let photoBase64 = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength);
                 params["photo"] = photoBase64;
             }
-        }
+        
         
         let medicineGroup = dispatch_group_create()
         var errors = [String]();
@@ -306,7 +284,7 @@ class BuddyNewMedicineController: FormViewController {
                     if response.response?.statusCode == 200 {
                         let newMedicine = Mapper<Medicine>().map(JSON);
                         self.medicine?.updateMedicineInfo(newMedicine!);
-                        self.lastUpdatedImage = self.medicine?.photo;
+                        
                         print("Medicine toegevoegd");
                     }else if response.response?.statusCode == 422 {
                         print("No valid input given");
@@ -401,7 +379,6 @@ class BuddyNewMedicineController: FormViewController {
                     dispatch_group_leave(group);
                     if response.result.isSuccess {
                         if let JSON = response.result.value {
-                            print(JSON);
                             if response.response?.statusCode == 200 {
                                 if(newSchedule){
                                     print("schedule toegevoegd");
