@@ -38,7 +38,7 @@ class Medicine : Mappable {
         self.schedules   <- map["schedule"]
         self.photo64String <- map["photo"]
         
-        if(self.photo64String != nil){
+        if(self.photo64String != nil && self.photo64String != ""){
             let decodedData = NSData(base64EncodedString: self.photo64String!, options: NSDataBase64DecodingOptions(rawValue: 0))
             let decodedimage = UIImage(data: decodedData!)
             self.photo = decodedimage! as UIImage;

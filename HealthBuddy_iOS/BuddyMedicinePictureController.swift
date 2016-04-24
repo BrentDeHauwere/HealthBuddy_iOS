@@ -17,13 +17,13 @@ class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerD
    
     var medicine:Medicine?
     var patientId:Int?
+    var imageUpdated:Bool?;
+
     
     override func viewDidLoad() {
         MedicineImageView.image = UIImage(named: "selectImage")
         
-        
         if medicine != nil {
-            print("FOTO: \(medicine?.photo)");
             if(medicine?.photo == nil){
                 initForm();
             }
@@ -64,11 +64,10 @@ class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerD
                     if response.response?.statusCode == 200 {
                         let newMedicine = Mapper<Medicine>().map(JSON);
                         self.medicine?.updateMedicineInfo(newMedicine!);
-                        if(self.medicine!.photo != nil){
-                            print("Foto toegevoegd");
+                        self.medicine?.photo = newMedicine?.photo;
+                        if(self.medicine?.photo != nil){
                             self.MedicineImageView.image = self.medicine?.photo;
                         }
-                       
                     }else if response.response?.statusCode == 422 {
                         print("Medicine show failed");
                     }
@@ -112,6 +111,7 @@ class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerD
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage;
         MedicineImageView.image = image;
         medicine?.photo = image;
+        self.imageUpdated = true;
         self.dismissViewControllerAnimated(true, completion: nil);
     }
     

@@ -27,13 +27,12 @@ class BuddyNewMedicineController: FormViewController {
         static let end_date = "end_date";
     }
 
+    var pictureViewController:BuddyMedicinePictureController?;
     var medicine:Medicine?
     var patientId:Int?
     var newMedicin = true;
     var savedMedicin = false;
     var annulateBtnPressed = false;
-
-   
     
     //Hou elk section bij met unieke ID
     var scheduleSectionID = 0;
@@ -49,7 +48,7 @@ class BuddyNewMedicineController: FormViewController {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         self.loadForm();
-        
+
     }
     
     override func viewDidLoad() {
@@ -66,7 +65,6 @@ class BuddyNewMedicineController: FormViewController {
             self.navigationItem.title = "Nieuw medicijn";
         }
     }
-    
     
     func loadForm(){
         let form = FormDescriptor()
@@ -254,9 +252,11 @@ class BuddyNewMedicineController: FormViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMedicinePicture" {
-            let buddyMedicinePictureController = segue.destinationViewController as! BuddyMedicinePictureController;
-            buddyMedicinePictureController.medicine = self.medicine;
-            buddyMedicinePictureController.patientId = self.patientId;
+            if let buddyMedicinePictureController = segue.destinationViewController as? BuddyMedicinePictureController {
+                self.pictureViewController = buddyMedicinePictureController;
+                self.pictureViewController!.medicine = self.medicine;
+                self.pictureViewController!.patientId = self.patientId;
+            }
         }
     }
     
@@ -266,13 +266,21 @@ class BuddyNewMedicineController: FormViewController {
         var params = ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description];
         
         //TODO: check if image need to be updated
-            print("Image update");
-            if(self.medicine?.photo != nil){
-                let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
-                let photoBase64 = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength);
-                params["photo"] = photoBase64;
+        if(self.pictureViewController != nil){
+            print(self.pictureViewController!.imageUpdated);
+            if(self.pictureViewController!.imageUpdated != nil && self.pictureViewController!.imageUpdated!){
+                print("Image update");
+                if(self.medicine?.photo != nil){
+                    let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
+                    let photoBase64 = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength);
+                    params["photo"] = photoBase64;
+                }else{
+                    print("Image not updated");
+                }
+            }else{
+                print("IMAGE NOT UPDATED");
             }
-        
+        }
         
         let medicineGroup = dispatch_group_create()
         var errors = [String]();
@@ -284,7 +292,10 @@ class BuddyNewMedicineController: FormViewController {
                     if response.response?.statusCode == 200 {
                         let newMedicine = Mapper<Medicine>().map(JSON);
                         self.medicine?.updateMedicineInfo(newMedicine!);
-                        
+                        if(self.pictureViewController != nil){
+                            print("Foto updated = false - back to initial state");
+                            self.pictureViewController!.imageUpdated = false;
+                        }
                         print("Medicine toegevoegd");
                     }else if response.response?.statusCode == 422 {
                         print("No valid input given");
