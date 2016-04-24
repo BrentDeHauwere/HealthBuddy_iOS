@@ -12,6 +12,7 @@ import CircleProgressView
 class BuddyMedicineProgressController: UIViewController {
     @IBOutlet weak var circleProgressView: CircleProgressView!
     var patient:User?
+    var progress:Progress?
     
     override func viewDidLoad() {
          self.navigationItem.title = "\(patient!.firstName!) \(patient!.lastName!)";

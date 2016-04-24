@@ -118,6 +118,7 @@ class BuddyMedicineDashboardHistoryController: UIViewController,RSDFDatePickerVi
         if segue.identifier == "showProgress" {
             let detailPage = segue.destinationViewController as! BuddyMedicineProgressController;
             detailPage.patient = self.patient;
+            
         }
 
     }
