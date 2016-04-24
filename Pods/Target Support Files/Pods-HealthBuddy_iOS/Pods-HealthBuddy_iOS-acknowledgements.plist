@@ -41,7 +41,6 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-<<<<<<< HEAD
 			<string>### The MIT License
 
 Copyright (c) 2013 Cardinal Solutions
@@ -67,7 +66,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
 			<key>Title</key>
 			<string>CircleProgressView</string>
-=======
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>IQKeyboardManager license
 =========================
 
@@ -95,7 +98,6 @@ SOFTWARE.
 </string>
 			<key>Title</key>
 			<string>IQKeyboardManagerSwift</string>
->>>>>>> master
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

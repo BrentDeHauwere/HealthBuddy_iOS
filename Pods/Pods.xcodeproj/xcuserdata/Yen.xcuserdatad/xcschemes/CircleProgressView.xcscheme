@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '17C3380D024F0FF990B73EF9'
-               BlueprintName = 'IQKeyboardManagerSwift'
+               BlueprintIdentifier = '6532300CEED3E9E8AB596219'
+               BlueprintName = 'CircleProgressView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'IQKeyboardManagerSwift.framework'>
+               BuildableName = 'CircleProgressView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

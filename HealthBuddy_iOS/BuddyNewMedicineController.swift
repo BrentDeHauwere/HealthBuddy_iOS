@@ -376,10 +376,10 @@ class BuddyNewMedicineController: FormViewController {
         var i = 0;
         for(sectionID, _) in self.scheduleFormSections {
             print("sectionID \(sectionID): updated: \(self.scheduleFormSectionsNewState[sectionID])");
-            i += 1;
-            let currentI = i;
             var storeScheduleRoute = "";
             if let newSchedule:Bool = self.scheduleFormSectionsNewState[sectionID] {
+                i += 1;
+                let currentI = i;
                 if(newSchedule){
                     storeScheduleRoute = Routes.createSchedule(self.patientId!, medicineId: (self.medicine?.id)!);
                 }
@@ -422,11 +422,10 @@ class BuddyNewMedicineController: FormViewController {
 
                             }else if response.response?.statusCode == 422 {
                                 print("No valid input given");
+                                errors.append("Inname-moment \(currentI): ");
                                 let JSONDict = JSON as! NSDictionary as NSDictionary;
                                 for (_, value) in JSONDict {
                                     let errorsArray = value as! NSArray;
-                                    
-                                    errors.append("Inname-moment \(currentI): ");
                                     for (error) in errorsArray {
                                         errors.append("\(error)");
                                     }
@@ -435,11 +434,13 @@ class BuddyNewMedicineController: FormViewController {
                             }
                         }else{
                             print("Ongeldige json response schedule");
+                            errors.append("Opslaan inname-moment \(currentI) mislukt");
                         }
                     }
                     else
                     {
                         print("Ongeldige request schedule");
+                        errors.append("Opslaan inname-moment \(currentI) mislukt");
                     }
                 }
             }else{

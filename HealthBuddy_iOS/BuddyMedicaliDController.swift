@@ -323,9 +323,11 @@ class BuddyMedicaliDController: FormViewController, UITextFieldDelegate {
                         }
                     }else{
                         print("Ongeldige json response userinfo update");
+                        errors.append("Opslaan patiënt info mislukt");
                     }
                 }else{
                     print("Ongeldige request userinfo update");
+                    errors.append("Opslaan patiënt info mislukt");
                 }
                 dispatch_group_leave(group)
             }
@@ -353,9 +355,11 @@ class BuddyMedicaliDController: FormViewController, UITextFieldDelegate {
                             errors.append("\n");                        }
                     }else{
                         print("Ongeldige json response address update");
+                        errors.append("Opslaan adres info mislukt");
                     }
                 }else{
                     print("Ongeldige request address update");
+                    errors.append("Opslaan adres info mislukt");
                 }
                 dispatch_group_leave(group)
             }
@@ -384,9 +388,11 @@ class BuddyMedicaliDController: FormViewController, UITextFieldDelegate {
                         }
                     }else{
                         print("Ongeldige json response medicalinfo update");
+                        errors.append("Opslaan medische info info mislukt");
                     }
                 }else{
                     print("Ongeldige request medicalinfo update");
+                    errors.append("Opslaan medische info info mislukt");
                 }
                 dispatch_group_leave(group)
             }
