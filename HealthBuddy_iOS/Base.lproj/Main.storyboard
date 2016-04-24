@@ -275,7 +275,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="J1L-0M-RCg" secondAttribute="centerX" id="Gih-iP-6dY"/>
                             <constraint firstAttribute="centerY" secondItem="J1L-0M-RCg" secondAttribute="centerY" constant="25" id="p8D-5i-gO5"/>
@@ -482,7 +482,7 @@
                         </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MedicineCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedicineCell" textLabel="wZa-6N-YjR" imageView="Ojx-oJ-jAe" style="IBUITableViewCellStyleDefault" id="ZbF-sg-8sM">
-                                <rect key="frame" x="0.0" y="113" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZbF-sg-8sM" id="piA-gq-iI9">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -564,12 +564,94 @@
                     <view key="view" contentMode="scaleToFill" id="Qil-Em-ow9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 van de 5 pillen ingenomen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1j-1X-DBM">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="101" id="LU8-Jk-4qk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="LU8-Jk-4qk"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="LU8-Jk-4qk"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZG-7r-4zr" customClass="CircleProgressView" customModule="CircleProgressView">
+                                <rect key="frame" x="175" y="151" width="250" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="YGe-td-28u"/>
+                                    <constraint firstAttribute="width" constant="250" id="gOT-yK-zMT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="progressImage"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="centerImage" value="takePill"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="refreshRate">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="3Au-q1-bFe" firstAttribute="top" secondItem="L1j-1X-DBM" secondAttribute="bottom" constant="20" id="9BL-7d-Ggh">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="L1j-1X-DBM" firstAttribute="leading" secondItem="Qil-Em-ow9" secondAttribute="leadingMargin" constant="12" id="DJA-6H-BaP">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
+                            <constraint firstItem="HZG-7r-4zr" firstAttribute="centerX" secondItem="Qil-Em-ow9" secondAttribute="centerX" id="XLm-LC-Hpd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="L1j-1X-DBM" secondAttribute="trailing" constant="13" id="aCs-qA-vjU">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
+                            <constraint firstItem="HZG-7r-4zr" firstAttribute="centerY" secondItem="Qil-Em-ow9" secondAttribute="centerY" id="n6z-wI-5Xq">
+                                <variation key="widthClass=compact" constant="-50.5"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="L1j-1X-DBM"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="DJA-6H-BaP"/>
+                                <exclude reference="aCs-qA-vjU"/>
+                                <exclude reference="9BL-7d-Ggh"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="L1j-1X-DBM"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="DJA-6H-BaP"/>
+                                <include reference="aCs-qA-vjU"/>
+                                <include reference="9BL-7d-Ggh"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="circleProgressView" destination="HZG-7r-4zr" id="7iv-Zr-WSG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AIN-mx-jAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5379" y="164"/>
+            <point key="canvasLocation" x="5388" y="164"/>
         </scene>
         <!--New Medicine-->
         <scene sceneID="PH6-v4-fua">
@@ -650,7 +732,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="536" id="EQ9-M2-47X">
-                                                <variation key="widthClass=compact" constant="537"/>
+                                                <variation key="widthClass=compact" constant="500"/>
                                             </constraint>
                                         </constraints>
                                         <variation key="default">
@@ -672,7 +754,7 @@
                                     <constraint firstAttribute="trailing" secondItem="9uf-aW-O2V" secondAttribute="trailing" id="K93-kz-pfj"/>
                                     <constraint firstItem="9uf-aW-O2V" firstAttribute="leading" secondItem="Rey-xt-p4y" secondAttribute="leading" id="ODc-EJ-HNC"/>
                                     <constraint firstAttribute="bottom" secondItem="9uf-aW-O2V" secondAttribute="bottom" constant="-64" id="Qh6-la-IJy">
-                                        <variation key="widthClass=compact" constant="-50"/>
+                                        <variation key="widthClass=compact" constant="-8"/>
                                     </constraint>
                                     <constraint firstItem="9uf-aW-O2V" firstAttribute="centerX" secondItem="Rey-xt-p4y" secondAttribute="centerX" id="S0a-9u-gYx"/>
                                 </constraints>
@@ -714,7 +796,7 @@
                             </constraint>
                             <constraint firstItem="Tm7-IO-QLH" firstAttribute="bottom" secondItem="hpd-Wd-QCk" secondAttribute="bottomMargin" id="Zlu-1J-lgg"/>
                             <constraint firstAttribute="bottom" secondItem="Rey-xt-p4y" secondAttribute="bottom" id="c4n-YQ-ZTO">
-                                <variation key="widthClass=compact" constant="49"/>
+                                <variation key="widthClass=compact" constant="44"/>
                             </constraint>
                             <constraint firstItem="Rey-xt-p4y" firstAttribute="leading" secondItem="hpd-Wd-QCk" secondAttribute="leading" id="fQx-cL-jOo"/>
                             <constraint firstItem="Rey-xt-p4y" firstAttribute="top" secondItem="mpN-y4-HYK" secondAttribute="bottom" id="miP-nb-XtT">
@@ -761,7 +843,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UhM-AM-DNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6826.5" y="-631"/>
+            <point key="canvasLocation" x="6829.5" y="-624"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ivM-af-3Ai">
