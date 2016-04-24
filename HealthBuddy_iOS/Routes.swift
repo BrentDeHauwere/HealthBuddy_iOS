@@ -17,6 +17,13 @@ struct Routes{
     static let buddyProfile = "http://10.3.50.33/api/profile";
     //POST: api_token
     
+    static func showMedicine(patientId:Int, medicineId:Int)->String {
+        return "http://10.3.50.33/api/user/\(patientId)/medicine/\(medicineId)/show";
+    }
+    
+    static func showPatient(patientId:Int)->String {
+        return "http://10.3.50.33/api/patient/\(patientId)/show";
+    }
     
     
     //CREATE
