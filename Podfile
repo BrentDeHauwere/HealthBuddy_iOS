@@ -7,8 +7,12 @@ target 'HealthBuddy_iOS' do
     pod 'MRProgress'
     pod 'Alamofire', '~> 3.0'
     pod 'ObjectMapper', '~> 1.1'
+<<<<<<< HEAD
+    pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProgressView.git'
+=======
     pod 'RSDayFlow'
     pod 'IQKeyboardManagerSwift'
+>>>>>>> master
 end
 
 target 'HealthBuddy_iOSTests' do

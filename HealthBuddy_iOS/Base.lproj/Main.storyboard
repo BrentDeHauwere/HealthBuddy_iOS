@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -248,59 +248,51 @@
                         <viewControllerLayoutGuide type="top" id="0DO-Wy-Cvy"/>
                         <viewControllerLayoutGuide type="bottom" id="3t9-c0-KOR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Otv-fN-Qwd">
+                    <view key="view" contentMode="scaleToFill" id="6YA-AX-wVx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Medkit" translatesAutoresizingMaskIntoConstraints="NO" id="LgA-xR-hJl">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1L-0M-RCg" customClass="CircleProgressView" customModule="CircleProgressView">
+                                <rect key="frame" x="175" y="150" width="250" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="346" id="Bwm-ix-s3C"/>
-                                    <constraint firstAttribute="width" constant="400" id="cjf-VY-lck"/>
+                                    <constraint firstAttribute="width" constant="250" id="MVz-tP-lfQ"/>
+                                    <constraint firstAttribute="height" constant="250" id="eGC-wV-Fbv"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Bwm-ix-s3C"/>
-                                        <exclude reference="cjf-VY-lck"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Bwm-ix-s3C"/>
-                                        <include reference="cjf-VY-lck"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="progressImage"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="centerImage" value="takePill"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="refreshRate">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="LgA-xR-hJl" firstAttribute="centerX" secondItem="Otv-fN-Qwd" secondAttribute="centerX" id="JQe-o5-Bez"/>
-                            <constraint firstItem="LgA-xR-hJl" firstAttribute="top" secondItem="0DO-Wy-Cvy" secondAttribute="bottom" id="Jzk-kL-5QJ"/>
+                            <constraint firstAttribute="centerX" secondItem="J1L-0M-RCg" secondAttribute="centerX" id="Gih-iP-6dY"/>
+                            <constraint firstAttribute="centerY" secondItem="J1L-0M-RCg" secondAttribute="centerY" constant="25" id="p8D-5i-gO5"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="LgA-xR-hJl"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="JQe-o5-Bez"/>
-                                <exclude reference="Jzk-kL-5QJ"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="LgA-xR-hJl"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="JQe-o5-Bez"/>
-                                <include reference="Jzk-kL-5QJ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="OF5-G2-57a"/>
+                    <connections>
+                        <outlet property="circleProgressView" destination="J1L-0M-RCg" id="hee-XH-s1w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Um-oK-Ihd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="3030" y="724.5"/>
+=======
             <point key="canvasLocation" x="2943" y="1489"/>
+>>>>>>> master
         </scene>
         <!--Buddy Tab Bar Controller-->
         <scene sceneID="RsC-4x-t7b">
@@ -892,8 +884,13 @@
         <image name="Logo" width="487" height="607"/>
         <image name="Medicatie" width="50" height="50"/>
         <image name="MedicinTabIcon" width="30" height="25"/>
-        <image name="Medkit" width="512" height="512"/>
         <image name="Player" width="30" height="30"/>
+<<<<<<< HEAD
+        <image name="WeightTabIcon" width="30" height="30"/>
+        <image name="progressImage" width="250" height="250"/>
+        <image name="takePill" width="380" height="380"/>
+=======
+>>>>>>> master
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QBc-Vo-xvA"/>
