@@ -19,9 +19,12 @@ class BuddyMedicineProgressController: UIViewController {
     
     override func viewDidLoad() {
          self.navigationItem.title = "\(patient!.firstName!) \(patient!.lastName!)";
-         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Overzicht", style: .Plain, target: self, action: nil);
-        
-        
+       // self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Overzicht", style: .Plain, target: self, action:#selector(BuddyMedicineProgressController.popView));
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backBtn"), style: .Plain, target: self, action: #selector(BuddyMedicineProgressController.popView));
+    }
+    
+    func popView(){
+        self.navigationController?.popViewControllerAnimated(true);
     }
     override func viewDidAppear(animated: Bool) {
         circleProgressView.setProgress(getProgress(), animated: true);

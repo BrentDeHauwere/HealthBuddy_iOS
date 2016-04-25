@@ -720,13 +720,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="  " id="ZSt-Ir-3gJ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="adt-VO-6FU">
+                        <barButtonItem key="leftBarButtonItem" title="Annuleren" id="adt-VO-6FU">
                             <connections>
                                 <action selector="clickCancel:" destination="5jz-a6-hwd" id="wkt-g1-EHM"/>
                                 <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="goBack" unwindAction="cancelToPlayersViewController:" id="SIb-ie-hvS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="cfy-ZW-3aw">
+                        <barButtonItem key="rightBarButtonItem" title="Opslaan" id="cfy-ZW-3aw">
                             <connections>
                                 <action selector="clickSave:" destination="5jz-a6-hwd" id="5QA-De-ZQy"/>
                             </connections>
