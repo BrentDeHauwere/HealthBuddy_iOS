@@ -28,7 +28,6 @@ class BuddyMedicineDashboardHistoryController: UIViewController,RSDFDatePickerVi
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated);
-        print("\(self.progressPerDay)")
         if(self.progressPerDay == nil){
             loadProgressPerDay();
         }
@@ -109,7 +108,16 @@ class BuddyMedicineDashboardHistoryController: UIViewController,RSDFDatePickerVi
     
     func datePickerView(view: RSDFDatePickerView!, didSelectDate date: NSDate!) {
         if(selectedDate == date){
-            self.performSegueWithIdentifier("showProgress", sender: self);
+            let unitFlags:NSCalendarUnit = [.Year, .Month, .Day];
+            for (progress) in self.progressPerDay! {
+                let progressDateComponents = self.calendar.components(unitFlags, fromDate: progress.day!);
+                let progressDate = self.calendar.dateFromComponents(progressDateComponents);
+                if(selectedDate!.isEqual(progressDate)){
+                    self.performSegueWithIdentifier("showProgress", sender: self);
+                }
+            }
+            
+            
         }
         selectedDate = date;
     }
@@ -119,8 +127,16 @@ class BuddyMedicineDashboardHistoryController: UIViewController,RSDFDatePickerVi
             let detailPage = segue.destinationViewController as! BuddyMedicineProgressController;
             detailPage.patient = self.patient;
             
+            let unitFlags:NSCalendarUnit = [.Year, .Month, .Day];
+            for (progress) in self.progressPerDay! {
+                let progressDateComponents = self.calendar.components(unitFlags, fromDate: progress.day!);
+                let progressDate = self.calendar.dateFromComponents(progressDateComponents);
+                if(selectedDate!.isEqual(progressDate)){
+                    detailPage.progress = progress;
+                    break;
+                }
+            }
         }
-
     }
 }
 
