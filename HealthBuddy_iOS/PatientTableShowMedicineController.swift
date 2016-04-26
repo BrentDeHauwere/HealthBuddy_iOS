@@ -24,6 +24,13 @@ class PatientTableShowMedicineController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = medicine.name;
+        if(schedule.updated_at != nil){
+            if(schedule.updated_at!.sameDay(NSDate())){
+                self.navigationItem.rightBarButtonItem?.enabled = false;
+            }
+        }
+        
+        
         
         print(Routes.showMedicine(patientID!, medicineId: self.medicine!.id!));
         Alamofire.request(.POST, Routes.showMedicine(patientID!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in

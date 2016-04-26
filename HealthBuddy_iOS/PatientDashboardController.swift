@@ -57,4 +57,11 @@ extension NSDate {
     func daysSince1970() -> Int {
         return (Int)(self.timeIntervalSince1970 / (60*60*24));
     }
+    func sameDay(dateTwo:NSDate) -> Bool {
+        let calender = NSCalendar.currentCalendar()
+        let flags: NSCalendarUnit = [.Day, .Month, .Year]
+        let compOne: NSDateComponents = calender.components(flags, fromDate: self)
+        let compTwo: NSDateComponents = calender.components(flags, fromDate: dateTwo);
+        return (compOne.day == compTwo.day && compOne.month == compTwo.month && compOne.year == compTwo.year);
+    }
 }

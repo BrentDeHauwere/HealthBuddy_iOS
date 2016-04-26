@@ -7,6 +7,9 @@
 //
 
 import UIKit;
+import Alamofire;
+import ObjectMapper;
+
 class PatientMedicineController: UITableViewController {
     var patient:User!;
     var medicinesToday:[Medicine]!;
@@ -19,13 +22,30 @@ class PatientMedicineController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         self.title = "Medicatie";
+        
+        sections = [String]();
+        
+        sections.append("Voormiddag");
+        sections.append("Middag");
+        sections.append("Namiddag");
+        sections.append("Avond");
+        
+        
+        //add medicines of today to arraylist
+        self.medicines();
+    }
+    
+    override func viewDidAppear(animated: Bool){
+        self.scheduleRefreshData();
+        super.viewDidAppear(true);
+    }
+    
+    func medicines(){
         medicinesToday = [Medicine]();
         medicinesVm = [MedicalSchedule]();
         medicinesM = [MedicalSchedule]();
         medicinesNm = [MedicalSchedule]();
         medicinesA = [MedicalSchedule]();
-        sections = [String]();
-        //add medicines of today to arraylist
         for medicine in (patient?.medicines)! {
             var added = false
             for schedule in medicine.schedules {
@@ -68,39 +88,35 @@ class PatientMedicineController: UITableViewController {
                 
             }
         }
-        
-        sections.append("Voormiddag");
-        sections.append("Middag");
-        sections.append("Namiddag");
-        sections.append("Avond");
-        
         medicinesVm.sortInPlace({$0.time!.compare($1.time!) == NSComparisonResult.OrderedAscending } );
         
-        for medicine in medicinesVm{
-            print((medicine.time_s)!);
-        }
-       
+        
+        
         medicinesM.sortInPlace({$0.time!.compare($1.time!) == NSComparisonResult.OrderedAscending } );
         
-        for medicine in medicinesM{
-            print((medicine.time_s)!);
-        }
+        
         
         medicinesNm.sortInPlace({$0.time!.compare($1.time!) == NSComparisonResult.OrderedAscending } );
         
         
-        for medicine in medicinesNm{
-            print((medicine.time_s)!);
-        }
+        
         
         medicinesA.sortInPlace({$0.time!.compare($1.time!) == NSComparisonResult.OrderedAscending } );
-        print(medicinesA);
-        
-        for medicine in medicinesA{
-            print((medicine.time_s)!);
-        }
-        
     }
+    
+    func scheduleRefreshData(){
+        Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
+            .responseJSON { response in
+                if response.result.isSuccess {
+                    if let JSON = response.result.value {
+                        self.patient = Mapper<User>().map(JSON);
+                        self.tableView.reloadData();
+                        print("Data refreshed");
+                    }
+                }
+        }
+    }
+    
     func getMedicine(schedule:MedicalSchedule) -> Medicine! {
         var medicine : Medicine!;
         for medi in medicinesToday{
@@ -109,7 +125,6 @@ class PatientMedicineController: UITableViewController {
                 medicine = medi;
             }
         }
-        print((medicine.name)!);
         return medicine;
     }
     func backButtonPressed(sender:UIButton){
@@ -144,22 +159,47 @@ class PatientMedicineController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //GreenMedicineCell
         let cell = self.tableView.dequeueReusableCellWithIdentifier("MedicineCell", forIndexPath: indexPath) as UITableViewCell;
         
         let section = indexPath.section;
         if(section == 0){
+            if(self.medicinesVm[indexPath.row].updated_at != nil){
+                if(self.medicinesVm[indexPath.row].updated_at!.sameDay(NSDate())){
+                    cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
+                }
+            }
+            
             cell.textLabel?.text = (self.getMedicine(self.medicinesVm[indexPath.row]).name)!;
             cell.detailTextLabel?.text =  self.medicinesVm[indexPath.row].time_s;
         }
         if(section == 1){
+            if(self.medicinesM[indexPath.row].updated_at != nil){
+                if(self.medicinesM[indexPath.row].updated_at!.sameDay(NSDate())){
+                    cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
+                }
+            }
+            
             cell.textLabel?.text = (self.getMedicine(self.medicinesM[indexPath.row]).name)!;
             cell.detailTextLabel?.text =  self.medicinesM[indexPath.row].time_s;
         }
         if(section == 2){
+            if(self.medicinesNm[indexPath.row].updated_at != nil){
+                if(self.medicinesNm[indexPath.row].updated_at!.sameDay(NSDate())){
+                    cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
+                }
+            }
+            
             cell.textLabel?.text =  (self.getMedicine(self.medicinesNm[indexPath.row]).name)!;
             cell.detailTextLabel?.text =  self.medicinesNm[indexPath.row].time_s;
         }
         if(section == 3){
+            if(self.medicinesA[indexPath.row].updated_at != nil){
+                if(self.medicinesA[indexPath.row].updated_at!.sameDay(NSDate())){
+                    cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
+                }
+            }
+            
             cell.textLabel?.text =  (self.getMedicine(self.medicinesA[indexPath.row]).name)!;
             cell.detailTextLabel?.text =  self.medicinesA[indexPath.row].time_s;
         }
@@ -178,17 +218,14 @@ class PatientMedicineController: UITableViewController {
                         Controller.schedule = self.medicinesVm[indexPath.row];
                     }
                     if(section == 1){
-                        print("\(self.getMedicine(self.medicinesVm[indexPath.row]))");
                         Controller.medicine =  self.getMedicine(self.medicinesM[indexPath.row]);
                         Controller.schedule = self.medicinesM[indexPath.row];
                     }
                     if(section == 2){
-                        print("\(self.getMedicine(self.medicinesVm[indexPath.row]))");
                         Controller.medicine =  self.getMedicine(self.medicinesNm[indexPath.row]);
                         Controller.schedule = self.medicinesNm[indexPath.row];
                     }
                     if(section == 3){
-                        print("\(self.getMedicine(self.medicinesVm[indexPath.row]))");
                         Controller.medicine =  self.getMedicine(self.medicinesA[indexPath.row]);
                         Controller.schedule = self.medicinesA[indexPath.row];
                     }
