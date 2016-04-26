@@ -7,9 +7,6 @@
 //
 
 import Foundation
-<<<<<<< HEAD
-=======
-
 
 import Foundation
 import ObjectMapper
@@ -43,4 +40,3 @@ class MedicalInfo: Mappable {
         return "id: \(id) \nuser_id: \(user_id) \nlength: \(length) \nweight: \(weight) \nbloodType: \(bloodType) \nmedicalCondition: \(medicalCondition) \nallergies: \(allergies) \n";
     }
 }
->>>>>>> master

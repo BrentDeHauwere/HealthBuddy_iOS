@@ -29,8 +29,8 @@ class ToDoList {
         let items = Array(todoDictionary.values)
         return items.map(
             {TodoItem(deadline: $0["deadline"] as! NSDate, title: $0["title"] as! String, UUID: $0["UUID"] as! String!)}).sort({(left: TodoItem, right:TodoItem) -> Bool in
-            (left.deadline.compare(right.deadline) == .OrderedAscending)
-        })
+                (left.deadline.compare(right.deadline) == .OrderedAscending)
+            })
     }
     
     func addItem(item: TodoItem) {
@@ -52,6 +52,7 @@ class ToDoList {
         notification.userInfo = ["title": item.title, "UUID": item.UUID]
         
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        setBadgeNumbers()
     }
     
     func removeItem(item: TodoItem) {

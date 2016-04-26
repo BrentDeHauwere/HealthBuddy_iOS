@@ -48,22 +48,24 @@ class NotificationController : NSObject {
                     let scheduleDate = cal.dateFromComponents(scheduleComponents)
                     
                     // amount of times scheduled (in the next {{daysInAdvance}} days)
-                    let times = Int(floor(Double(daysInAdvance)/Double(schedule.interval!)))
+                    let times = floor(Double(daysInAdvance-daysInFuture)/Double(schedule.interval!))
+                    print(times)
                     
+                    /*
                     for _ in 1...times {
                         // placeholder
-                        let medicine : Medicine = Medicine(id:-20, name: "testMedicijn", photo:nil)
+                        //let medicine : Medicine = Medicine(id:-20, name: "testMedicijn", photo:nil)
                         
-                        let message = "Neem \(medicine.name) (\(schedule.amount)x)"
+                        let message = "Neem \("") (\(schedule.amount)x)"
                         let todoItem = TodoItem(deadline: scheduleDate!, title: message, UUID: NSUUID().UUIDString)
                         ToDoList.sharedInstance.addItem(todoItem)
                         
                         scheduleDate!.addDays(schedule.interval!)
                     }
-                    
+ */
                 }
             }
-
+            
         }
     }
     
