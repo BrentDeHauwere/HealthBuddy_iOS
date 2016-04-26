@@ -38,13 +38,17 @@ class PatientDashboardController: UIViewController {
                 if NSDate().isBetweeen(date: schedule.start_date!, andDate: schedule.end_date!)
                 &&  (NSDate().daysSince1970() - schedule.start_date!.daysSince1970()) % schedule.interval! == 0 {
                     medicinesToTake += 1;
-                    if NSCalendar.currentCalendar().compareDate(NSDate(), toDate: schedule.start_date!, toUnitGranularity: .Day) == NSComparisonResult.OrderedSame {
+                    
+                    if schedule.updated_at != nil && schedule.updated_at!.sameDay(NSDate()) {
                         medicinesTaken += 1;
                     }
                 }
                 
             }
         }
+        print(medicinesToTake);
+        print(medicinesTaken);
+        print(Double(medicinesTaken)/Double(medicinesToTake));
         return Double(medicinesTaken)/Double(medicinesToTake);
     }
 }
@@ -57,6 +61,7 @@ extension NSDate {
     func daysSince1970() -> Int {
         return (Int)(self.timeIntervalSince1970 / (60*60*24));
     }
+    
     func sameDay(dateTwo:NSDate) -> Bool {
         let calender = NSCalendar.currentCalendar()
         let flags: NSCalendarUnit = [.Day, .Month, .Year]
