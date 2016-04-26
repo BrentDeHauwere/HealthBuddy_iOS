@@ -36,6 +36,7 @@ class PatientMedicineController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool){
+        self.medicines();
         self.scheduleRefreshData();
         super.viewDidAppear(true);
     }
