@@ -47,12 +47,13 @@ class PatientMedicineController: UITableViewController {
         medicinesM = [MedicalSchedule]();
         medicinesNm = [MedicalSchedule]();
         medicinesA = [MedicalSchedule]();
+        var medicinesToTake = 0;
         for medicine in (patient?.medicines)! {
             var added = false
             for schedule in medicine.schedules {
                 if NSDate().isBetweeen(date: schedule.start_date!, andDate: schedule.end_date!)
                     &&  (NSDate().daysSince1970() - schedule.start_date!.daysSince1970()) % schedule.interval! == 0 {
-                    
+                    medicinesToTake += 1;
                     let calendar = NSCalendar.currentCalendar();
                     let comp = calendar.components([.Hour], fromDate: schedule.time!);
                     let hour = comp.hour;
@@ -78,7 +79,7 @@ class PatientMedicineController: UITableViewController {
                             added = true;
                         }
                     }
-                    else if(hour > 18 && hour <= 3){
+                    else if(hour > 18 || hour <= 3){
                         medicinesA.append(schedule);
                         if(added == false){
                             medicinesToday.append(medicine);
@@ -89,6 +90,7 @@ class PatientMedicineController: UITableViewController {
                 
             }
         }
+        print(medicinesToTake);
         medicinesVm.sortInPlace({$0.time!.compare($1.time!) == NSComparisonResult.OrderedAscending } );
         
         

@@ -59,7 +59,13 @@ extension NSDate {
     }
     
     func daysSince1970() -> Int {
-        return (Int)(self.timeIntervalSince1970 / (60*60*24));
+        if(self.timeIntervalSince1970 / (60*60*24) == floor(self.timeIntervalSince1970 / (60*60*24))){
+            return (Int)(self.timeIntervalSince1970 / (60*60*24));
+        }else{
+            
+            return ((Int)(self.timeIntervalSince1970 / (60*60*24)) + 1);
+        }
+        
     }
     
     func sameDay(dateTwo:NSDate) -> Bool {
