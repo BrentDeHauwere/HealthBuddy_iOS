@@ -9,6 +9,8 @@
 //
 
 import UIKit
+import Alamofire
+import ObjectMapper
 
 class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     var loggedInUser:User?
@@ -19,10 +21,50 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         super.viewDidLoad();
         self.navigationItem.hidesBackButton = true;
         setupSearchBar();
+        
+        //Setup refresh gesture
+        let refreshControl = UIRefreshControl();
+        refreshControl.addTarget(self, action: #selector(BuddyListControler.refreshDataOnDemand), forControlEvents: .ValueChanged)
+        self.tableView.addSubview(refreshControl);
+        
+        //Returing task sync app with back-end
+        NSTimer.scheduledTimerWithTimeInterval(600, target: self, selector:  #selector(BuddyListControler.scheduleRefreshData), userInfo: nil, repeats: true);
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    func scheduleRefreshData(){
+        Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
+            .responseJSON { response in
+                if response.result.isSuccess {
+                    if let JSON = response.result.value {
+                        self.loggedInUser = Mapper<User>().map(JSON);
+                        self.filteredData = (self.loggedInUser?.patients)!;
+                        self.filteredData.sortInPlace{$0.firstName < $1.firstName};
+                        self.tableView.reloadData();
+                        print("Data refreshed");
+                    }
+                }
+        }
+    }
+    
+    func refreshDataOnDemand(refreshControl: UIRefreshControl){
+        Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
+            .responseJSON { response in
+            if response.result.isSuccess {
+            if let JSON = response.result.value {
+                    self.loggedInUser = Mapper<User>().map(JSON);
+                    self.filteredData = (self.loggedInUser?.patients)!;
+                    self.tableView.reloadData();
+                    self.filteredData.sortInPlace{$0.firstName < $1.firstName};
+                    refreshControl.endRefreshing();
+                    print("Data refreshed");
+                }
+            }else{
+                refreshControl.endRefreshing();
+                Alert.alertStatusWithSymbol(false,message: "Refresh mislukt", seconds: 1.5, view: self.view);
+                print("FAILED TO GET PROFILES");                
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -37,13 +79,13 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     func setupSearchBar(){
         tableView.dataSource = self;
         filteredData = (loggedInUser?.patients)!;
+        self.filteredData.sortInPlace{$0.firstName < $1.firstName};
         searchController = UISearchController(searchResultsController: nil);
         searchController.searchResultsUpdater = self;
         searchController.dimsBackgroundDuringPresentation = false;
         searchController.searchBar.sizeToFit();
         tableView.tableHeaderView = searchController.searchBar;
         definesPresentationContext = true;
-
     }
     
     //update the list when searching

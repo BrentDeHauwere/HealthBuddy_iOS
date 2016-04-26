@@ -27,14 +27,12 @@ class BuddyNewMedicineController: FormViewController {
         static let end_date = "end_date";
     }
 
+    var pictureViewController:BuddyMedicinePictureController?;
     var medicine:Medicine?
     var patientId:Int?
     var newMedicin = true;
     var savedMedicin = false;
     var annulateBtnPressed = false;
-    var lastUpdatedImage:UIImage?
-
-   
     
     //Hou elk section bij met unieke ID
     var scheduleSectionID = 0;
@@ -50,7 +48,7 @@ class BuddyNewMedicineController: FormViewController {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         self.loadForm();
-        
+
     }
     
     override func viewDidLoad() {
@@ -67,17 +65,6 @@ class BuddyNewMedicineController: FormViewController {
             self.navigationItem.title = "Nieuw medicijn";
         }
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuddyNewMedicineController.click(_:)));
-        tapGestureRecognizer.numberOfTapsRequired=1;
-        self.navigationController!.navigationBar.addGestureRecognizer(tapGestureRecognizer);
-    }
-    
-    func click(sender: UILabel){
-        self.view.endEditing(true);
-    }
-
     
     func loadForm(){
         let form = FormDescriptor()
@@ -116,12 +103,14 @@ class BuddyNewMedicineController: FormViewController {
     }
     
     func addScheduleForm(){
-        
-        
         let sectionNewSchedule = FormSectionDescriptor();
         sectionNewSchedule.headerTitle = "Inname-moment \(self.form.sections.count-1)";
       
-        var row = FormRowDescriptor(tag: "\(FormTag.time)_\(self.scheduleSectionID)", rowType: .Time, title: "Uur");
+        var row = FormRowDescriptor(tag: "\(FormTag.amount)_\(self.scheduleSectionID)", rowType: .Text, title: "Hoeveelheid");
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        sectionNewSchedule.addRow(row);
+        
+        row = FormRowDescriptor(tag: "\(FormTag.time)_\(self.scheduleSectionID)", rowType: .Time, title: "Uur");
         sectionNewSchedule.addRow(row);
         
         row = FormRowDescriptor(tag: "\(FormTag.start_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Start inname");
@@ -132,7 +121,7 @@ class BuddyNewMedicineController: FormViewController {
         let sectionCount = self.form.sections.count;
         
         if (sectionCount>2){
-            row.value = self.form.sections[sectionCount-2].rows[1].value;
+            row.value = self.form.sections[sectionCount-2].rows[2].value;
         }else{
             row.value = tomorrow;
         }
@@ -141,7 +130,7 @@ class BuddyNewMedicineController: FormViewController {
         row = FormRowDescriptor(tag: "\(FormTag.end_date)_\(self.scheduleSectionID)", rowType: .Date, title: "Stop inname");
         tomorrow = tomorrow.dateByAddingTimeInterval(60*60*24)
         if(sectionCount>2){
-            row.value = self.form.sections[sectionCount-2].rows[2].value;
+            row.value = self.form.sections[sectionCount-2].rows[3].value;
         }else{
             row.value = tomorrow;
         }
@@ -149,7 +138,6 @@ class BuddyNewMedicineController: FormViewController {
         
         row = FormRowDescriptor(tag: "\(FormTag.interval)_\(self.scheduleSectionID)", rowType: .MultipleSelector, title: "Interval")
         row.configuration[FormRowDescriptor.Configuration.Options] = [1,2,3,7,14]
-       // row.configuration[FormRowDescriptor.Configuration.AllowsMultipleSelection] = true
         row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
             switch( value ) {
             case 1:
@@ -167,15 +155,9 @@ class BuddyNewMedicineController: FormViewController {
             }
             } as TitleFormatterClosure
         if(sectionCount>2){
-            row.value = self.form.sections[sectionCount-2].rows[3].value;
+            row.value = self.form.sections[sectionCount-2].rows[4].value;
         }
         sectionNewSchedule.addRow(row)
-        
-        row = FormRowDescriptor(tag: "\(FormTag.amount)_\(self.scheduleSectionID)", rowType: .Text, title: "Hoeveelheid");
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.textAlignment" : NSTextAlignment.Right.rawValue]
-        sectionNewSchedule.addRow(row);
-        
-        
         
         row = FormRowDescriptor(tag: "\(FormTag.deleteSchedule)_\(self.scheduleSectionID)", rowType: .Button, title: "Verwijder inname-moment")
         row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
@@ -230,44 +212,23 @@ class BuddyNewMedicineController: FormViewController {
     func initForm(){
         self.form.sections[0].rows[0].value = medicine?.name;
         self.form.sections[0].rows[1].value = medicine?.info;
-        
-        print(Routes.showMedicine(patientId!, medicineId: self.medicine!.id!));
-        Alamofire.request(.POST, Routes.showMedicine(patientId!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
-            if response.result.isSuccess {
-                if let JSON = response.result.value {
-                    if response.response?.statusCode == 200 {
-                        let newMedicine = Mapper<Medicine>().map(JSON);
-                        self.medicine?.updateMedicineInfo(newMedicine!);
-                        print("Medicine toegevoegd");
-                    }else if response.response?.statusCode == 422 {
-                        print("Medicine show failed");
-                    }
-                }else{
-                    print("Ongeldige json response medicine show");
-                }
-            }else{
-                print("Ongeldige request medicine show ");
-            }
-        }
-        lastUpdatedImage = self.medicine?.photo;
-
-        
         if let numberOfSchedules = self.medicine?.schedules.count {
             for i in 0 ..< numberOfSchedules  {
                 self.addScheduleForm();
                 self.scheduleFormSectionsNewState[(scheduleSectionID-1)] = false;
                 self.sectionScheduleID[(scheduleSectionID-1)] = self.medicine?.schedules[i].id;
-                self.form.sections[i+1].rows[0].value = self.medicine?.schedules[i].time;
-                self.form.sections[i+1].rows[1].value = self.medicine?.schedules[i].start_date;
-                self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].end_date;
-                self.form.sections[i+1].rows[3].value = self.medicine?.schedules[i].interval;
-                self.form.sections[i+1].rows[4].value = self.medicine?.schedules[i].amount;
+                self.form.sections[i+1].rows[0].value = self.medicine?.schedules[i].amount;
+                self.form.sections[i+1].rows[1].value = self.medicine?.schedules[i].time;
+                self.form.sections[i+1].rows[2].value = self.medicine?.schedules[i].start_date;
+                self.form.sections[i+1].rows[3].value = self.medicine?.schedules[i].end_date;
+                self.form.sections[i+1].rows[4].value = self.medicine?.schedules[i].interval;
             }
         }
     }
     
    
     @IBAction func clickSave(sender: AnyObject) {
+        self.view.endEditing(true);
         MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Gegevens bewaren...", mode: .Indeterminate, animated: true) { response in
             self.annulateBtnPressed = true;
             MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
@@ -286,12 +247,16 @@ class BuddyNewMedicineController: FormViewController {
         }
 
     }
+    
+
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMedicinePicture" {
-            self.navigationController!.navigationBar.gestureRecognizers?.forEach( self.navigationController!.navigationBar.removeGestureRecognizer)
-            let buddyMedicinePictureController = segue.destinationViewController as! BuddyMedicinePictureController;
-            buddyMedicinePictureController.medicine = self.medicine;
-   
+            if let buddyMedicinePictureController = segue.destinationViewController as? BuddyMedicinePictureController {
+                self.pictureViewController = buddyMedicinePictureController;
+                self.pictureViewController!.medicine = self.medicine;
+                self.pictureViewController!.patientId = self.patientId;
+            }
         }
     }
     
@@ -300,12 +265,20 @@ class BuddyNewMedicineController: FormViewController {
         
         var params = ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description];
         
-        if(lastUpdatedImage != self.medicine?.photo){
-            print("Image update");
-            if(self.medicine?.photo != nil){
-                let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
-                let photoBase64 = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength);
-                params["photo"] = photoBase64;
+        //TODO: check if image need to be updated
+        if(self.pictureViewController != nil){
+            print(self.pictureViewController!.imageUpdated);
+            if(self.pictureViewController!.imageUpdated != nil && self.pictureViewController!.imageUpdated!){
+                print("Image update");
+                if(self.medicine?.photo != nil){
+                    let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
+                    let photoBase64 = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength);
+                    params["photo"] = photoBase64;
+                }else{
+                    print("Image not updated");
+                }
+            }else{
+                print("IMAGE NOT UPDATED");
             }
         }
         
@@ -319,11 +292,16 @@ class BuddyNewMedicineController: FormViewController {
                     if response.response?.statusCode == 200 {
                         let newMedicine = Mapper<Medicine>().map(JSON);
                         self.medicine?.updateMedicineInfo(newMedicine!);
-                        self.lastUpdatedImage = self.medicine?.photo;
+                        if(self.pictureViewController != nil){
+                            print("Foto updated = false - back to initial state");
+                            self.pictureViewController!.imageUpdated = false;
+                        }
                         print("Medicine toegevoegd");
                     }else if response.response?.statusCode == 422 {
                         print("No valid input given");
+                        print(response.result.value);
                         let JSONDict = JSON as! NSDictionary as NSDictionary;
+                        print("Dict: \(JSONDict)");
                         for (_, value) in JSONDict {
                             let errorsArray = value as! NSArray;
                             for (error) in errorsArray {
@@ -387,10 +365,10 @@ class BuddyNewMedicineController: FormViewController {
         var i = 0;
         for(sectionID, _) in self.scheduleFormSections {
             print("sectionID \(sectionID): updated: \(self.scheduleFormSectionsNewState[sectionID])");
-            i += 1;
-            let currentI = i;
             var storeScheduleRoute = "";
             if let newSchedule:Bool = self.scheduleFormSectionsNewState[sectionID] {
+                i += 1;
+                let currentI = i;
                 if(newSchedule){
                     storeScheduleRoute = Routes.createSchedule(self.patientId!, medicineId: (self.medicine?.id)!);
                 }
@@ -412,7 +390,6 @@ class BuddyNewMedicineController: FormViewController {
                     dispatch_group_leave(group);
                     if response.result.isSuccess {
                         if let JSON = response.result.value {
-                            print(JSON);
                             if response.response?.statusCode == 200 {
                                 if(newSchedule){
                                     print("schedule toegevoegd");
@@ -433,11 +410,10 @@ class BuddyNewMedicineController: FormViewController {
 
                             }else if response.response?.statusCode == 422 {
                                 print("No valid input given");
+                                errors.append("Inname-moment \(currentI): ");
                                 let JSONDict = JSON as! NSDictionary as NSDictionary;
                                 for (_, value) in JSONDict {
                                     let errorsArray = value as! NSArray;
-                                    
-                                    errors.append("Inname-moment \(currentI): ");
                                     for (error) in errorsArray {
                                         errors.append("\(error)");
                                     }
@@ -446,17 +422,19 @@ class BuddyNewMedicineController: FormViewController {
                             }
                         }else{
                             print("Ongeldige json response schedule");
+                            errors.append("Opslaan inname-moment \(currentI) mislukt");
                         }
                     }
                     else
                     {
                         print("Ongeldige request schedule");
+                        errors.append("Opslaan inname-moment \(currentI) mislukt");
                     }
                 }
             }else{
-                //Schedule state is nil -> Delete
-                print("Delete sectionID \(sectionID)");
-                deleteSchedule(sectionScheduleID[sectionID]!, medicineId: (self.medicine?.id)!);
+                if (sectionScheduleID[sectionID] != nil){
+                    deleteSchedule(sectionScheduleID[sectionID]!, medicineId: (self.medicine?.id)!);
+                }
             }
         }
 

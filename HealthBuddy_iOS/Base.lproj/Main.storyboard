@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -238,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q6Y-w2-Rgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3030" y="2279"/>
+            <point key="canvasLocation" x="2902" y="2299"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="1pN-Lo-UHM">
@@ -248,59 +248,47 @@
                         <viewControllerLayoutGuide type="top" id="0DO-Wy-Cvy"/>
                         <viewControllerLayoutGuide type="bottom" id="3t9-c0-KOR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Otv-fN-Qwd">
+                    <view key="view" contentMode="scaleToFill" id="6YA-AX-wVx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Medkit" translatesAutoresizingMaskIntoConstraints="NO" id="LgA-xR-hJl">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1L-0M-RCg" customClass="CircleProgressView" customModule="CircleProgressView">
+                                <rect key="frame" x="175" y="150" width="250" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="346" id="Bwm-ix-s3C"/>
-                                    <constraint firstAttribute="width" constant="400" id="cjf-VY-lck"/>
+                                    <constraint firstAttribute="width" constant="250" id="MVz-tP-lfQ"/>
+                                    <constraint firstAttribute="height" constant="250" id="eGC-wV-Fbv"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Bwm-ix-s3C"/>
-                                        <exclude reference="cjf-VY-lck"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Bwm-ix-s3C"/>
-                                        <include reference="cjf-VY-lck"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="progressImage"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="centerImage" value="takePill"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="refreshRate">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="LgA-xR-hJl" firstAttribute="centerX" secondItem="Otv-fN-Qwd" secondAttribute="centerX" id="JQe-o5-Bez"/>
-                            <constraint firstItem="LgA-xR-hJl" firstAttribute="top" secondItem="0DO-Wy-Cvy" secondAttribute="bottom" id="Jzk-kL-5QJ"/>
+                            <constraint firstAttribute="centerX" secondItem="J1L-0M-RCg" secondAttribute="centerX" id="Gih-iP-6dY"/>
+                            <constraint firstAttribute="centerY" secondItem="J1L-0M-RCg" secondAttribute="centerY" constant="25" id="p8D-5i-gO5"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="LgA-xR-hJl"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="JQe-o5-Bez"/>
-                                <exclude reference="Jzk-kL-5QJ"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="LgA-xR-hJl"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="JQe-o5-Bez"/>
-                                <include reference="Jzk-kL-5QJ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="OF5-G2-57a"/>
+                    <connections>
+                        <outlet property="circleProgressView" destination="J1L-0M-RCg" id="hee-XH-s1w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Um-oK-Ihd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3030" y="725"/>
+            <point key="canvasLocation" x="2902" y="1484"/>
         </scene>
         <!--Buddy Tab Bar Controller-->
         <scene sceneID="RsC-4x-t7b">
@@ -315,31 +303,11 @@
                     <connections>
                         <segue destination="L4c-IP-CaP" kind="relationship" relationship="viewControllers" id="TC9-eR-niV"/>
                         <segue destination="Jzc-0B-xeY" kind="relationship" relationship="viewControllers" id="QKx-DW-2mY"/>
-                        <segue destination="uKa-P9-ae3" kind="relationship" relationship="viewControllers" id="4ZR-4t-B6e"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Sl-e8-knb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1206" y="1489"/>
-        </scene>
-        <!--Gewicht-->
-        <scene sceneID="EtV-kT-Nu2">
-            <objects>
-                <viewController title="Gewicht" id="JaT-Mk-mRr" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pJv-cd-9C8"/>
-                        <viewControllerLayoutGuide type="bottom" id="FhB-Gl-dG4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1FG-nQ-Gql">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="qfE-eG-NOj"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nQf-Ur-6UA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3030" y="1475"/>
         </scene>
         <!--Zorgbehoevenden-->
         <scene sceneID="c7y-8T-6Tm">
@@ -458,14 +426,13 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="AZE-h9-kJg" kind="show" identifier="showWeight" id="e3c-ny-S0h"/>
                         <segue destination="Z0e-PC-5Nd" kind="show" identifier="showMedicaliD" id="vTv-jw-jk6"/>
-                        <segue destination="XDV-rk-OeF" kind="show" identifier="showMedicine" id="JXH-Uo-7qs"/>
+                        <segue destination="uw0-Rf-O9c" kind="show" identifier="showMedicine" id="JXH-Uo-7qs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCe-fV-HJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2716.5" y="-569"/>
+            <point key="canvasLocation" x="2752.5" y="-569"/>
         </scene>
         <!--Buddy MedicaliD Controller-->
         <scene sceneID="bAt-ts-R7S">
@@ -497,10 +464,10 @@
             </objects>
             <point key="canvasLocation" x="3730.5" y="-1386"/>
         </scene>
-        <!--Buddy Medicine Controller-->
+        <!--Innames-->
         <scene sceneID="VlU-21-kc8">
             <objects>
-                <tableViewController id="XDV-rk-OeF" customClass="BuddyMedicineController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="XDV-rk-OeF" customClass="BuddyMedicineController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ur6-PP-KHi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -514,15 +481,15 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MedicineCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MedicineCell" textLabel="wZa-6N-YjR" imageView="Ojx-oJ-jAe" style="IBUITableViewCellStyleDefault" id="ZbF-sg-8sM">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MedicineCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedicineCell" textLabel="wZa-6N-YjR" imageView="Ojx-oJ-jAe" style="IBUITableViewCellStyleDefault" id="ZbF-sg-8sM">
                                 <rect key="frame" x="0.0" y="113" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZbF-sg-8sM" id="piA-gq-iI9">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wZa-6N-YjR">
-                                            <rect key="frame" x="73" y="0.0" width="492" height="43"/>
+                                            <rect key="frame" x="73" y="0.0" width="512" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -544,6 +511,7 @@
                             <outlet property="delegate" destination="XDV-rk-OeF" id="yD0-LZ-Uca"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Innames" image="MedicinTabIcon" id="Xbj-gX-sfK"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="rPe-XU-3V7">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mgO-kM-bl7">
@@ -561,7 +529,181 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1on-sr-ehy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3763.5" y="-631"/>
+            <point key="canvasLocation" x="4588.5" y="-631"/>
+        </scene>
+        <!--Dashboard-->
+        <scene sceneID="TVc-lt-zEE">
+            <objects>
+                <viewController id="ONZ-h3-REK" customClass="BuddyMedicineDashboardHistoryController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="djp-Yo-OTz"/>
+                        <viewControllerLayoutGuide type="bottom" id="cA7-sd-sZe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="63O-bz-rgg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="Player" id="5pG-hD-fEm"/>
+                    <connections>
+                        <segue destination="op1-Xe-sY7" kind="show" identifier="showProgress" id="3eW-nU-Lqp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0w2-Xc-eVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4588.5" y="164"/>
+        </scene>
+        <!--Buddy Medicine Progress Controller-->
+        <scene sceneID="VLn-Mg-Hor">
+            <objects>
+                <viewController id="op1-Xe-sY7" customClass="BuddyMedicineProgressController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZtC-Yz-z1h"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Au-q1-bFe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qil-Em-ow9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 van de 5 pillen ingenomen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1j-1X-DBM">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="101" id="LU8-Jk-4qk">
+                                        <variation key="widthClass=compact" constant="60"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="SKk-CO-4SL"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="101" id="rzI-S1-Wn5">
+                                        <variation key="widthClass=compact" constant="60"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="LU8-Jk-4qk"/>
+                                        <exclude reference="SKk-CO-4SL"/>
+                                        <exclude reference="rzI-S1-Wn5"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="LU8-Jk-4qk"/>
+                                        <include reference="SKk-CO-4SL"/>
+                                        <include reference="rzI-S1-Wn5"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgF-60-a4i">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="WqG-TJ-jgp"/>
+                                    <constraint firstAttribute="height" constant="100" id="xrR-gb-PXX">
+                                        <variation key="widthClass=compact" constant="56"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WqG-TJ-jgp"/>
+                                        <exclude reference="xrR-gb-PXX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="WqG-TJ-jgp"/>
+                                        <include reference="xrR-gb-PXX"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZG-7r-4zr" customClass="CircleProgressView" customModule="CircleProgressView">
+                                <rect key="frame" x="175" y="151" width="250" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="YGe-td-28u"/>
+                                    <constraint firstAttribute="width" constant="250" id="gOT-yK-zMT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="progressImage"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="centerImage" value="takePill"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="refreshRate">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="MgF-60-a4i" firstAttribute="leading" secondItem="Qil-Em-ow9" secondAttribute="leadingMargin" constant="55" id="5gl-fD-cPs">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
+                            <constraint firstItem="3Au-q1-bFe" firstAttribute="top" secondItem="L1j-1X-DBM" secondAttribute="bottom" constant="20" id="9BL-7d-Ggh">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="L1j-1X-DBM" firstAttribute="leading" secondItem="Qil-Em-ow9" secondAttribute="leadingMargin" constant="12" id="DJA-6H-BaP">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
+                            <constraint firstItem="HZG-7r-4zr" firstAttribute="centerX" secondItem="Qil-Em-ow9" secondAttribute="centerX" id="XLm-LC-Hpd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="L1j-1X-DBM" secondAttribute="trailing" constant="13" id="aCs-qA-vjU">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="MgF-60-a4i" secondAttribute="trailing" constant="30" id="clY-AH-G87">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
+                            <constraint firstItem="HZG-7r-4zr" firstAttribute="centerY" secondItem="Qil-Em-ow9" secondAttribute="centerY" id="n6z-wI-5Xq">
+                                <variation key="widthClass=compact" constant="0.5"/>
+                            </constraint>
+                            <constraint firstItem="MgF-60-a4i" firstAttribute="top" secondItem="ZtC-Yz-z1h" secondAttribute="bottom" id="wvm-Yd-xjB"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="L1j-1X-DBM"/>
+                                <exclude reference="MgF-60-a4i"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="5gl-fD-cPs"/>
+                                <exclude reference="clY-AH-G87"/>
+                                <exclude reference="wvm-Yd-xjB"/>
+                                <exclude reference="DJA-6H-BaP"/>
+                                <exclude reference="aCs-qA-vjU"/>
+                                <exclude reference="9BL-7d-Ggh"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="L1j-1X-DBM"/>
+                                <include reference="MgF-60-a4i"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="5gl-fD-cPs"/>
+                                <include reference="clY-AH-G87"/>
+                                <include reference="wvm-Yd-xjB"/>
+                                <include reference="DJA-6H-BaP"/>
+                                <include reference="aCs-qA-vjU"/>
+                                <include reference="9BL-7d-Ggh"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="circleProgressView" destination="HZG-7r-4zr" id="7iv-Zr-WSG"/>
+                        <outlet property="lblDate" destination="MgF-60-a4i" id="TB8-uQ-jPN"/>
+                        <outlet property="lblProgress" destination="L1j-1X-DBM" id="rto-h4-hpP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AIN-mx-jAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5388" y="164"/>
         </scene>
         <!--New Medicine-->
         <scene sceneID="PH6-v4-fua">
@@ -578,12 +720,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="  " id="ZSt-Ir-3gJ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="adt-VO-6FU">
+                        <barButtonItem key="leftBarButtonItem" title="Annuleren" id="adt-VO-6FU">
                             <connections>
+                                <action selector="clickCancel:" destination="5jz-a6-hwd" id="wkt-g1-EHM"/>
                                 <segue destination="6Hp-Qs-Fvc" kind="unwind" identifier="goBack" unwindAction="cancelToPlayersViewController:" id="SIb-ie-hvS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="cfy-ZW-3aw">
+                        <barButtonItem key="rightBarButtonItem" title="Opslaan" id="cfy-ZW-3aw">
                             <connections>
                                 <action selector="clickSave:" destination="5jz-a6-hwd" id="5QA-De-ZQy"/>
                             </connections>
@@ -597,7 +740,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FtT-VS-KCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6Hp-Qs-Fvc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5314.5" y="-631"/>
+            <point key="canvasLocation" x="6076.5" y="-631"/>
         </scene>
         <!--Buddy Medicine Picture Controller-->
         <scene sceneID="4uY-DW-6EA">
@@ -641,7 +784,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="536" id="EQ9-M2-47X">
-                                                <variation key="widthClass=compact" constant="487"/>
+                                                <variation key="widthClass=compact" constant="500"/>
                                             </constraint>
                                         </constraints>
                                         <variation key="default">
@@ -663,7 +806,7 @@
                                     <constraint firstAttribute="trailing" secondItem="9uf-aW-O2V" secondAttribute="trailing" id="K93-kz-pfj"/>
                                     <constraint firstItem="9uf-aW-O2V" firstAttribute="leading" secondItem="Rey-xt-p4y" secondAttribute="leading" id="ODc-EJ-HNC"/>
                                     <constraint firstAttribute="bottom" secondItem="9uf-aW-O2V" secondAttribute="bottom" constant="-64" id="Qh6-la-IJy">
-                                        <variation key="widthClass=compact" constant="0.0"/>
+                                        <variation key="widthClass=compact" constant="-8"/>
                                     </constraint>
                                     <constraint firstItem="9uf-aW-O2V" firstAttribute="centerX" secondItem="Rey-xt-p4y" secondAttribute="centerX" id="S0a-9u-gYx"/>
                                 </constraints>
@@ -705,7 +848,7 @@
                             </constraint>
                             <constraint firstItem="Tm7-IO-QLH" firstAttribute="bottom" secondItem="hpd-Wd-QCk" secondAttribute="bottomMargin" id="Zlu-1J-lgg"/>
                             <constraint firstAttribute="bottom" secondItem="Rey-xt-p4y" secondAttribute="bottom" id="c4n-YQ-ZTO">
-                                <variation key="widthClass=compact" constant="49"/>
+                                <variation key="widthClass=compact" constant="44"/>
                             </constraint>
                             <constraint firstItem="Rey-xt-p4y" firstAttribute="leading" secondItem="hpd-Wd-QCk" secondAttribute="leading" id="fQx-cL-jOo"/>
                             <constraint firstItem="Rey-xt-p4y" firstAttribute="top" secondItem="mpN-y4-HYK" secondAttribute="bottom" id="miP-nb-XtT">
@@ -752,72 +895,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UhM-AM-DNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6079.5" y="-631"/>
-        </scene>
-        <!--Buddy Weight Controller-->
-        <scene sceneID="qeL-jS-bLG">
-            <objects>
-                <viewController id="AZE-h9-kJg" customClass="BuddyWeightController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bRN-BF-PRZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="eFe-e2-3KZ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Zb0-hr-99A">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gewicht" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suL-Km-DjA">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <color key="backgroundColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="tK9-44-le5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="tK9-44-le5"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="tK9-44-le5"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="suL-Km-DjA" firstAttribute="top" secondItem="bRN-BF-PRZ" secondAttribute="bottom" id="Q7W-RJ-n91"/>
-                            <constraint firstItem="suL-Km-DjA" firstAttribute="centerX" secondItem="Zb0-hr-99A" secondAttribute="centerX" id="k3r-XI-wNR"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="suL-Km-DjA"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="Q7W-RJ-n91"/>
-                                <exclude reference="k3r-XI-wNR"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="suL-Km-DjA"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="Q7W-RJ-n91"/>
-                                <include reference="k3r-XI-wNR"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <connections>
-                        <outlet property="lblWeight" destination="suL-Km-DjA" id="EgR-YV-yrF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H95-n6-Mkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3772.5" y="514"/>
+            <point key="canvasLocation" x="6829.5" y="-624"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ivM-af-3Ai">
@@ -863,7 +941,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DbF-aS-J9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4540.5" y="-631"/>
+            <point key="canvasLocation" x="5371.5" y="-631"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="SMa-fc-Vfa">
@@ -883,27 +961,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azb-Vh-Col" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="725"/>
-        </scene>
-        <!--Gewicht-->
-        <scene sceneID="tc6-Wb-spF">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uKa-P9-ae3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gewicht" image="WeightTabIcon" id="hUd-yv-0vs"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="X7l-h6-eEx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.61176470589999998" green="0.81176470590000005" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="JaT-Mk-mRr" kind="relationship" relationship="rootViewController" id="NiU-KO-w1P"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Dt-4F-o9n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2112" y="1475"/>
+            <point key="canvasLocation" x="2049" y="1489"/>
         </scene>
         <!--Medicatie-->
         <scene sceneID="12O-PH-LTg">
@@ -923,7 +981,32 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPp-Hy-GxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="2279"/>
+            <point key="canvasLocation" x="2049" y="2293"/>
+        </scene>
+        <!--Buddy Medicine Tab Bar Controller-->
+        <scene sceneID="A5n-V9-HH1">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uw0-Rf-O9c" customClass="BuddyMedicineTabBarController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="SYQ-uo-IEJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="XDV-rk-OeF" kind="relationship" relationship="viewControllers" id="k5f-oI-XJ6"/>
+                        <segue destination="ONZ-h3-REK" kind="relationship" relationship="viewControllers" id="6Gh-T6-X12"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XZi-EK-efD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationBar contentMode="scaleToFill" id="PbY-cG-xlL">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <items>
+                        <navigationItem title="Title" id="D6u-wR-F8c"/>
+                    </items>
+                </navigationBar>
+            </objects>
+            <point key="canvasLocation" x="3763.5" y="-631"/>
         </scene>
     </scenes>
     <resources>
@@ -931,11 +1014,11 @@
         <image name="Logo" width="487" height="607"/>
         <image name="Medicatie" width="50" height="50"/>
         <image name="MedicinTabIcon" width="30" height="25"/>
-        <image name="Medkit" width="512" height="512"/>
         <image name="Player" width="30" height="30"/>
-        <image name="WeightTabIcon" width="30" height="30"/>
+        <image name="progressImage" width="250" height="250"/>
+        <image name="takePill" width="380" height="380"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7gd-n9-BcH"/>
+        <segue reference="QBc-Vo-xvA"/>
     </inferredMetricsTieBreakers>
 </document>

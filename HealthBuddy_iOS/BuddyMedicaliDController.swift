@@ -12,7 +12,7 @@ import Alamofire
 import MRProgress
 import ObjectMapper
 
-class BuddyMedicaliDController: FormViewController {
+class BuddyMedicaliDController: FormViewController, UITextFieldDelegate {
     var patient:User!;
     
     var addressUpdate = false;
@@ -48,8 +48,12 @@ class BuddyMedicaliDController: FormViewController {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         self.loadForm();
+        
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        print("EDITING");
+    }
 
     
     override func viewDidLoad() {
@@ -63,7 +67,6 @@ class BuddyMedicaliDController: FormViewController {
         self.navigationItem.title = "\(patient.firstName!) \(patient.lastName!)";
         
         self.initForm();
-       
     }
     
     func hideKeyboardOnHeaderTab(){
@@ -192,8 +195,7 @@ class BuddyMedicaliDController: FormViewController {
     func initForm(){
         self.form.sections[0].rows[0].value = patient.gender;
         self.form.sections[0].rows[1].value = patient.firstName;
-        self.form.sections[0].rows[2].value = patient.lastName;
-
+        self.form.sections[0].rows[2].value = patient.lastName;        
         self.form.sections[0].rows[3].value = patient.dateOfBirth;
         self.form.sections[0].rows[4].value = patient.phone;
 
@@ -232,12 +234,14 @@ class BuddyMedicaliDController: FormViewController {
             
             //Create and add first option action
             let noSave: UIAlertAction = UIAlertAction(title: "Wijzigingen niet opslaan", style: .Destructive) { action -> Void in
+                self.view.endEditing(true);
                 self.navigationController?.popViewControllerAnimated(true);
             }
             actionSheetController.addAction(noSave);
             
             //Create and add a second option action
             let doSave: UIAlertAction = UIAlertAction(title: "Wijzingen opslaan", style: .Default) { action -> Void in
+                self.view.endEditing(true);
                 self.backBtnPressed = true;
                 MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, animated: true);
                 self.updateDatabase()
@@ -298,7 +302,7 @@ class BuddyMedicaliDController: FormViewController {
             
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd";
-            Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, formTag.gender: self.form.formValues()[formTag.gender]!.description, formTag.firstName: self.form.formValues()[formTag.firstName]!.description, formTag.lastName : self.form.formValues()[formTag.lastName]!.description, formTag.dateOfBirth: dateFormatter.stringFromDate(self.form.formValues()[formTag.dateOfBirth] as! NSDate), formTag.phone: self.form.formValues()[formTag.phone]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
+            Alamofire.request(.POST, Routes.updateUserInfo(patient.userId!), parameters: ["api_token": Authentication.token!, "email":patient.email!, formTag.gender: self.form.formValues()[formTag.gender]!.description, formTag.firstName: self.form.formValues()[formTag.firstName]!.description, formTag.lastName : self.form.formValues()[formTag.lastName]!.description, formTag.dateOfBirth: dateFormatter.stringFromDate(self.form.formValues()[formTag.dateOfBirth] as! NSDate), formTag.phone: self.form.formValues()[formTag.phone]!.description], headers: ["Accept": "application/json"]) .responseJSON { response in
                 if response.result.isSuccess {
                     if let JSON = response.result.value {
                         print(JSON);
@@ -319,9 +323,11 @@ class BuddyMedicaliDController: FormViewController {
                         }
                     }else{
                         print("Ongeldige json response userinfo update");
+                        errors.append("Opslaan patiënt info mislukt");
                     }
                 }else{
                     print("Ongeldige request userinfo update");
+                    errors.append("Opslaan patiënt info mislukt");
                 }
                 dispatch_group_leave(group)
             }
@@ -349,9 +355,11 @@ class BuddyMedicaliDController: FormViewController {
                             errors.append("\n");                        }
                     }else{
                         print("Ongeldige json response address update");
+                        errors.append("Opslaan adres info mislukt");
                     }
                 }else{
                     print("Ongeldige request address update");
+                    errors.append("Opslaan adres info mislukt");
                 }
                 dispatch_group_leave(group)
             }
@@ -380,9 +388,11 @@ class BuddyMedicaliDController: FormViewController {
                         }
                     }else{
                         print("Ongeldige json response medicalinfo update");
+                        errors.append("Opslaan medische info info mislukt");
                     }
                 }else{
                     print("Ongeldige request medicalinfo update");
+                    errors.append("Opslaan medische info info mislukt");
                 }
                 dispatch_group_leave(group)
             }
@@ -411,6 +421,8 @@ class BuddyMedicaliDController: FormViewController {
                 });
             }
         }
+        
+
     }
     
 

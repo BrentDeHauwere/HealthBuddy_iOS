@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (3.3.1)
+  - CircleProgressView (1.0.10)
+  - IQKeyboardManagerSwift (4.0.2)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -29,18 +31,25 @@ PODS:
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
   - ObjectMapper (1.1.5)
+  - RSDayFlow (1.4.1)
   - SwiftForms (1.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
+  - CircleProgressView
+  - IQKeyboardManagerSwift
   - MRProgress
   - ObjectMapper (~> 1.1)
+  - RSDayFlow
   - SwiftForms
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  CircleProgressView: 5116fc2d3be792d755e6979d7f7309648de79d11
+  IQKeyboardManagerSwift: 2f2c19c509f67c4c0df2826db54033d3e090ce65
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
+  RSDayFlow: 24e9fb2f1f2cdbcb82e33345ae7fcc55309f746c
   SwiftForms: c439aca9cf462383a1292c028bd14915de42bf6b
 
 COCOAPODS: 0.39.0

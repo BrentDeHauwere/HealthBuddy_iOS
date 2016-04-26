@@ -50,7 +50,6 @@ class LoginController: UIViewController {
     }
     
     func logIn(){
-      
         MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Aanmelden...", mode: .Indeterminate, animated: true) { response in
             MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
             Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
@@ -76,6 +75,7 @@ class LoginController: UIViewController {
        
     }
     
+        
     func getProfile(){
         Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
             .responseJSON { response in
@@ -102,6 +102,7 @@ class LoginController: UIViewController {
                     })
                 }else{
                     print("FAILED TO GET PROFILES");
+                    Alert.alertStatusWithSymbol(true,message: "Aanmelden mislukt, profiel niet gevonden", seconds: 1.5, view: self.view);
                 }
         }
     }
