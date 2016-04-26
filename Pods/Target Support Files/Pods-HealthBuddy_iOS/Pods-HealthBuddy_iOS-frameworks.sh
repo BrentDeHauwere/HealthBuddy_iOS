@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-HealthBuddy_iOS/Alamofire.framework"
+  install_framework "Pods-HealthBuddy_iOS/CircleProgressView.framework"
   install_framework "Pods-HealthBuddy_iOS/IQKeyboardManagerSwift.framework"
   install_framework "Pods-HealthBuddy_iOS/MRProgress.framework"
   install_framework "Pods-HealthBuddy_iOS/ObjectMapper.framework"
@@ -93,6 +94,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-HealthBuddy_iOS/Alamofire.framework"
+  install_framework "Pods-HealthBuddy_iOS/CircleProgressView.framework"
   install_framework "Pods-HealthBuddy_iOS/IQKeyboardManagerSwift.framework"
   install_framework "Pods-HealthBuddy_iOS/MRProgress.framework"
   install_framework "Pods-HealthBuddy_iOS/ObjectMapper.framework"

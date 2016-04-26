@@ -27,14 +27,12 @@ class BuddyNewMedicineController: FormViewController {
         static let end_date = "end_date";
     }
 
+    var pictureViewController:BuddyMedicinePictureController?;
     var medicine:Medicine?
     var patientId:Int?
     var newMedicin = true;
     var savedMedicin = false;
     var annulateBtnPressed = false;
-    var lastUpdatedImage:UIImage?
-
-   
     
     //Hou elk section bij met unieke ID
     var scheduleSectionID = 0;
@@ -50,7 +48,7 @@ class BuddyNewMedicineController: FormViewController {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         self.loadForm();
-        
+
     }
     
     override func viewDidLoad() {
@@ -214,28 +212,6 @@ class BuddyNewMedicineController: FormViewController {
     func initForm(){
         self.form.sections[0].rows[0].value = medicine?.name;
         self.form.sections[0].rows[1].value = medicine?.info;
-        
-        print(Routes.showMedicine(patientId!, medicineId: self.medicine!.id!));
-        Alamofire.request(.POST, Routes.showMedicine(patientId!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
-            if response.result.isSuccess {
-                if let JSON = response.result.value {
-                    if response.response?.statusCode == 200 {
-                        let newMedicine = Mapper<Medicine>().map(JSON);
-                        self.medicine?.updateMedicineInfo(newMedicine!);
-                        print("Medicine toegevoegd");
-                    }else if response.response?.statusCode == 422 {
-                        print("Medicine show failed");
-                    }
-                }else{
-                    print("Ongeldige json response medicine show");
-                }
-            }else{
-                print("Ongeldige request medicine show ");
-            }
-        }
-        lastUpdatedImage = self.medicine?.photo;
-
-        
         if let numberOfSchedules = self.medicine?.schedules.count {
             for i in 0 ..< numberOfSchedules  {
                 self.addScheduleForm();
@@ -276,9 +252,11 @@ class BuddyNewMedicineController: FormViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMedicinePicture" {
-            let buddyMedicinePictureController = segue.destinationViewController as! BuddyMedicinePictureController;
-            buddyMedicinePictureController.medicine = self.medicine;
-   
+            if let buddyMedicinePictureController = segue.destinationViewController as? BuddyMedicinePictureController {
+                self.pictureViewController = buddyMedicinePictureController;
+                self.pictureViewController!.medicine = self.medicine;
+                self.pictureViewController!.patientId = self.patientId;
+            }
         }
     }
     
@@ -287,12 +265,20 @@ class BuddyNewMedicineController: FormViewController {
         
         var params = ["api_token": Authentication.token!, FormTag.name: self.form.formValues()[FormTag.name]!.description, FormTag.info: self.form.formValues()[FormTag.info]!.description];
         
-        if(lastUpdatedImage != self.medicine?.photo){
-            print("Image update");
-            if(self.medicine?.photo != nil){
-                let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
-                let photoBase64 = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength);
-                params["photo"] = photoBase64;
+        //TODO: check if image need to be updated
+        if(self.pictureViewController != nil){
+            print(self.pictureViewController!.imageUpdated);
+            if(self.pictureViewController!.imageUpdated != nil && self.pictureViewController!.imageUpdated!){
+                print("Image update");
+                if(self.medicine?.photo != nil){
+                    let imageData = UIImageJPEGRepresentation((self.medicine?.photo!)!, 1);
+                    let photoBase64 = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength);
+                    params["photo"] = photoBase64;
+                }else{
+                    print("Image not updated");
+                }
+            }else{
+                print("IMAGE NOT UPDATED");
             }
         }
         
@@ -306,7 +292,10 @@ class BuddyNewMedicineController: FormViewController {
                     if response.response?.statusCode == 200 {
                         let newMedicine = Mapper<Medicine>().map(JSON);
                         self.medicine?.updateMedicineInfo(newMedicine!);
-                        self.lastUpdatedImage = self.medicine?.photo;
+                        if(self.pictureViewController != nil){
+                            print("Foto updated = false - back to initial state");
+                            self.pictureViewController!.imageUpdated = false;
+                        }
                         print("Medicine toegevoegd");
                     }else if response.response?.statusCode == 422 {
                         print("No valid input given");
@@ -376,10 +365,10 @@ class BuddyNewMedicineController: FormViewController {
         var i = 0;
         for(sectionID, _) in self.scheduleFormSections {
             print("sectionID \(sectionID): updated: \(self.scheduleFormSectionsNewState[sectionID])");
-            i += 1;
-            let currentI = i;
             var storeScheduleRoute = "";
             if let newSchedule:Bool = self.scheduleFormSectionsNewState[sectionID] {
+                i += 1;
+                let currentI = i;
                 if(newSchedule){
                     storeScheduleRoute = Routes.createSchedule(self.patientId!, medicineId: (self.medicine?.id)!);
                 }
@@ -401,7 +390,6 @@ class BuddyNewMedicineController: FormViewController {
                     dispatch_group_leave(group);
                     if response.result.isSuccess {
                         if let JSON = response.result.value {
-                            print(JSON);
                             if response.response?.statusCode == 200 {
                                 if(newSchedule){
                                     print("schedule toegevoegd");
@@ -422,11 +410,10 @@ class BuddyNewMedicineController: FormViewController {
 
                             }else if response.response?.statusCode == 422 {
                                 print("No valid input given");
+                                errors.append("Inname-moment \(currentI): ");
                                 let JSONDict = JSON as! NSDictionary as NSDictionary;
                                 for (_, value) in JSONDict {
                                     let errorsArray = value as! NSArray;
-                                    
-                                    errors.append("Inname-moment \(currentI): ");
                                     for (error) in errorsArray {
                                         errors.append("\(error)");
                                     }
@@ -435,11 +422,13 @@ class BuddyNewMedicineController: FormViewController {
                             }
                         }else{
                             print("Ongeldige json response schedule");
+                            errors.append("Opslaan inname-moment \(currentI) mislukt");
                         }
                     }
                     else
                     {
                         print("Ongeldige request schedule");
+                        errors.append("Opslaan inname-moment \(currentI) mislukt");
                     }
                 }
             }else{

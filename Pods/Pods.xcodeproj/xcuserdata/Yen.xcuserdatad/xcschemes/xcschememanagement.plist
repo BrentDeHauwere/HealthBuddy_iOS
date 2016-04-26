@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CircleProgressView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,12 +47,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>143F6407417666D6714DC2F1237863A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1520003FEBEC114D6C84F832AFEDB994</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>35446C788499AC9E3FADC9F845F99F30</key>
+		<key>2DF7AFC3D9458F6F959567CB33616849</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AAAF367F62F10D68011597AC6A0B113</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AB8338A5373AE60C1072233B91CF1619</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C8F54543305BD95F34FAB796C9CAAFCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E163CFD67E89CAF7331C0966E9C4AFCB</key>
+		<key>EAE6DC71F4595AF3BAE4442C2F5DA71F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

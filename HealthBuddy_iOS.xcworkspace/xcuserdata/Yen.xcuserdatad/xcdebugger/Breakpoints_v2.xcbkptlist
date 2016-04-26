@@ -103,44 +103,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthBuddy_iOS/BuddyNewMedicineController.swift"
-            timestampString = "483102092.182157"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "loadForm()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HealthBuddy_iOS/BuddyNewMedicineController.swift"
-            timestampString = "483102092.182157"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "deleteScheduleForm(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/BuddyMedicinePictureController.swift"
-            timestampString = "482784499.130251"
+            timestampString = "483183256.981473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "selectImage(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -247,78 +215,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthBuddy_iOS/BuddyNewMedicineController.swift"
-            timestampString = "483102092.182157"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
-            landmarkName = "deleteScheduleForm(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/Medicine.swift"
-            timestampString = "482762968.811317"
+            timestampString = "483181930.155319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "mapping(_:)"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HealthBuddy_iOS/BuddyNewMedicineController.swift"
-            timestampString = "483102092.182157"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "initForm()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HealthBuddy_iOS.BuddyNewMedicineController.initForm () -&gt; ()"
-                  moduleName = "HealthBuddy_iOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Yen/Documents/Bachelor%202/Mobile%20Apps%20Project/HealthBuddy/HealthBuddy_iOS/HealthBuddy_iOS/BuddyNewMedicineController.swift"
-                  timestampString = "482762125.150523"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "210"
-                  endingLineNumber = "210"
-                  offsetFromSymbolStart = "1676">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HealthBuddy_iOS.BuddyNewMedicineController.initForm () -&gt; ()"
-                  moduleName = "HealthBuddy_iOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Yen/Documents/Bachelor%202/Mobile%20Apps%20Project/HealthBuddy/HealthBuddy_iOS/HealthBuddy_iOS/BuddyNewMedicineController.swift"
-                  timestampString = "482762125.15078"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "210"
-                  endingLineNumber = "210"
-                  offsetFromSymbolStart = "1909">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -334,6 +238,70 @@
             startingLineNumber = "56"
             endingLineNumber = "56"
             landmarkName = "mapping(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthBuddy_iOS/BuddyMedicinePictureController.swift"
+            timestampString = "483181253.791265"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "initForm()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthBuddy_iOS.BuddyMedicinePictureController.initForm () -&gt; ()"
+                  moduleName = "HealthBuddy_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yen/Documents/Bachelor%202/Mobile%20Apps%20Project/HealthBuddy/HealthBuddy_iOS/HealthBuddy_iOS/BuddyMedicinePictureController.swift"
+                  timestampString = "483178718.007698"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "865">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthBuddy_iOS.BuddyMedicinePictureController.(initForm () -&gt; ()).(closure #2)"
+                  moduleName = "HealthBuddy_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yen/Documents/Bachelor%202/Mobile%20Apps%20Project/HealthBuddy/HealthBuddy_iOS/HealthBuddy_iOS/BuddyMedicinePictureController.swift"
+                  timestampString = "483178718.007868"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "141">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthBuddy_iOS/BuddyNewMedicineController.swift"
+            timestampString = "483182936.456296"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "storeMedicin(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
