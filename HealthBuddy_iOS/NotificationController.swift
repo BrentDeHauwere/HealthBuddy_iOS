@@ -35,7 +35,6 @@ class NotificationController : NSObject {
                     
                     // days in the future the next schedule needs to be made
                     let daysInFuture = 3 - (startToNow % 3)
-                    print("dagen in toekomst: \(daysInFuture)")
                     
                     var nextScheduleDate: NSDate = now;
                     nextScheduleDate = nextScheduleDate.addDays(daysInFuture)
@@ -61,12 +60,8 @@ class NotificationController : NSObject {
                     
                     var scheduleDate = cal.dateFromComponents(scheduleComponents)
                     
-                    print(scheduleDate)
-                    
                     // amount of times scheduled (in the next {{daysInAdvance}} days)
-                    repeat {
-                        print("scheduleDate: \(scheduleDate!)")
-                        
+                    repeat {                        
                         scheduleDate = scheduleDate?.addDays(schedule.interval!)
                         
                         let message = "\(schedule.amount)"
