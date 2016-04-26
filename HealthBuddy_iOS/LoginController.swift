@@ -17,8 +17,6 @@ class LoginController: UIViewController {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     
-      
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -86,6 +84,8 @@ class LoginController: UIViewController {
                     if let JSON = response.result.value {
                         self.loggedInUser = Mapper<User>().map(JSON);
                         print(JSON);
+                        
+                        NotificationController.updateMedicines(self.loggedInUser!)
                     }
                     
                     

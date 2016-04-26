@@ -1,36 +1,44 @@
 //
 //  NotificationController.swift
-//  HealthBuddy_iOS
 //
-//  Created by Kamiel Klumpers on 19/04/16.
-//  Copyright © 2016 Yen Jacobs. All rights reserved.
-//
+//  Source of information about notifications:
+//  http://jamesonquave.com/blog/local-notifications-in-ios-8-with-swift-part-1/
 
 import Foundation
 
 class NotificationController : NSObject {
-    static func updateToDoList(schedules: [MedicalSchedule]){
+    
+    static func getTodoList() -> TodoList{
+        return TodoList.sharedInstance
+    }
+    
+    static func updateMedicines(user: User){
+        if let medicines = user.medicines {
+            for medicine in medicines {
+                updateMedicalSchedules(medicine.schedules)
+            }
+        }
+    }
+    
+    private static func updateMedicalSchedules(schedules: [MedicalSchedule]){
         
         let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let now = NSDate();
         
         for schedule in schedules {
-            // schedule 2 weeks in advance
-            let daysInAdvance = 14;
-            
-            let now = NSDate();
-            let future = now.addDays(daysInAdvance);
-            
-            if let started = schedule.start_date?.isBeforeDate(future), let ended = schedule.end_date?.isAfterDate(now){
-                if started && !ended {
+            if let end = schedule.end_date {
+                if end.isAfterDate(now){
+                    print(schedule.description)
                     
                     // calculate timespans (in days)
                     let startToNow = daysBetween(schedule.start_date!, end: now)
                     
                     // days in the future the next schedule needs to be made
                     let daysInFuture = 3 - (startToNow % 3)
+                    print("dagen in toekomst: \(daysInFuture)")
                     
-                    let nextScheduleDate: NSDate = now;
-                    nextScheduleDate.addDays(daysInFuture)
+                    var nextScheduleDate: NSDate = now;
+                    nextScheduleDate = nextScheduleDate.addDays(daysInFuture)
                     
                     // set time for the schedule
                     let unitFlags: NSCalendarUnit = [.Minute, .Hour, .Day, .Month, .Year]
@@ -39,33 +47,37 @@ class NotificationController : NSObject {
                     // getting time from time String
                     let format = NSDateFormatter()
                     format.dateFormat = "HH:mm:ss"
+                    format.timeZone = NSTimeZone(abbreviation: "GMT")
+                    
                     let dateFromString = format.dateFromString(schedule.time_s!)!
+                    
+                    print("dateFromString: \(dateFromString)")
                     
                     let time = NSCalendar.currentCalendar().components(unitFlags, fromDate: dateFromString )
                     
                     scheduleComponents.hour = time.hour
                     scheduleComponents.minute = time.minute
-                    let scheduleDate = cal.dateFromComponents(scheduleComponents)
+                    scheduleComponents.timeZone = NSTimeZone(abbreviation: "GMT+01:00")
+                    
+                    var scheduleDate = cal.dateFromComponents(scheduleComponents)
+                    
+                    print(scheduleDate)
                     
                     // amount of times scheduled (in the next {{daysInAdvance}} days)
-                    let times = floor(Double(daysInAdvance-daysInFuture)/Double(schedule.interval!))
-                    print(times)
-                    
-                    /*
-                    for _ in 1...times {
-                        // placeholder
-                        //let medicine : Medicine = Medicine(id:-20, name: "testMedicijn", photo:nil)
+                    repeat {
+                        print("scheduleDate: \(scheduleDate!)")
                         
-                        let message = "Neem \("") (\(schedule.amount)x)"
+                        scheduleDate = scheduleDate?.addDays(schedule.interval!)
+                        
+                        let message = "\(schedule.amount)"
                         let todoItem = TodoItem(deadline: scheduleDate!, title: message, UUID: NSUUID().UUIDString)
-                        ToDoList.sharedInstance.addItem(todoItem)
+                        TodoList.sharedInstance.addItem(todoItem)
+                        scheduleDate = scheduleDate!.addDays(schedule.interval!)
                         
-                        scheduleDate!.addDays(schedule.interval!)
-                    }
- */
+                    } while scheduleDate?.isBeforeDate(end) != nil && (scheduleDate?.isBeforeDate(end))!
+                    
                 }
             }
-            
         }
     }
     
@@ -101,24 +113,10 @@ extension NSDate {
         return isLess
     }
     
-    func equalToDate(dateToCompare: NSDate) -> Bool {
-        var isEqualTo = false
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedSame {
-            isEqualTo = true
-        }
-        return isEqualTo
-    }
-    
     func addDays(daysToAdd: Int) -> NSDate {
         let secondsInDays: NSTimeInterval = Double(daysToAdd) * 60 * 60 * 24
         let dateWithDaysAdded: NSDate = self.dateByAddingTimeInterval(secondsInDays)
         return dateWithDaysAdded
-    }
-    
-    func addHours(hoursToAdd: Int) -> NSDate {
-        let secondsInHours: NSTimeInterval = Double(hoursToAdd) * 60 * 60
-        let dateWithHoursAdded: NSDate = self.dateByAddingTimeInterval(secondsInHours)
-        return dateWithHoursAdded
     }
     
 }
