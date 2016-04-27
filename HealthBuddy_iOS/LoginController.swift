@@ -39,6 +39,7 @@ class LoginController: UIViewController {
 
     
     @IBAction func ClickSignIn(sender: UIButton) {
+        self.view.endEditing(true);
         if txtEmail.text == "" || txtPassword.text == ""
         {
             Alert.alertStatus("Vul uw email en wachtwoord in alstublieft", title: "Aanmelden mislukt", view: self);

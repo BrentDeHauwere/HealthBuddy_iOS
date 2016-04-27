@@ -41,7 +41,6 @@ class PatientMedicineController: UITableViewController {
     override func viewDidAppear(animated: Bool){
         self.medicines();
         self.scheduleRefreshData();
-        self.tableView.reloadData();
         super.viewDidAppear(true);
     }
     
@@ -117,6 +116,7 @@ class PatientMedicineController: UITableViewController {
                 if response.result.isSuccess {
                     if let JSON = response.result.value {
                         self.patient = Mapper<User>().map(JSON);
+                        self.medicines();
                         self.tableView.reloadData();
                         print("Data refreshed");
                     }
@@ -159,7 +159,6 @@ class PatientMedicineController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         return self.sections[section]
     }
     
