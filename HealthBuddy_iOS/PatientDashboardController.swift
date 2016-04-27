@@ -20,6 +20,7 @@ class PatientDashboardController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        print("PROGRESS CALCULATE");
         circleProgressView.setProgress(calculateProgress(), animated: true);
     }
     
