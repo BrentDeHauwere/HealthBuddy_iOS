@@ -49,6 +49,8 @@ class TodoList {
         
         // overwrite list of items with empty one
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey: ITEMS_KEY)
+        
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
     }
     
     func removeItem(item: TodoItem) {

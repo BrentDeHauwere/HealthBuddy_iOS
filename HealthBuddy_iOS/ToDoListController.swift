@@ -13,6 +13,7 @@ class ToDoListController : NSObject {
         let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
         dispatch_async(backgroundQueue, {
             
+                      
             TodoList.sharedInstance.clear()
             
             if let medicines = user.medicines {
