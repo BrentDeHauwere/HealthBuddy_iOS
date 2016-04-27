@@ -85,7 +85,7 @@ class LoginController: UIViewController {
                         print(JSON);
                         
                         // schedules inladen in achtergrond
-                        NotificationController.updateMedicines(self.loggedInUser!)
+                        ToDoListController.updateMedicines(self.loggedInUser!)
                     }
                     
                     

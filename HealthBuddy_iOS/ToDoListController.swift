@@ -1,12 +1,12 @@
 //
-//  NotificationController.swift
+//  ToDoListController.swift
 //
 //  Source of information about notifications:
 //  http://jamesonquave.com/blog/local-notifications-in-ios-8-with-swift-part-1/
 
 import Foundation
 
-class NotificationController : NSObject {
+class ToDoListController : NSObject {
     
     static func updateMedicines(user: User){
         let qualityOfServiceClass = QOS_CLASS_BACKGROUND
@@ -52,7 +52,7 @@ class NotificationController : NSObject {
                     // getting time from time String
                     let format = NSDateFormatter()
                     format.dateFormat = "HH:mm:ss"
-                    format.timeZone = NSTimeZone(abbreviation: "GMT+00:00")
+                    format.timeZone = NSTimeZone(abbreviation: "GMT+01:00")
                     
                     let dateFromString = format.dateFromString(schedule.time_s!)!
                     
