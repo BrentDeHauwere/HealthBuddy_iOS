@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "trofee.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "lion.jpg",
       "scale" : "2x"
     },
     {

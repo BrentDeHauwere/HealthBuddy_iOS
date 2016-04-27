@@ -115,7 +115,9 @@ class PatientMedicineController: UITableViewController {
             .responseJSON { response in
                 if response.result.isSuccess {
                     if let JSON = response.result.value {
-                        self.patient = Mapper<User>().map(JSON);
+                        let updatedUser = Mapper<User>().map(JSON);
+                        self.patient.updateUserInfo(updatedUser!);
+                        self.patient.medicines = updatedUser?.medicines;
                         self.medicines();
                         self.tableView.reloadData();
                         print("Data refreshed");
@@ -129,7 +131,9 @@ class PatientMedicineController: UITableViewController {
             .responseJSON { response in
                 if response.result.isSuccess {
                     if let JSON = response.result.value {
-                        self.patient = Mapper<User>().map(JSON);
+                        let updatedUser = Mapper<User>().map(JSON);
+                        self.patient.updateUserInfo(updatedUser!);
+                        self.patient.medicines = updatedUser?.medicines;
                         self.medicines();
                         self.tableView.reloadData();
                         refreshControl.endRefreshing();
@@ -239,7 +243,6 @@ class PatientMedicineController: UITableViewController {
                 if let Controller = segue.destinationViewController as? PatientTableShowMedicineController {
                     let section = indexPath.section;
                     if(section == 0){
-                        
                         Controller.medicine = self.getMedicine(self.medicinesVm[indexPath.row]);
                         Controller.schedule = self.medicinesVm[indexPath.row];
                     }

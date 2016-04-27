@@ -47,6 +47,16 @@ class PatientDashboardController: UIViewController {
                 
             }
         }
+        
+        if(medicinesToTake == medicinesTaken){
+            self.circleProgressView.centerImage = UIImage(named: "trofee");
+        }else{
+            if(self.patient?.gender == "M"){
+                self.circleProgressView.centerImage = UIImage(named: "takePillMan");
+            }else{
+                self.circleProgressView.centerImage = UIImage(named: "takePillWoman");
+            }
+        }
         return Double(medicinesTaken)/Double(medicinesToTake);
     }
 }
@@ -60,7 +70,6 @@ extension NSDate {
         if(self.timeIntervalSince1970 / (60*60*24) == floor(self.timeIntervalSince1970 / (60*60*24))){
             return (Int)(self.timeIntervalSince1970 / (60*60*24));
         }else{
-            
             return ((Int)(self.timeIntervalSince1970 / (60*60*24)) + 1);
         }
         

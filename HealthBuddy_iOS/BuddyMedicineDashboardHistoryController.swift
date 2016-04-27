@@ -86,7 +86,7 @@ class BuddyMedicineDashboardHistoryController: UIViewController,RSDFDatePickerVi
         return false;
     }
     
-    
+   /*
     func datePickerView(view: RSDFDatePickerView!, markImageColorForDate date: NSDate!) -> UIColor! {
         let unitFlags:NSCalendarUnit = [.Year, .Month, .Day];
         if(self.progressPerDay != nil){
@@ -103,6 +103,24 @@ class BuddyMedicineDashboardHistoryController: UIViewController,RSDFDatePickerVi
             }
         }
         return UIColor.grayColor();
+    }*/
+    
+    func datePickerView(view: RSDFDatePickerView!, markImageForDate date: NSDate!) -> UIImage! {
+        let unitFlags:NSCalendarUnit = [.Year, .Month, .Day];
+        if(self.progressPerDay != nil){
+            for (progress) in self.progressPerDay! {
+                let progressDateComponents = self.calendar.components(unitFlags, fromDate: progress.day!);
+                let progressDate = self.calendar.dateFromComponents(progressDateComponents);
+                if(date.isEqual(progressDate)){
+                    if progress.taken == progress.toTake {
+                        return UIImage(named: "trofee_icon");
+                    }else{
+                        return nil;
+                    }
+                }
+            }
+        }
+        return nil;
     }
     
     
