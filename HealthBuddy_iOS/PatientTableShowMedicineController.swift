@@ -61,16 +61,6 @@ class PatientTableShowMedicineController: UITableViewController {
             }
         }
         
-        
-        
-        
-        if(self.medicine.photo != nil){
-            self.ImageView.image = self.medicine.photo;
-        }
-        else{
-            self.ImageView.image = UIImage(named: "selectImage");
-        }
-        
         NameLabel.text = schedule.amount;
         InfoLabel.text = medicine.info;
         
