@@ -15,12 +15,12 @@ class NotificationController : NSObject {
     static func updateMedicines(user: User){
         if let medicines = user.medicines {
             for medicine in medicines {
-                updateMedicalSchedules(medicine.schedules)
+                updateMedicalSchedules(medicine, schedules: medicine.schedules)
             }
         }
     }
     
-    private static func updateMedicalSchedules(schedules: [MedicalSchedule]){
+    private static func updateMedicalSchedules(medicine: Medicine, schedules: [MedicalSchedule]){
         
         let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         let now = NSDate();
@@ -28,8 +28,6 @@ class NotificationController : NSObject {
         for schedule in schedules {
             if let end = schedule.end_date {
                 if end.isAfterDate(now){
-                    print(schedule.description)
-                    
                     // calculate timespans (in days)
                     let startToNow = daysBetween(schedule.start_date!, end: now)
                     
@@ -49,9 +47,6 @@ class NotificationController : NSObject {
                     format.timeZone = NSTimeZone(abbreviation: "GMT")
                     
                     let dateFromString = format.dateFromString(schedule.time_s!)!
-                    
-                    print("dateFromString: \(dateFromString)")
-                    
                     let time = NSCalendar.currentCalendar().components(unitFlags, fromDate: dateFromString )
                     
                     scheduleComponents.hour = time.hour
@@ -64,7 +59,7 @@ class NotificationController : NSObject {
                     repeat {                        
                         scheduleDate = scheduleDate?.addDays(schedule.interval!)
                         
-                        let message = "\(schedule.amount)"
+                        let message = "\(medicine.name): \(schedule.amount)"
                         let todoItem = TodoItem(deadline: scheduleDate!, title: message, UUID: NSUUID().UUIDString)
                         TodoList.sharedInstance.addItem(todoItem)
                         scheduleDate = scheduleDate!.addDays(schedule.interval!)

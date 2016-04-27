@@ -70,7 +70,6 @@ class LoginController: UIViewController {
                     Alert.alertStatusWithSymbol(false,message: "Aanmelden mislukt", seconds: 1.5, view: self.view);
                 }
         }
-       
     }
     
         
@@ -85,7 +84,12 @@ class LoginController: UIViewController {
                         self.loggedInUser = Mapper<User>().map(JSON);
                         print(JSON);
                         
-                        NotificationController.updateMedicines(self.loggedInUser!)
+                        // schedules inladen in achtergrond
+                        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+                        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+                        dispatch_async(backgroundQueue, {
+                            NotificationController.updateMedicines(self.loggedInUser!)
+                        })
                     }
                     
                     
