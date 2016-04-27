@@ -89,6 +89,7 @@ class LoginController: UIViewController {
                         let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
                         dispatch_async(backgroundQueue, {
                             NotificationController.updateMedicines(self.loggedInUser!)
+                            print("ingeladen!")
                         })
                     }
                     

@@ -32,7 +32,7 @@ class NotificationController : NSObject {
                     let startToNow = daysBetween(schedule.start_date!, end: now)
                     
                     // days in the future the next schedule needs to be made
-                    let daysInFuture = 3 - (startToNow % 3)
+                    let daysInFuture = schedule.interval! - (startToNow % schedule.interval!)
                     
                     var nextScheduleDate: NSDate = now;
                     nextScheduleDate = nextScheduleDate.addDays(daysInFuture)
@@ -56,15 +56,18 @@ class NotificationController : NSObject {
                     var scheduleDate = cal.dateFromComponents(scheduleComponents)
                     
                     // amount of times scheduled (in the next {{daysInAdvance}} days)
-                    repeat {                        
-                        scheduleDate = scheduleDate?.addDays(schedule.interval!)
-                        
-                        let message = "\(medicine.name): \(schedule.amount)"
-                        let todoItem = TodoItem(deadline: scheduleDate!, title: message, UUID: NSUUID().UUIDString)
-                        TodoList.sharedInstance.addItem(todoItem)
-                        scheduleDate = scheduleDate!.addDays(schedule.interval!)
-                        
-                    } while scheduleDate?.isBeforeDate(end) != nil && (scheduleDate?.isBeforeDate(end))!
+                    for _ in 1...3 {
+                        if scheduleDate?.isBeforeDate(end) != nil && (scheduleDate?.isBeforeDate(end))! {
+                            print("\(medicine.name!) \(scheduleDate!)")
+                            
+                            let message = "\(medicine.name): \(schedule.amount)"
+                            let todoItem = TodoItem(deadline: scheduleDate!, title: message, UUID: NSUUID().UUIDString)
+                            TodoList.sharedInstance.addItem(todoItem)
+                            scheduleDate = scheduleDate!.addDays(schedule.interval!)
+                        } else {
+                            break
+                        }
+                    }
                     
                 }
             }
