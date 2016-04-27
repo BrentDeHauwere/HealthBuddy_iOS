@@ -83,7 +83,7 @@ class PatientMedicineController: UITableViewController {
                             added = true;
                         }
                     }
-                    else if(hour > 18 || hour <= 3){
+                    else if(hour > 17 || hour <= 3){
                         medicinesA.append(schedule);
                         if(added == false){
                             medicinesToday.append(medicine);
@@ -94,7 +94,7 @@ class PatientMedicineController: UITableViewController {
                 
             }
         }
-        print(medicinesToTake);
+        
         medicinesVm.sortInPlace({$0.time!.compare($1.time!) == NSComparisonResult.OrderedAscending } );
         
         
@@ -135,6 +135,11 @@ class PatientMedicineController: UITableViewController {
                         refreshControl.endRefreshing();
                         print("Data refreshed");
                     }
+                }
+                else{
+                    refreshControl.endRefreshing();
+                    Alert.alertStatusWithSymbol(false,message:  "Refreshen mislukt", seconds: 1.5,    view: self.view);
+                    print("Data not refreshed");
                 }
         }
     }

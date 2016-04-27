@@ -37,7 +37,6 @@
 		ACFC566F1C8DA00C00269458 /* BuddyMedicaliDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC566E1C8DA00C00269458 /* BuddyMedicaliDController.swift */; };
 		DC7EB7021CCF776F00725849 /* PatientMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7EB7011CCF776F00725849 /* PatientMedicineController.swift */; };
 		DC7EB7061CCF77A600725849 /* PatientShowImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7EB7031CCF77A600725849 /* PatientShowImageController.swift */; };
-		DC7EB7071CCF77A600725849 /* PatientShowMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7EB7041CCF77A600725849 /* PatientShowMedicineController.swift */; };
 		DC7EB7081CCF77A600725849 /* PatientTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7EB7051CCF77A600725849 /* PatientTabBarController.swift */; };
 		DC7EB70A1CCF7BB500725849 /* PatientTableShowMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7EB7091CCF7BB500725849 /* PatientTableShowMedicineController.swift */; };
 		DC8F5AD21CD0C0A000215B1A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F5AD11CD0C0A000215B1A /* NotificationController.swift */; };
@@ -102,7 +101,6 @@
 		ACFC566E1C8DA00C00269458 /* BuddyMedicaliDController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMedicaliDController.swift; sourceTree = "<group>"; };
 		DC7EB7011CCF776F00725849 /* PatientMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientMedicineController.swift; sourceTree = "<group>"; };
 		DC7EB7031CCF77A600725849 /* PatientShowImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientShowImageController.swift; sourceTree = "<group>"; };
-		DC7EB7041CCF77A600725849 /* PatientShowMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientShowMedicineController.swift; sourceTree = "<group>"; };
 		DC7EB7051CCF77A600725849 /* PatientTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientTabBarController.swift; sourceTree = "<group>"; };
 		DC7EB7091CCF7BB500725849 /* PatientTableShowMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientTableShowMedicineController.swift; sourceTree = "<group>"; };
 		DC8F5AD11CD0C0A000215B1A /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				DC7EB7031CCF77A600725849 /* PatientShowImageController.swift */,
-				DC7EB7041CCF77A600725849 /* PatientShowMedicineController.swift */,
 				DC7EB7051CCF77A600725849 /* PatientTabBarController.swift */,
 				DC7EB7011CCF776F00725849 /* PatientMedicineController.swift */,
 				AC20C0451C9AB20300E3E458 /* PatientDashboardController.swift */,
@@ -479,7 +476,6 @@
 				DC7EB7021CCF776F00725849 /* PatientMedicineController.swift in Sources */,
 				DC8F5AD21CD0C0A000215B1A /* NotificationController.swift in Sources */,
 				AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */,
-				DC7EB7071CCF77A600725849 /* PatientShowMedicineController.swift in Sources */,
 				AC20C0461C9AB20300E3E458 /* PatientDashboardController.swift in Sources */,
 				AC1823281C9440C600F66C9E /* Alert.swift in Sources */,
 				ACD9F6AA1CA2CB3C003F64C3 /* Authentication.swift in Sources */,
