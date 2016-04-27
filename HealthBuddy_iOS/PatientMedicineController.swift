@@ -33,11 +33,15 @@ class PatientMedicineController: UITableViewController {
         
         //add medicines of today to arraylist
         self.medicines();
+        let refreshControl = UIRefreshControl();
+        refreshControl.addTarget(self, action: #selector(PatientMedicineController.refreshData), forControlEvents: .ValueChanged)
+        self.tableView.addSubview(refreshControl);
     }
     
     override func viewDidAppear(animated: Bool){
         self.medicines();
         self.scheduleRefreshData();
+        self.tableView.reloadData();
         super.viewDidAppear(true);
     }
     
@@ -114,6 +118,21 @@ class PatientMedicineController: UITableViewController {
                     if let JSON = response.result.value {
                         self.patient = Mapper<User>().map(JSON);
                         self.tableView.reloadData();
+                        print("Data refreshed");
+                    }
+                }
+        }
+    }
+    
+    func refreshData(refreshControl : UIRefreshControl){
+        Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
+            .responseJSON { response in
+                if response.result.isSuccess {
+                    if let JSON = response.result.value {
+                        self.patient = Mapper<User>().map(JSON);
+                        self.medicines();
+                        self.tableView.reloadData();
+                        refreshControl.endRefreshing();
                         print("Data refreshed");
                     }
                 }
