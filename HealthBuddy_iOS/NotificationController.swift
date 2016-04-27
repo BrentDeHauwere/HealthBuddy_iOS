@@ -13,11 +13,17 @@ class NotificationController : NSObject {
     }
     
     static func updateMedicines(user: User){
-        if let medicines = user.medicines {
-            for medicine in medicines {
-                updateMedicalSchedules(medicine, schedules: medicine.schedules)
+        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+        dispatch_async(backgroundQueue, {
+            
+            if let medicines = user.medicines {
+                for medicine in medicines {
+                    updateMedicalSchedules(medicine, schedules: medicine.schedules)
+                }
             }
-        }
+            
+        })
     }
     
     private static func updateMedicalSchedules(medicine: Medicine, schedules: [MedicalSchedule]){

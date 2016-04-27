@@ -85,12 +85,7 @@ class LoginController: UIViewController {
                         print(JSON);
                         
                         // schedules inladen in achtergrond
-                        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-                        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-                        dispatch_async(backgroundQueue, {
-                            NotificationController.updateMedicines(self.loggedInUser!)
-                            print("ingeladen!")
-                        })
+                        NotificationController.updateMedicines(self.loggedInUser!)
                     }
                     
                     
