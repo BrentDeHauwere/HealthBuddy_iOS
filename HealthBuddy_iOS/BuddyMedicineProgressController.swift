@@ -21,7 +21,18 @@ class BuddyMedicineProgressController: UIViewController {
          self.navigationItem.title = "\(patient!.firstName!) \(patient!.lastName!)";
        // self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Overzicht", style: .Plain, target: self, action:#selector(BuddyMedicineProgressController.popView));
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backBtn"), style: .Plain, target: self, action: #selector(BuddyMedicineProgressController.popView));
-        
+        if(self.progress != nil){
+            if(progress?.toTake == progress?.taken){
+                self.circleProgressView.centerImage = UIImage(named: "trofee");
+            }else{
+                if(self.patient?.gender == "M"){
+                    self.circleProgressView.centerImage = UIImage(named: "takePillMan");
+                }else{
+                    self.circleProgressView.centerImage = UIImage(named: "takePillWoman");
+                }
+            }
+        }
+
     }
     
     func popView(){
