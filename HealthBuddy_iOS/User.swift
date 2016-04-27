@@ -52,7 +52,7 @@ class User: Mappable {
         self.medicalInfo <- map["medicalinfo"]
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00");
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT+1:00");
         dateFormatter.dateFormat = "yyyy-MM-dd"
      
         self.dateOfBirth = dateFormatter.dateFromString(self.dateOfBirthS!);
