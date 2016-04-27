@@ -51,6 +51,7 @@ class NotificationController : NSObject {
                     format.timeZone = NSTimeZone(abbreviation: "GMT")
                     
                     let dateFromString = format.dateFromString(schedule.time_s!)!
+                    
                     let time = NSCalendar.currentCalendar().components(unitFlags, fromDate: dateFromString )
                     
                     scheduleComponents.hour = time.hour
@@ -68,7 +69,7 @@ class NotificationController : NSObject {
                         if scheduleDate?.isBeforeDate(end) != nil && (scheduleDate?.isBeforeDate(end))! {
                             print("\(medicine.name!) \(scheduleDate!)")
                             
-                            let message = "\(medicine.name): \(schedule.amount)"
+                            let message = "\(medicine.name!): \(schedule.amount!)"
                             let todoItem = TodoItem(deadline: scheduleDate!, title: message, UUID: NSUUID().UUIDString)
                             TodoList.sharedInstance.addItem(todoItem)
                             scheduleDate = scheduleDate!.addDays(schedule.interval!)
