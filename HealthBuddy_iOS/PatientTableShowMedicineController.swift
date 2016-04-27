@@ -47,7 +47,8 @@ class PatientTableShowMedicineController: UITableViewController {
                         else{
                             self.ImageView.image = UIImage(named: "selectImage");
                         }
-                        
+                        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                        Alert.alertStatusWithSymbol(true,message: "Innemen geslaagd", seconds: 1.5, view: self.view);
                         
                         print("Medicine updated");
                     }else if response.response?.statusCode == 422 {

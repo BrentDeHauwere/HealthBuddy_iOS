@@ -40,6 +40,9 @@
 		DC7EB7071CCF77A600725849 /* PatientShowMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7EB7041CCF77A600725849 /* PatientShowMedicineController.swift */; };
 		DC7EB7081CCF77A600725849 /* PatientTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7EB7051CCF77A600725849 /* PatientTabBarController.swift */; };
 		DC7EB70A1CCF7BB500725849 /* PatientTableShowMedicineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7EB7091CCF7BB500725849 /* PatientTableShowMedicineController.swift */; };
+		DC8F5AD21CD0C0A000215B1A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F5AD11CD0C0A000215B1A /* NotificationController.swift */; };
+		DC8F5AD51CD0C0B000215B1A /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F5AD31CD0C0B000215B1A /* TodoItem.swift */; };
+		DC8F5AD61CD0C0B000215B1A /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F5AD41CD0C0B000215B1A /* ToDoList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +105,9 @@
 		DC7EB7041CCF77A600725849 /* PatientShowMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientShowMedicineController.swift; sourceTree = "<group>"; };
 		DC7EB7051CCF77A600725849 /* PatientTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientTabBarController.swift; sourceTree = "<group>"; };
 		DC7EB7091CCF7BB500725849 /* PatientTableShowMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientTableShowMedicineController.swift; sourceTree = "<group>"; };
+		DC8F5AD11CD0C0A000215B1A /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		DC8F5AD31CD0C0B000215B1A /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		DC8F5AD41CD0C0B000215B1A /* ToDoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		E438C33C75837497E5B76C34 /* Pods-HealthBuddy_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthBuddy_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +237,7 @@
 		ACE614901C9EDEA400922EF7 /* GeneralControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DC8F5AD11CD0C0A000215B1A /* NotificationController.swift */,
 				AC5A519C1C8C382300804C65 /* LoginController.swift */,
 				AC1823271C9440C600F66C9E /* Alert.swift */,
 			);
@@ -240,6 +247,8 @@
 		ACFC56681C8D8CEB00269458 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				DC8F5AD31CD0C0B000215B1A /* TodoItem.swift */,
+				DC8F5AD41CD0C0B000215B1A /* ToDoList.swift */,
 				ACDAD0B91CA3F94B008D53A8 /* MedicalInfo.swift */,
 				ACDAD0B71CA3F943008D53A8 /* Address.swift */,
 				ACFC56691C8D8D6A00269458 /* User.swift */,
@@ -460,12 +469,15 @@
 				ACD494781CCB670B00AD7DFE /* BuddyMedicineDashboardHistoryController.swift in Sources */,
 				ACDAD0B81CA3F943008D53A8 /* Address.swift in Sources */,
 				ACF950641C8F311400218754 /* BuddyMainMenuController.swift in Sources */,
+				DC8F5AD51CD0C0B000215B1A /* TodoItem.swift in Sources */,
 				ACFC566F1C8DA00C00269458 /* BuddyMedicaliDController.swift in Sources */,
 				AC9EB0941C8F52420084DAC8 /* BuddyWeightController.swift in Sources */,
+				DC8F5AD61CD0C0B000215B1A /* ToDoList.swift in Sources */,
 				AC5A519D1C8C382300804C65 /* LoginController.swift in Sources */,
 				ACF94FA31CCD63FF00E37C0A /* Progress.swift in Sources */,
 				AC9EB0921C8F52310084DAC8 /* BuddyMedicineController.swift in Sources */,
 				DC7EB7021CCF776F00725849 /* PatientMedicineController.swift in Sources */,
+				DC8F5AD21CD0C0A000215B1A /* NotificationController.swift in Sources */,
 				AC5A519B1C8C382300804C65 /* AppDelegate.swift in Sources */,
 				DC7EB7071CCF77A600725849 /* PatientShowMedicineController.swift in Sources */,
 				AC20C0461C9AB20300E3E458 /* PatientDashboardController.swift in Sources */,
