@@ -48,7 +48,7 @@ class NotificationController : NSObject {
                     // getting time from time String
                     let format = NSDateFormatter()
                     format.dateFormat = "HH:mm:ss"
-                    format.timeZone = NSTimeZone(abbreviation: "GMT")
+                    format.timeZone = NSTimeZone(abbreviation: "GMT+1:00")
                     
                     let dateFromString = format.dateFromString(schedule.time_s!)!
                     
