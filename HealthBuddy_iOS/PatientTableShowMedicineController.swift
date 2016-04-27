@@ -62,7 +62,6 @@ class PatientTableShowMedicineController: UITableViewController {
                             self.ImageView.image = UIImage(named: "selectImage");
                         }
                         
-                        
                         print("Medicine updated");
                     }else if response.response?.statusCode == 422 {
                         print("Medicine show failed");
