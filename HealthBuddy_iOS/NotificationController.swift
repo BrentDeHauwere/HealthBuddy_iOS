@@ -8,14 +8,12 @@ import Foundation
 
 class NotificationController : NSObject {
     
-    static func getTodoList() -> TodoList{
-        return TodoList.sharedInstance
-    }
-    
     static func updateMedicines(user: User){
         let qualityOfServiceClass = QOS_CLASS_BACKGROUND
         let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
         dispatch_async(backgroundQueue, {
+            
+            TodoList.sharedInstance.clear()
             
             if let medicines = user.medicines {
                 for medicine in medicines {
