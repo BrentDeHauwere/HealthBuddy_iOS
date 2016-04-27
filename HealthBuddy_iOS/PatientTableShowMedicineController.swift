@@ -31,6 +31,12 @@ class PatientTableShowMedicineController: UITableViewController {
         }
         
         
+        if(self.medicine.photo != nil){
+            self.ImageView.image = self.medicine.photo;
+        }
+        else{
+            self.ImageView.image = UIImage(named: "selectImage");
+        }
         
         print(Routes.showMedicine(patientID!, medicineId: self.medicine!.id!));
         Alamofire.request(.POST, Routes.showMedicine(patientID!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
@@ -40,15 +46,14 @@ class PatientTableShowMedicineController: UITableViewController {
                         print(JSON);
                         let newMedicine = Mapper<Medicine>().map(JSON);
                         self.medicine.updateMedicineInfo(newMedicine!);
-                        
+                        self.medicine.photo = newMedicine?.photo;
                         if(self.medicine.photo != nil){
                             self.ImageView.image = self.medicine.photo;
                         }
                         else{
                             self.ImageView.image = UIImage(named: "selectImage");
                         }
-                        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
-                        Alert.alertStatusWithSymbol(true,message: "Innemen geslaagd", seconds: 1.5, view: self.view);
+                        
                         
                         print("Medicine updated");
                     }else if response.response?.statusCode == 422 {
@@ -108,10 +113,11 @@ class PatientTableShowMedicineController: UITableViewController {
             Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
                 tasks.forEach({ $0.cancel() })
             }
+            
         }
         
         
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+        
         Alamofire.request(.POST, Routes.createIntake(self.patientID!, scheduleId:self.schedule.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"])
             .responseJSON {
                 response in
@@ -119,8 +125,10 @@ class PatientTableShowMedicineController: UITableViewController {
                     if let JSON = response.result.value {
                         print(JSON);
                         if response.response?.statusCode == 200 {
+                            
                             MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
- 
+                            Alert.alertStatusWithSymbol(true,message:  "Innemen geslaagd!", seconds: 1.5,    view: self.view);
+                            
                             self.navigationController?.popViewControllerAnimated(true);
  
                         }else if response.response?.statusCode == 422 {
@@ -129,14 +137,14 @@ class PatientTableShowMedicineController: UITableViewController {
                             Alert.alertStatusWithSymbol(false,message:  "Mislukt", seconds: 1.5,    view: self.view);
                         }
                     }else{
-                        print("Ongeldige json response schedule");
+                        print("Ongeldige json response intake");
                         MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
                         Alert.alertStatusWithSymbol(false,message:  "Mislukt", seconds: 1.5, view:  self.view);
                     }
                 }
                 else
                 {
-                    print("Ongeldige request schedule");
+                    print("Ongeldige request intake");
                     MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
                     Alert.alertStatusWithSymbol(false,message:  "Mislukt", seconds: 1.5, view: self.view);
                 }
