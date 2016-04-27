@@ -38,12 +38,20 @@ class PatientTableShowMedicineController: UITableViewController {
             self.ImageView.image = UIImage(named: "selectImage");
         }
         
+        MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Foto zoeken...", mode: .Indeterminate, animated: true) { response in
+            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+            Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
+                tasks.forEach({ $0.cancel() })
+            }
+        }
+        
         print(Routes.showMedicine(patientID!, medicineId: self.medicine!.id!));
         Alamofire.request(.POST, Routes.showMedicine(patientID!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
+            MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
             if response.result.isSuccess {
                 if let JSON = response.result.value {
                     if response.response?.statusCode == 200 {
-                        print(JSON);
+                        //print(JSON);
                         let newMedicine = Mapper<Medicine>().map(JSON);
                         self.medicine.updateMedicineInfo(newMedicine!);
                         self.medicine.photo = newMedicine?.photo;
@@ -153,7 +161,6 @@ class PatientTableShowMedicineController: UITableViewController {
  
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let Controller = segue.destinationViewController as? PatientShowImageController
-        print("\(ImageView.image) Test ");
         Controller!.image = ImageView.image;
  
  

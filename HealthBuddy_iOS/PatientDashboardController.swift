@@ -46,9 +46,6 @@ class PatientDashboardController: UIViewController {
                 
             }
         }
-        print(medicinesToTake);
-        print(medicinesTaken);
-        print(Double(medicinesTaken)/Double(medicinesToTake));
         return Double(medicinesTaken)/Double(medicinesToTake);
     }
 }
