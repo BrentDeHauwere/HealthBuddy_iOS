@@ -37,8 +37,6 @@ class TodoList {
         notification.userInfo = ["title": item.title, "UUID": item.UUID] // assign a unique identifier to the notification so that we can retrieve it later
         
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        
-        self.setBadgeNumbers()
     }
     
     func clear(){
@@ -64,20 +62,6 @@ class TodoList {
         if var todoItems = NSUserDefaults.standardUserDefaults().dictionaryForKey(ITEMS_KEY) {
             todoItems.removeValueForKey(item.UUID)
             NSUserDefaults.standardUserDefaults().setObject(todoItems, forKey: ITEMS_KEY) // save/overwrite todo item list
-        }
-        self.setBadgeNumbers()
-    }
-    
-    func setBadgeNumbers() {
-        let notifications = UIApplication.sharedApplication().scheduledLocalNotifications! as [UILocalNotification] // all scheduled notifications
-        let todoItems: [TodoItem] = self.allItems()
-        for notification in notifications {
-            let overdueItems = todoItems.filter({ (todoItem) -> Bool in // array of to-do items...
-                return (todoItem.deadline.compare(notification.fireDate!) != .OrderedDescending) // ...where item deadline is before or on notification fire date
-            })
-            UIApplication.sharedApplication().cancelLocalNotification(notification) // cancel old notification
-            notification.applicationIconBadgeNumber = overdueItems.count // set new badge number
-            UIApplication.sharedApplication().scheduleLocalNotification(notification) // reschedule notification
         }
     }
     
