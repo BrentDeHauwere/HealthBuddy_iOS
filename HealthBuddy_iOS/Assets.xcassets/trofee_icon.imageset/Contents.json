@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "trofee_icon.jpg",
+      "filename" : "trofee_icon-1.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "trofee_icon.jpg",
       "scale" : "2x"
     },
     {
