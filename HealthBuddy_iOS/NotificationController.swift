@@ -28,6 +28,7 @@ class NotificationController : NSObject {
         for schedule in schedules {
             if let end = schedule.end_date {
                 if end.isAfterDate(now){
+                    
                     // calculate timespans (in days)
                     let startToNow = daysBetween(schedule.start_date!, end: now)
                     
@@ -35,7 +36,10 @@ class NotificationController : NSObject {
                     let daysInFuture = schedule.interval! - (startToNow % schedule.interval!)
                     
                     var nextScheduleDate: NSDate = now;
-                    nextScheduleDate = nextScheduleDate.addDays(daysInFuture)
+                    
+                    if(startToNow % schedule.interval! != 0){
+                        nextScheduleDate = nextScheduleDate.addDays(daysInFuture)
+                    }
                     
                     // set time for the schedule
                     let unitFlags: NSCalendarUnit = [.Minute, .Hour, .Day, .Month, .Year]
@@ -54,6 +58,10 @@ class NotificationController : NSObject {
                     scheduleComponents.timeZone = NSTimeZone(abbreviation: "GMT+01:00")
                     
                     var scheduleDate = cal.dateFromComponents(scheduleComponents)
+                    
+                    if((scheduleDate?.isBeforeDate(now)) != nil){
+                        scheduleDate?.addDays(schedule.interval!)
+                    }
                     
                     // amount of times scheduled (in the next {{daysInAdvance}} days)
                     for _ in 1...3 {
