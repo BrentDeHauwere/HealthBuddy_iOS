@@ -13,7 +13,7 @@ class ToDoListController : NSObject {
         let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
         dispatch_async(backgroundQueue, {
             
-                      
+            
             TodoList.sharedInstance.clear()
             
             if let medicines = user.medicines {
@@ -50,18 +50,11 @@ class ToDoListController : NSObject {
                     let unitFlags: NSCalendarUnit = [.Minute, .Hour, .Day, .Month, .Year]
                     let scheduleComponents = NSCalendar.currentCalendar().components(unitFlags, fromDate: nextScheduleDate)
                     
-                    // getting time from time String
-                    let format = NSDateFormatter()
-                    format.dateFormat = "HH:mm:ss"
-                    format.timeZone = NSTimeZone(abbreviation: "GMT+01:00")
-                    
-                    let dateFromString = format.dateFromString(schedule.time_s!)!
-                    
-                    let time = NSCalendar.currentCalendar().components(unitFlags, fromDate: dateFromString )
+                    let time = NSCalendar.currentCalendar().components(unitFlags, fromDate: schedule.time!)
                     
                     scheduleComponents.hour = time.hour
                     scheduleComponents.minute = time.minute
-                    scheduleComponents.timeZone = NSTimeZone(abbreviation: "GMT+01:00")
+                    scheduleComponents.timeZone = time.timeZone
                     
                     var scheduleDate = cal.dateFromComponents(scheduleComponents)
                     
