@@ -82,4 +82,7 @@ extension NSDate {
         let compTwo: NSDateComponents = calender.components(flags, fromDate: dateTwo);
         return (compOne.day == compTwo.day && compOne.month == compTwo.month && compOne.year == compTwo.year);
     }
+    func secondsFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Second, fromDate: date, toDate: self, options: []).second
+    }
 }

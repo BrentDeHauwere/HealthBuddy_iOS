@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthBuddy_iOS/PatientTableShowMedicineController.swift"
-            timestampString = "483454625.711677"
+            timestampString = "483647091.817751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "PushedAction()"
             landmarkType = "5">
          </BreakpointContent>

@@ -30,6 +30,13 @@ class PatientTableShowMedicineController: UITableViewController {
             }
         }
         
+        if(!dateCheck(self.schedule.time!)){
+            self.navigationItem.rightBarButtonItem?.enabled = false;
+
+        }
+        
+        
+        
         
         if(self.medicine.photo != nil){
             self.ImageView.image = self.medicine.photo;
@@ -82,6 +89,19 @@ class PatientTableShowMedicineController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func dateCheck(date:NSDate)->Bool{
+        let calendar = NSCalendar.currentCalendar()
+        let hour = NSCalendar.currentCalendar().components([.Hour], fromDate: date).hour;
+        let minutes = NSCalendar.currentCalendar().components([.Minute], fromDate: date).minute;
+        let date1 = NSDate();
+        let newDate = calendar.dateBySettingHour(hour, minute: minutes, second: 0, ofDate: date1, options: NSCalendarOptions())!
+        let seconds = calendar.components([.Second], fromDate: newDate, toDate: NSDate(), options: []).second;
+        if(seconds >= -3600 && seconds <= 3600){
+            return true
+        }
+        return false
     }
 
     override func didReceiveMemoryWarning() {

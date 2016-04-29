@@ -187,7 +187,18 @@ class PatientMedicineController: UITableViewController {
         return count;
     }
     
-    
+    func dateCheck(date:NSDate)->Bool{
+        let calendar = NSCalendar.currentCalendar()
+        let hour = NSCalendar.currentCalendar().components([.Hour], fromDate: date).hour;
+        let minutes = NSCalendar.currentCalendar().components([.Minute], fromDate: date).minute;
+        let date1 = NSDate();
+        let newDate = calendar.dateBySettingHour(hour, minute: minutes, second: 0, ofDate: date1, options: NSCalendarOptions())!
+        let seconds = calendar.components([.Second], fromDate: newDate, toDate: NSDate(), options: []).second;
+        if(seconds >= -3600 && seconds <= 3600){
+            return true
+        }
+        return false
+    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //GreenMedicineCell
         let cell = self.tableView.dequeueReusableCellWithIdentifier("MedicineCell", forIndexPath: indexPath) as UITableViewCell;
@@ -197,6 +208,10 @@ class PatientMedicineController: UITableViewController {
             if(self.medicinesVm[indexPath.row].updated_at != nil){
                 if(self.medicinesVm[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
+                }
+                else if(dateCheck(self.medicinesVm[indexPath.row].time!)){
+                        cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                        
                 }
             }
             
@@ -208,6 +223,10 @@ class PatientMedicineController: UITableViewController {
                 if(self.medicinesM[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
                 }
+                else if(dateCheck(self.medicinesM[indexPath.row].time!)){
+                    cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                    
+                }
             }
             
             cell.textLabel?.text = (self.getMedicine(self.medicinesM[indexPath.row]).name)!;
@@ -218,6 +237,10 @@ class PatientMedicineController: UITableViewController {
                 if(self.medicinesNm[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
                 }
+                else if(dateCheck(self.medicinesNm[indexPath.row].time!)){
+                    cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                    
+                }
             }
             
             cell.textLabel?.text =  (self.getMedicine(self.medicinesNm[indexPath.row]).name)!;
@@ -227,6 +250,10 @@ class PatientMedicineController: UITableViewController {
             if(self.medicinesA[indexPath.row].updated_at != nil){
                 if(self.medicinesA[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
+                }
+                else if(dateCheck(self.medicinesA[indexPath.row].time!)){
+                        cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                        
                 }
             }
             
