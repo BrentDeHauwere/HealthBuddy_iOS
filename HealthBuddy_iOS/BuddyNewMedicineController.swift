@@ -143,7 +143,7 @@ class BuddyNewMedicineController: FormViewController {
             case 1:
                 return "Elke dag"
             case 2:
-                return "Elke  twee dagen"
+                return "Elke twee dagen"
             case 3:
                 return "Elke drie dagen"
             case 7:
