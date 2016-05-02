@@ -13,7 +13,6 @@ class ToDoListController : NSObject {
         let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
         dispatch_async(backgroundQueue, {
             
-            
             TodoList.sharedInstance.clear()
             
             if let medicines = user.medicines {
@@ -34,7 +33,6 @@ class ToDoListController : NSObject {
             
             if let end = schedule.end_date {
                 if end.isAfterDate(now){
-                    
                     // calculate timespans (in days)
                     let startToNow = daysBetween(schedule.start_date!, end: now)
                    
@@ -59,17 +57,16 @@ class ToDoListController : NSObject {
                     
                     var scheduleDate = cal.dateFromComponents(scheduleComponents)
                     
-                    if((scheduleDate?.isBeforeDate(now)) != nil){
-                        scheduleDate?.addDays(schedule.interval!)
+                    if((scheduleDate?.isBeforeDate(now)) != nil && (scheduleDate?.isBeforeDate(now))!){
+                        scheduleDate = scheduleDate?.addDays(schedule.interval!)
                     }
                     
-                    // amount of times scheduled (in the next {{daysInAdvance}} days)
                     for _ in 1...3 {
                         if scheduleDate?.isBeforeDate(end) != nil && (scheduleDate?.isBeforeDate(end))! {
                             print("\(medicine.name!) \(scheduleDate!)")
                             
                             let message = "\(medicine.name!): \(schedule.amount!)"
-                            let todoItem = TodoItem(deadline: scheduleDate!, title: message, UUID: NSUUID().UUIDString)
+                            let todoItem = TodoItem(deadline: scheduleDate!, title: message, UUID: NSUUID().UUIDString, medicine: medicine, medicalSchedule: schedule)
                             TodoList.sharedInstance.addItem(todoItem)
                             scheduleDate = scheduleDate!.addDays(schedule.interval!)
                         } else {
