@@ -23,6 +23,12 @@ class PatientMedicineController: UITableViewController {
         super.viewDidLoad();
         self.title = "Medicatie";
         
+        medicinesToday = [Medicine]();
+        medicinesVm = [MedicalSchedule]();
+        medicinesM = [MedicalSchedule]();
+        medicinesNm = [MedicalSchedule]();
+        medicinesA = [MedicalSchedule]();
+        
         sections = [String]();
         
         sections.append("Voormiddag");
@@ -32,14 +38,19 @@ class PatientMedicineController: UITableViewController {
         
         
         //add medicines of today to arraylist
-        self.medicines();
+        if(patient?.medicines != nil){
+            self.medicines();
+        }
+        
         let refreshControl = UIRefreshControl();
         refreshControl.addTarget(self, action: #selector(PatientMedicineController.refreshData), forControlEvents: .ValueChanged)
         self.tableView.addSubview(refreshControl);
     }
     
     override func viewDidAppear(animated: Bool){
-        self.medicines();
+        if(patient?.medicines != nil){
+            self.medicines();
+        }
         self.scheduleRefreshData();
         super.viewDidAppear(true);
     }
@@ -118,7 +129,9 @@ class PatientMedicineController: UITableViewController {
                         let updatedUser = Mapper<User>().map(JSON);
                         self.patient.updateUserInfo(updatedUser!);
                         self.patient.medicines = updatedUser?.medicines;
-                        self.medicines();
+                        if(self.patient.medicines != nil){
+                            self.medicines();
+                        }
                         self.tableView.reloadData();
                         print("Data refreshed");
                     }
@@ -134,7 +147,9 @@ class PatientMedicineController: UITableViewController {
                         let updatedUser = Mapper<User>().map(JSON);
                         self.patient.updateUserInfo(updatedUser!);
                         self.patient.medicines = updatedUser?.medicines;
-                        self.medicines();
+                        if(self.patient.medicines != nil){
+                            self.medicines();
+                        }
                         self.tableView.reloadData();
                         refreshControl.endRefreshing();
                         print("Data refreshed");
