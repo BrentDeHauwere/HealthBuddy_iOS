@@ -214,9 +214,21 @@ class PatientMedicineController: UITableViewController {
                         
                 }
             }
-            
+            print(self.medicinesVm[indexPath.row].time);
             cell.textLabel?.text = (self.getMedicine(self.medicinesVm[indexPath.row]).name)!;
-            cell.detailTextLabel?.text =  self.medicinesVm[indexPath.row].time_s;
+            let calendar = NSCalendar.currentCalendar();
+            let comp = calendar.components([.Hour,.Minute], fromDate: self.medicinesVm[indexPath.row].time!);
+            let hour = comp.hour;
+            let minutes = comp.minute;
+            var stringhour = "\(hour)";
+            var stringminutes = "\(minutes)";
+            if(hour < 10){
+                stringhour = "0\(hour)";
+            }
+            if(minutes < 10){
+                stringminutes = "0\(minutes)";
+            }
+            cell.detailTextLabel?.text =  "\(stringhour):\(stringminutes)";
         }
         if(section == 1){
             if(self.medicinesM[indexPath.row].updated_at != nil){
@@ -230,7 +242,19 @@ class PatientMedicineController: UITableViewController {
             }
             
             cell.textLabel?.text = (self.getMedicine(self.medicinesM[indexPath.row]).name)!;
-            cell.detailTextLabel?.text =  self.medicinesM[indexPath.row].time_s;
+            let calendar = NSCalendar.currentCalendar();
+            let comp = calendar.components([.Hour,.Minute], fromDate: self.medicinesM[indexPath.row].time!);
+            let hour = comp.hour;
+            let minutes = comp.minute;
+            var stringhour = "\(hour)";
+            var stringminutes = "\(minutes)";
+            if(hour < 10){
+                stringhour = "0\(hour)";
+            }
+            if(minutes < 10){
+                stringminutes = "0\(minutes)";
+            }
+            cell.detailTextLabel?.text =  "\(stringhour):\(stringminutes)";
         }
         if(section == 2){
             if(self.medicinesNm[indexPath.row].updated_at != nil){
@@ -244,7 +268,19 @@ class PatientMedicineController: UITableViewController {
             }
             
             cell.textLabel?.text =  (self.getMedicine(self.medicinesNm[indexPath.row]).name)!;
-            cell.detailTextLabel?.text =  self.medicinesNm[indexPath.row].time_s;
+            let calendar = NSCalendar.currentCalendar();
+            let comp = calendar.components([.Hour,.Minute], fromDate: self.medicinesNm[indexPath.row].time!);
+            let hour = comp.hour;
+            let minutes = comp.minute;
+            var stringhour = "\(hour)";
+            var stringminutes = "\(minutes)";
+            if(hour < 10){
+                stringhour = "0\(hour)";
+            }
+            if(minutes < 10){
+                stringminutes = "0\(minutes)";
+            }
+            cell.detailTextLabel?.text =  "\(stringhour):\(stringminutes)";
         }
         if(section == 3){
             if(self.medicinesA[indexPath.row].updated_at != nil){
@@ -258,7 +294,19 @@ class PatientMedicineController: UITableViewController {
             }
             
             cell.textLabel?.text =  (self.getMedicine(self.medicinesA[indexPath.row]).name)!;
-            cell.detailTextLabel?.text =  self.medicinesA[indexPath.row].time_s;
+            let calendar = NSCalendar.currentCalendar();
+            let comp = calendar.components([.Hour,.Minute], fromDate: self.medicinesA[indexPath.row].time!);
+            let hour = comp.hour;
+            let minutes = comp.minute;
+            var stringhour = "\(hour)";
+            var stringminutes = "\(minutes)";
+            if(hour < 10){
+                stringhour = "0\(hour)";
+            }
+            if(minutes < 10){
+                stringminutes = "0\(minutes)";
+            }
+            cell.detailTextLabel?.text =  "\(stringhour):\(stringminutes)";
         }
         return cell;
     }
