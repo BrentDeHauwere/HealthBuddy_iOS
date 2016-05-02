@@ -19,11 +19,13 @@ class PatientTableShowMedicineController: UITableViewController {
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var InfoLabel: UILabel!
+    @IBOutlet weak var TimeLabel: UILabel!
     //@IBOutlet weak var TakeButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = medicine.name;
+        self.TimeLabel.text = schedule.time_s;
         if(schedule.updated_at != nil){
             if(schedule.updated_at!.sameDay(NSDate())){
                 self.navigationItem.rightBarButtonItem?.enabled = false;
@@ -121,7 +123,7 @@ class PatientTableShowMedicineController: UITableViewController {
         if(section == 0){
             return 1;
         }else if(section == 1){
-            return 2;
+            return 3;
         }
         else{
             return 1;

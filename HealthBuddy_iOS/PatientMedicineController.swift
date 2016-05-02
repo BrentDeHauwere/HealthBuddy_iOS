@@ -205,13 +205,13 @@ class PatientMedicineController: UITableViewController {
         
         let section = indexPath.section;
         if(section == 0){
+            if(dateCheck(self.medicinesVm[indexPath.row].time!)){
+                cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                
+            }
             if(self.medicinesVm[indexPath.row].updated_at != nil){
                 if(self.medicinesVm[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
-                }
-                else if(dateCheck(self.medicinesVm[indexPath.row].time!)){
-                        cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
-                        
                 }
             }
             print(self.medicinesVm[indexPath.row].time);
@@ -231,13 +231,13 @@ class PatientMedicineController: UITableViewController {
             cell.detailTextLabel?.text =  "\(stringhour):\(stringminutes)";
         }
         if(section == 1){
+            if(dateCheck(self.medicinesM[indexPath.row].time!)){
+                cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                
+            }
             if(self.medicinesM[indexPath.row].updated_at != nil){
                 if(self.medicinesM[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
-                }
-                else if(dateCheck(self.medicinesM[indexPath.row].time!)){
-                    cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
-                    
                 }
             }
             
@@ -257,13 +257,13 @@ class PatientMedicineController: UITableViewController {
             cell.detailTextLabel?.text =  "\(stringhour):\(stringminutes)";
         }
         if(section == 2){
+            if(dateCheck(self.medicinesNm[indexPath.row].time!)){
+                cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                
+            }
             if(self.medicinesNm[indexPath.row].updated_at != nil){
                 if(self.medicinesNm[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
-                }
-                else if(dateCheck(self.medicinesNm[indexPath.row].time!)){
-                    cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
-                    
                 }
             }
             
@@ -283,13 +283,13 @@ class PatientMedicineController: UITableViewController {
             cell.detailTextLabel?.text =  "\(stringhour):\(stringminutes)";
         }
         if(section == 3){
+            if(dateCheck(self.medicinesA[indexPath.row].time!)){
+                cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                
+            }
             if(self.medicinesA[indexPath.row].updated_at != nil){
                 if(self.medicinesA[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
-                }
-                else if(dateCheck(self.medicinesA[indexPath.row].time!)){
-                        cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
-                        
                 }
             }
             

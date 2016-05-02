@@ -21,6 +21,7 @@ class PatientDashboardController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         print("PROGRESS CALCULATE");
+        //calculateProgress()
         circleProgressView.setProgress(calculateProgress(), animated: true);
     }
     
@@ -57,6 +58,7 @@ class PatientDashboardController: UIViewController {
                 self.circleProgressView.centerImage = UIImage(named: "takePillWoman");
             }
         }
+        print("\(medicinesTaken)/\(medicinesToTake)")
         return Double(medicinesTaken)/Double(medicinesToTake);
     }
 }
