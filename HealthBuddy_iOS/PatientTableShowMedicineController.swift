@@ -29,9 +29,7 @@ class PatientTableShowMedicineController: UITableViewController {
         if  let medicineID = NSUserDefaults.standardUserDefaults().objectForKey("firedMedicineID") as? String,
             let scheduleID = NSUserDefaults.standardUserDefaults().objectForKey("firedScheduleID") as? String {
             
-            if let patientJSON = NSUserDefaults.standardUserDefaults().objectForKey("loggedInUser") as? String {
-                print(patientJSON,"\r\n\r\n hi hi hii i hi hiezoizefoizeoi")
-                
+            if let patientJSON = NSUserDefaults.standardUserDefaults().objectForKey("loggedInUser") as? String {                
                 let patient = Mapper<User>().map(patientJSON)
                 self.patientID = patient?.userId
                 
