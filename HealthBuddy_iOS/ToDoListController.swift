@@ -61,9 +61,7 @@ class ToDoListController : NSObject {
                     }
                     
                     for _ in 1...3 {
-                        if scheduleDate?.isBeforeDate(end) != nil && (scheduleDate?.isBeforeDate(end))! {
-                            print("\(medicine.name!) \(scheduleDate!)")
-                            
+                        if scheduleDate?.isBeforeDate(end) != nil && (scheduleDate?.isBeforeDate(end))! {                            
                             let message = "\(medicine.name!): \(schedule.amount!)"
                             let todoItem = TodoItem(deadline: scheduleDate!, title: message, UUID: NSUUID().UUIDString, medicine: medicine, medicalSchedule: schedule)
                             TodoList.sharedInstance.addItem(todoItem)

@@ -143,8 +143,6 @@ class PatientTableShowMedicineController: UITableViewController {
             
         }
         
-        
-        
         Alamofire.request(.POST, Routes.createIntake(self.patientID!, scheduleId:self.schedule.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"])
             .responseJSON {
                 response in

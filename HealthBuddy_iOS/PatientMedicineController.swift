@@ -51,6 +51,7 @@ class PatientMedicineController: UITableViewController {
         medicinesNm = [MedicalSchedule]();
         medicinesA = [MedicalSchedule]();
         var medicinesToTake = 0;
+        print("called")
         for medicine in (patient?.medicines)! {
             var added = false
             for schedule in medicine.schedules {
@@ -138,6 +139,9 @@ class PatientMedicineController: UITableViewController {
                         self.tableView.reloadData();
                         refreshControl.endRefreshing();
                         print("Data refreshed");
+                        
+                        // refresh notifications
+                        ToDoListController.updateMedicines(self.patient)
                     }
                 }
                 else{
@@ -152,7 +156,6 @@ class PatientMedicineController: UITableViewController {
         var medicine : Medicine!;
         for medi in medicinesToday{
             if(medi.id == schedule.medicineId){
-                
                 medicine = medi;
             }
         }
@@ -210,8 +213,8 @@ class PatientMedicineController: UITableViewController {
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
                 }
                 else if(dateCheck(self.medicinesVm[indexPath.row].time!)){
-                        cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
-                        
+                    cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                    
                 }
             }
             
@@ -252,8 +255,8 @@ class PatientMedicineController: UITableViewController {
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
                 }
                 else if(dateCheck(self.medicinesA[indexPath.row].time!)){
-                        cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
-                        
+                    cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                    
                 }
             }
             
@@ -263,8 +266,48 @@ class PatientMedicineController: UITableViewController {
         return cell;
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "notificationToMedicine" {
+            if let Controller = segue.destinationViewController as? PatientTableShowMedicineController {
+                
+                if  let medicineID = NSUserDefaults.standardUserDefaults().objectForKey("firedMedicineID") as? String,
+                    let scheduleID = NSUserDefaults.standardUserDefaults().objectForKey("firedScheduleID") as? String {
+                    
+                    if let patientJSON = NSUserDefaults.standardUserDefaults().objectForKey("loggedInUser") as? String {
+                        print(patientJSON)
+                        
+                        patient = Mapper<User>().map(patientJSON)
+                        
+                        print(patient.description)
+                        
+                        // medicine
+                        for medicine in patient.medicines! {
+                            if(medicine.id == Int(medicineID)){
+                                Controller.medicine = medicine
+                                break
+                            }
+                        }
+                        
+                        // medicalSchedule
+                        for schedule in Controller.medicine.schedules {
+                            if(schedule.id == Int(scheduleID)){
+                                Controller.schedule = schedule
+                                break
+                            }
+                        }
+                    }
+                    
+                }
+                
+                
+                print("\(Controller.medicine.name) \(Controller.schedule.time_s)")
+                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "firedMedicineID")
+                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "firedScheduleID")
+                
+                Controller.patientID = self.patient.userId;
+            }
+        }
+        
         if segue.identifier == "showMedicinePatient" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 if let Controller = segue.destinationViewController as? PatientTableShowMedicineController {
@@ -290,7 +333,7 @@ class PatientMedicineController: UITableViewController {
             }
         }
         
+        
+        
     }
-    
-    
 }

@@ -43,21 +43,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     // notification has fired
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        var triggered: TodoItem
-        for todoitem in TodoList.sharedInstance.allItems(){
-            if(userInfo["UUID"] as! String == todoitem.UUID){
-                triggered = todoitem
-                break;
-            }
-        }
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        let medID = notification.userInfo!["medicineID"] as! String
+        let schedID = notification.userInfo!["scheduleID"] as! String
+        
+        NSUserDefaults.standardUserDefaults().setObject(medID, forKey: "firedMedicineID")
+        NSUserDefaults.standardUserDefaults().setObject(schedID, forKey: "firedScheduleID")
         
         let viewController = self.window!.rootViewController!.storyboard!.instantiateViewControllerWithIdentifier("PatientMedicineController")
-        self.window?.rootViewController = viewController
         
-        viewController.performSegueWithIdentifier("showMedicinePatient", sender: nil)
+        viewController.performSegueWithIdentifier("notificationToMedicine", sender: nil)
+        
+        self.window?.rootViewController = viewController
     }
-    
     
 }
 

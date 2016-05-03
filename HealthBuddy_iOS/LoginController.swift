@@ -72,7 +72,6 @@ class LoginController: UIViewController {
                 }
         }
     }
-    
         
     func getProfile(){
         Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
@@ -82,8 +81,8 @@ class LoginController: UIViewController {
                     Alert.alertStatusWithSymbol(true,message: "Aanmelden geslaagd", seconds: 1.5, view: self.view);
                     
                     if let JSON = response.result.value {
-                        self.loggedInUser = Mapper<User>().map(JSON);
-                        print(JSON);
+                        self.loggedInUser = Mapper<User>().map(JSON)
+                        NSUserDefaults.standardUserDefaults().setObject(self.loggedInUser?.toJSONString(), forKey: "loggedInUser")
                         
                         // schedules inladen in achtergrond
                         ToDoListController.updateMedicines(self.loggedInUser!)
