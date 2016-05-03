@@ -21,6 +21,18 @@ class PatientMedicineController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        
+        // check if notification fired
+        if  let _ = NSUserDefaults.standardUserDefaults().objectForKey("firedMedicineID") as? String,
+            let _ = NSUserDefaults.standardUserDefaults().objectForKey("firedScheduleID") as? String {
+            
+            if let patientJSON = NSUserDefaults.standardUserDefaults().objectForKey("loggedInUser") as? String {
+                let patient = Mapper<User>().map(patientJSON)
+                self.patient = patient
+                self.scheduleRefreshData()
+            }
+        }
+        
         self.title = "Medicatie";
         
         medicinesToday = [Medicine]();
@@ -330,48 +342,6 @@ class PatientMedicineController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "notificationToMedicine" {
-            
-            if let Controller = segue.destinationViewController as? PatientTableShowMedicineController {
-                
-                if  let medicineID = NSUserDefaults.standardUserDefaults().objectForKey("firedMedicineID") as? String,
-                    let scheduleID = NSUserDefaults.standardUserDefaults().objectForKey("firedScheduleID") as? String {
-                    
-                    if let patientJSON = NSUserDefaults.standardUserDefaults().objectForKey("loggedInUser") as? String {
-                        print(patientJSON,"\r\n\r\n")
-                        
-                        patient = Mapper<User>().map(patientJSON)
-                        
-                        // medicine
-                        for medicine in patient.medicines! {
-                            if(medicine.id == Int(medicineID)){
-                                Controller.medicine = medicine
-                                break
-                            }
-                        }
-                        
-                        // medicalSchedule
-                        for schedule in Controller.medicine.schedules {
-                            if(schedule.id == Int(scheduleID)){
-                                Controller.schedule = schedule
-                                break
-                            }
-                        }
-                    }
-                    
-                }
-                
-                Controller.patientID = self.patient.userId;
-                
-                let tableShowMedicineController = self.storyboard?.instantiateViewControllerWithIdentifier("PatientTableShowMedicineController") as? PatientTableShowMedicineController
-                
-                tableShowMedicineController?.patientID = Controller.patientID
-                tableShowMedicineController?.medicine = Controller.medicine
-                
-                print("\(Controller.medicine.name) \(Controller.schedule.time_s) \(Controller.patientID)")
-            }
-        }
-        
         if segue.identifier == "showMedicinePatient" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 if let Controller = segue.destinationViewController as? PatientTableShowMedicineController {
@@ -393,8 +363,6 @@ class PatientMedicineController: UITableViewController {
                         Controller.schedule = self.medicinesA[indexPath.row];
                     }
                     Controller.patientID = self.patient.userId;
-                    
-                    print("\(Controller.medicine.name) \(Controller.schedule.time_s) \(Controller.patientID)")
                 }
             }
         }

@@ -1049,7 +1049,6 @@
                     <navigationItem key="navigationItem" id="3oV-bp-Nv1"/>
                     <connections>
                         <outlet property="tableView" destination="3KO-Xb-KeL" id="52f-fZ-vox"/>
-                        <segue destination="ajp-mg-OLp" kind="show" identifier="" id="Dk3-sg-oYc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFH-xD-vJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1426,7 +1425,6 @@
         <image name="takePill" width="380" height="380"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dk3-sg-oYc"/>
         <segue reference="QBc-Vo-xvA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -42,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TodoList.sharedInstance.clear()
     }
     
-    
     // notification has fired
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         let medID = notification.userInfo!["medicineID"] as! String
@@ -51,22 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSUserDefaults.standardUserDefaults().setObject(medID, forKey: "firedMedicineID")
         NSUserDefaults.standardUserDefaults().setObject(schedID, forKey: "firedScheduleID")
         
-        let viewController = self.window!.rootViewController!.storyboard!.instantiateViewControllerWithIdentifier("PatientMedicineController")
-        
-        //let tableShowMedicineController = viewController.storyboard?.instantiateViewControllerWithIdentifier("PatientTableShowMedicineController") as? PatientTableShowMedicineController
-        
-        // let medicationNavigation = UINavigationController(rootViewController: (viewController.storyboard?.instantiateViewControllerWithIdentifier("medicationNavigation"))!)
-        
-        //medicationNavigation.pushViewController(viewController, animated: true)
-        
-        //self.navigationController!.pushViewController(self.storyboard!.instantiateViewControllerWithIdentifier("view2") as UIViewController, animated: true)
-        
-        self.window?.rootViewController = viewController
-        
-        
-        viewController.performSegueWithIdentifier("notificationToMedicine", sender: nil)
-        
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nc = storyboard.instantiateViewControllerWithIdentifier("medicationNavigation")
+        let vc = storyboard.instantiateViewControllerWithIdentifier("PatientTableShowMedicineController")
+        self.window?.rootViewController = nc
+        nc.showViewController(vc, sender: nil)
     }
     
 }

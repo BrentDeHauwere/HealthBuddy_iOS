@@ -24,6 +24,38 @@ class PatientTableShowMedicineController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // check if notification fired
+        if  let medicineID = NSUserDefaults.standardUserDefaults().objectForKey("firedMedicineID") as? String,
+            let scheduleID = NSUserDefaults.standardUserDefaults().objectForKey("firedScheduleID") as? String {
+            
+            if let patientJSON = NSUserDefaults.standardUserDefaults().objectForKey("loggedInUser") as? String {
+                print(patientJSON,"\r\n\r\n hi hi hii i hi hiezoizefoizeoi")
+                
+                let patient = Mapper<User>().map(patientJSON)
+                self.patientID = patient?.userId
+                
+                // medicine
+                for medicine in patient!.medicines! {
+                    if(medicine.id == Int(medicineID)){
+                        self.medicine = medicine
+                        break
+                    }
+                }
+                
+                // medicalSchedule
+                for schedule in medicine.schedules {
+                    if(schedule.id == Int(scheduleID)){
+                        self.schedule = schedule
+                        break
+                    }
+                }
+            }
+            
+            NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "firedMedicineID")
+            NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "firedScheduleID")
+        }
+        
         self.title = medicine.name;
         self.TimeLabel.text = schedule.time_s;
         if(schedule.updated_at != nil){
