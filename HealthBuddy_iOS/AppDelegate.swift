@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
         IQKeyboardManager.sharedManager().enable = true
+        
         return true
     }
     
@@ -52,9 +53,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let viewController = self.window!.rootViewController!.storyboard!.instantiateViewControllerWithIdentifier("PatientMedicineController")
         
-        viewController.performSegueWithIdentifier("notificationToMedicine", sender: nil)
+        //let tableShowMedicineController = viewController.storyboard?.instantiateViewControllerWithIdentifier("PatientTableShowMedicineController") as? PatientTableShowMedicineController
+        
+        // let medicationNavigation = UINavigationController(rootViewController: (viewController.storyboard?.instantiateViewControllerWithIdentifier("medicationNavigation"))!)
+        
+        //medicationNavigation.pushViewController(viewController, animated: true)
+        
+        //self.navigationController!.pushViewController(self.storyboard!.instantiateViewControllerWithIdentifier("view2") as UIViewController, animated: true)
         
         self.window?.rootViewController = viewController
+        
+        
+        viewController.performSegueWithIdentifier("notificationToMedicine", sender: nil)
+        
+        
     }
     
 }

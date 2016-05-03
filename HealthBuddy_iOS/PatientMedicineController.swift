@@ -23,6 +23,12 @@ class PatientMedicineController: UITableViewController {
         super.viewDidLoad();
         self.title = "Medicatie";
         
+        medicinesToday = [Medicine]();
+        medicinesVm = [MedicalSchedule]();
+        medicinesM = [MedicalSchedule]();
+        medicinesNm = [MedicalSchedule]();
+        medicinesA = [MedicalSchedule]();
+        
         sections = [String]();
         
         sections.append("Voormiddag");
@@ -32,14 +38,19 @@ class PatientMedicineController: UITableViewController {
         
         
         //add medicines of today to arraylist
-        self.medicines();
+        if(patient?.medicines != nil){
+            self.medicines();
+        }
+        
         let refreshControl = UIRefreshControl();
         refreshControl.addTarget(self, action: #selector(PatientMedicineController.refreshData), forControlEvents: .ValueChanged)
         self.tableView.addSubview(refreshControl);
     }
     
     override func viewDidAppear(animated: Bool){
-        self.medicines();
+        if(patient?.medicines != nil){
+            self.medicines();
+        }
         self.scheduleRefreshData();
         super.viewDidAppear(true);
     }
@@ -51,7 +62,7 @@ class PatientMedicineController: UITableViewController {
         medicinesNm = [MedicalSchedule]();
         medicinesA = [MedicalSchedule]();
         var medicinesToTake = 0;
-        print("called")
+        
         for medicine in (patient?.medicines)! {
             var added = false
             for schedule in medicine.schedules {
@@ -119,7 +130,9 @@ class PatientMedicineController: UITableViewController {
                         let updatedUser = Mapper<User>().map(JSON);
                         self.patient.updateUserInfo(updatedUser!);
                         self.patient.medicines = updatedUser?.medicines;
-                        self.medicines();
+                        if(self.patient.medicines != nil){
+                            self.medicines();
+                        }
                         self.tableView.reloadData();
                         print("Data refreshed");
                     }
@@ -135,7 +148,9 @@ class PatientMedicineController: UITableViewController {
                         let updatedUser = Mapper<User>().map(JSON);
                         self.patient.updateUserInfo(updatedUser!);
                         self.patient.medicines = updatedUser?.medicines;
-                        self.medicines();
+                        if(self.patient.medicines != nil){
+                            self.medicines();
+                        }
                         self.tableView.reloadData();
                         refreshControl.endRefreshing();
                         print("Data refreshed");
@@ -208,77 +223,124 @@ class PatientMedicineController: UITableViewController {
         
         let section = indexPath.section;
         if(section == 0){
+            if(dateCheck(self.medicinesVm[indexPath.row].time!)){
+                cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                
+            }
             if(self.medicinesVm[indexPath.row].updated_at != nil){
                 if(self.medicinesVm[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
                 }
-                else if(dateCheck(self.medicinesVm[indexPath.row].time!)){
-                    cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
-                    
-                }
             }
-            
+            print(self.medicinesVm[indexPath.row].time);
             cell.textLabel?.text = (self.getMedicine(self.medicinesVm[indexPath.row]).name)!;
-            cell.detailTextLabel?.text =  self.medicinesVm[indexPath.row].time_s;
+            let calendar = NSCalendar.currentCalendar();
+            let comp = calendar.components([.Hour,.Minute], fromDate: self.medicinesVm[indexPath.row].time!);
+            let hour = comp.hour;
+            let minutes = comp.minute;
+            var stringhour = "\(hour)";
+            var stringminutes = "\(minutes)";
+            if(hour < 10){
+                stringhour = "0\(hour)";
+            }
+            if(minutes < 10){
+                stringminutes = "0\(minutes)";
+            }
+            cell.detailTextLabel?.text =  "\(stringhour):\(stringminutes)";
         }
         if(section == 1){
+            if(dateCheck(self.medicinesM[indexPath.row].time!)){
+                cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                
+            }
             if(self.medicinesM[indexPath.row].updated_at != nil){
                 if(self.medicinesM[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
                 }
-                else if(dateCheck(self.medicinesM[indexPath.row].time!)){
-                    cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
-                    
-                }
             }
             
             cell.textLabel?.text = (self.getMedicine(self.medicinesM[indexPath.row]).name)!;
-            cell.detailTextLabel?.text =  self.medicinesM[indexPath.row].time_s;
+            let calendar = NSCalendar.currentCalendar();
+            let comp = calendar.components([.Hour,.Minute], fromDate: self.medicinesM[indexPath.row].time!);
+            let hour = comp.hour;
+            let minutes = comp.minute;
+            var stringhour = "\(hour)";
+            var stringminutes = "\(minutes)";
+            if(hour < 10){
+                stringhour = "0\(hour)";
+            }
+            if(minutes < 10){
+                stringminutes = "0\(minutes)";
+            }
+            cell.detailTextLabel?.text =  "\(stringhour):\(stringminutes)";
         }
         if(section == 2){
+            if(dateCheck(self.medicinesNm[indexPath.row].time!)){
+                cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                
+            }
             if(self.medicinesNm[indexPath.row].updated_at != nil){
                 if(self.medicinesNm[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
                 }
-                else if(dateCheck(self.medicinesNm[indexPath.row].time!)){
-                    cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
-                    
-                }
             }
             
             cell.textLabel?.text =  (self.getMedicine(self.medicinesNm[indexPath.row]).name)!;
-            cell.detailTextLabel?.text =  self.medicinesNm[indexPath.row].time_s;
+            let calendar = NSCalendar.currentCalendar();
+            let comp = calendar.components([.Hour,.Minute], fromDate: self.medicinesNm[indexPath.row].time!);
+            let hour = comp.hour;
+            let minutes = comp.minute;
+            var stringhour = "\(hour)";
+            var stringminutes = "\(minutes)";
+            if(hour < 10){
+                stringhour = "0\(hour)";
+            }
+            if(minutes < 10){
+                stringminutes = "0\(minutes)";
+            }
+            cell.detailTextLabel?.text =  "\(stringhour):\(stringminutes)";
         }
         if(section == 3){
+            if(dateCheck(self.medicinesA[indexPath.row].time!)){
+                cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
+                
+            }
             if(self.medicinesA[indexPath.row].updated_at != nil){
                 if(self.medicinesA[indexPath.row].updated_at!.sameDay(NSDate())){
                     cell.backgroundColor = UIColor(red: 147/255, green: 203/255, blue: 80/255, alpha: 1);
                 }
-                else if(dateCheck(self.medicinesA[indexPath.row].time!)){
-                    cell.backgroundColor = UIColor(red: 214/255, green: 227/255, blue: 175/255, alpha: 1);
-                    
-                }
             }
             
             cell.textLabel?.text =  (self.getMedicine(self.medicinesA[indexPath.row]).name)!;
-            cell.detailTextLabel?.text =  self.medicinesA[indexPath.row].time_s;
+            let calendar = NSCalendar.currentCalendar();
+            let comp = calendar.components([.Hour,.Minute], fromDate: self.medicinesA[indexPath.row].time!);
+            let hour = comp.hour;
+            let minutes = comp.minute;
+            var stringhour = "\(hour)";
+            var stringminutes = "\(minutes)";
+            if(hour < 10){
+                stringhour = "0\(hour)";
+            }
+            if(minutes < 10){
+                stringminutes = "0\(minutes)";
+            }
+            cell.detailTextLabel?.text =  "\(stringhour):\(stringminutes)";
         }
         return cell;
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "notificationToMedicine" {
+            
             if let Controller = segue.destinationViewController as? PatientTableShowMedicineController {
                 
                 if  let medicineID = NSUserDefaults.standardUserDefaults().objectForKey("firedMedicineID") as? String,
                     let scheduleID = NSUserDefaults.standardUserDefaults().objectForKey("firedScheduleID") as? String {
                     
                     if let patientJSON = NSUserDefaults.standardUserDefaults().objectForKey("loggedInUser") as? String {
-                        print(patientJSON)
+                        print(patientJSON,"\r\n\r\n")
                         
                         patient = Mapper<User>().map(patientJSON)
-                        
-                        print(patient.description)
                         
                         // medicine
                         for medicine in patient.medicines! {
@@ -299,12 +361,14 @@ class PatientMedicineController: UITableViewController {
                     
                 }
                 
-                
-                print("\(Controller.medicine.name) \(Controller.schedule.time_s)")
-                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "firedMedicineID")
-                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "firedScheduleID")
-                
                 Controller.patientID = self.patient.userId;
+                
+                let tableShowMedicineController = self.storyboard?.instantiateViewControllerWithIdentifier("PatientTableShowMedicineController") as? PatientTableShowMedicineController
+                
+                tableShowMedicineController?.patientID = Controller.patientID
+                tableShowMedicineController?.medicine = Controller.medicine
+                
+                print("\(Controller.medicine.name) \(Controller.schedule.time_s) \(Controller.patientID)")
             }
         }
         
@@ -329,11 +393,10 @@ class PatientMedicineController: UITableViewController {
                         Controller.schedule = self.medicinesA[indexPath.row];
                     }
                     Controller.patientID = self.patient.userId;
+                    
+                    print("\(Controller.medicine.name) \(Controller.schedule.time_s) \(Controller.patientID)")
                 }
             }
         }
-        
-        
-        
     }
 }

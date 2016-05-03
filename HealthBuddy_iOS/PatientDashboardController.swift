@@ -21,6 +21,7 @@ class PatientDashboardController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         print("PROGRESS CALCULATE");
+        //calculateProgress()
         circleProgressView.setProgress(calculateProgress(), animated: true);
     }
     
@@ -31,33 +32,41 @@ class PatientDashboardController: UIViewController {
     // Medicine is taken when
     // - Schedule.updated_at == Today ! ================================ TO DO: UPDATED_AT ================================== !
     func calculateProgress() -> Double {
+        if(self.patient?.gender == "M"){
+            self.circleProgressView.centerImage = UIImage(named: "takePillMan");
+        }else{
+            self.circleProgressView.centerImage = UIImage(named: "takePillWoman");
+        }
+        
         var medicinesToTake:Int = 0;
         var medicinesTaken:Int = 0;
-        
-        for medicine in (patient?.medicines)! {
-            for schedule in medicine.schedules {
-                if NSDate().isBetweeen(date: schedule.start_date!, andDate: schedule.end_date!)
-                &&  (NSDate().daysSince1970() - schedule.start_date!.daysSince1970()) % schedule.interval! == 0 {
-                    medicinesToTake += 1;
-                    
-                    if schedule.updated_at != nil && schedule.updated_at!.sameDay(NSDate()) {
-                        medicinesTaken += 1;
+        if(self.patient?.medicines != nil){
+            for medicine in (patient?.medicines)! {
+                for schedule in medicine.schedules {
+                    if NSDate().isBetweeen(date: schedule.start_date!, andDate: schedule.end_date!)
+                        &&  (NSDate().daysSince1970() - schedule.start_date!.daysSince1970()) % schedule.interval! == 0 {
+                        medicinesToTake += 1;
+                        
+                        if schedule.updated_at != nil && schedule.updated_at!.sameDay(NSDate()) {
+                            medicinesTaken += 1;
+                        }
                     }
+                    
                 }
-                
             }
+            if(medicinesToTake == medicinesTaken){
+                self.circleProgressView.centerImage = UIImage(named: "trofee");
+            }
+            
         }
         
-        if(medicinesToTake == medicinesTaken){
-            self.circleProgressView.centerImage = UIImage(named: "trofee");
-        }else{
-            if(self.patient?.gender == "M"){
-                self.circleProgressView.centerImage = UIImage(named: "takePillMan");
-            }else{
-                self.circleProgressView.centerImage = UIImage(named: "takePillWoman");
-            }
+        print("\(medicinesTaken)/\(medicinesToTake)")
+        if(self.patient?.medicines != nil){
+            return Double(medicinesTaken)/Double(medicinesToTake);
         }
-        return Double(medicinesTaken)/Double(medicinesToTake);
+        else{
+            return 0;
+        }
     }
 }
 

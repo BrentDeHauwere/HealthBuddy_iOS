@@ -949,7 +949,7 @@
         <!--Medicatie-->
         <scene sceneID="12O-PH-LTg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jzc-0B-xeY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="medicationNavigation" automaticallyAdjustsScrollViewInsets="NO" id="Jzc-0B-xeY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Medicatie" image="MedicinTabIcon" id="EC0-GE-iLA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="lGx-cB-Ykh">
@@ -1049,7 +1049,7 @@
                     <navigationItem key="navigationItem" id="3oV-bp-Nv1"/>
                     <connections>
                         <outlet property="tableView" destination="3KO-Xb-KeL" id="52f-fZ-vox"/>
-                        <segue destination="ajp-mg-OLp" kind="show" identifier="notificationToMedicine" id="Dk3-sg-oYc"/>
+                        <segue destination="ajp-mg-OLp" kind="show" identifier="" id="Dk3-sg-oYc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFH-xD-vJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1059,7 +1059,7 @@
         <!--Title-->
         <scene sceneID="3e9-1q-LXa">
             <objects>
-                <tableViewController id="ajp-mg-OLp" customClass="PatientTableShowMedicineController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PatientTableShowMedicineController" id="ajp-mg-OLp" customClass="PatientTableShowMedicineController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="VSb-HV-jl4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1206,6 +1206,51 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShowMedicineCell" rowHeight="74" id="eCU-fm-RSh">
+                                        <rect key="frame" x="0.0" y="547" width="600" height="74"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eCU-fm-RSh" id="SBl-Yf-gjq">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="73"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b04-6n-JLh">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="b04-6n-JLh" firstAttribute="trailing" secondItem="SBl-Yf-gjq" secondAttribute="trailingMargin" id="Fm5-4d-Lef"/>
+                                                <constraint firstItem="b04-6n-JLh" firstAttribute="leading" secondItem="SBl-Yf-gjq" secondAttribute="leadingMargin" id="LQN-T3-dsB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="b04-6n-JLh" secondAttribute="bottom" constant="-0.5" id="f1B-nF-3V6"/>
+                                                <constraint firstItem="b04-6n-JLh" firstAttribute="top" secondItem="SBl-Yf-gjq" secondAttribute="top" id="isg-jQ-fCP"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="b04-6n-JLh"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="Fm5-4d-Lef"/>
+                                                    <exclude reference="LQN-T3-dsB"/>
+                                                    <exclude reference="f1B-nF-3V6"/>
+                                                    <exclude reference="isg-jQ-fCP"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="b04-6n-JLh"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="Fm5-4d-Lef"/>
+                                                    <include reference="LQN-T3-dsB"/>
+                                                    <include reference="f1B-nF-3V6"/>
+                                                    <include reference="isg-jQ-fCP"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1227,6 +1272,7 @@
                         <outlet property="ImageView" destination="tdK-gO-XRz" id="OsN-Ob-yLx"/>
                         <outlet property="InfoLabel" destination="dD7-ML-BG1" id="DY0-xN-2nj"/>
                         <outlet property="NameLabel" destination="BlM-4i-iJt" id="bfU-xt-180"/>
+                        <outlet property="TimeLabel" destination="b04-6n-JLh" id="PDw-aw-p0R"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cde-TM-2oW" userLabel="First Responder" sceneMemberID="firstResponder"/>

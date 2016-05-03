@@ -30,11 +30,12 @@ class ToDoListController : NSObject {
         let now = NSDate();
         
         for schedule in schedules {
+            
             if let end = schedule.end_date {
                 if end.isAfterDate(now){
                     // calculate timespans (in days)
                     let startToNow = daysBetween(schedule.start_date!, end: now)
-                    
+                   
                     // days in the future the next schedule needs to be made
                     let daysInFuture = schedule.interval! - (startToNow % schedule.interval!)
                     
