@@ -124,6 +124,7 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     
     //Perform the segue bij klikken op een cell
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.view.endEditing(true)
         self.performSegueWithIdentifier("gotoBuddyMenu", sender: self)
     }
     
