@@ -44,7 +44,7 @@ class PatientDashboardController: UIViewController {
             for medicine in (patient?.medicines)! {
                 for schedule in medicine.schedules {
                     let calendar = NSCalendar.currentCalendar()
-                    let start_date = calendar.dateByAddingUnit(.Minute,value: 1, toDate: schedule.start_date!, options: [])
+                    let start_date = calendar.dateByAddingUnit(.Day,value: 1, toDate: schedule.start_date!, options: [])
                     if NSDate().isBetweeen(date: schedule.start_date!, andDate: schedule.end_date!)
                         &&  (NSDate().daysSince1970() - start_date!.daysSince1970()) % schedule.interval! == 0 {
                         medicinesToTake += 1;

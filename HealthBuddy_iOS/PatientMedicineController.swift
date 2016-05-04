@@ -78,8 +78,10 @@ class PatientMedicineController: UITableViewController {
         for medicine in (patient?.medicines)! {
             var added = false
             for schedule in medicine.schedules {
+                let calendar = NSCalendar.currentCalendar()
+                let start_date = calendar.dateByAddingUnit(.Day,value: 1, toDate: schedule.start_date!, options: [])
                 if NSDate().isBetweeen(date: schedule.start_date!, andDate: schedule.end_date!)
-                    &&  (NSDate().daysSince1970() - schedule.start_date!.daysSince1970()) % schedule.interval! == 0 {
+                    &&  (NSDate().daysSince1970() - start_date!.daysSince1970()) % schedule.interval! == 0 {
                     medicinesToTake += 1;
                     let calendar = NSCalendar.currentCalendar();
                     let comp = calendar.components([.Hour], fromDate: schedule.time!);
