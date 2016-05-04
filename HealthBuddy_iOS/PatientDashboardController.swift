@@ -65,8 +65,10 @@ class PatientDashboardController: UIViewController {
         if(self.patient?.medicines != nil){
             for medicine in (patient?.medicines)! {
                 for schedule in medicine.schedules {
+                    let calendar = NSCalendar.currentCalendar()
+                    let start_date = calendar.dateByAddingUnit(.Day,value: 1, toDate: schedule.start_date!, options: [])
                     if NSDate().isBetweeen(date: schedule.start_date!, andDate: schedule.end_date!)
-                        &&  (NSDate().daysSince1970() - schedule.start_date!.daysSince1970()) % schedule.interval! == 0 {
+                        &&  (NSDate().daysSince1970() - start_date!.daysSince1970()) % schedule.interval! == 0 {
                         medicinesToTake += 1;
                         
                         if schedule.updated_at != nil && schedule.updated_at!.sameDay(NSDate()) {
@@ -113,6 +115,7 @@ extension NSDate {
         let compTwo: NSDateComponents = calender.components(flags, fromDate: dateTwo);
         return (compOne.day == compTwo.day && compOne.month == compTwo.month && compOne.year == compTwo.year);
     }
+    
     func secondsFrom(date:NSDate) -> Int{
         return NSCalendar.currentCalendar().components(.Second, fromDate: date, toDate: self, options: []).second
     }

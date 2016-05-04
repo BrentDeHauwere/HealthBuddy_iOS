@@ -22,10 +22,11 @@ class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerD
     
     override func viewDidLoad() {
         MedicineImageView.image = UIImage(named: "selectImage")
-        
         if medicine != nil {
             if(medicine?.photo == nil){
-                initForm();
+                if(medicine?.id != nil){
+                    initForm();
+                }
             }
             else{
                 MedicineImageView.image = medicine?.photo;
@@ -56,7 +57,7 @@ class BuddyMedicinePictureController: UIViewController, UIImagePickerControllerD
                 tasks.forEach({ $0.cancel() })
             }
         }
-        
+     
         Alamofire.request(.POST, Routes.showMedicine(patientId!, medicineId: self.medicine!.id!), parameters: ["api_token": Authentication.token!], headers: ["Accept": "application/json"]) .responseJSON { response in
             MRProgressOverlayView.dismissOverlayForView(self.navigationController!.view, animated: true);
             if response.result.isSuccess {
