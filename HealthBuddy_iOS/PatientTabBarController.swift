@@ -51,6 +51,9 @@ class PatientTabBarController: UITabBarController {
                         let updatedUser = Mapper<User>().map(JSON);
                         self.patient!.updateUserInfo(updatedUser!);
                         self.patient!.medicines = updatedUser?.medicines;
+                        
+                        // refresh patientJSON
+                        NSUserDefaults.standardUserDefaults().setObject(self.patient!.toJSONString(), forKey: "loggedInUser")
                         print("Data refreshed");
                     }
                 }

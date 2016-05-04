@@ -29,6 +29,15 @@ class PatientDashboardController: UIViewController {
             }
         }
         
+        if(patient == nil){
+            print("godverdomme")
+            if let patientJSON = NSUserDefaults.standardUserDefaults().objectForKey("loggedInUser") as? String {
+                let patient = Mapper<User>().map(patientJSON)
+                print("\(patient!.firstName!) \(patient!.lastName!)")
+                self.patient = patient
+            }
+        }
+        
         self.title = "\(patient!.firstName!) \(patient!.lastName!)";
     }
     

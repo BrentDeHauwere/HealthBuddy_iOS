@@ -59,6 +59,9 @@ class BuddyMedicineController: UITableViewController {
                         self.patient = Mapper<User>().map(JSON);
                         self.tableView.reloadData();
                         refreshControl.endRefreshing();
+                        
+                        // refresh patientJSON
+                        NSUserDefaults.standardUserDefaults().setObject(self.patient.toJSONString(), forKey: "loggedInUser")
                     }
                 }else{
                     refreshControl.endRefreshing();

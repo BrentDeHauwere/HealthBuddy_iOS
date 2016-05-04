@@ -149,6 +149,10 @@ class PatientMedicineController: UITableViewController {
                             self.medicines();
                         }
                         self.tableView.reloadData();
+                        
+                        // refresh patientJSON
+                        NSUserDefaults.standardUserDefaults().setObject(self.patient.toJSONString(), forKey: "loggedInUser")
+                        
                         print("Data refreshed");
                     }
                 }

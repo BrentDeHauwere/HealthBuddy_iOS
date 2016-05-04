@@ -57,12 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let nc2 = storyboard.instantiateViewControllerWithIdentifier("medicationNavigation") as! UINavigationController
         
-        let vc1 = storyboard.instantiateViewControllerWithIdentifier("PatientTableShowMedicineController")
+        let vc1 = storyboard.instantiateViewControllerWithIdentifier("patientDashboardController")
         
-        let vc2 = storyboard.instantiateViewControllerWithIdentifier("patientDashboardController")
-        
-        nc1.addChildViewController(vc1)
-        nc2.addChildViewController(vc2)
+        let vc2 = storyboard.instantiateViewControllerWithIdentifier("PatientTableShowMedicineController")
         
         tc.viewControllers = [nc1,nc2]
         
@@ -75,14 +72,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabbarController.selectedIndex = 0
         
             let navController1 = tabbarController.selectedViewController as! UINavigationController
-            navController1.pushViewController(vc2, animated: false)
+            navController1.pushViewController(vc1, animated: false)
             
             tabbarController.selectedIndex = 1
             
             let navController2 = tabbarController.selectedViewController as! UINavigationController
-            navController2.pushViewController(vc1, animated: true)
+            navController2.pushViewController(vc2, animated: false)
         }
-        
         
         print("achievement get")
     }

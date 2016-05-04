@@ -16,7 +16,7 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     var loggedInUser:User?
     var filteredData = [User]();
     var searchController: UISearchController!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad();
         self.navigationItem.hidesBackButton = true;
@@ -50,20 +50,23 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     func refreshDataOnDemand(refreshControl: UIRefreshControl){
         Alamofire.request(.POST, Routes.buddyProfile, parameters: ["api_token": Authentication.token!])
             .responseJSON { response in
-            if response.result.isSuccess {
-            if let JSON = response.result.value {
-                    self.loggedInUser = Mapper<User>().map(JSON);
-                    self.filteredData = (self.loggedInUser?.patients)!;
-                    self.tableView.reloadData();
-                    self.filteredData.sortInPlace{$0.firstName < $1.firstName};
+                if response.result.isSuccess {
+                    if let JSON = response.result.value {
+                        self.loggedInUser = Mapper<User>().map(JSON);
+                        self.filteredData = (self.loggedInUser?.patients)!;
+                        self.tableView.reloadData();
+                        self.filteredData.sortInPlace{$0.firstName < $1.firstName};
+                        refreshControl.endRefreshing();
+                        
+                        // refresh patientJSON
+                        NSUserDefaults.standardUserDefaults().setObject(self.loggedInUser!.toJSONString(), forKey: "loggedInUser")
+                        print("Data refreshed");
+                    }
+                }else{
                     refreshControl.endRefreshing();
-                    print("Data refreshed");
+                    Alert.alertStatusWithSymbol(false,message: "Refresh mislukt", seconds: 1.5, view: self.view);
+                    print("FAILED TO GET PROFILES");
                 }
-            }else{
-                refreshControl.endRefreshing();
-                Alert.alertStatusWithSymbol(false,message: "Refresh mislukt", seconds: 1.5, view: self.view);
-                print("FAILED TO GET PROFILES");                
-            }
         }
     }
     
@@ -74,7 +77,7 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
         tableView.reloadData();
         super.viewWillAppear(animated);
     }
-
+    
     
     func setupSearchBar(){
         tableView.dataSource = self;
@@ -123,7 +126,7 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("gotoBuddyMenu", sender: self)
     }
-
+    
     
     //Event dat uitgevoerd wordt bij klikken op een cel, voordat segue wordt afgevoerd
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -134,5 +137,5 @@ class BuddyListControler: UITableViewController, UISearchResultsUpdating {
             }
         }
     }
-
+    
 }
