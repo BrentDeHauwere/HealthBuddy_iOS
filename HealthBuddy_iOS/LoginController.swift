@@ -21,11 +21,7 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         btnLogin.layer.cornerRadius = 10;
-        btnLogin.clipsToBounds = true;
-        //Temporary auto login
-        txtEmail.text = "eddi_wallie@gmail.com";
-        txtPassword.text = "secret";
-        
+        btnLogin.clipsToBounds = true;        
     }
 
     override func didReceiveMemoryWarning() {
