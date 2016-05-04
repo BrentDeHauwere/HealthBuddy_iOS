@@ -65,8 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = tc
         
-        print("GODVERDOMME SCHIJTCODE")
-        
         if self.window!.rootViewController as? UITabBarController != nil {
             let tabbarController = self.window!.rootViewController as! UITabBarController
             tabbarController.selectedIndex = 0
@@ -79,8 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navController2 = tabbarController.selectedViewController as! UINavigationController
             navController2.pushViewController(vc2, animated: false)
         }
-        
-        print("achievement get")
     }
     
 }

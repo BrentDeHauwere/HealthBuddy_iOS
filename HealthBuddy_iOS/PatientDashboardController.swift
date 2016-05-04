@@ -42,6 +42,7 @@ class PatientDashboardController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        self.navigationController?.popToRootViewControllerAnimated(false)
         print("PROGRESS CALCULATE");
         //calculateProgress()
         circleProgressView.setProgress(calculateProgress(), animated: true);
