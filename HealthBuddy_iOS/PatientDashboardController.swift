@@ -8,6 +8,7 @@
 
 import UIKit
 import CircleProgressView
+import ObjectMapper;
 
 class PatientDashboardController: UIViewController {
     @IBOutlet weak var circleProgressView: CircleProgressView!
@@ -16,6 +17,18 @@ class PatientDashboardController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        
+        // check if notification fired
+        if  let _ = NSUserDefaults.standardUserDefaults().objectForKey("firedMedicineID") as? String,
+            let _ = NSUserDefaults.standardUserDefaults().objectForKey("firedScheduleID") as? String {
+            
+            if let patientJSON = NSUserDefaults.standardUserDefaults().objectForKey("loggedInUser") as? String {
+                let patient = Mapper<User>().map(patientJSON)
+                print("\(patient!.firstName!) \(patient!.lastName!)")
+                self.patient = patient
+            }
+        }
+        
         self.title = "\(patient!.firstName!) \(patient!.lastName!)";
     }
     

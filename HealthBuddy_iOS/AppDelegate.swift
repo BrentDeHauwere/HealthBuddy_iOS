@@ -51,10 +51,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSUserDefaults.standardUserDefaults().setObject(schedID, forKey: "firedScheduleID")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nc = storyboard.instantiateViewControllerWithIdentifier("medicationNavigation")
-        let vc = storyboard.instantiateViewControllerWithIdentifier("PatientTableShowMedicineController")
-        self.window?.rootViewController = nc
-        nc.showViewController(vc, sender: nil)
+        let tc = storyboard.instantiateViewControllerWithIdentifier("patientTabBarController") as! UITabBarController
+        
+        let nc1 = storyboard.instantiateViewControllerWithIdentifier("dashboardNavigationController") as! UINavigationController
+        
+        let nc2 = storyboard.instantiateViewControllerWithIdentifier("medicationNavigation") as! UINavigationController
+        
+        let vc1 = storyboard.instantiateViewControllerWithIdentifier("PatientTableShowMedicineController")
+        
+        let vc2 = storyboard.instantiateViewControllerWithIdentifier("patientDashboardController")
+        
+        nc1.addChildViewController(vc1)
+        nc2.addChildViewController(vc2)
+        
+        tc.viewControllers = [nc1,nc2]
+        
+        self.window?.rootViewController = tc
+        
+        print("GODVERDOMME SCHIJTCODE")
+        
+        if self.window!.rootViewController as? UITabBarController != nil {
+            let tabbarController = self.window!.rootViewController as! UITabBarController
+            tabbarController.selectedIndex = 0
+        
+            let navController1 = tabbarController.selectedViewController as! UINavigationController
+            navController1.pushViewController(vc2, animated: false)
+            
+            tabbarController.selectedIndex = 1
+            
+            let navController2 = tabbarController.selectedViewController as! UINavigationController
+            navController2.pushViewController(vc1, animated: true)
+        }
+        
+        
+        print("achievement get")
     }
     
 }

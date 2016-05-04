@@ -25,13 +25,16 @@ class PatientMedicineController: UITableViewController {
         // check if notification fired
         if  let _ = NSUserDefaults.standardUserDefaults().objectForKey("firedMedicineID") as? String,
             let _ = NSUserDefaults.standardUserDefaults().objectForKey("firedScheduleID") as? String {
-            
+            /*
             if let patientJSON = NSUserDefaults.standardUserDefaults().objectForKey("loggedInUser") as? String {
                 let patient = Mapper<User>().map(patientJSON)
                 self.patient = patient
-                self.scheduleRefreshData()
-            }
+            }*/
+            
+            self.scheduleRefreshData()
         }
+        
+        
         
         self.title = "Medicatie";
         

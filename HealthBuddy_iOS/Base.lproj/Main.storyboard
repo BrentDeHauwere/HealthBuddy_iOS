@@ -224,7 +224,7 @@
         <!--Dashboard-->
         <scene sceneID="1pN-Lo-UHM">
             <objects>
-                <viewController title="Dashboard" id="cTh-jp-9qo" customClass="PatientDashboardController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="patientDashboardController" title="Dashboard" id="cTh-jp-9qo" customClass="PatientDashboardController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0DO-Wy-Cvy"/>
                         <viewControllerLayoutGuide type="bottom" id="3t9-c0-KOR"/>
@@ -276,7 +276,7 @@
         <!--Patient Tab Bar Controller-->
         <scene sceneID="RsC-4x-t7b">
             <objects>
-                <tabBarController id="Y78-16-Rnj" customClass="PatientTabBarController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="patientTabBarController" id="Y78-16-Rnj" customClass="PatientTabBarController" customModule="HealthBuddy_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="bwn-00-M9L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -929,7 +929,7 @@
         <!--Dashboard-->
         <scene sceneID="SMa-fc-Vfa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L4c-IP-CaP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="dashboardNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="L4c-IP-CaP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dashboard" image="Player" id="LUK-Oe-wVj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="vHN-gX-6qr">
