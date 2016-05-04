@@ -102,7 +102,8 @@ class LoginController: UIViewController {
                     })
                 }else{
                     print("FAILED TO GET PROFILES");
-                    Alert.alertStatusWithSymbol(true,message: "Aanmelden mislukt, profiel niet gevonden", seconds: 1.5, view: self.view);
+                    MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                    Alert.alertStatusWithSymbol(false,message: "Aanmelden mislukt, profiel niet gevonden", seconds: 1.5, view: self.view);
                 }
         }
     }

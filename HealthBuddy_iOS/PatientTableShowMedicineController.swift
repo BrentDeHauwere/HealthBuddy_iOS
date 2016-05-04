@@ -75,7 +75,7 @@ class PatientTableShowMedicineController: UITableViewController {
         }
         
         MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Foto zoeken...", mode: .Indeterminate, animated: true) { response in
-            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+            MRProgressOverlayView.dismissOverlayForView(self.navigationController?.view, animated: true);
             Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
                 tasks.forEach({ $0.cancel() })
             }
@@ -171,8 +171,8 @@ class PatientTableShowMedicineController: UITableViewController {
     
     func PushedAction() {
         print("Pressed");
-        MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Innemen...", mode: .Indeterminate, animated: true) { response in
-            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+        MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, title: "Innemen...", mode: .Indeterminate, animated: true) { response in
+            MRProgressOverlayView.dismissOverlayForView(self.navigationController?.view, animated: true);
             Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) -> Void in
                 tasks.forEach({ $0.cancel() })
             }
@@ -187,26 +187,26 @@ class PatientTableShowMedicineController: UITableViewController {
                         print(JSON);
                         if response.response?.statusCode == 200 {
                             
-                            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                            MRProgressOverlayView.dismissOverlayForView(self.navigationController?.view, animated: true);
                             Alert.alertStatusWithSymbol(true,message:  "Innemen geslaagd!", seconds: 1.5,    view: self.view);
                             
                             self.navigationController?.popViewControllerAnimated(true);
                             
                         }else if response.response?.statusCode == 422 {
                             print("Ongeldig");
-                            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                            MRProgressOverlayView.dismissOverlayForView(self.navigationController?.view, animated: true);
                             Alert.alertStatusWithSymbol(false,message:  "Mislukt", seconds: 1.5,    view: self.view);
                         }
                     }else{
                         print("Ongeldige json response intake");
-                        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                        MRProgressOverlayView.dismissOverlayForView(self.navigationController?.view, animated: true);
                         Alert.alertStatusWithSymbol(false,message:  "Mislukt", seconds: 1.5, view:  self.view);
                     }
                 }
                 else
                 {
                     print("Ongeldige request intake");
-                    MRProgressOverlayView.dismissOverlayForView(self.view, animated: true);
+                    MRProgressOverlayView.dismissOverlayForView(self.navigationController?.view, animated: true);
                     Alert.alertStatusWithSymbol(false,message:  "Mislukt", seconds: 1.5, view: self.view);
                 }
         }
