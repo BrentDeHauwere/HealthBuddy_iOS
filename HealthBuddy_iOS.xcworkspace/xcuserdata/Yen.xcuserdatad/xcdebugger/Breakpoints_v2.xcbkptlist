@@ -173,8 +173,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "updateSearchResultsForSearchController(_:)"
-            landmarkType = "5">
+            landmarkName = "updateSearchResultsForSearchController(searchController:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -189,8 +189,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
             endingLineNumber = "99"
-            landmarkName = "updateSearchResultsForSearchController(_:)"
-            landmarkType = "5">
+            landmarkName = "updateSearchResultsForSearchController(searchController:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

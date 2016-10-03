@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.3.1)
+  - Alamofire (3.5.0)
   - CircleProgressView (1.0.10)
   - IQKeyboardManagerSwift (4.0.2)
   - MRProgress (0.8.3):
@@ -35,16 +35,26 @@ PODS:
   - SwiftForms (1.0.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.0)
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, tag `3.5.0`)
   - CircleProgressView
   - IQKeyboardManagerSwift
   - MRProgress
-  - ObjectMapper (~> 1.1)
+  - ObjectMapper
   - RSDayFlow
   - SwiftForms
 
+EXTERNAL SOURCES:
+  Alamofire:
+    :git: https://github.com/Alamofire/Alamofire.git
+    :tag: 3.5.0
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :git: https://github.com/Alamofire/Alamofire.git
+    :tag: 3.5.0
+
 SPEC CHECKSUMS:
-  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
   CircleProgressView: 5116fc2d3be792d755e6979d7f7309648de79d11
   IQKeyboardManagerSwift: 2f2c19c509f67c4c0df2826db54033d3e090ce65
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09

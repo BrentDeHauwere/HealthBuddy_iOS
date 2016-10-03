@@ -5,18 +5,20 @@ use_frameworks!
 target 'HealthBuddy_iOS' do
     pod 'SwiftForms'
     pod 'MRProgress'
-    pod 'Alamofire', '~> 3.0'
-    pod 'ObjectMapper', '~> 1.1'
+    pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :tag => '3.5.0'
+    pod 'ObjectMapper'
     pod 'CircleProgressView'
     pod 'RSDayFlow'
     pod 'IQKeyboardManagerSwift'
 end
 
-target 'HealthBuddy_iOSTests' do
 
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '2.3'
+        end
+    end
 end
 
-target 'HealthBuddy_iOSUITests' do
-
-end
 
