@@ -42,23 +42,6 @@
 		DC8F5AD61CD0C0B000215B1A /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F5AD41CD0C0B000215B1A /* ToDoList.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		AC5A51AC1C8C382300804C65 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AC5A518F1C8C382300804C65 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AC5A51961C8C382300804C65;
-			remoteInfo = HealthBuddy_iOS;
-		};
-		AC5A51B71C8C382300804C65 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AC5A518F1C8C382300804C65 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AC5A51961C8C382300804C65;
-			remoteInfo = HealthBuddy_iOS;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		302270A89DF9A481436CBA50 /* Pods_HealthBuddy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthBuddy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62B7CBE15E1C877EACB9D8C6 /* Pods-HealthBuddy_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthBuddy_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthBuddy_iOS/Pods-HealthBuddy_iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,8 +58,6 @@
 		AC5A51A11C8C382300804C65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC5A51A41C8C382300804C65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC5A51A61C8C382300804C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC5A51AB1C8C382300804C65 /* HealthBuddy_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthBuddy_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC5A51B61C8C382300804C65 /* HealthBuddy_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthBuddy_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5B0B6B1C945CE2005D0558 /* MedicalSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicalSchedule.swift; sourceTree = "<group>"; };
 		AC9EB0911C8F52310084DAC8 /* BuddyMedicineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyMedicineController.swift; sourceTree = "<group>"; };
 		AC9EB0931C8F52420084DAC8 /* BuddyWeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyWeightController.swift; sourceTree = "<group>"; };
@@ -109,20 +90,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D8A5E22C35F4DC93A50FE2B /* Pods_HealthBuddy_iOS.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC5A51A81C8C382300804C65 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC5A51B31C8C382300804C65 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,8 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				AC5A51971C8C382300804C65 /* HealthBuddy_iOS.app */,
-				AC5A51AB1C8C382300804C65 /* HealthBuddy_iOSTests.xctest */,
-				AC5A51B61C8C382300804C65 /* HealthBuddy_iOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -271,42 +236,6 @@
 			productReference = AC5A51971C8C382300804C65 /* HealthBuddy_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AC5A51AA1C8C382300804C65 /* HealthBuddy_iOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AC5A51C21C8C382300804C65 /* Build configuration list for PBXNativeTarget "HealthBuddy_iOSTests" */;
-			buildPhases = (
-				AC5A51A71C8C382300804C65 /* Sources */,
-				AC5A51A81C8C382300804C65 /* Frameworks */,
-				AC5A51A91C8C382300804C65 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AC5A51AD1C8C382300804C65 /* PBXTargetDependency */,
-			);
-			name = HealthBuddy_iOSTests;
-			productName = HealthBuddy_iOSTests;
-			productReference = AC5A51AB1C8C382300804C65 /* HealthBuddy_iOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		AC5A51B51C8C382300804C65 /* HealthBuddy_iOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AC5A51C51C8C382300804C65 /* Build configuration list for PBXNativeTarget "HealthBuddy_iOSUITests" */;
-			buildPhases = (
-				AC5A51B21C8C382300804C65 /* Sources */,
-				AC5A51B31C8C382300804C65 /* Frameworks */,
-				AC5A51B41C8C382300804C65 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AC5A51B81C8C382300804C65 /* PBXTargetDependency */,
-			);
-			name = HealthBuddy_iOSUITests;
-			productName = HealthBuddy_iOSUITests;
-			productReference = AC5A51B61C8C382300804C65 /* HealthBuddy_iOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -326,16 +255,6 @@
 							};
 						};
 					};
-					AC5A51AA1C8C382300804C65 = {
-						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0800;
-						TestTargetID = AC5A51961C8C382300804C65;
-					};
-					AC5A51B51C8C382300804C65 = {
-						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0800;
-						TestTargetID = AC5A51961C8C382300804C65;
-					};
 				};
 			};
 			buildConfigurationList = AC5A51921C8C382300804C65 /* Build configuration list for PBXProject "HealthBuddy_iOS" */;
@@ -352,8 +271,6 @@
 			projectRoot = "";
 			targets = (
 				AC5A51961C8C382300804C65 /* HealthBuddy_iOS */,
-				AC5A51AA1C8C382300804C65 /* HealthBuddy_iOSTests */,
-				AC5A51B51C8C382300804C65 /* HealthBuddy_iOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -366,20 +283,6 @@
 				AC5A51A51C8C382300804C65 /* LaunchScreen.storyboard in Resources */,
 				AC5A51A21C8C382300804C65 /* Assets.xcassets in Resources */,
 				AC5A51A01C8C382300804C65 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC5A51A91C8C382300804C65 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC5A51B41C8C382300804C65 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,34 +373,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AC5A51A71C8C382300804C65 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC5A51B21C8C382300804C65 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		AC5A51AD1C8C382300804C65 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AC5A51961C8C382300804C65 /* HealthBuddy_iOS */;
-			targetProxy = AC5A51AC1C8C382300804C65 /* PBXContainerItemProxy */;
-		};
-		AC5A51B81C8C382300804C65 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AC5A51961C8C382300804C65 /* HealthBuddy_iOS */;
-			targetProxy = AC5A51B71C8C382300804C65 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AC5A519E1C8C382300804C65 /* Main.storyboard */ = {
@@ -645,58 +521,6 @@
 			};
 			name = Release;
 		};
-		AC5A51C31C8C382300804C65 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = HealthBuddy_iOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Yen-Jacobs.HealthBuddy-iOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HealthBuddy_iOS.app/HealthBuddy_iOS";
-			};
-			name = Debug;
-		};
-		AC5A51C41C8C382300804C65 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = HealthBuddy_iOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Yen-Jacobs.HealthBuddy-iOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HealthBuddy_iOS.app/HealthBuddy_iOS";
-			};
-			name = Release;
-		};
-		AC5A51C61C8C382300804C65 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = HealthBuddy_iOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Yen-Jacobs.HealthBuddy-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
-				TEST_TARGET_NAME = HealthBuddy_iOS;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		AC5A51C71C8C382300804C65 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = HealthBuddy_iOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Yen-Jacobs.HealthBuddy-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
-				TEST_TARGET_NAME = HealthBuddy_iOS;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -714,24 +538,6 @@
 			buildConfigurations = (
 				AC5A51C01C8C382300804C65 /* Debug */,
 				AC5A51C11C8C382300804C65 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AC5A51C21C8C382300804C65 /* Build configuration list for PBXNativeTarget "HealthBuddy_iOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AC5A51C31C8C382300804C65 /* Debug */,
-				AC5A51C41C8C382300804C65 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AC5A51C51C8C382300804C65 /* Build configuration list for PBXNativeTarget "HealthBuddy_iOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AC5A51C61C8C382300804C65 /* Debug */,
-				AC5A51C71C8C382300804C65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
