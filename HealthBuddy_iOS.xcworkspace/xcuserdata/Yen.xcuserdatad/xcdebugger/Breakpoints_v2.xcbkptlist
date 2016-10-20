@@ -142,7 +142,7 @@
             startingLineNumber = "271"
             endingLineNumber = "271"
             landmarkName = "patientUpdated()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,7 +158,7 @@
             startingLineNumber = "266"
             endingLineNumber = "266"
             landmarkName = "patientUpdated()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -237,8 +237,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "297"
             endingLineNumber = "297"
-            landmarkName = "storeMedicin(_:)"
-            landmarkType = "5">
+            landmarkName = "storeMedicin(Route:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
